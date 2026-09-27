@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Fragment+Mono:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Fragment Mono", monospace;
+  --font-anton: "Anton", sans-serif;
+  
+  --color-brand-orange: #d9531e;
+  --color-brand-orange-light: rgba(217, 83, 30, 0.12);
+  --color-brand-coffee: #382215;
+  --color-brand-coffee-light: #523522;
+  --color-brand-forest: #183e2b;
+  --color-brand-forest-dark: #0e1e16;
+  --color-brand-gold: #d97706;
+  --color-brand-gold-light: rgba(217, 119, 6, 0.12);
+  --color-brand-green: #1fc932;
+  --color-brand-border: #d8d2c7;
+  --color-brand-dark-border: #233529;
+  --color-brand-card: #f6f3eb;
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+}
+
+:root {
+  --background: #ebe6dd;
+  --foreground: #1c1510;
+  --card: #f6f3eb;
+  --card-foreground: #1c1510;
+  --popover: #ffffff;
+  --popover-foreground: #1c1510;
+  --primary: #d9531e;
+  --primary-foreground: #ffffff;
+  --secondary: #183e2b;
+  --secondary-foreground: #ffffff;
+  --muted: #f2eee6;
+  --muted-foreground: #5e544a;
+  --accent: #d97706;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --border: #d8d2c7;
+  --input: #d8d2c7;
+  --ring: #d9531e;
+  --radius: 1rem;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+    box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    background-color: #ebe6dd;
+    color: #1c1510;
+  }
+  body {
+    background-color: #ebe6dd;
+    color: #1c1510;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background-color: #183e2b;
+    color: #ffffff;
+  }
+}
+
+.font-anton {
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.font-mono {
+  font-family: 'Fragment Mono', monospace;
+}
+
+.font-sans {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Technical dashed blueprint grid patterns */
+.blueprint-grid {
+  background-size: 28px 28px;
+  background-image: 
+    linear-gradient(to right, rgba(56, 34, 21, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 34, 21, 0.06) 1px, transparent 1px);
+}
+
+.blueprint-grid-dashed {
+  background-size: 28px 28px;
+  background-image: 
+    repeating-linear-gradient(to right, rgba(56, 34, 21, 0.08) 0, rgba(56, 34, 21, 0.08) 3px, transparent 3px, transparent 28px),
+    repeating-linear-gradient(to bottom, rgba(56, 34, 21, 0.08) 0, rgba(56, 34, 21, 0.08) 3px, transparent 3px, transparent 28px);
+}
+
+.blueprint-grid-dark {
+  background-size: 28px 28px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+}
+
+.blueprint-grid-dark-dashed {
+  background-size: 28px 28px;
+  background-image: 
+    repeating-linear-gradient(to right, rgba(255,255,255,0.08) 0, rgba(255,255,255,0.08) 3px, transparent 3px, transparent 28px),
+    repeating-linear-gradient(to bottom, rgba(255,255,255,0.08) 0, rgba(255,255,255,0.08) 3px, transparent 3px, transparent 28px);
+}
+
+/* Giant outline watermark text at bottom */
+.quynhchi-outline-text {
+  font-family: 'Anton', sans-serif;
+  color: transparent;
+  -webkit-text-stroke: 1.5px #d9531e;
+  opacity: 0.28;
+  letter-spacing: 0.05em;
+  user-select: none;
+}
+
+/* Custom dashed border utilities */
+.dashed-border-box {
+  border: 1px dashed #d8d2c7;
+}
+
+.dashed-border-dark {
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+}
