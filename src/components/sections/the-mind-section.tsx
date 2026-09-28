@@ -149,9 +149,6 @@ export function TheMindSection() {
               <BrainCircuit className="w-6 h-6" />
             </div>
             <div>
-              <span className="font-mono text-xs font-semibold text-[#d9531e] uppercase tracking-wider block">
-                {"// Section 03 • Academic & Business Leadership"}
-              </span>
               <h2 className="font-anton text-4xl sm:text-6xl uppercase tracking-tight text-[#1c1510]">
                 THE MIND
               </h2>
@@ -269,8 +266,8 @@ export function TheMindSection() {
                           key={hIdx}
                           className="p-4 sm:p-5 rounded-2xl bg-white border border-[#d8d2c7] shadow-xs space-y-2 hover:border-[#183e2b]/40 transition-colors"
                         >
-                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                            <h4 className="font-bold text-xs sm:text-sm text-[#1c1510]">
+                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                            <h4 className="font-bold text-xs sm:text-sm text-[#1c1510] whitespace-nowrap overflow-hidden text-ellipsis min-w-0">
                               {h.heading}
                             </h4>
                             <span className="text-[11px] font-mono font-bold text-[#d9531e] bg-[#d9531e]/10 px-2.5 py-0.5 rounded-full shrink-0">
@@ -284,17 +281,7 @@ export function TheMindSection() {
                       ))}
                     </div>
 
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2 pt-2">
-                      {item.tags.map((tag, tIdx) => (
-                        <span
-                          key={tIdx}
-                          className="px-2.5 py-1 rounded-md text-[11px] font-mono bg-[#ece7df] text-[#382215] border border-[#d8d2c7]"
-                        >
-                          #{tag}
-                        </span>
-                      ))}
-                    </div>
+
                   </div>
 
                   {/* Right 5 Cols: Visual Representation */}

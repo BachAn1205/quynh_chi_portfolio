@@ -5,6 +5,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Mail, Send, CheckCircle2, MapPin, FileText, ArrowUpRight } from "lucide-react";
 import { ResumeModal } from "@/components/ui/resume-modal";
+import { PageNav } from "@/components/ui/page-nav";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -12,7 +13,6 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "Academic Research & Data Science",
     message: "",
   });
 
@@ -32,9 +32,6 @@ export default function ContactPage() {
               <Mail className="w-6 h-6" />
             </div>
             <div>
-              <span className="font-mono text-xs font-semibold text-[#d9531e] uppercase tracking-wider block">
-                {"// Section 06 • Connect"}
-              </span>
               <h1 className="font-anton text-4xl sm:text-6xl lg:text-7xl uppercase tracking-tight text-[#1c1510]">
                 GET IN TOUCH
               </h1>
@@ -43,22 +40,10 @@ export default function ContactPage() {
 
           {/* Split Content Cards */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20">
-            {/* Left Card: Dark Card with High-Impact Bio */}
-            <div className="lg:col-span-5 rounded-3xl bg-[#0b1710] text-white p-8 sm:p-12 flex flex-col justify-between overflow-hidden relative shadow-xl blueprint-grid-dark min-h-[560px] border border-[#233529]">
-              <div className="relative z-10 space-y-4">
-                <span className="font-mono text-xs font-semibold text-[#22c55e] uppercase tracking-wider block">
-                  {"// Collaboration & Dialogue"}
-                </span>
-                <h2 className="font-anton text-3xl sm:text-4xl lg:text-5xl uppercase tracking-tight text-[#22c55e] leading-tight">
-                  BUILDING TRANSPARENT ECOSYSTEMS.
-                </h2>
-                <p className="text-xs sm:text-sm text-white/70 leading-relaxed font-normal pt-2">
-                  Whether you are a university admissions committee seeking a data-driven innovator, a professor looking for a dedicated quantitative researcher, or a partner passionate about circular economies—I would love to connect.
-                </p>
-              </div>
-
+            {/* Left Card: Dark Info Card */}
+            <div className="lg:col-span-5 rounded-3xl bg-[#0b1710] text-white p-8 sm:p-12 flex flex-col justify-end overflow-hidden relative shadow-xl blueprint-grid-dark min-h-[420px] border border-[#233529]">
               {/* Direct Info Box */}
-              <div className="relative z-10 p-5 rounded-2xl bg-[#121f16] border border-[#233529] space-y-3 mt-8 text-xs font-mono">
+              <div className="relative z-10 p-5 rounded-2xl bg-[#121f16] border border-[#233529] space-y-3 text-xs font-mono">
                 <div className="flex items-center gap-2.5 text-white/90">
                   <Mail className="w-4 h-4 text-[#d9531e]" />
                   <span>quynhchi.phanhoang@gmail.com</span>
@@ -104,12 +89,7 @@ export default function ContactPage() {
                   <button
                     onClick={() => {
                       setSubmitted(false);
-                      setFormData({
-                        name: "",
-                        email: "",
-                        subject: "Academic Research & Data Science",
-                        message: "",
-                      });
+                      setFormData({ name: "", email: "", message: "" });
                     }}
                     className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-semibold bg-[#183e2b] text-white hover:bg-[#122e20] transition-colors mt-4 cursor-pointer"
                   >
@@ -148,24 +128,6 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  {/* Subject field */}
-                  <div>
-                    <label className="font-anton text-xs uppercase tracking-wider text-[#1c1510] block mb-2">
-                      INQUIRY FOCUS
-                    </label>
-                    <select
-                      value={formData.subject}
-                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                      className="w-full px-5 py-3 rounded-2xl bg-white border border-[#d8d2c7] text-[#1c1510] text-sm focus:outline-none focus:border-[#183e2b] transition-colors shadow-xs cursor-pointer"
-                    >
-                      <option value="Academic Research & Data Science">Academic Research &amp; Quantitative Data Science</option>
-                      <option value="University Admissions & Scholarships">University Admissions &amp; Scholarship Evaluation</option>
-                      <option value="Circular Economy & CAFLOOP Partnership">Circular Economy &amp; CAFLOOP Partnership</option>
-                      <option value="T'rưng Cultural Heritage & Performance">T&apos;rưng Cultural Heritage &amp; Performance</option>
-                      <option value="Mentorship & Economic Education">Mentorship &amp; Economic Education (Dakonomics)</option>
-                    </select>
-                  </div>
-
                   {/* Message field */}
                   <div>
                     <label className="font-anton text-xs uppercase tracking-wider text-[#1c1510] block mb-2">
@@ -195,6 +157,13 @@ export default function ContactPage() {
           </div>
         </div>
       </main>
+
+      <PageNav
+        prevHref="/the-competitor"
+        prevLabel="The Competitor"
+        nextHref="/"
+        nextLabel="Back to Home"
+      />
       <Footer />
 
       {/* Resume Modal */}

@@ -1,63 +1,45 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { FileText, Menu, X, Mail } from "lucide-react";
 import { ResumeModal } from "@/components/ui/resume-modal";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [resumeModalOpen, setResumeModalOpen] = useState(false);
+  const pathname = usePathname();
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/#about", label: "About" },
-    { href: "/#the-mind", label: "The Mind" },
-    { href: "/#the-heart", label: "The Heart" },
-    { href: "/#the-competitor", label: "The Competitor" },
-    { href: "/#vision", label: "Vision" },
+    { href: "/about", label: "About" },
+    { href: "/the-mind", label: "The Mind" },
+    { href: "/the-heart", label: "The Heart" },
+    { href: "/the-competitor", label: "The Competitor" },
+    { href: "/contact", label: "Connect" },
   ];
+
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  };
 
   return (
     <>
       <header className="fixed top-5 left-0 right-0 z-40 pointer-events-none px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
-          {/* Left Pill: Avatar & Status */}
-          <Link
-            href="/"
-            className="pointer-events-auto group bg-white/95 backdrop-blur-md border border-[#d8d2c7] hover:border-[#b8b0a2] px-3.5 py-2 rounded-full flex items-center gap-2.5 shadow-sm transition-all duration-200"
-          >
-            <div className="w-7 h-7 rounded-full overflow-hidden bg-[#e0ded6] flex items-center justify-center shrink-0 border border-[#d8d2c7]">
-              <Image
-                src="/images/quynhchi/avatar.jpg"
-                alt="Phan Hoàng Quỳnh Chi avatar"
-                width={28}
-                height={28}
-                className="object-cover w-full h-full"
-              />
-            </div>
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1fc932] opacity-75" />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#1fc932]" />
-            </span>
-            <div className="flex flex-col">
-              <span className="text-xs sm:text-sm font-semibold text-[#1c1510] leading-none">
-                Quỳnh Chi
-              </span>
-              <span className="text-[10px] text-[#5e544a] font-mono leading-tight hidden sm:inline">
-                Central Highlands, VN
-              </span>
-            </div>
-          </Link>
-
-          {/* Center Pill: Desktop Navigation */}
-          <nav className="pointer-events-auto hidden lg:flex items-center gap-2 bg-white/95 backdrop-blur-md border border-[#d8d2c7] px-5 py-2 rounded-full shadow-sm">
+        <div className="max-w-6xl mx-auto flex items-center justify-end relative">
+          {/* Center Pill: Desktop Navigation — absolutely centered */}
+          <nav className="pointer-events-auto hidden lg:flex items-center gap-1 bg-white/95 backdrop-blur-md border border-[#d8d2c7] px-4 py-2 rounded-full shadow-sm absolute left-1/2 -translate-x-1/2">
             {navLinks.map((link, idx) => (
-              <div key={link.href} className="flex items-center gap-2">
+              <div key={link.href} className="flex items-center gap-1">
                 <Link
                   href={link.href}
-                  className="text-xs font-semibold text-[#382215] hover:text-[#d9531e] px-2 py-1 rounded-full hover:bg-black/5 transition-colors duration-150 uppercase tracking-wide"
+                  className={`text-xs font-semibold px-3 py-1.5 rounded-full transition-all duration-150 uppercase tracking-wide ${
+                    isActive(link.href)
+                      ? "bg-[#183e2b] text-white shadow-sm"
+                      : "text-[#382215] hover:text-[#d9531e] hover:bg-black/5"
+                  }`}
                 >
                   {link.label}
                 </Link>
@@ -105,7 +87,11 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-4 py-2.5 rounded-xl text-sm font-semibold text-[#1c1510] hover:bg-[#f6f3eb] hover:text-[#d9531e] transition-colors"
+                className={`px-4 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
+                  isActive(link.href)
+                    ? "bg-[#183e2b] text-white"
+                    : "text-[#1c1510] hover:bg-[#f6f3eb] hover:text-[#d9531e]"
+                }`}
               >
                 {link.label}
               </Link>
@@ -134,7 +120,7 @@ export function Navbar() {
         )}
       </header>
 
-      {/* Interactive Comprehensive Resume Modal */}
+      {/* Resume Modal */}
       <ResumeModal isOpen={resumeModalOpen} onClose={() => setResumeModalOpen(false)} />
     </>
   );

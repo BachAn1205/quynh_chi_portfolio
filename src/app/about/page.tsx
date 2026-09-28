@@ -2,6 +2,8 @@ import Image from "next/image";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { User, Briefcase, Quote } from "lucide-react";
+import { AboutSection } from "@/components/sections/about-section";
+import { PageNav } from "@/components/ui/page-nav";
 
 export default function AboutPage() {
   const experiences = [
@@ -225,6 +227,14 @@ export default function AboutPage() {
           </div>
         </div>
       </main>
+      <AboutSection />
+      <PageNav
+        prevHref="/"
+        prevLabel="Home"
+        nextHref="/the-mind"
+        nextLabel="The Mind"
+        nextSub="Quantitative Research & Enterprise"
+      />
       <Footer />
     </>
   );

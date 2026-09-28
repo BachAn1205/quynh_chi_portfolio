@@ -24,18 +24,13 @@ export function AboutSection() {
               <User className="w-6 h-6" />
             </div>
             <div>
-              <span className="font-mono text-xs font-semibold text-[#d9531e] uppercase tracking-wider block">
-                {"// Section 02"}
-              </span>
+
               <h2 className="font-anton text-4xl sm:text-6xl uppercase tracking-tight text-[#1c1510]">
                 ABOUT ME
               </h2>
             </div>
           </div>
 
-          <p className="text-sm sm:text-base text-[#5e544a] max-w-sm">
-            Bridging empirical data tools with deep cultural roots to solve real systemic challenges.
-          </p>
         </div>
 
         {/* Hero Narrative Block: The Mind of an Analyst. The Heart of the Highlands. */}
@@ -43,11 +38,6 @@ export function AboutSection() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left 7 Cols: Complete Story Text */}
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#183e2b]/10 text-[#183e2b] font-mono text-xs font-semibold">
-                <Sparkles className="w-3.5 h-3.5 text-[#d9531e]" />
-                <span>Foundational Narrative</span>
-              </div>
-
               <h3 className="font-anton text-3xl sm:text-5xl uppercase tracking-tight text-[#1c1510] leading-tight">
                 The Mind of an Analyst. The Heart of the Highlands.
               </h3>
@@ -125,10 +115,6 @@ export function AboutSection() {
               </p>
             </div>
 
-            <div className="pt-4 border-t border-[#d8d2c7] flex items-center justify-between font-mono text-xs text-[#183e2b]">
-              <span>Carbon Market Loss</span>
-              <span className="font-bold text-[#d9531e]">$80,000,000+</span>
-            </div>
           </div>
 
           {/* Card 2: 83.5% Model Accuracy (Dark Coffee / Forest Card) */}
@@ -149,10 +135,6 @@ export function AboutSection() {
               </p>
             </div>
 
-            <div className="pt-4 border-t border-[#233529] flex items-center justify-between font-mono text-xs">
-              <span className="text-white/60">Sample Cohort</span>
-              <span className="font-bold text-[#22c55e]">200 Stratified Students</span>
-            </div>
           </div>
 
           {/* Card 3: 2,300+ Students Engaged in Heritage */}
@@ -173,10 +155,6 @@ export function AboutSection() {
               </p>
             </div>
 
-            <div className="pt-4 border-t border-[#d8d2c7] flex items-center justify-between font-mono text-xs text-[#183e2b]">
-              <span>Social Reinvestment</span>
-              <span className="font-bold text-[#d9531e]">77 Bicycles Donated</span>
-            </div>
           </div>
         </div>
       </div>

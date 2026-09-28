@@ -52,12 +52,7 @@ export function Hero() {
       <section className="relative pt-32 sm:pt-36 pb-12 overflow-hidden">
         <div className="max-w-6xl mx-auto px-4">
           {/* Top Pill / Badge */}
-          <div className="flex items-center gap-2 mb-6">
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold bg-[#183e2b]/10 text-[#183e2b] border border-[#183e2b]/20">
-              <Sparkles className="w-3.5 h-3.5 text-[#d9531e]" />
-              <span>Section 1 // Economics • Data Science • Cultural Heritage</span>
-            </span>
-          </div>
+
 
           {/* Top Headline Section */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-10 sm:mb-14">
@@ -73,9 +68,7 @@ export function Hero() {
                 />
               </div>
               <div>
-                <span className="text-[#d9531e] text-sm sm:text-base font-mono font-bold tracking-wider uppercase block mb-1">
-                  Candidate Dossier
-                </span>
+
                 <h1 className="font-anton text-4xl sm:text-6xl lg:text-7xl uppercase tracking-tight text-[#1c1510] leading-none">
                   PHAN HOÀNG QUỲNH CHI
                 </h1>
@@ -87,9 +80,6 @@ export function Hero() {
 
             {/* Right: Tagline */}
             <div className="max-w-md lg:text-right">
-              <p className="text-sm sm:text-base text-[#5e544a] leading-relaxed">
-                Bridging the cultural heartbeat of Vietnam&apos;s Central Highlands with predictive analytics, economic systems, and circular innovation.
-              </p>
             </div>
           </div>
 
@@ -144,11 +134,10 @@ export function Hero() {
                       key={item.id}
                       onClick={() => setActiveSlide(i)}
                       aria-label={`View slide ${i + 1}: ${item.title}`}
-                      className={`h-2 rounded-full transition-all duration-300 ${
-                        i === activeSlide
-                          ? "w-8 bg-[#183e2b]"
-                          : "w-3 bg-black/20 hover:bg-black/40"
-                      }`}
+                      className={`h-2 rounded-full transition-all duration-300 ${i === activeSlide
+                        ? "w-8 bg-[#183e2b]"
+                        : "w-3 bg-black/20 hover:bg-black/40"
+                        }`}
                     />
                   ))}
                 </div>
@@ -191,16 +180,14 @@ export function Hero() {
                   <button
                     key={item.id}
                     onClick={() => setActiveSlide(idx)}
-                    className={`p-3.5 rounded-2xl text-left border transition-all duration-200 cursor-pointer ${
-                      isSelected
-                        ? "bg-[#183e2b] text-white border-[#183e2b] shadow-sm"
-                        : "bg-white/80 text-[#1c1510] border-[#d8d2c7] hover:bg-white"
-                    }`}
+                    className={`p-3.5 rounded-2xl text-left border transition-all duration-200 cursor-pointer ${isSelected
+                      ? "bg-[#183e2b] text-white border-[#183e2b] shadow-sm"
+                      : "bg-white/80 text-[#1c1510] border-[#d8d2c7] hover:bg-white"
+                      }`}
                   >
                     <div className="flex items-center justify-between mb-1">
-                      <span className={`text-[10px] font-mono font-bold uppercase tracking-wider ${
-                        isSelected ? "text-[#22c55e]" : "text-[#d9531e]"
-                      }`}>
+                      <span className={`text-[10px] font-mono font-bold uppercase tracking-wider ${isSelected ? "text-[#22c55e]" : "text-[#d9531e]"
+                        }`}>
                         {"// 0"}{idx + 1}
                       </span>
                       <span className={`text-[11px] font-mono ${isSelected ? "text-white/80" : "text-[#5e544a]"}`}>

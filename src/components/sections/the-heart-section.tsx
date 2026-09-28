@@ -1,15 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { 
-  HeartHandshake, 
-  Music, 
-  Palette, 
-  Bike, 
-  ShieldAlert, 
-  Scale, 
-  Play, 
-  Video 
+import {
+  HeartHandshake,
+  Music,
+  Palette,
+  Bike,
+  ShieldAlert,
+  Scale,
+  Play,
+  Video
 } from "lucide-react";
 
 export function TheHeartSection() {
@@ -113,23 +113,13 @@ export function TheHeartSection() {
               <HeartHandshake className="w-6 h-6" />
             </div>
             <div>
-              <span className="font-mono text-xs font-semibold text-[#22c55e] uppercase tracking-wider block">
-                {"// Section 04 • Contrast Dark Atmosphere"}
-              </span>
               <h2 className="font-anton text-4xl sm:text-6xl uppercase tracking-tight text-white">
                 THE HEART
               </h2>
             </div>
           </div>
 
-          <div className="max-w-md">
-            <h3 className="font-anton text-xl uppercase text-[#22c55e] mb-1">
-              Culture, Empathy &amp; Advocacy
-            </h3>
-            <p className="text-xs sm:text-sm text-white/70">
-              Reinvesting value back into the community through systemic action.
-            </p>
-          </div>
+
         </div>
 
         {/* Featured Multimedia Showcase: T'rưng Heritage & Music */}
@@ -144,7 +134,7 @@ export function TheHeartSection() {
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-              
+
               {/* Play simulation button */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-16 h-16 rounded-full bg-[#d9531e]/90 text-white flex items-center justify-center shadow-lg transition-transform hover:scale-110 cursor-pointer">
@@ -193,9 +183,8 @@ export function TheHeartSection() {
             return (
               <div
                 key={project.id}
-                className={`rounded-3xl border border-[#233529] bg-[#121f16] p-6 sm:p-8 flex flex-col justify-between hover:border-[#22c55e]/50 transition-all duration-300 shadow-lg ${
-                  isWide && idx === 0 ? "lg:col-span-2" : ""
-                }`}
+                className={`rounded-3xl border border-[#233529] bg-[#121f16] p-6 sm:p-8 flex flex-col justify-between hover:border-[#22c55e]/50 transition-all duration-300 shadow-lg ${isWide && idx === 0 ? "lg:col-span-2" : ""
+                  }`}
               >
                 <div>
                   {/* Card Header */}
@@ -250,11 +239,6 @@ export function TheHeartSection() {
                   )}
                 </div>
 
-                {/* Footer tag */}
-                <div className="pt-6 mt-6 border-t border-[#233529] flex items-center justify-between text-[11px] font-mono text-white/50">
-                  <span>Dak Lak • Systemic Action</span>
-                  <span className={project.accent}>Empirical Impact &rarr;</span>
-                </div>
               </div>
             );
           })}

@@ -188,9 +188,7 @@ export function Footer() {
 
         {/* Credits Row */}
         <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#5e544a] mb-10">
-          <div>Curated for: <span className="text-[#1c1510] font-semibold">University Admissions &amp; Research</span></div>
           <div>Copyright &copy; 2026 Phan Hoàng Quỳnh Chi. All rights reserved.</div>
-          <div>Field: <span className="text-[#183e2b] font-semibold">Business Analytics &amp; Information Systems</span></div>
         </div>
 
         {/* Giant Dashed QUYNH CHI Typography at bottom */}

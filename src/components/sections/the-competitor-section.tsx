@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { 
-  Trophy, 
-  Award, 
-  GraduationCap, 
-  Code2, 
+import {
+  Trophy,
+  Award,
+  GraduationCap,
+  Code2,
   FileText
 } from "lucide-react";
 import { ResumeModal } from "@/components/ui/resume-modal";
@@ -38,7 +38,7 @@ export function TheCompetitorSection() {
         },
         {
           title: "Standardized Testing (SAT & IELTS)",
-          subtitle: "SAT: 1450 Composite • IELTS Academic: 7.5 Overall",
+          subtitle: "SAT: 1510 posite • IELTS Academic: 7.5 Overall",
           detail: "Demonstrated advanced quantitative reasoning and English proficiency across standardized metrics.",
           badge: "SAT 1450 • IELTS 7.5",
           highlight: true,
@@ -247,11 +247,10 @@ export function TheCompetitorSection() {
                 <button
                   key={cat.id}
                   onClick={() => setActiveCategory(idx)}
-                  className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-mono font-semibold transition-all duration-200 cursor-pointer ${
-                    isSelected
+                  className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-mono font-semibold transition-all duration-200 cursor-pointer ${isSelected
                       ? "bg-[#183e2b] text-white shadow-sm"
                       : "bg-white text-[#1c1510] border border-[#d8d2c7] hover:bg-[#f6f3eb]"
-                  }`}
+                    }`}
                 >
                   <Icon className="w-3.5 h-3.5" />
                   <span>{cat.title}</span>
@@ -288,9 +287,9 @@ export function TheCompetitorSection() {
                   key={iIdx}
                   className="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-start justify-between gap-4 group hover:bg-black/[0.02] px-3 -mx-3 rounded-2xl transition-colors"
                 >
-                  <div className="space-y-1 max-w-2xl">
-                    <div className="flex items-center gap-2">
-                      <h4 className="font-anton text-lg sm:text-xl uppercase tracking-tight text-[#1c1510] group-hover:text-[#183e2b] transition-colors">
+                  <div className="space-y-1 min-w-0 flex-1">
+                    <div className="flex items-center gap-2 min-w-0">
+                      <h4 className="font-anton text-base sm:text-lg uppercase tracking-tight text-[#1c1510] group-hover:text-[#183e2b] transition-colors whitespace-nowrap overflow-hidden text-ellipsis min-w-0">
                         {item.title}
                       </h4>
                       {item.highlight && (

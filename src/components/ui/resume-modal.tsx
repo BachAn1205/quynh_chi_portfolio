@@ -1,6 +1,6 @@
 "use client";
 
-import { X, Download, FileText, Award, BookOpen, Sparkles, Printer } from "lucide-react";
+import { X, Download, FileText, Award, BookOpen, Sparkles } from "lucide-react";
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -10,13 +10,17 @@ interface ResumeModalProps {
 export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
   if (!isOpen) return null;
 
-  const handlePrint = () => {
+  const handleSavePDF = () => {
+    // Set document title for filename, then print to PDF
+    const prevTitle = document.title;
+    document.title = "Phan_Hoang_Quynh_Chi_Resume_2026";
     window.print();
+    document.title = prevTitle;
   };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
-      <div 
+      <div
         className="relative w-full max-w-4xl max-h-[90vh] bg-[#fbf9f5] border border-[#d8d2c7] rounded-3xl shadow-2xl flex flex-col overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
@@ -38,11 +42,11 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
 
           <div className="flex items-center gap-2">
             <button
-              onClick={handlePrint}
+              onClick={handleSavePDF}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-white border border-[#d8d2c7] text-[#1c1510] hover:bg-[#ede8df] transition-colors"
             >
-              <Printer className="w-3.5 h-3.5 text-[#183e2b]" />
-              <span className="hidden sm:inline">Print / Save as PDF</span>
+              <Download className="w-3.5 h-3.5 text-[#183e2b]" />
+              <span className="hidden sm:inline">Save as PDF</span>
             </button>
             <button
               onClick={onClose}
@@ -86,9 +90,9 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-4 rounded-2xl bg-white border border-[#d8d2c7]">
-                <div className="flex justify-between items-start mb-1">
-                  <h3 className="font-bold text-sm text-[#1c1510]">VNUHCM - High School for The Gifted</h3>
-                  <span className="font-mono text-xs text-[#5e544a]">2024 — 2027</span>
+                <div className="flex justify-between items-start gap-3 mb-1">
+                  <h3 className="font-bold text-sm text-[#1c1510] whitespace-nowrap overflow-hidden text-ellipsis">VNUHCM - High School for The Gifted</h3>
+                  <span className="font-mono text-xs text-[#5e544a] shrink-0">2024 — 2027</span>
                 </div>
                 <p className="text-xs text-[#d9531e] font-semibold mb-2">English Specialization</p>
                 <ul className="text-xs text-[#444444] space-y-1">
@@ -105,7 +109,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                 <div className="grid grid-cols-2 gap-2 mt-2">
                   <div className="p-2 rounded-xl bg-[#f6f3eb] border border-[#d8d2c7]/60">
                     <span className="font-mono text-[11px] text-[#5e544a] block">SAT Composite</span>
-                    <span className="font-anton text-lg text-[#1c1510]">1450</span>
+                    <span className="font-anton text-lg text-[#1c1510]">1510</span>
                   </div>
                   <div className="p-2 rounded-xl bg-[#f6f3eb] border border-[#d8d2c7]/60">
                     <span className="font-mono text-[11px] text-[#5e544a] block">IELTS Academic</span>
@@ -254,7 +258,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             Phan Hoàng Quỳnh Chi • Ready for University Admissions &amp; Research Labs
           </p>
           <button
-            onClick={handlePrint}
+            onClick={handleSavePDF}
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold bg-[#183e2b] text-white hover:bg-[#122e20] transition-all shadow-sm"
           >
             <Download className="w-4 h-4" />
