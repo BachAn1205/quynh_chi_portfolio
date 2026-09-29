@@ -1,4 +1,4 @@
-import { Navbar } from "@/components/layout/navbar";
+﻿import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { FileText } from "lucide-react";
 
@@ -50,7 +50,7 @@ export default function TermsOfServicePage() {
                 3. Intellectual Property Rights
               </h2>
               <p>
-                All content on this website — including text, graphics, logos, images, and design layouts — is the property of Phan Hoàng Quỳnh Chi and is protected by copyright and intellectual property laws. You may not reproduce, redistribute, or exploit any material from this site without prior written permission.
+                All content on this website . including text, graphics, logos, images, and design layouts . is the property of Phan Hoàng Quỳnh Chi and is protected by copyright and intellectual property laws. You may not reproduce, redistribute, or exploit any material from this site without prior written permission.
               </p>
             </section>
 

@@ -1,4 +1,4 @@
-export interface JournalSectionBlock {
+﻿export interface JournalSectionBlock {
   heading: string;
   paragraphs: string[];
 }
@@ -120,7 +120,7 @@ export const journalPosts: JournalPost[] = [
     readTime: "4 min read",
     image: "/images/quynhchi/cafloop-cascara.jpg",
     intro:
-      "Representing Vietnam on a full scholarship at the NSYSU Computational Materials Lab in Taiwan, I collaborated with international faculty on density functional theory (DFT) and high-performance computing—learning why data models must always answer to physical reality.",
+      "Representing Vietnam on a full scholarship at the NSYSU Computational Materials Lab in Taiwan, I collaborated with international faculty on density functional theory (DFT) and high-performance computing.learning why data models must always answer to physical reality.",
     sections: [
       {
         heading: "High-Performance Computing from Scratch",

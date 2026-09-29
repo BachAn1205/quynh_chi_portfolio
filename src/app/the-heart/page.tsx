@@ -1,11 +1,11 @@
-import { Navbar } from "@/components/layout/navbar";
+﻿import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { TheHeartSection } from "@/components/sections/the-heart-section";
 import { PageNav } from "@/components/ui/page-nav";
 
 export const metadata = {
   title: "The Heart | Phan Hoàng Quỳnh Chi",
-  description: "Culture, Empathy & Advocacy — T'rưng Heritage, Social Projects and Community Action",
+  description: "Culture, Empathy & Advocacy . T'rưng Heritage, Social Projects and Community Action",
 };
 
 export default function TheHeartPage() {

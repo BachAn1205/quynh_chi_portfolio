@@ -1,4 +1,4 @@
-export interface CaseStudy {
+﻿export interface CaseStudy {
   slug: string;
   title: string;
   subtitle: string;
@@ -26,7 +26,7 @@ export const caseStudies: CaseStudy[] = [
     heroImage: "/images/quynhchi/cafloop-cascara.jpg",
     role: "Founder & Product Strategist",
     organization: "CAFLOOP Vietnam",
-    timeline: "Sep 2024 — Present",
+    timeline: "Sep 2024 . Present",
     challenge:
       "Vietnam produces over 1.6 million tons of agricultural coffee waste annually, the majority of which is incinerated along highways in Dak Lak, generating 1.8 million tons of CO2. Farmers suffer from depressed margins while stripping the local community of potential carbon credit rewards. The core challenge was to design a viable circular model that turns discarded coffee husks into premium commercial Cascara tea while validating traceability for eco-conscious consumers.",
     solutions: [
@@ -84,7 +84,7 @@ export const caseStudies: CaseStudy[] = [
     heroImage: "/images/quynhchi/trung-heritage.jpg",
     role: "Founder, Organizer & Soloist",
     organization: "T'rưng Cultural Project",
-    timeline: "Nov 2024 — Present",
+    timeline: "Nov 2024 . Present",
     challenge:
       "Rapid modernization and lack of viable cultural economies have led indigenous T'rưng artisans across the Central Highlands to abandon their craft. Preserving oral heritage through passive nostalgia is unsustainable; the music risks fading from community consciousness unless modernized into accessible educational curricula and contemporary cultural platforms.",
     solutions: [

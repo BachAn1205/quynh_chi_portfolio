@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { User, Briefcase, Quote } from "lucide-react";
@@ -10,7 +10,7 @@ export default function AboutPage() {
     {
       role: "Founder & Product Strategist",
       company: "CAFLOOP (Green Coffee Husk Project)",
-      period: "Sep 2024 — Present",
+      period: "Sep 2024 . Present",
       bullets: [
         "Initiated a circular-economy venture transforming CO2-emitting coffee husks in Dak Lak into commercial Cascara tea.",
         "Managed the bootstrapping phase by tracking production costs (COGS), structuring budgets, and optimizing pricing.",
@@ -21,7 +21,7 @@ export default function AboutPage() {
     {
       role: "Student Intern, Business & Financial Analysis",
       company: "SI CAFE (Dak Lak Branch)",
-      period: "Jul — Aug 2025",
+      period: "Jul . Aug 2025",
       bullets: [
         "Shadowed operational supply-chain workflows and audited inventory data entry at a local coffee processing facility.",
         "Grounded theoretical economics into daily agricultural facility operations and supply-chain logistics.",
@@ -30,7 +30,7 @@ export default function AboutPage() {
     {
       role: "Founder & President",
       company: "Dakonomics Club",
-      period: "2024 — Present",
+      period: "2024 . Present",
       bullets: [
         "Established the first high-school economics club in Dak Lak with a 9-person core team spanning 5 schools.",
         "Curated a digital 'CaseBank' for real-world business analysis and trained students in micro/macro models.",
@@ -51,7 +51,7 @@ export default function AboutPage() {
     {
       role: "Founder, Organizer & Traditional Soloist",
       company: "T'rưng Cultural Education & Heritage Project",
-      period: "Nov 2024 — Present",
+      period: "Nov 2024 . Present",
       bullets: [
         "Synthesized oral Central Highlands music heritage into structured workshop curricula across 12+ schools for ~2,300 students.",
         "Managed cultural media page (5,000+ followers) and digitized YouTube performance archives (10,000+ views).",
@@ -110,7 +110,7 @@ export default function AboutPage() {
                 Highland Roots &amp; Empirical Awakening
               </h2>
               <p className="text-sm sm:text-base text-[#382215] leading-relaxed">
-                Growing up in Dak Lak, the coffee capital of Vietnam, my childhood was defined by two sensory memories: the resonant echoes of the indigenous T’rưng instrument fading through loudspeakers, and the acrid smell of coffee husks burning along the highways. For years, I accepted these simply as the background of my hometown. But as I grew older, data revealed that 1.6M tons of burned agricultural waste creates 1.8M tons of CO2—stripping farmers of $80M in carbon value due to a lack of MRV tools.
+                Growing up in Dak Lak, the coffee capital of Vietnam, my childhood was defined by two sensory memories: the resonant echoes of the indigenous T’rưng instrument fading through loudspeakers, and the acrid smell of coffee husks burning along the highways. For years, I accepted these simply as the background of my hometown. But as I grew older, data revealed that 1.6M tons of burned agricultural waste creates 1.8M tons of CO2.stripping farmers of $80M in carbon value due to a lack of MRV tools.
               </p>
             </div>
 
@@ -122,7 +122,7 @@ export default function AboutPage() {
                 Empathy Meets Empirical Tools
               </h2>
               <p className="text-sm sm:text-base text-[#382215] leading-relaxed">
-                Empathy is merely a starting point. To protect what I love, I need empirical tools. Economics provides me with the systems-thinking required to design sustainable value chains, while Data Science equips me with the evidence needed to transform invisible assets—from a musical note to a carbon credit—into measurable, equitable impact. I don&apos;t just crunch numbers; I code solutions that protect the soil and elevate the soul of the Central Highlands.
+                Empathy is merely a starting point. To protect what I love, I need empirical tools. Economics provides me with the systems-thinking required to design sustainable value chains, while Data Science equips me with the evidence needed to transform invisible assets.from a musical note to a carbon credit.into measurable, equitable impact. I don&apos;t just crunch numbers; I code solutions that protect the soil and elevate the soul of the Central Highlands.
               </p>
             </div>
           </div>
@@ -134,7 +134,7 @@ export default function AboutPage() {
               “I don&apos;t just crunch numbers; I code solutions that protect the soil and elevate the soul of the Central Highlands.”
             </blockquote>
             <p className="mt-4 font-mono text-xs sm:text-sm text-[#d97706]">
-              {"// Phan Hoàng Quỳnh Chi — High School for The Gifted (VNUHCM)"}
+              {"// Phan Hoàng Quỳnh Chi . High School for The Gifted (VNUHCM)"}
             </p>
           </div>
 

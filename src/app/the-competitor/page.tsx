@@ -1,11 +1,11 @@
-import { Navbar } from "@/components/layout/navbar";
+﻿import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { TheCompetitorSection } from "@/components/sections/the-competitor-section";
 import { PageNav } from "@/components/ui/page-nav";
 
 export const metadata = {
   title: "The Competitor | Phan Hoàng Quỳnh Chi",
-  description: "Comprehensive Academic Profile — GPA, AP Exams, Olympiads, Debate & Technical Skills",
+  description: "Comprehensive Academic Profile . GPA, AP Exams, Olympiads, Debate & Technical Skills",
 };
 
 export default function TheCompetitorPage() {

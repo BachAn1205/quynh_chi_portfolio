@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { X, Download, FileText, Award, BookOpen, Sparkles } from "lucide-react";
 
@@ -21,7 +21,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
       <div
-        className="relative w-full max-w-4xl max-h-[90vh] bg-[#fbf9f5] border border-[#d8d2c7] rounded-3xl shadow-2xl flex flex-col overflow-hidden"
+        className="relative w-full max-w-4xl max-h-[90vh] bg-[#FAF9F2] border border-[#335C33]/20 rounded-3xl shadow-2xl flex flex-col overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Top Bar */}
@@ -31,10 +31,10 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
               <FileText className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="font-anton text-lg uppercase tracking-tight text-[#1c1510]">
-                Phan Hoàng Quỳnh Chi — Comprehensive Profile
+              <h3 className="font-anton text-lg uppercase tracking-tight text-[#2C2E2B]">
+                Phan Hoàng Quỳnh Chi . Comprehensive Profile
               </h3>
-              <p className="text-xs text-[#5e544a] font-mono">
+              <p className="text-xs text-[#2C2E2B]/60 font-mono">
                 Curriculum Vitae • Updated 2026 • Verified Academic Data
               </p>
             </div>
@@ -43,14 +43,14 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
           <div className="flex items-center gap-2">
             <button
               onClick={handleSavePDF}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-white border border-[#d8d2c7] text-[#1c1510] hover:bg-[#ede8df] transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-[#F6F6EE] border border-[#335C33]/20 text-[#2C2E2B] hover:bg-[#E3EDD3] transition-colors"
             >
-              <Download className="w-3.5 h-3.5 text-[#183e2b]" />
+              <Download className="w-3.5 h-3.5 text-[#335C33]" />
               <span className="hidden sm:inline">Save as PDF</span>
             </button>
             <button
               onClick={onClose}
-              className="p-1.5 rounded-full bg-white border border-[#d8d2c7] hover:bg-black/5 text-[#1c1510] transition-colors"
+              className="p-1.5 rounded-full bg-[#F6F6EE] border border-[#335C33]/20 hover:bg-[#E3EDD3] text-[#2C2E2B] transition-colors"
               aria-label="Close modal"
             >
               <X className="w-5 h-5" />
@@ -59,23 +59,23 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
         </div>
 
         {/* Modal Scrollable Resume Content */}
-        <div className="p-6 sm:p-10 overflow-y-auto space-y-8 text-[#1c1510]">
+        <div className="p-6 sm:p-10 overflow-y-auto space-y-8 text-[#2C2E2B]">
           {/* Header */}
-          <div className="border-b border-[#d8d2c7] pb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div className="border-b border-[#335C33]/15 pb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
-              <span className="font-mono text-xs text-[#d9531e] font-semibold uppercase tracking-wider block mb-1">
+              <span className="font-mono text-xs text-[#8C5A35] font-semibold uppercase tracking-wider block mb-1">
                 {"// Candidate Resume & Portfolio Dossier"}
               </span>
-              <h1 className="font-anton text-3xl sm:text-4xl uppercase tracking-tight text-[#1c1510]">
+              <h1 className="font-anton text-3xl sm:text-4xl uppercase tracking-tight text-[#2C2E2B]">
                 PHAN HOÀNG QUỲNH CHI
               </h1>
-              <p className="text-sm text-[#5e544a] font-medium mt-1">
+              <p className="text-sm text-[#2C2E2B]/60 font-medium mt-1">
                 Quantitative Researcher • Circular Economy Strategist • Traditional T&apos;rưng Artist
               </p>
             </div>
-            <div className="font-mono text-xs text-[#5e544a] space-y-0.5 sm:text-right">
+            <div className="font-mono text-xs text-[#2C2E2B]/60 space-y-0.5 sm:text-right">
               <div>Dak Lak &amp; Ho Chi Minh City, Vietnam</div>
-              <div className="text-[#183e2b] font-semibold">quynhchi.phanhoang@gmail.com</div>
+              <div className="text-[#335C33] font-semibold">quynhchi.phanhoang@gmail.com</div>
               <div>linkedin.com/in/quynhchi-phanhoang</div>
             </div>
           </div>
@@ -83,41 +83,41 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
           {/* Academic Profile & Standardized Testing */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <BookOpen className="w-5 h-5 text-[#183e2b]" />
-              <h2 className="font-anton text-xl uppercase tracking-tight text-[#183e2b]">
+              <BookOpen className="w-5 h-5 text-[#335C33]" />
+              <h2 className="font-anton text-xl uppercase tracking-tight text-[#335C33]">
                 1. Academic Profile &amp; Standardized Testing
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-4 rounded-2xl bg-white border border-[#d8d2c7]">
+              <div className="p-4 rounded-2xl bg-[#F6F6EE] border border-[#335C33]/15">
                 <div className="flex justify-between items-start gap-3 mb-1">
-                  <h3 className="font-bold text-sm text-[#1c1510] whitespace-nowrap overflow-hidden text-ellipsis">VNUHCM - High School for The Gifted</h3>
-                  <span className="font-mono text-xs text-[#5e544a] shrink-0">2024 — 2027</span>
+                  <h3 className="font-bold text-sm text-[#2C2E2B] whitespace-nowrap overflow-hidden text-ellipsis">VNUHCM - High School for The Gifted</h3>
+                  <span className="font-mono text-xs text-[#2C2E2B]/60 shrink-0">2024 . 2027</span>
                 </div>
-                <p className="text-xs text-[#d9531e] font-semibold mb-2">English Specialization</p>
+                <p className="text-xs text-[#8C5A35] font-semibold mb-2">English Specialization</p>
                 <ul className="text-xs text-[#444444] space-y-1">
-                  <li>• <strong>GPA: 9.6 / 10.0</strong> — Top 6% Student of the Grade</li>
+                  <li>• <strong>GPA: 9.6 / 10.0</strong> . Top 6% Student of the Grade</li>
                   <li>• Selected as <strong>1 of only 2 admits</strong> from Dak Lak Province to Vietnam&apos;s most selective gifted high school</li>
                 </ul>
               </div>
 
-              <div className="p-4 rounded-2xl bg-white border border-[#d8d2c7]">
+              <div className="p-4 rounded-2xl bg-[#F6F6EE] border border-[#335C33]/15">
                 <div className="flex justify-between items-start mb-1">
-                  <h3 className="font-bold text-sm text-[#1c1510]">Standardized Testing &amp; AP Exams</h3>
-                  <span className="font-mono text-xs text-[#183e2b] font-semibold">Verified</span>
+                  <h3 className="font-bold text-sm text-[#2C2E2B]">Standardized Testing &amp; AP Exams</h3>
+                  <span className="font-mono text-xs text-[#335C33] font-semibold">Verified</span>
                 </div>
                 <div className="grid grid-cols-2 gap-2 mt-2">
-                  <div className="p-2 rounded-xl bg-[#f6f3eb] border border-[#d8d2c7]/60">
-                    <span className="font-mono text-[11px] text-[#5e544a] block">SAT Composite</span>
-                    <span className="font-anton text-lg text-[#1c1510]">1510</span>
+                  <div className="p-2 rounded-xl bg-[#FAF9F2] border border-[#335C33]/10">
+                    <span className="font-mono text-[11px] text-[#2C2E2B]/60 block">SAT Composite</span>
+                    <span className="font-anton text-lg text-[#2C2E2B]">1510</span>
                   </div>
                   <div className="p-2 rounded-xl bg-[#f6f3eb] border border-[#d8d2c7]/60">
-                    <span className="font-mono text-[11px] text-[#5e544a] block">IELTS Academic</span>
-                    <span className="font-anton text-lg text-[#1c1510]">7.5 Overall</span>
+                    <span className="font-mono text-[11px] text-[#2C2E2B]/60 block">IELTS Academic</span>
+                    <span className="font-anton text-lg text-[#2C2E2B]">7.5 Overall</span>
                   </div>
                 </div>
                 <div className="mt-2.5 pt-2 border-t border-[#d8d2c7]/60">
-                  <span className="font-mono text-[11px] text-[#5e544a] block mb-1">Advanced Placement (AP):</span>
+                  <span className="font-mono text-[11px] text-[#2C2E2B]/60 block mb-1">Advanced Placement (AP):</span>
                   <div className="flex flex-wrap gap-1.5">
                     {["Calculus AB: 5", "Statistics: 5", "Microeconomics: 5", "Macroeconomics: 5"].map((ap, i) => (
                       <span key={i} className="px-2 py-0.5 rounded-md bg-[#183e2b]/10 text-[#183e2b] text-[11px] font-mono font-semibold">
@@ -133,58 +133,58 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
           {/* Economics & Business Olympiads */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <Award className="w-5 h-5 text-[#d97706]" />
-              <h2 className="font-anton text-xl uppercase tracking-tight text-[#183e2b]">
+              <Award className="w-5 h-5 text-[#8C5A35]" />
+              <h2 className="font-anton text-xl uppercase tracking-tight text-[#335C33]">
                 2. Economics &amp; Business Olympiads
               </h2>
             </div>
-            <div className="divide-y divide-[#d8d2c7] border border-[#d8d2c7] rounded-2xl bg-white overflow-hidden text-xs">
-              <div className="p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1 hover:bg-[#fcfbf8]">
+            <div className="divide-y divide-[#335C33]/10 border border-[#335C33]/15 rounded-2xl bg-[#FAF9F2] overflow-hidden text-xs">
+              <div className="p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1 hover:bg-[#E3EDD3]/30">
                 <div>
-                  <span className="font-bold text-[#1c1510]">Harvard Crimson Business Case (HCBC) 2025</span>
-                  <p className="text-[#5e544a]">Global Finalist (Top 30/2000). Sole Vietnamese representative team invited to Harvard campus.</p>
+                  <span className="font-bold text-[#2C2E2B]">Harvard Crimson Business Case (HCBC) 2025</span>
+                  <p className="text-[#2C2E2B]/60">Global Finalist (Top 30/2000). Sole Vietnamese representative team invited to Harvard campus.</p>
                 </div>
-                <span className="font-mono font-semibold text-[#d9531e] sm:text-right shrink-0">Global Top 30</span>
+                <span className="font-mono font-semibold text-[#8C5A35] sm:text-right shrink-0">Global Top 30</span>
               </div>
 
               <div className="p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1 hover:bg-[#fcfbf8]">
                 <div>
-                  <span className="font-bold text-[#1c1510]">World Economics Cup (WEC) 2025</span>
-                  <p className="text-[#5e544a]">Silver Award (Asia &amp; Oceania Division) &amp; Top 10 Fundamentals Worldwide.</p>
+                  <span className="font-bold text-[#2C2E2B]">World Economics Cup (WEC) 2025</span>
+                  <p className="text-[#2C2E2B]/60">Silver Award (Asia &amp; Oceania Division) &amp; Top 10 Fundamentals Worldwide.</p>
                 </div>
-                <span className="font-mono font-semibold text-[#183e2b] sm:text-right shrink-0">Silver Medal</span>
+                <span className="font-mono font-semibold text-[#335C33] sm:text-right shrink-0">Silver Medal</span>
               </div>
 
               <div className="p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1 hover:bg-[#fcfbf8]">
                 <div>
-                  <span className="font-bold text-[#1c1510]">International Economics Olympiad (IEO) 2025 &amp; 2026</span>
-                  <p className="text-[#5e544a]">National Top 5 Selection (Ranked 3rd Nationally across Vietnam).</p>
+                  <span className="font-bold text-[#2C2E2B]">International Economics Olympiad (IEO) 2025 &amp; 2026</span>
+                  <p className="text-[#2C2E2B]/60">National Top 5 Selection (Ranked 3rd Nationally across Vietnam).</p>
                 </div>
-                <span className="font-mono font-semibold text-[#d97706] sm:text-right shrink-0">National Rank 3</span>
+                <span className="font-mono font-semibold text-[#8C5A35] sm:text-right shrink-0">National Rank 3</span>
               </div>
 
               <div className="p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1 hover:bg-[#fcfbf8]">
                 <div>
-                  <span className="font-bold text-[#1c1510]">Vietnam Economics Olympiad (VEO) 2025 &amp; 2026</span>
-                  <p className="text-[#5e544a]">National Bronze Medalist in competitive economic theory and case analysis.</p>
+                  <span className="font-bold text-[#2C2E2B]">Vietnam Economics Olympiad (VEO) 2025 &amp; 2026</span>
+                  <p className="text-[#2C2E2B]/60">National Bronze Medalist in competitive economic theory and case analysis.</p>
                 </div>
-                <span className="font-mono font-semibold text-[#5e544a] sm:text-right shrink-0">Bronze Medal</span>
+                <span className="font-mono font-semibold text-[#2C2E2B]/60 sm:text-right shrink-0">Bronze Medal</span>
               </div>
 
               <div className="p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1 hover:bg-[#fcfbf8]">
                 <div>
-                  <span className="font-bold text-[#1c1510]">Vietnam Business Innovation Challenge (VBIC) 2025</span>
-                  <p className="text-[#5e544a]">Top 10 Grand Final as Team Lead for strategy, marketing and finance.</p>
+                  <span className="font-bold text-[#2C2E2B]">Vietnam Business Innovation Challenge (VBIC) 2025</span>
+                  <p className="text-[#2C2E2B]/60">Top 10 Grand Final as Team Lead for strategy, marketing and finance.</p>
                 </div>
-                <span className="font-mono font-semibold text-[#183e2b] sm:text-right shrink-0">Top 10 Final</span>
+                <span className="font-mono font-semibold text-[#335C33] sm:text-right shrink-0">Top 10 Final</span>
               </div>
 
               <div className="p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1 hover:bg-[#fcfbf8]">
                 <div>
-                  <span className="font-bold text-[#1c1510]">Aspiring Vietnam Contest &amp; ACCA Futurist Scholarship 2025</span>
-                  <p className="text-[#5e544a]">Top 4 Individual (Trade Division) &amp; Top 50 Vietnam merit-based award for emerging finance talents.</p>
+                  <span className="font-bold text-[#2C2E2B]">Aspiring Vietnam Contest &amp; ACCA Futurist Scholarship 2025</span>
+                  <p className="text-[#2C2E2B]/60">Top 4 Individual (Trade Division) &amp; Top 50 Vietnam merit-based award for emerging finance talents.</p>
                 </div>
-                <span className="font-mono font-semibold text-[#d9531e] sm:text-right shrink-0">Top 4 / Top 50</span>
+                <span className="font-mono font-semibold text-[#8C5A35] sm:text-right shrink-0">Top 4 / Top 50</span>
               </div>
             </div>
           </div>
@@ -192,16 +192,16 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
           {/* Research & Key Ventures */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <Sparkles className="w-5 h-5 text-[#183e2b]" />
-              <h2 className="font-anton text-xl uppercase tracking-tight text-[#183e2b]">
+              <Sparkles className="w-5 h-5 text-[#335C33]" />
+              <h2 className="font-anton text-xl uppercase tracking-tight text-[#335C33]">
                 3. Quantitative Research &amp; Social Innovation
               </h2>
             </div>
             <div className="space-y-3 text-xs">
-              <div className="p-4 rounded-2xl bg-white border border-[#d8d2c7]">
+              <div className="p-4 rounded-2xl bg-[#F6F6EE] border border-[#335C33]/15">
                 <div className="flex justify-between items-start mb-1">
-                  <h3 className="font-bold text-sm text-[#1c1510]">Circular Credits for Farmers (C4F)</h3>
-                  <span className="font-mono text-xs text-[#d97706] font-semibold">Harvard Int&apos;l Review Award</span>
+                  <h3 className="font-bold text-sm text-[#2C2E2B]">Circular Credits for Farmers (C4F)</h3>
+                  <span className="font-mono text-xs text-[#8C5A35] font-semibold">Harvard Int&apos;l Review Award</span>
                 </div>
                 <p className="text-[#444444] leading-relaxed">
                   Authored paper awarded Global Outstanding Writing Content Prize by Harvard International Review. Proposed a decentralized blockchain model to return carbon market rewards to farmers managing 1.6M tons of agricultural waste in Dak Lak.
@@ -210,8 +210,8 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
 
               <div className="p-4 rounded-2xl bg-white border border-[#d8d2c7]">
                 <div className="flex justify-between items-start mb-1">
-                  <h3 className="font-bold text-sm text-[#1c1510]">CAFLOOP: Green Coffee Husk Project</h3>
-                  <span className="font-mono text-xs text-[#183e2b] font-semibold">Founder &amp; Strategist</span>
+                  <h3 className="font-bold text-sm text-[#2C2E2B]">CAFLOOP: Green Coffee Husk Project</h3>
+                  <span className="font-mono text-xs text-[#335C33] font-semibold">Founder &amp; Strategist</span>
                 </div>
                 <p className="text-[#444444] leading-relaxed">
                   Founded circular economy venture turning CO2-emitting coffee husks into commercial Cascara tea. Managed COGS tracking, package QR traceability, and reinvested profits to donate 77 bicycles and 2 smart TVs to Buon Drang Phok primary school.
@@ -220,8 +220,8 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
 
               <div className="p-4 rounded-2xl bg-white border border-[#d8d2c7]">
                 <div className="flex justify-between items-start mb-1">
-                  <h3 className="font-bold text-sm text-[#1c1510]">T&apos;rưng Cultural Education &amp; Preservation Project</h3>
-                  <span className="font-mono text-xs text-[#183e2b] font-semibold">Founder &amp; Soloist</span>
+                  <h3 className="font-bold text-sm text-[#2C2E2B]">T&apos;rưng Cultural Education &amp; Preservation Project</h3>
+                  <span className="font-mono text-xs text-[#335C33] font-semibold">Founder &amp; Soloist</span>
                 </div>
                 <p className="text-[#444444] leading-relaxed">
                   Synthesized oral highland traditions into school curriculum across 12+ schools reaching 2,300+ students. Lead soloist at &apos;Thanh Am Dat Viet&apos; (HCMC) and exhibited visual art at Museo ning Angeles, Philippines.
@@ -231,13 +231,13 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
           </div>
 
           {/* Technical Skills & Interests */}
-          <div className="p-4 rounded-2xl bg-[#f6f3eb] border border-[#d8d2c7] text-xs">
-            <h3 className="font-anton text-sm uppercase text-[#183e2b] tracking-wider mb-2">
+          <div className="p-4 rounded-2xl bg-[#E3EDD3] border border-[#335C33]/15 text-xs">
+            <h3 className="font-anton text-sm uppercase text-[#335C33] tracking-wider mb-2">
               4. Technical Skills, Languages &amp; Leadership
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div>
-                <span className="font-bold text-[#1c1510] block mb-1">Technical / Data:</span>
+                <span className="font-bold text-[#2C2E2B] block mb-1">Technical / Data:</span>
                 <p className="text-[#5e544a]">SPSS Econometrics, ANOVA, Binary Logistic Regression, MS Excel/Google Sheets, C++, Linux HPC, VESTA, DFT.</p>
               </div>
               <div>
@@ -253,13 +253,13 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
         </div>
 
         {/* Modal Bottom Bar */}
-        <div className="px-6 py-4 border-t border-[#d8d2c7] bg-[#f6f3eb] flex items-center justify-between shrink-0">
-          <p className="text-xs text-[#5e544a] font-mono">
+        <div className="px-6 py-4 border-t border-[#335C33]/15 bg-[#F6F6EE] flex items-center justify-between shrink-0">
+          <p className="text-xs text-[#2C2E2B]/60 font-mono">
             Phan Hoàng Quỳnh Chi • Ready for University Admissions &amp; Research Labs
           </p>
           <button
             onClick={handleSavePDF}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold bg-[#183e2b] text-white hover:bg-[#122e20] transition-all shadow-sm"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold bg-[#335C33] text-[#F6F6EE] hover:bg-[#284828] transition-all shadow-sm"
           >
             <Download className="w-4 h-4" />
             <span>Download / Save Dossier</span>

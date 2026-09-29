@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { LanguageProvider } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://quynhchi-portfolio.vercel.app"),
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#ebe6dd",
+  themeColor: "#F6F6EE",
 };
 
 export default function RootLayout({
@@ -49,8 +50,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="min-h-screen bg-[#ebe6dd] text-[#1c1510] font-sans antialiased selection:bg-[#183e2b] selection:text-white">
-        {children}
+      <body className="min-h-screen bg-[#F6F6EE] text-[#2C2E2B] font-sans antialiased selection:bg-[#335C33] selection:text-[#F6F6EE]">
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

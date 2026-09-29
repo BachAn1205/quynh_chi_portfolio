@@ -10,9 +10,11 @@ import {
   GraduationCap, 
   FileCheck2 
 } from "lucide-react";
+import { useLanguage } from "@/lib/i18n";
 
 export function TheMindSection() {
   const [activeTab, setActiveTab] = useState<string>("all");
+  const { t } = useLanguage();
 
   const projects = [
     {
@@ -51,7 +53,7 @@ export function TheMindSection() {
       icon: Boxes,
       badge: "Venture Building & COGS",
       title: "CAFLOOP (Green Coffee Husk Project) & Business Operations",
-      subtitle: "Founder & Product Strategist (Sep 2024 — Present)",
+      subtitle: "Founder & Product Strategist (Sep 2024 . Present)",
       highlights: [
         {
           heading: "Bootstrapping & Value Chain Engineering",
@@ -92,7 +94,7 @@ export function TheMindSection() {
         {
           heading: "Overcoming the 'Black Box' Trap of Data Science",
           detail:
-            "Realized that computational data is only as powerful as its adherence to physical reality—teaching me to critically audit my datasets and avoid the black box trap of abstract modeling.",
+            "Realized that computational data is only as powerful as its adherence to physical reality.teaching me to critically audit my datasets and avoid the black box trap of abstract modeling.",
           metric: "Empirical Ground-Truth Auditing",
         },
         {
@@ -140,27 +142,27 @@ export function TheMindSection() {
   const filteredProjects = activeTab === "all" ? projects : projects.filter((p) => p.id === activeTab);
 
   return (
-    <section id="the-mind" className="py-24 sm:py-32 overflow-hidden bg-[#ebe6dd] border-t border-[#d8d2c7]">
+    <section id="the-mind" className="py-24 sm:py-32 overflow-hidden bg-[#F6F6EE] border-t border-[#335C33]/15">
       <div className="max-w-6xl mx-auto px-4">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12 pb-8 border-b border-[#d8d2c7]">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 pb-8 border-b border-[#335C33]/15">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-[#183e2b] flex items-center justify-center shrink-0 shadow-sm text-white">
+            <div className="w-12 h-12 rounded-2xl bg-[#335C33] flex items-center justify-center shrink-0 shadow-sm text-[#F6F6EE]">
               <BrainCircuit className="w-6 h-6" />
             </div>
             <div>
-              <h2 className="font-anton text-4xl sm:text-6xl uppercase tracking-tight text-[#1c1510]">
-                THE MIND
+              <h2 className="font-anton text-4xl sm:text-6xl uppercase tracking-tight text-[#2C2E2B]">
+                {t("mind.title")}
               </h2>
             </div>
           </div>
 
           <div className="max-w-md">
-            <h3 className="font-anton text-xl uppercase text-[#183e2b] mb-1">
-              Quantitative Research &amp; Enterprise
+            <h3 className="font-anton text-xl uppercase text-[#335C33] mb-1">
+              {t("mind.sub.title")}
             </h3>
-            <p className="text-xs sm:text-sm text-[#5e544a]">
-              Leveraging data to drive circular economies and bridge societal gaps.
+            <p className="text-xs sm:text-sm text-[#2C2E2B]/60">
+              {t("mind.sub.desc")}
             </p>
           </div>
         </div>
@@ -171,51 +173,51 @@ export function TheMindSection() {
             onClick={() => setActiveTab("all")}
             className={`px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all duration-200 cursor-pointer ${
               activeTab === "all"
-                ? "bg-[#183e2b] text-white shadow-sm"
-                : "bg-white text-[#1c1510] border border-[#d8d2c7] hover:bg-[#f6f3eb]"
+                ? "bg-[#335C33] text-[#F6F6EE] shadow-sm"
+                : "bg-[#FAF9F2] text-[#2C2E2B] border border-[#335C33]/20 hover:bg-[#E3EDD3]"
             }`}
           >
-            All Initiatives (4)
+            {t("mind.tab.all")}
           </button>
           <button
             onClick={() => setActiveTab("research")}
             className={`px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all duration-200 cursor-pointer ${
               activeTab === "research"
-                ? "bg-[#183e2b] text-white shadow-sm"
-                : "bg-white text-[#1c1510] border border-[#d8d2c7] hover:bg-[#f6f3eb]"
+                ? "bg-[#335C33] text-[#F6F6EE] shadow-sm"
+                : "bg-[#FAF9F2] text-[#2C2E2B] border border-[#335C33]/20 hover:bg-[#E3EDD3]"
             }`}
           >
-            Quantitative Research
+            {t("mind.tab.research")}
           </button>
           <button
             onClick={() => setActiveTab("startup")}
             className={`px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all duration-200 cursor-pointer ${
               activeTab === "startup"
-                ? "bg-[#183e2b] text-white shadow-sm"
-                : "bg-white text-[#1c1510] border border-[#d8d2c7] hover:bg-[#f6f3eb]"
+                ? "bg-[#335C33] text-[#F6F6EE] shadow-sm"
+                : "bg-[#FAF9F2] text-[#2C2E2B] border border-[#335C33]/20 hover:bg-[#E3EDD3]"
             }`}
           >
-            CAFLOOP &amp; Operations
+            {t("mind.tab.startup")}
           </button>
           <button
             onClick={() => setActiveTab("lab")}
             className={`px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all duration-200 cursor-pointer ${
               activeTab === "lab"
-                ? "bg-[#183e2b] text-white shadow-sm"
-                : "bg-white text-[#1c1510] border border-[#d8d2c7] hover:bg-[#f6f3eb]"
+                ? "bg-[#335C33] text-[#F6F6EE] shadow-sm"
+                : "bg-[#FAF9F2] text-[#2C2E2B] border border-[#335C33]/20 hover:bg-[#E3EDD3]"
             }`}
           >
-            NSYSU Taiwan Lab
+            {t("mind.tab.lab")}
           </button>
           <button
             onClick={() => setActiveTab("pedagogy")}
             className={`px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all duration-200 cursor-pointer ${
               activeTab === "pedagogy"
-                ? "bg-[#183e2b] text-white shadow-sm"
-                : "bg-white text-[#1c1510] border border-[#d8d2c7] hover:bg-[#f6f3eb]"
+                ? "bg-[#335C33] text-[#F6F6EE] shadow-sm"
+                : "bg-[#FAF9F2] text-[#2C2E2B] border border-[#335C33]/20 hover:bg-[#E3EDD3]"
             }`}
           >
-            Economic Pedagogy
+            {t("mind.tab.pedagogy")}
           </button>
         </div>
 
@@ -226,22 +228,22 @@ export function TheMindSection() {
             return (
               <div
                 key={item.id}
-                className="rounded-3xl border border-[#d8d2c7] bg-[#f6f3eb] blueprint-grid p-6 sm:p-10 shadow-sm hover:border-[#b8b0a2] transition-all duration-300"
+                className="rounded-3xl border border-[#335C33]/15 bg-[#FAF9F2] blueprint-grid p-6 sm:p-10 shadow-sm hover:border-[#335C33]/35 transition-all duration-300"
               >
                 {/* Top Row: Meta Badge & Category */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-[#d8d2c7]">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-[#335C33]/15">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-xl bg-[#183e2b] text-white flex items-center justify-center shrink-0">
+                    <div className="w-8 h-8 rounded-xl bg-[#335C33] text-[#F6F6EE] flex items-center justify-center shrink-0">
                       <Icon className="w-4 h-4" />
                     </div>
                     <div>
-                      <span className="font-mono text-xs font-bold text-[#d9531e] uppercase tracking-wide">
+                      <span className="font-mono text-xs font-bold text-[#8C5A35] uppercase tracking-wide">
                         {item.category}
                       </span>
                     </div>
                   </div>
 
-                  <span className="self-start sm:self-auto px-3 py-1 rounded-full text-xs font-mono font-semibold bg-[#183e2b]/10 text-[#183e2b] border border-[#183e2b]/20">
+                  <span className="self-start sm:self-auto px-3 py-1 rounded-full text-xs font-mono font-semibold bg-[#335C33]/10 text-[#335C33] border border-[#335C33]/20">
                     {item.badge}
                   </span>
                 </div>
@@ -251,10 +253,10 @@ export function TheMindSection() {
                   {/* Left 7 Cols: Detailed Highlights */}
                   <div className="lg:col-span-7 space-y-6">
                     <div>
-                      <h3 className="font-anton text-2xl sm:text-4xl uppercase tracking-tight text-[#1c1510] leading-tight">
+                      <h3 className="font-anton text-2xl sm:text-4xl uppercase tracking-tight text-[#2C2E2B] leading-tight">
                         {item.title}
                       </h3>
-                      <p className="text-xs sm:text-sm text-[#183e2b] font-semibold mt-1">
+                      <p className="text-xs sm:text-sm text-[#335C33] font-semibold mt-1">
                         {item.subtitle}
                       </p>
                     </div>
@@ -264,29 +266,27 @@ export function TheMindSection() {
                       {item.highlights.map((h, hIdx) => (
                         <div
                           key={hIdx}
-                          className="p-4 sm:p-5 rounded-2xl bg-white border border-[#d8d2c7] shadow-xs space-y-2 hover:border-[#183e2b]/40 transition-colors"
+                          className="p-4 sm:p-5 rounded-2xl bg-[#F6F6EE] border border-[#335C33]/15 shadow-xs space-y-2 hover:border-[#335C33]/35 transition-colors"
                         >
-                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                            <h4 className="font-bold text-xs sm:text-sm text-[#1c1510] whitespace-nowrap overflow-hidden text-ellipsis min-w-0">
+                          <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
+                            <h4 className="font-bold text-xs sm:text-sm text-[#2C2E2B] leading-snug flex-1">
                               {h.heading}
                             </h4>
-                            <span className="text-[11px] font-mono font-bold text-[#d9531e] bg-[#d9531e]/10 px-2.5 py-0.5 rounded-full shrink-0">
+                            <span className="text-[11px] font-mono font-bold text-[#8C5A35] bg-[#8C5A35]/10 px-2.5 py-0.5 rounded-full shrink-0 self-start">
                               {h.metric}
                             </span>
                           </div>
-                          <p className="text-xs text-[#4a3f35] leading-relaxed">
+                          <p className="text-xs text-[#2C2E2B]/70 leading-relaxed">
                             {h.detail}
                           </p>
                         </div>
                       ))}
                     </div>
-
-
                   </div>
 
                   {/* Right 5 Cols: Visual Representation */}
                   <div className="lg:col-span-5 flex flex-col gap-4">
-                    <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-[#24160e] border border-[#d8d2c7] shadow-md group">
+                    <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-[#284828] border border-[#335C33]/20 shadow-md group">
                       <Image
                         src={item.image}
                         alt={item.title}
@@ -295,8 +295,8 @@ export function TheMindSection() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
                       <div className="absolute bottom-4 left-4 right-4 text-white">
-                        <span className="text-[10px] font-mono font-bold text-[#22c55e] uppercase block mb-1">
-                          {"// Field Evidence"}
+                        <span className="text-[10px] font-mono font-bold text-[#4A7F4A] uppercase block mb-1">
+                          {t("mind.field")}
                         </span>
                         <div className="font-anton text-sm sm:text-base uppercase line-clamp-1">
                           {item.title}
@@ -304,13 +304,13 @@ export function TheMindSection() {
                       </div>
                     </div>
 
-                    <div className="p-4 rounded-2xl bg-[#ece7df] border border-[#d8d2c7] text-xs space-y-1.5">
-                      <div className="flex items-center gap-1.5 font-bold text-[#183e2b]">
-                        <FileCheck2 className="w-4 h-4 text-[#d9531e]" />
-                        <span>Peer-Reviewed &amp; Globally Recognized</span>
+                    <div className="p-4 rounded-2xl bg-[#E3EDD3] border border-[#335C33]/15 text-xs space-y-1.5">
+                      <div className="flex items-center gap-1.5 font-bold text-[#335C33]">
+                        <FileCheck2 className="w-4 h-4 text-[#8C5A35]" />
+                        <span>{t("mind.badge.verified")}</span>
                       </div>
-                      <p className="text-[11px] text-[#5e544a] leading-normal">
-                        Every initiative pairs rigorous empirical research with real stakeholder actions across Dak Lak and international stages.
+                      <p className="text-[11px] text-[#2C2E2B]/70 leading-normal">
+                        {t("mind.badge.desc")}
                       </p>
                     </div>
                   </div>

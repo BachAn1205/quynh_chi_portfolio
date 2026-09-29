@@ -9,28 +9,30 @@ import {
   FileText
 } from "lucide-react";
 import { ResumeModal } from "@/components/ui/resume-modal";
+import { useLanguage } from "@/lib/i18n";
 
 export function TheCompetitorSection() {
   const [activeCategory, setActiveCategory] = useState<number>(0);
   const [resumeOpen, setResumeOpen] = useState(false);
+  const { t } = useLanguage();
 
   const categories = [
     {
       id: 0,
-      title: "1. Academic Profile & Testing",
+      title: t("competitor.tab0"),
       shortTitle: "Academics",
       icon: GraduationCap,
       description: "Selective high school admittance, near-perfect GPA, and top standardized test scores.",
       items: [
         {
-          title: "VNUHCM - High School for The Gifted (2024 — 2027)",
+          title: "VNUHCM - High School for The Gifted (2024 . 2027)",
           subtitle: "English Specialization • GPA: 9.6 / 10.0 • Top 6% Student of Grade",
           detail: "Selected as 1 of only 2 admitted students from Dak Lak Province to one of Vietnam's most selective institutions.",
           badge: "Top 6% • 1 of 2 Dak Lak Admits",
           highlight: true,
         },
         {
-          title: "Phan Chu Trinh Secondary School (2020 — 2024)",
+          title: "Phan Chu Trinh Secondary School (2020 . 2024)",
           subtitle: "GPA: 8.8 / 10.0 • Provincial Third Prize in English (2023)",
           detail: "Consistent academic leadership and provincial distinctions in humanities.",
           badge: "Provincial Prize",
@@ -54,7 +56,7 @@ export function TheCompetitorSection() {
     },
     {
       id: 1,
-      title: "2. Economics & Business Olympiads",
+      title: t("competitor.tab1"),
       shortTitle: "Olympiads",
       icon: Trophy,
       description: "International and national competition podium finishes in economics, finance, and business cases.",
@@ -105,7 +107,7 @@ export function TheCompetitorSection() {
     },
     {
       id: 2,
-      title: "3. Debate, MUN & Arts",
+      title: t("competitor.tab2"),
       shortTitle: "Debate & Arts",
       icon: Award,
       description: "National championships in parliamentary debate, international art exhibitions, and traditional solo music.",
@@ -142,7 +144,7 @@ export function TheCompetitorSection() {
     },
     {
       id: 3,
-      title: "4. Technical Skills & Interests",
+      title: t("competitor.tab3"),
       shortTitle: "Skills & Profile",
       icon: Code2,
       description: "Empirical data toolset, programming environments, languages, and personal passions.",
@@ -183,60 +185,34 @@ export function TheCompetitorSection() {
 
   return (
     <>
-      <section id="the-competitor" className="py-24 sm:py-32 overflow-hidden bg-[#ebe6dd] border-t border-[#d8d2c7]">
+      <section id="the-competitor" className="py-24 sm:py-32 overflow-hidden bg-[#F6F6EE] border-t border-[#335C33]/15">
         <div className="max-w-6xl mx-auto px-4">
           {/* Section Header */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12 pb-8 border-b border-[#d8d2c7]">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 pb-8 border-b border-[#335C33]/15">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#183e2b] flex items-center justify-center shrink-0 shadow-sm text-white">
-                <Trophy className="w-6 h-6 text-[#d97706]" />
+              <div className="w-12 h-12 rounded-2xl bg-[#335C33] flex items-center justify-center shrink-0 shadow-sm text-[#F6F6EE]">
+                <Trophy className="w-6 h-6 text-[#E3EDD3]" />
               </div>
               <div>
-                <span className="font-mono text-xs font-semibold text-[#d9531e] uppercase tracking-wider block">
+                <span className="font-mono text-xs font-semibold text-[#8C5A35] uppercase tracking-wider block">
                   {"// Section 05 • Comprehensive Resume & Honors"}
                 </span>
-                <h2 className="font-anton text-4xl sm:text-6xl uppercase tracking-tight text-[#1c1510]">
-                  THE COMPETITOR
+                <h2 className="font-anton text-4xl sm:text-6xl uppercase tracking-tight text-[#2C2E2B]">
+                  {t("competitor.title")}
                 </h2>
               </div>
             </div>
 
             <div className="max-w-md">
-              <h3 className="font-anton text-xl uppercase text-[#183e2b] mb-1">
-                Global Excellence &amp; Academic Profile
+              <h3 className="font-anton text-xl uppercase text-[#335C33] mb-1">
+                {t("competitor.sub.title")}
               </h3>
-              <p className="text-xs sm:text-sm text-[#5e544a]">
-                A proven track record of excellence across academics, business strategy, public policy, and the arts.
+              <p className="text-xs sm:text-sm text-[#2C2E2B]/60">
+                {t("competitor.sub.desc")}
               </p>
             </div>
           </div>
 
-          {/* Quick Metrics Bar */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-10">
-            <div className="p-4 rounded-2xl bg-[#f6f3eb] border border-[#d8d2c7] shadow-xs">
-              <span className="font-mono text-[10px] text-[#5e544a] uppercase font-bold block mb-1">High School GPA</span>
-              <div className="font-anton text-2xl sm:text-3xl text-[#1c1510]">9.6 / 10.0</div>
-              <span className="text-[11px] text-[#183e2b] font-medium">Top 6% Gifted Cohort</span>
-            </div>
-
-            <div className="p-4 rounded-2xl bg-[#f6f3eb] border border-[#d8d2c7] shadow-xs">
-              <span className="font-mono text-[10px] text-[#5e544a] uppercase font-bold block mb-1">Standardized Tests</span>
-              <div className="font-anton text-2xl sm:text-3xl text-[#1c1510]">1450 • 7.5</div>
-              <span className="text-[11px] text-[#183e2b] font-medium">SAT &amp; IELTS Academic</span>
-            </div>
-
-            <div className="p-4 rounded-2xl bg-[#f6f3eb] border border-[#d8d2c7] shadow-xs">
-              <span className="font-mono text-[10px] text-[#5e544a] uppercase font-bold block mb-1">Advanced Placement</span>
-              <div className="font-anton text-2xl sm:text-3xl text-[#183e2b]">4x AP 5s</div>
-              <span className="text-[11px] text-[#d9531e] font-medium">Calc, Stats, Micro, Macro</span>
-            </div>
-
-            <div className="p-4 rounded-2xl bg-[#f6f3eb] border border-[#d8d2c7] shadow-xs">
-              <span className="font-mono text-[10px] text-[#5e544a] uppercase font-bold block mb-1">Harvard Crimson Case</span>
-              <div className="font-anton text-2xl sm:text-3xl text-[#d9531e]">Top 30</div>
-              <span className="text-[11px] text-[#1c1510] font-medium">Global Finalist / 2000</span>
-            </div>
-          </div>
 
           {/* Interactive Category Tabs */}
           <div className="flex flex-wrap items-center gap-2 mb-8">
@@ -248,8 +224,8 @@ export function TheCompetitorSection() {
                   key={cat.id}
                   onClick={() => setActiveCategory(idx)}
                   className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-mono font-semibold transition-all duration-200 cursor-pointer ${isSelected
-                      ? "bg-[#183e2b] text-white shadow-sm"
-                      : "bg-white text-[#1c1510] border border-[#d8d2c7] hover:bg-[#f6f3eb]"
+                      ? "bg-[#335C33] text-[#F6F6EE] shadow-sm"
+                      : "bg-[#FAF9F2] text-[#2C2E2B] border border-[#335C33]/20 hover:bg-[#E3EDD3]"
                     }`}
                 >
                   <Icon className="w-3.5 h-3.5" />
@@ -260,52 +236,52 @@ export function TheCompetitorSection() {
           </div>
 
           {/* Selected Category Content Box */}
-          <div className="rounded-3xl border border-[#d8d2c7] bg-[#f6f3eb] blueprint-grid p-6 sm:p-10 shadow-sm">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6 pb-4 border-b border-[#d8d2c7]">
+          <div className="rounded-3xl border border-[#335C33]/15 bg-[#FAF9F2] blueprint-grid p-6 sm:p-10 shadow-sm">
+            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-6 pb-4 border-b border-[#335C33]/15">
               <div>
-                <h3 className="font-anton text-2xl sm:text-3xl uppercase tracking-tight text-[#1c1510]">
+                <h3 className="font-anton text-2xl sm:text-3xl uppercase tracking-tight text-[#2C2E2B]">
                   {current.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-[#5e544a] mt-0.5">
+                <p className="text-xs sm:text-sm text-[#2C2E2B]/60 mt-0.5">
                   {current.description}
                 </p>
               </div>
 
               <button
                 onClick={() => setResumeOpen(true)}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-white border border-[#d8d2c7] text-[#183e2b] hover:bg-[#ede8df] transition-colors self-start sm:self-auto shrink-0"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-[#FAF9F2] border border-[#335C33]/20 text-[#335C33] hover:bg-[#E3EDD3] transition-colors self-start sm:self-auto shrink-0 cursor-pointer"
               >
                 <FileText className="w-3.5 h-3.5" />
-                <span>Open Dossier View</span>
+                <span>{t("competitor.open")}</span>
               </button>
             </div>
 
             {/* Items List */}
-            <div className="divide-y divide-[#d8d2c7]">
+            <div className="divide-y divide-[#335C33]/10">
               {current.items.map((item, iIdx) => (
                 <div
                   key={iIdx}
-                  className="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-start justify-between gap-4 group hover:bg-black/[0.02] px-3 -mx-3 rounded-2xl transition-colors"
+                  className="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-start justify-between gap-4 group hover:bg-[#335C33]/[0.02] px-3 -mx-3 rounded-2xl transition-colors"
                 >
                   <div className="space-y-1 min-w-0 flex-1">
                     <div className="flex items-center gap-2 min-w-0">
-                      <h4 className="font-anton text-base sm:text-lg uppercase tracking-tight text-[#1c1510] group-hover:text-[#183e2b] transition-colors whitespace-nowrap overflow-hidden text-ellipsis min-w-0">
+                      <h4 className="font-anton text-base sm:text-lg uppercase tracking-tight text-[#2C2E2B] group-hover:text-[#335C33] transition-colors leading-snug flex-1">
                         {item.title}
                       </h4>
                       {item.highlight && (
-                        <span className="w-2 h-2 rounded-full bg-[#d9531e]" />
+                        <span className="w-2 h-2 rounded-full bg-[#335C33] shrink-0" />
                       )}
                     </div>
-                    <p className="text-xs sm:text-sm font-semibold text-[#183e2b]">
+                    <p className="text-xs sm:text-sm font-semibold text-[#335C33]">
                       {item.subtitle}
                     </p>
-                    <p className="text-xs text-[#5e544a] leading-relaxed pt-1">
+                    <p className="text-xs text-[#2C2E2B]/60 leading-relaxed pt-1">
                       {item.detail}
                     </p>
                   </div>
 
-                  <div className="shrink-0 self-start sm:self-center">
-                    <span className="px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-white border border-[#d8d2c7] text-[#1c1510] shadow-xs">
+                  <div className="shrink-0 self-start">
+                    <span className="px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-[#F6F6EE] border border-[#335C33]/20 text-[#2C2E2B] shadow-xs">
                       {item.badge}
                     </span>
                   </div>
