@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { ProjectImageUpload } from "@/components/ui/project-image-upload";
 import {
   HeartHandshake,
   Music,
@@ -8,7 +8,6 @@ import {
   Bike,
   ShieldAlert,
   Scale,
-  Play,
   Video
 } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
@@ -28,7 +27,11 @@ export function TheHeartSection() {
         "Refusing to let indigenous music become a museum relic, I launched a systemic educational initiative. I synthesized indigenous oral heritage from the Central Highlands into a structured curriculum. Scaling the impact, I coordinated performances and interactive workshops across 12+ schools, engaging ~2,300 students.",
       impact:
         "Digital Impact: Managed a cultural media page (5,000+ followers) and digitized performances via a YouTube archive (10,000+ views) to promote cultural preservation.",
-      image: "/images/quynhchi/trung-heritage.jpg",
+      slotId: "heart-trung-preservation",
+      guideline: {
+        vi: "Ảnh lớp học truyền dạy đàn T'rưng, buổi hòa nhạc tương tác cùng học sinh tại 12+ trường học.",
+        en: "Workshops teaching T'rưng or interactive performances at schools."
+      },
       accent: "text-[#4A7F4A]",
     },
     {
@@ -50,7 +53,11 @@ export function TheHeartSection() {
           text: "My artwork, 'Along the Waters of Srepok 3 Hydropower Plant, Dak Lak,' was featured in an international exhibition at the Museo ning Angeles, Philippines (Jul 2026), projecting hometown ecological narratives on a global stage.",
         },
       ],
-      image: "/images/quynhchi/trung-heritage.jpg",
+      slotId: "heart-artistic-voice",
+      guideline: {
+        vi: "Ảnh biểu diễn tại Thanh Âm Đất Việt hoặc ảnh tranh nghệ thuật trưng bày tại triển lãm Philippines.",
+        en: "Performance at Thanh Âm Đất Việt or artwork in Philippines exhibition."
+      },
       accent: "text-[#8C5A35]",
     },
     {
@@ -62,7 +69,11 @@ export function TheHeartSection() {
       role: "Coordinator (2024 . Present)",
       description:
         "Directed early profits from CAFLOOP and mobilized community resources to donate 77 bicycles and 2 smart TVs to underserved primary students in Dak Lak (Buon Drang Phok). Visiting their homes.seeing the stark contrast between the shiny new bicycles we donated and their families' stripped-down, rusty motorcycles.cemented my belief that our gifts were not just vehicles, but essential fulcrums holding up their dreams of education amidst harsh realities.",
-      image: "/images/quynhchi/hero-coffee-farm.jpg",
+      slotId: "heart-ea-wer",
+      guideline: {
+        vi: "Ảnh hoạt động thiện nguyện trao tặng 77 xe đạp và smart TV cho học sinh nghèo tại buôn Đrăng Phốk.",
+        en: "Charity event donating 77 bicycles and 2 smart TVs in Buon Drang Phok."
+      },
       accent: "text-[#8C5A35]",
     },
     {
@@ -88,7 +99,11 @@ export function TheHeartSection() {
           text: "Supported logistics for the VIASM Math Open Day and served as a translator for US Boarding School Fairs.",
         },
       ],
-      image: "/images/quynhchi/cafloop-cascara.jpg",
+      slotId: "heart-advocacy",
+      guideline: {
+        vi: "Ảnh chiến dịch gây quỹ Trạm cứu hộ Củ Chi hoặc hoạt động trao tặng vòng tay phản quang an toàn giao thông.",
+        en: "Cu Chi Wildlife rescue fundraiser or reflective safety wristband campaign."
+      },
       accent: "text-[#4A7F4A]",
     },
     {
@@ -100,22 +115,26 @@ export function TheHeartSection() {
       role: "National Debate Champion & Breaking Judge",
       description:
         "Serving as a Breaking Judge at national debates and a National Champion Competitor, I assess claims not by rhetoric, but through economics and logic. I dissect assumptions, trace empirical evidence, and analyze human incentives, constantly asking: 'If this policy is enacted, how will stakeholders actually react?'",
-      image: "/images/quynhchi/about-analyst.jpg",
+      slotId: "heart-debate",
+      guideline: {
+        vi: "Ảnh làm trọng tài Breaking Judge hoặc thi đấu tại giải tranh biện toàn quốc.",
+        en: "Photo as Breaking Judge or competitor at National Debate Championship."
+      },
       accent: "text-[#8C5A35]",
     },
   ];
 
   return (
-    <section id="the-heart" className="bg-[#1E3B1E] text-white py-24 sm:py-32 overflow-hidden blueprint-grid-dark">
-      <div className="max-w-6xl mx-auto px-4">
+    <section id="the-heart" className="bg-[#EAF1E4] text-[#2C2E2B] py-24 sm:py-32 overflow-hidden blueprint-grid border-t border-[#335C33]/15">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-8 border-b border-[#335C33]/40">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-8 border-b border-[#335C33]/15">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-[#8C5A35] flex items-center justify-center shrink-0 shadow-sm text-white">
-              <HeartHandshake className="w-6 h-6" />
+            <div className="w-12 h-12 rounded-2xl bg-[#335C33] flex items-center justify-center shrink-0 shadow-sm text-[#F6F6EE]">
+              <HeartHandshake className="w-6 h-6 text-[#E3EDD3]" />
             </div>
             <div>
-              <h2 className="font-anton text-4xl sm:text-6xl uppercase tracking-tight text-white">
+              <h2 className="font-anton text-4xl sm:text-6xl uppercase tracking-tight text-[#2C2E2B]">
                 {t("heart.title")}
               </h2>
             </div>
@@ -123,87 +142,73 @@ export function TheHeartSection() {
         </div>
 
         {/* Featured Multimedia Showcase: T'rưng Heritage & Music */}
-        <div className="relative rounded-3xl border border-[#335C33]/40 bg-[#284828]/60 p-6 sm:p-10 mb-16 overflow-hidden shadow-2xl">
+        <div className="relative rounded-3xl border border-[#335C33]/20 bg-[#FAF9F2] p-6 sm:p-10 mb-16 overflow-hidden shadow-sm">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            {/* Visual stage / instrument */}
-            <div className="lg:col-span-7 relative rounded-2xl overflow-hidden aspect-[16/9] bg-black border border-white/10 group">
-              <Image
-                src="/images/quynhchi/trung-heritage.jpg"
-                alt="Traditional T'rưng performance showcase"
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+            {/* Visual stage / instrument upload */}
+            <div className="lg:col-span-7">
+              <ProjectImageUpload
+                slotId="heart-showcase"
+                guideline={{
+                  vi: "Ảnh sân khấu trình diễn độc tấu đàn T'rưng dân tộc hoặc hình ảnh nghệ thuật âm nhạc Tây Nguyên.",
+                  en: "Stage performance playing traditional T'rưng or Central Highlands musical arts."
+                }}
+                aspectRatio="aspect-[16/9]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-
-              {/* Play simulation button */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 rounded-full bg-[#8C5A35]/90 text-white flex items-center justify-center shadow-lg transition-transform hover:scale-110 cursor-pointer">
-                  <Play className="w-7 h-7 fill-white translate-x-0.5" />
-                </div>
-              </div>
-
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs">
-                <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[#4A7F4A] font-mono border border-white/10">
-                  {t("heart.showcase.live")}
-                </span>
-                <span className="font-mono text-white/70">
-                  {t("heart.showcase.views")}
-                </span>
-              </div>
             </div>
 
             {/* Showcase story */}
             <div className="lg:col-span-5 space-y-4">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#4A7F4A]/10 text-[#4A7F4A] border border-[#4A7F4A]/20 text-xs font-mono font-semibold">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#335C33]/10 text-[#335C33] border border-[#335C33]/20 text-xs font-mono font-semibold">
                 <Music className="w-3.5 h-3.5" />
                 <span>{t("heart.showcase.badge")}</span>
               </div>
-              <h3 className="font-anton text-2xl sm:text-3xl uppercase tracking-tight text-white leading-tight">
+              <h3 className="font-anton text-2xl sm:text-3xl uppercase tracking-tight text-[#2C2E2B] leading-tight">
                 {t("heart.showcase.title")}
               </h3>
-              <p className="text-xs sm:text-sm text-white/75 leading-relaxed min-h-[4rem]">
+              <p className="text-xs sm:text-sm text-[#2C2E2B]/75 leading-relaxed min-h-[4rem]">
                 {t("heart.showcase.desc")}
               </p>
-              <div className="p-3.5 rounded-2xl bg-black/40 border border-[#335C33]/40 flex items-center justify-between text-xs font-mono">
+              <div className="p-3.5 rounded-2xl bg-[#F6F6EE] border border-[#335C33]/15 flex items-center justify-between text-xs font-mono">
                 <div className="flex items-center gap-2 text-[#8C5A35]">
-                  <Video className="w-4 h-4 text-red-400" />
+                  <Video className="w-4 h-4 text-red-500" />
                   <span>{t("heart.showcase.stat1")}</span>
                 </div>
-                <span className="text-[#4A7F4A]">{t("heart.showcase.stat2")}</span>
+                <span className="text-[#335C33] font-bold">{t("heart.showcase.stat2")}</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* 5 Project Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {projects.map((project, idx) => {
             const Icon = project.icon;
-            const isWide = idx === 0 || idx === 1;
+            const isFeatured = idx === 0;
             return (
               <div
                 key={project.id}
-                className={`rounded-3xl border border-[#335C33]/40 bg-[#284828]/50 p-6 sm:p-8 flex flex-col justify-between hover:border-[#4A7F4A]/60 transition-all duration-300 shadow-lg ${isWide && idx === 0 ? "lg:col-span-2" : ""
-                  }`}
+                className={`rounded-3xl border border-[#335C33]/15 bg-[#FAF9F2] p-6 sm:p-8 flex flex-col justify-between hover:border-[#335C33]/35 hover:shadow-md transition-all duration-300 shadow-sm ${
+                  isFeatured ? "md:col-span-2" : ""
+                }`}
               >
                 <div>
                   {/* Card Header */}
-                  <div className="flex items-center justify-between gap-2 mb-4 pb-3 border-b border-[#335C33]/30">
-                    <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-xl bg-[#335C33]/40 text-[#4A7F4A] flex items-center justify-center shrink-0 border border-white/5">
-                        <Icon className="w-4 h-4" />
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-[#335C33]/15">
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <div className="w-8 h-8 rounded-xl bg-[#335C33] text-[#F6F6EE] flex items-center justify-center shrink-0">
+                        <Icon className="w-4 h-4 text-[#E3EDD3]" />
                       </div>
-                      <span className="font-mono text-[11px] font-bold text-white/60 uppercase">
+                      <span className="font-mono text-xs font-bold text-[#8C5A35] uppercase tracking-wide">
                         {project.category}
                       </span>
                     </div>
-                    <span className="text-[11px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-white/5 text-white/80 border border-white/10 shrink-0">
+                    <span className="self-start sm:self-auto text-xs font-mono font-semibold px-3 py-1 rounded-full bg-[#335C33]/10 text-[#335C33] border border-[#335C33]/20 shrink-0">
                       {project.badge}
                     </span>
                   </div>
 
                   {/* Title & Role */}
-                  <h4 className="font-anton text-xl sm:text-2xl uppercase tracking-tight text-white mb-1 leading-snug min-h-[2.5rem] flex items-center">
+                  <h4 className="font-anton text-xl sm:text-2xl uppercase tracking-tight text-[#2C2E2B] mb-1 leading-snug min-h-[2.5rem] flex items-center">
                     {project.title}
                   </h4>
                   <p className="text-xs font-mono text-[#8C5A35] font-semibold mb-4 min-h-[1.25rem] flex items-center">
@@ -211,7 +216,7 @@ export function TheHeartSection() {
                   </p>
 
                   {/* Body Text */}
-                  <p className="text-xs sm:text-sm text-white/70 leading-relaxed mb-4">
+                  <p className="text-xs sm:text-sm text-[#2C2E2B]/75 leading-relaxed mb-4">
                     {project.description}
                   </p>
 
@@ -219,11 +224,11 @@ export function TheHeartSection() {
                   {project.subItems && (
                     <div className="space-y-2.5 pt-2">
                       {project.subItems.map((sub, sIdx) => (
-                        <div key={sIdx} className="p-3 rounded-xl bg-black/30 border border-white/5 text-xs">
-                          <span className="font-bold text-white block mb-0.5">
+                        <div key={sIdx} className="p-3 rounded-xl bg-[#F6F6EE] border border-[#335C33]/15 text-xs">
+                          <span className="font-bold text-[#2C2E2B] block mb-0.5">
                             {sub.label}
                           </span>
-                          <span className="text-white/60 leading-relaxed block">
+                          <span className="text-[#2C2E2B]/70 leading-relaxed block">
                             {sub.text}
                           </span>
                         </div>
@@ -233,10 +238,19 @@ export function TheHeartSection() {
 
                   {/* Impact detail if present */}
                   {project.impact && (
-                    <div className="mt-3 p-3 rounded-xl bg-[#335C33]/20 border border-[#4A7F4A]/20 text-xs text-[#4A7F4A]">
+                    <div className="mt-3 p-3 rounded-xl bg-[#E3EDD3]/50 border border-[#335C33]/20 text-xs text-[#335C33] font-medium">
                       {project.impact}
                     </div>
                   )}
+
+                  {/* Upload & Preview */}
+                  <div className="mt-6 pt-4 border-t border-[#335C33]/15">
+                    <ProjectImageUpload
+                      slotId={project.slotId}
+                      guideline={project.guideline}
+                      aspectRatio="aspect-[16/9]"
+                    />
+                  </div>
                 </div>
               </div>
             );

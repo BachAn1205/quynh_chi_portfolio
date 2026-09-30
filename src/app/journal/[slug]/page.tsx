@@ -63,14 +63,8 @@ export default async function JournalDetailPage({ params }: PageProps) {
             </h1>
 
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#183e2b] border border-[#22c55e]/40 overflow-hidden flex items-center justify-center shrink-0">
-                <Image
-                  src="/images/quynhchi/avatar.jpg"
-                  alt="Phan Hoàng Quỳnh Chi"
-                  width={40}
-                  height={40}
-                  className="object-cover w-full h-full"
-                />
+              <div className="w-10 h-10 rounded-full bg-[#335C33] border border-[#22c55e]/40 overflow-hidden flex items-center justify-center shrink-0 text-white font-bold font-mono text-sm">
+                QC
               </div>
               <div className="text-sm">
                 <span className="font-bold text-white block">Phan Hoàng Quỳnh Chi</span>

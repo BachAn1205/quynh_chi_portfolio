@@ -1,4 +1,4 @@
-﻿export interface CaseStudy {
+export interface CaseStudy {
   slug: string;
   title: string;
   subtitle: string;
@@ -22,7 +22,7 @@ export const caseStudies: CaseStudy[] = [
     title: "CAFLOOP: Circular Coffee Husk Venture & Traceability",
     subtitle:
       "Transforming CO2-emitting agricultural waste in Dak Lak into commercial Cascara tea with end-to-end QR code supply chain traceability.",
-    tags: ["// Circular Economy", "// Product Strategy", "// Supply Chain"],
+    tags: ["Circular Economy", "Product Strategy", "Supply Chain"],
     heroImage: "/images/quynhchi/cafloop-cascara.jpg",
     role: "Founder & Product Strategist",
     organization: "CAFLOOP Vietnam",
@@ -51,7 +51,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Revealing Disparities: Econometrics & Sustainable Career Choices",
     subtitle:
       "Stratified cross-sectional research uncovering rural-urban access disparities in green career adoption using SPSS ANOVA & Logistic Regression.",
-    tags: ["// Quantitative Research", "// Econometrics", "// Binary Logistic Regression"],
+    tags: ["Quantitative Research", "Econometrics", "Binary Logistic Regression"],
     heroImage: "/images/quynhchi/about-analyst.jpg",
     role: "Lead Researcher",
     organization: "Independent Academic Study (Dak Lak)",
@@ -80,7 +80,7 @@ export const caseStudies: CaseStudy[] = [
     title: "T'rưng Cultural Preservation & Educational Initiative",
     subtitle:
       "Systemic revitalization of Central Highlands indigenous bamboo musical heritage through 12+ school curricula and digital archiving.",
-    tags: ["// Cultural Preservation", "// Educational Outreach", "// Arts Advocacy"],
+    tags: ["Cultural Preservation", "Educational Outreach", "Arts Advocacy"],
     heroImage: "/images/quynhchi/trung-heritage.jpg",
     role: "Founder, Organizer & Soloist",
     organization: "T'rưng Cultural Project",

@@ -3,19 +3,22 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { Mail, FileText, ArrowUpRight, MapPin, Sparkles, Send } from "lucide-react";
+import { Mail, FileText, ArrowUpRight, MapPin, Sparkles, Send, User } from "lucide-react";
 import { ResumeModal } from "@/components/ui/resume-modal";
 import { useLanguage } from "@/lib/i18n";
+import { useProjectImages } from "@/lib/project-images-context";
 
 export function Footer() {
   const [resumeModalOpen, setResumeModalOpen] = useState(false);
   const { t } = useLanguage();
+  const { getImage } = useProjectImages();
+  const avatarUrl = getImage("profile-avatar");
 
   return (
     <>
       <footer id="vision" className="w-full pt-16 pb-8 overflow-hidden bg-[#F6F6EE] border-t border-[#335C33]/15">
         {/* Top CTA Banner */}
-        <div className="max-w-6xl mx-auto px-4 mb-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
           <div className="relative rounded-3xl border border-[#335C33]/20 bg-[#FAF9F2] blueprint-grid overflow-hidden py-16 sm:py-24 px-6 sm:px-12 text-center shadow-sm">
             {/* Subtle background overlay */}
             <div className="absolute inset-0 pointer-events-none opacity-15 mix-blend-multiply">
@@ -44,9 +47,6 @@ export function Footer() {
                 <p>
                   {t("footer.p1")}
                 </p>
-                <p className="text-xs sm:text-sm text-[#2C2E2B]/60">
-                  {t("footer.p2")}
-                </p>
               </div>
 
               {/* CTA Action Buttons */}
@@ -72,19 +72,23 @@ export function Footer() {
         </div>
 
         {/* Navigation & Contact Info Columns */}
-        <div className="max-w-6xl mx-auto px-4 mb-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 items-start">
             {/* Column 1: Identity & Location */}
             <div className="md:col-span-2 space-y-4">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl overflow-hidden bg-[#E3EDD3] border border-[#335C33]/20 shrink-0">
-                  <Image
-                    src="/images/quynhchi/avatar.jpg"
-                    alt="Phan Hoàng Quỳnh Chi"
-                    width={36}
-                    height={36}
-                    className="object-cover w-full h-full"
-                  />
+                <div className="w-9 h-9 rounded-xl overflow-hidden bg-[#E3EDD3] border border-[#335C33]/20 shrink-0 relative flex items-center justify-center">
+                  {avatarUrl ? (
+                    <Image
+                      src={avatarUrl}
+                      alt="Phan Hoàng Quỳnh Chi"
+                      fill
+                      className="object-cover"
+                      unoptimized
+                    />
+                  ) : (
+                    <User className="w-4 h-4 text-[#335C33]" />
+                  )}
                 </div>
                 <div>
                   <h3 className="font-anton text-xl uppercase text-[#2C2E2B] tracking-tight">
@@ -179,7 +183,7 @@ export function Footer() {
         </div>
 
         {/* Dotted separator with mouse scroll icon */}
-        <div className="max-w-6xl mx-auto px-4 relative my-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative my-10">
           <div className="border-t border-dashed border-[#335C33]/25 w-full" />
           <div className="absolute left-1/2 -top-4 -translate-x-1/2 bg-[#F6F6EE] px-3 flex flex-col items-center">
             <div className="w-4 h-6 border-[1.5px] border-[#2C2E2B] rounded-full flex justify-center pt-1">
@@ -189,7 +193,7 @@ export function Footer() {
         </div>
 
         {/* Credits Row */}
-        <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#2C2E2B]/50 mb-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#2C2E2B]/50 mb-10">
           <div>Copyright &copy; 2026 Phan Hoàng Quỳnh Chi. All rights reserved.</div>
         </div>
 

@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useState } from "react";
 import { ArrowDown, FileText, ShieldCheck } from "lucide-react";
 import { ResumeModal } from "@/components/ui/resume-modal";
+import { ProjectImageUpload } from "@/components/ui/project-image-upload";
+import { AvatarUpload } from "@/components/ui/avatar-upload";
 import { useLanguage } from "@/lib/i18n";
 
 export function Hero() {
@@ -14,33 +16,45 @@ export function Hero() {
   const pillars = [
     {
       id: 0,
+      slotId: "hero-cafloop",
       title: t("hero.slide0.title"),
       category: t("hero.slide0.category"),
       tag: t("hero.slide0.tag"),
       stat: t("hero.slide0.stat"),
-      image: "/images/quynhchi/hero-coffee-farm.jpg",
+      guideline: {
+        vi: "Ảnh minh họa dự án CAFLOOP: Vỏ cà phê, quy trình phơi sấy, hoặc bao bì thương mại có mã QR.",
+        en: "CAFLOOP project photo: coffee husk, drying process, or commercial QR packaging."
+      },
       alt: "Phan Hoàng Quỳnh Chi in Dak Lak Coffee Farm",
       description: t("hero.slide0.desc"),
       link: "#the-mind",
     },
     {
       id: 1,
+      slotId: "hero-econometrics",
       title: t("hero.slide1.title"),
       category: t("hero.slide1.category"),
       tag: t("hero.slide1.tag"),
       stat: t("hero.slide1.stat"),
-      image: "/images/quynhchi/about-analyst.jpg",
+      guideline: {
+        vi: "Ảnh minh họa nghiên cứu định lượng: Biểu đồ hồi quy SPSS, bảng mô hình kinh tế lượng hoặc khảo sát thực địa.",
+        en: "Quantitative research photo: SPSS regression charts, econometric tables, or field survey."
+      },
       alt: "Data Analytics and Econometric Modeling",
       description: t("hero.slide1.desc"),
       link: "#the-mind",
     },
     {
       id: 2,
+      slotId: "hero-trung",
       title: t("hero.slide2.title"),
       category: t("hero.slide2.category"),
       tag: t("hero.slide2.tag"),
       stat: t("hero.slide2.stat"),
-      image: "/images/quynhchi/trung-heritage.jpg",
+      guideline: {
+        vi: "Ảnh minh họa di sản văn hóa: Độc tấu đàn T'rưng Tây Nguyên hoặc lớp học truyền dạy âm nhạc truyền thống.",
+        en: "Cultural heritage photo: Traditional T'rưng performance or classroom workshop."
+      },
       alt: "Traditional T'rưng Bamboo Instrument",
       description: t("hero.slide2.desc"),
       link: "#the-heart",
@@ -52,19 +66,11 @@ export function Hero() {
   return (
     <>
       <section className="relative pt-32 sm:pt-36 pb-12 overflow-hidden">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Top Headline Section */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-10 sm:mb-14">
-            <div className="flex items-start sm:items-center gap-4 sm:gap-6">
-              <div className="relative w-20 h-20 sm:w-28 sm:h-28 rounded-3xl overflow-hidden bg-[#284828] shrink-0 shadow-md border-2 border-[#335C33]/30">
-                <Image
-                  src="/images/quynhchi/avatar.jpg"
-                  alt="Phan Hoàng Quỳnh Chi Portrait"
-                  fill
-                  priority
-                  className="object-cover"
-                />
-              </div>
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 mb-10 sm:mb-14">
+            <div className="flex flex-col md:flex-row md:items-center gap-6">
+              <AvatarUpload />
               <div>
                 <h1 className="font-anton text-4xl sm:text-6xl lg:text-7xl uppercase tracking-tight text-[#2C2E2B] leading-none">
                   PHAN HOÀNG QUỲNH CHI
@@ -102,11 +108,6 @@ export function Hero() {
           <div className="relative rounded-3xl border border-[#335C33]/20 bg-[#FAF9F2] blueprint-grid p-6 sm:p-10 overflow-hidden shadow-sm">
             <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-6 relative z-20">
               <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 text-xs font-mono text-[#8C5A35] font-semibold mb-1">
-                  <span>{current.category}</span>
-                  <span>•</span>
-                  <span className="text-[#335C33]">{current.tag}</span>
-                </div>
                 <h2 className="font-anton text-2xl sm:text-4xl uppercase text-[#2C2E2B] tracking-tight">
                   {current.title}
                 </h2>
@@ -116,9 +117,6 @@ export function Hero() {
               </div>
 
               <div className="flex flex-col sm:items-end gap-2.5 shrink-0 pt-1">
-                <div className="px-3 py-1 rounded-full bg-[#E3EDD3] border border-[#335C33]/20 text-xs font-mono font-bold text-[#335C33] shadow-xs">
-                  {current.stat}
-                </div>
                 <div className="flex items-center gap-2">
                   {pillars.map((item, i) => (
                     <button
@@ -135,30 +133,15 @@ export function Hero() {
               </div>
             </div>
 
-            {/* Featured Preview Graphic */}
-            <div className="relative rounded-2xl overflow-hidden aspect-[16/9] sm:aspect-[21/9] max-h-[500px] bg-[#284828] border border-[#335C33]/20 shadow-inner">
-              <Image
-                src={current.image}
-                alt={current.alt}
-                fill
-                priority
-                className="object-cover object-center transition-all duration-700"
+            {/* Project Image Upload & Preview */}
+            <div className="relative">
+              <ProjectImageUpload
+                key={current.slotId}
+                slotId={current.slotId}
+                guideline={current.guideline}
+                aspectRatio="aspect-[16/9] sm:aspect-[21/9]"
+                heightClass="min-h-[260px] sm:min-h-[380px]"
               />
-
-              <div className="absolute right-4 bottom-4 z-20 backdrop-blur-md bg-black/60 border border-white/20 rounded-2xl p-4 text-white w-72 hidden sm:block">
-                <div className="flex items-center gap-2 text-xs text-[#4A7F4A] font-mono mb-1">
-                  <ShieldCheck className="w-3.5 h-3.5" />
-                  <span>{t("hero.badge.field")}</span>
-                </div>
-                <div className="font-anton text-lg tracking-tight">
-                  {current.tag}
-                </div>
-                <div className="text-[11px] text-white/80 mt-0.5 line-clamp-1">
-                  {t("hero.badge.sub")}
-                </div>
-              </div>
-
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
             </div>
 
             {/* 3 Tab Selector Buttons */}
@@ -176,10 +159,7 @@ export function Hero() {
                   >
                     <div className="flex items-center justify-between mb-1">
                       <span className={`text-[10px] font-mono font-bold uppercase tracking-wider ${isSelected ? "text-[#E3EDD3]" : "text-[#8C5A35]"}`}>
-                        {"// 0"}{idx + 1}
-                      </span>
-                      <span className={`text-[11px] font-mono ${isSelected ? "text-[#F6F6EE]/80" : "text-[#2C2E2B]/60"}`}>
-                        {item.stat}
+                        {"0"}{idx + 1}
                       </span>
                     </div>
                     <div className="font-anton text-xs sm:text-sm uppercase tracking-tight line-clamp-1">

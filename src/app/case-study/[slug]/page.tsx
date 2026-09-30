@@ -5,6 +5,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { caseStudies } from "@/data/case-studies";
 import { ArrowLeft, ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { ProjectImageUpload } from "@/components/ui/project-image-upload";
 
 interface PageProps {
   params: Promise<{
@@ -60,14 +61,32 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
             </div>
           </div>
 
-          {/* Hero Feature Image */}
-          <div className="relative rounded-3xl overflow-hidden aspect-[16/9] sm:aspect-[21/9] max-h-[580px] bg-[#1a201a] border border-[#2c332c] shadow-2xl mb-24">
-            <Image
-              src={project.heroImage}
-              alt={project.title}
-              fill
-              priority
-              className="object-cover object-center"
+          {/* Hero Feature Image / Upload */}
+          <div className="mb-24">
+            <ProjectImageUpload
+              slotId={
+                slug === "cafloop-circular-coffee-husk"
+                  ? "mind-startup"
+                  : slug === "predictive-econometrics-sustainable-careers"
+                  ? "mind-research"
+                  : "heart-trung-preservation"
+              }
+              guideline={{
+                vi:
+                  slug === "cafloop-circular-coffee-husk"
+                    ? "Ảnh chụp thực tế vỏ cà phê, chế biến Cascara hoặc bao bì thương mại CAFLOOP."
+                    : slug === "predictive-econometrics-sustainable-careers"
+                    ? "Ảnh phân tích mô hình kinh tế lượng SPSS, bảng số liệu hoặc khảo sát học sinh Đắk Lắk."
+                    : "Ảnh trình diễn nhạc cụ dân tộc đàn T'rưng hoặc lớp học truyền dạy âm nhạc Tây Nguyên.",
+                en:
+                  slug === "cafloop-circular-coffee-husk"
+                    ? "Real coffee husk processing photo or commercial CAFLOOP packaging."
+                    : slug === "predictive-econometrics-sustainable-careers"
+                    ? "SPSS econometric model screenshot, regression tables, or survey photo."
+                    : "T'rưng performance or classroom workshop photo.",
+              }}
+              aspectRatio="aspect-[16/9] sm:aspect-[21/9]"
+              heightClass="min-h-[280px] sm:min-h-[480px]"
             />
           </div>
 
@@ -75,9 +94,6 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24">
             {/* Challenge Card */}
             <div className="rounded-3xl border border-[#2c332c] bg-[#121612] p-8 sm:p-12 shadow-lg">
-              <span className="font-mono text-xs font-semibold text-[#e74723] uppercase tracking-wider block mb-3">
-                {"// The Problem"}
-              </span>
               <h2 className="font-anton text-3xl sm:text-4xl uppercase text-white mb-6">
                 Challenges
               </h2>
@@ -88,9 +104,6 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
 
             {/* Solutions Card */}
             <div className="rounded-3xl border border-[#2c332c] bg-[#121612] p-8 sm:p-12 shadow-lg">
-              <span className="font-mono text-xs font-semibold text-[#e74723] uppercase tracking-wider block mb-3">
-                {"// The Approach"}
-              </span>
               <h2 className="font-anton text-3xl sm:text-4xl uppercase text-white mb-6">
                 Solutions
               </h2>

@@ -18,9 +18,6 @@ export default function JournalListPage() {
                 <Newspaper className="w-6 h-6" />
               </div>
               <div>
-                <span className="font-mono text-xs font-semibold text-[#22c55e] uppercase tracking-wider block">
-                  {"// Essays • Research • Advocacy"}
-                </span>
                 <h1 className="font-anton text-4xl sm:text-6xl lg:text-7xl uppercase tracking-tight text-white">
                   JOURNAL &amp; WRITING
                 </h1>

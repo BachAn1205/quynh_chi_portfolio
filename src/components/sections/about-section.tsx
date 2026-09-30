@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
-import { User, TrendingUp, BarChart3, Binary } from "lucide-react";
+import { ProjectImageUpload } from "@/components/ui/project-image-upload";
+import { TrendingUp, BarChart3, Binary } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 
 export function AboutSection() {
@@ -19,21 +19,7 @@ export function AboutSection() {
 
   return (
     <section id="about" className="py-20 sm:py-28 overflow-hidden bg-[#F6F6EE]">
-      <div className="max-w-6xl mx-auto px-4">
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-16 pb-8 border-b border-[#335C33]/15">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-[#335C33] flex items-center justify-center shrink-0 shadow-sm text-[#F6F6EE]">
-              <User className="w-6 h-6" />
-            </div>
-            <div>
-              <h2 className="font-anton text-4xl sm:text-6xl uppercase tracking-tight text-[#2C2E2B]">
-                {t("about.title")}
-              </h2>
-            </div>
-          </div>
-        </div>
-
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Narrative Block */}
         <div className="relative rounded-3xl border border-[#335C33]/15 bg-[#FAF9F2] blueprint-grid p-8 sm:p-12 mb-12 shadow-sm overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
@@ -54,23 +40,14 @@ export function AboutSection() {
 
             {/* Right: Photo & Tags */}
             <div className="lg:col-span-5 flex flex-col gap-6">
-              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-[#284828] border border-[#335C33]/20 shadow-md group">
-                <Image
-                  src="/images/quynhchi/about-analyst.jpg"
-                  alt="Quỳnh Chi analyzing econometrics data at desk"
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-4 left-4 right-4 text-white text-xs">
-                  <div className="font-mono text-[#4A7F4A] font-semibold text-[11px] mb-0.5">
-                    {t("about.photo.label")}
-                  </div>
-                  <div className="font-anton text-base uppercase">
-                    {t("about.photo.caption")}
-                  </div>
-                </div>
-              </div>
+              <ProjectImageUpload
+                slotId="about-analyst"
+                guideline={{
+                  vi: "Ảnh Quỳnh Chi đang làm việc, nghiên cứu số liệu kinh tế lượng tại bàn hoặc trao đổi học thuật.",
+                  en: "Photo of Quynh Chi researching econometrics data at desk or academic work."
+                }}
+                aspectRatio="aspect-[4/3]"
+              />
 
               {/* Data tags cluster */}
               <div className="p-4 rounded-2xl bg-[#FAF9F2] border border-[#335C33]/15">

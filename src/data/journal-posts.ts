@@ -1,4 +1,4 @@
-﻿export interface JournalSectionBlock {
+export interface JournalSectionBlock {
   heading: string;
   paragraphs: string[];
 }
@@ -18,7 +18,7 @@ export const journalPosts: JournalPost[] = [
   {
     slug: "circular-credits-for-farmers-c4f-harvard-prize",
     title: "Circular Credits for Farmers (C4F): Decentralizing Carbon Value in Dak Lak",
-    category: "// Economic Systems",
+    category: "Economic Systems",
     date: "Jan 2026",
     readTime: "6 min read",
     image: "/images/quynhchi/hero-coffee-farm.jpg",
@@ -51,7 +51,7 @@ export const journalPosts: JournalPost[] = [
   {
     slug: "revealing-disparities-through-econometrics",
     title: "Revealing Disparities: What SPSS ANOVA & Logistic Regression Taught Me About Rural Youth",
-    category: "// Predictive Analytics",
+    category: "Predictive Analytics",
     date: "Dec 2024",
     readTime: "5 min read",
     image: "/images/quynhchi/about-analyst.jpg",
@@ -83,7 +83,7 @@ export const journalPosts: JournalPost[] = [
   {
     slug: "cultural-preservation-meets-economic-systems",
     title: "Preserving the T’rưng: Why Indigenous Art Demands Sustainable Economic Ecosystems",
-    category: "// Cultural Advocacy",
+    category: "Cultural Advocacy",
     date: "Aug 2025",
     readTime: "5 min read",
     image: "/images/quynhchi/trung-heritage.jpg",
@@ -115,7 +115,7 @@ export const journalPosts: JournalPost[] = [
   {
     slug: "nsysu-computational-materials-lab-learnings",
     title: "Avoiding the 'Black Box': Reflections from the NSYSU Computational Lab",
-    category: "// Computational Science",
+    category: "Computational Science",
     date: "Jul 2026",
     readTime: "4 min read",
     image: "/images/quynhchi/cafloop-cascara.jpg",

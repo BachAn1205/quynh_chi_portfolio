@@ -1,14 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
-import { 
-  BrainCircuit, 
-  BarChart2, 
-  Boxes, 
-  Cpu, 
-  GraduationCap, 
-  FileCheck2 
+import { ProjectImageUpload } from "@/components/ui/project-image-upload";
+import {
+  BrainCircuit,
+  BarChart2,
+  Boxes,
+  Cpu,
+  GraduationCap
 } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 
@@ -44,7 +43,11 @@ export function TheMindSection() {
           metric: "Global Outstanding Prize @ Harvard Int'l Review",
         },
       ],
-      image: "/images/quynhchi/about-analyst.jpg",
+      slotId: "mind-research",
+      guideline: {
+        vi: "Ảnh chụp màn hình phân tích mô hình SPSS, bảng số liệu hồi quy/ANOVA, hoặc khảo sát thực địa học sinh Đắk Lắk.",
+        en: "SPSS econometrics model screenshot, ANOVA regression table, or field survey."
+      },
       tags: ["SPSS", "ANOVA", "Binary Logistic Regression", "Econometrics", "Blockchain Carbon Ledger"],
     },
     {
@@ -74,7 +77,11 @@ export function TheMindSection() {
           metric: "Global Top 30 Finalist @ Harvard Campus",
         },
       ],
-      image: "/images/quynhchi/cafloop-cascara.jpg",
+      slotId: "mind-startup",
+      guideline: {
+        vi: "Ảnh chụp thực tế vỏ cà phê thải, quy trình sấy chế biến Cascara hoặc sản phẩm bao bì CAFLOOP có mã QR.",
+        en: "Real coffee husk upcycling photo, cascara drying/processing, or CAFLOOP QR packaging."
+      },
       tags: ["Circular Economy", "COGS Budgeting", "Traceability QR", "CAC/LTV Modeling", "Supply Chain"],
     },
     {
@@ -104,7 +111,11 @@ export function TheMindSection() {
           metric: "Faculty Pitch • Clean Water Innovation",
         },
       ],
-      image: "/images/quynhchi/hero-coffee-farm.jpg",
+      slotId: "mind-lab",
+      guideline: {
+        vi: "Ảnh chụp phòng lab mô phỏng vật liệu DFT/VESTA, máy chủ HPC hoặc buổi báo cáo khoa học tại Đài Loan (NSYSU).",
+        en: "DFT/VESTA material simulation lab, Linux HPC terminal, or research presentation at NSYSU (Taiwan)."
+      },
       tags: ["C++", "Linux HPC", "VESTA", "DFT", "Materials Data", "Wastewater Pitch"],
     },
     {
@@ -122,7 +133,7 @@ export function TheMindSection() {
           metric: "18 Provinces • 50+ Workshop Attendees • SDG 12",
         },
         {
-          heading: "Shark Club & Geniusstar Mentor (Head of Expert)",
+          heading: "Shark club (head of eexpert) & Geniusstar business club (mentor of game theory )",
           detail:
             "Designed curricula on supply-demand elasticity. Taught Nash Equilibrium through a '2 Ice Cream Shops on a Beach' simulation, prompting students to deduce the equilibrium before revealing the formal mathematical theory.",
           metric: "Game Theory • Nash Equilibrium Pedagogy",
@@ -134,7 +145,11 @@ export function TheMindSection() {
           metric: "Championship Mentor • 200+ Attendees • SDG 8.6",
         },
       ],
-      image: "/images/quynhchi/trung-heritage.jpg",
+      slotId: "mind-pedagogy",
+      guideline: {
+        vi: "Ảnh sinh hoạt CLB Dakonomics, cuộc thi Green Ideas, hoặc buổi giảng dạy mô hình Game Theory cho học sinh.",
+        en: "Dakonomics club activities, Green Ideas competition, or Game Theory teaching session."
+      },
       tags: ["Dakonomics", "Game Theory", "CaseBank", "SDG 12", "SDG 8.6", "Youth For Impact"],
     },
   ];
@@ -143,7 +158,7 @@ export function TheMindSection() {
 
   return (
     <section id="the-mind" className="py-24 sm:py-32 overflow-hidden bg-[#F6F6EE] border-t border-[#335C33]/15">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 pb-8 border-b border-[#335C33]/15">
           <div className="flex items-center gap-4">
@@ -171,51 +186,46 @@ export function TheMindSection() {
         <div className="flex flex-wrap items-center gap-2 mb-12">
           <button
             onClick={() => setActiveTab("all")}
-            className={`px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all duration-200 cursor-pointer ${
-              activeTab === "all"
+            className={`px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all duration-200 cursor-pointer ${activeTab === "all"
                 ? "bg-[#335C33] text-[#F6F6EE] shadow-sm"
                 : "bg-[#FAF9F2] text-[#2C2E2B] border border-[#335C33]/20 hover:bg-[#E3EDD3]"
-            }`}
+              }`}
           >
             {t("mind.tab.all")}
           </button>
           <button
             onClick={() => setActiveTab("research")}
-            className={`px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all duration-200 cursor-pointer ${
-              activeTab === "research"
+            className={`px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all duration-200 cursor-pointer ${activeTab === "research"
                 ? "bg-[#335C33] text-[#F6F6EE] shadow-sm"
                 : "bg-[#FAF9F2] text-[#2C2E2B] border border-[#335C33]/20 hover:bg-[#E3EDD3]"
-            }`}
+              }`}
           >
             {t("mind.tab.research")}
           </button>
           <button
             onClick={() => setActiveTab("startup")}
-            className={`px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all duration-200 cursor-pointer ${
-              activeTab === "startup"
+            className={`px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all duration-200 cursor-pointer ${activeTab === "startup"
                 ? "bg-[#335C33] text-[#F6F6EE] shadow-sm"
                 : "bg-[#FAF9F2] text-[#2C2E2B] border border-[#335C33]/20 hover:bg-[#E3EDD3]"
-            }`}
+              }`}
           >
             {t("mind.tab.startup")}
           </button>
           <button
             onClick={() => setActiveTab("lab")}
-            className={`px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all duration-200 cursor-pointer ${
-              activeTab === "lab"
+            className={`px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all duration-200 cursor-pointer ${activeTab === "lab"
                 ? "bg-[#335C33] text-[#F6F6EE] shadow-sm"
                 : "bg-[#FAF9F2] text-[#2C2E2B] border border-[#335C33]/20 hover:bg-[#E3EDD3]"
-            }`}
+              }`}
           >
             {t("mind.tab.lab")}
           </button>
           <button
             onClick={() => setActiveTab("pedagogy")}
-            className={`px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all duration-200 cursor-pointer ${
-              activeTab === "pedagogy"
+            className={`px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all duration-200 cursor-pointer ${activeTab === "pedagogy"
                 ? "bg-[#335C33] text-[#F6F6EE] shadow-sm"
                 : "bg-[#FAF9F2] text-[#2C2E2B] border border-[#335C33]/20 hover:bg-[#E3EDD3]"
-            }`}
+              }`}
           >
             {t("mind.tab.pedagogy")}
           </button>
@@ -284,35 +294,13 @@ export function TheMindSection() {
                     </div>
                   </div>
 
-                  {/* Right 5 Cols: Visual Representation */}
-                  <div className="lg:col-span-5 flex flex-col gap-4">
-                    <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-[#284828] border border-[#335C33]/20 shadow-md group">
-                      <Image
-                        src={item.image}
-                        alt={item.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
-                      <div className="absolute bottom-4 left-4 right-4 text-white">
-                        <span className="text-[10px] font-mono font-bold text-[#4A7F4A] uppercase block mb-1">
-                          {t("mind.field")}
-                        </span>
-                        <div className="font-anton text-sm sm:text-base uppercase line-clamp-1">
-                          {item.title}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="p-4 rounded-2xl bg-[#E3EDD3] border border-[#335C33]/15 text-xs space-y-1.5">
-                      <div className="flex items-center gap-1.5 font-bold text-[#335C33]">
-                        <FileCheck2 className="w-4 h-4 text-[#8C5A35]" />
-                        <span>{t("mind.badge.verified")}</span>
-                      </div>
-                      <p className="text-[11px] text-[#2C2E2B]/70 leading-normal">
-                        {t("mind.badge.desc")}
-                      </p>
-                    </div>
+                  {/* Right 5 Cols: Project Image Upload */}
+                  <div className="lg:col-span-5 flex flex-col justify-start">
+                    <ProjectImageUpload
+                      slotId={item.slotId}
+                      guideline={item.guideline}
+                      aspectRatio="aspect-[4/3]"
+                    />
                   </div>
                 </div>
               </div>

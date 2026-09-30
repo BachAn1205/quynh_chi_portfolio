@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n";
+import { ProjectImageProvider } from "@/lib/project-images-context";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://quynhchi-portfolio.vercel.app"),
@@ -52,7 +53,9 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className="min-h-screen bg-[#F6F6EE] text-[#2C2E2B] font-sans antialiased selection:bg-[#335C33] selection:text-[#F6F6EE]">
         <LanguageProvider>
-          {children}
+          <ProjectImageProvider>
+            {children}
+          </ProjectImageProvider>
         </LanguageProvider>
       </body>
     </html>

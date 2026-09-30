@@ -186,30 +186,18 @@ export function TheCompetitorSection() {
   return (
     <>
       <section id="the-competitor" className="py-24 sm:py-32 overflow-hidden bg-[#F6F6EE] border-t border-[#335C33]/15">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 pb-8 border-b border-[#335C33]/15">
+          <div className="flex items-center justify-between gap-6 mb-12 pb-8 border-b border-[#335C33]/15">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-2xl bg-[#335C33] flex items-center justify-center shrink-0 shadow-sm text-[#F6F6EE]">
                 <Trophy className="w-6 h-6 text-[#E3EDD3]" />
               </div>
               <div>
-                <span className="font-mono text-xs font-semibold text-[#8C5A35] uppercase tracking-wider block">
-                  {"// Section 05 • Comprehensive Resume & Honors"}
-                </span>
                 <h2 className="font-anton text-4xl sm:text-6xl uppercase tracking-tight text-[#2C2E2B]">
                   {t("competitor.title")}
                 </h2>
               </div>
-            </div>
-
-            <div className="max-w-md">
-              <h3 className="font-anton text-xl uppercase text-[#335C33] mb-1">
-                {t("competitor.sub.title")}
-              </h3>
-              <p className="text-xs sm:text-sm text-[#2C2E2B]/60">
-                {t("competitor.sub.desc")}
-              </p>
             </div>
           </div>
 

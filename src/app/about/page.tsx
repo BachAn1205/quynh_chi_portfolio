@@ -1,11 +1,25 @@
-﻿import Image from "next/image";
+"use client";
+
+import Image from "next/image";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { User, Briefcase, Quote } from "lucide-react";
-import { AboutSection } from "@/components/sections/about-section";
 import { PageNav } from "@/components/ui/page-nav";
+import { ProjectImageUpload } from "@/components/ui/project-image-upload";
+import { useLanguage } from "@/lib/i18n";
 
 export default function AboutPage() {
+  const { t } = useLanguage();
+
+  const dataPills = [
+    { label: "1.6M Tons Ag Waste", bg: "bg-[#335C33] text-[#F6F6EE] -rotate-3" },
+    { label: "1.8M Tons CO2 Impact", bg: "bg-[#FAF9F2] text-[#2C2E2B] border border-[#335C33]/20 rotate-2" },
+    { label: "$80M Carbon Value Loss", bg: "bg-[#8C5A35] text-[#F6F6EE] -rotate-2" },
+    { label: "SPSS Econometric Modeling", bg: "bg-[#284828] text-[#E3EDD3] rotate-3" },
+    { label: "83.5% Predictive Accuracy", bg: "bg-[#FAF9F2] text-[#335C33] border border-[#335C33]/40 -rotate-1" },
+    { label: "T'rưng Oral Heritage", bg: "bg-[#335C33] text-[#F6F6EE] rotate-2" },
+    { label: "2,300+ Students Engaged", bg: "bg-[#8C5A35] text-[#F6F6EE] -rotate-3" },
+  ];
   const experiences = [
     {
       role: "Founder & Product Strategist",
@@ -64,16 +78,13 @@ export default function AboutPage() {
     <>
       <Navbar />
       <main className="pt-32 sm:pt-36 pb-20 bg-[#ebe6dd] min-h-screen">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Page Header */}
           <div className="flex items-center gap-4 mb-12 pb-6 border-b border-[#d8d2c7]">
             <div className="w-12 h-12 rounded-2xl bg-[#183e2b] flex items-center justify-center shrink-0 shadow-sm text-white">
               <User className="w-6 h-6" />
             </div>
             <div>
-              <span className="font-mono text-xs font-semibold text-[#d9531e] uppercase tracking-wider block">
-                {"// Personal Biography & Leadership"}
-              </span>
               <h1 className="font-anton text-4xl sm:text-6xl lg:text-7xl uppercase tracking-tight text-[#1c1510]">
                 ABOUT QUỲNH CHI
               </h1>
@@ -81,49 +92,64 @@ export default function AboutPage() {
           </div>
 
           {/* Large Glowing Portrait Banner */}
-          <div className="relative rounded-3xl overflow-hidden aspect-[16/9] sm:aspect-[21/9] max-h-[500px] bg-[#1a201a] mb-14 shadow-lg border border-[#d8d2c7]">
-            <Image
-              src="/images/quynhchi/hero-coffee-farm.jpg"
-              alt="Phan Hoàng Quỳnh Chi in Dak Lak"
-              fill
-              priority
-              className="object-cover object-center"
+          <div className="mb-14">
+            <ProjectImageUpload
+              slotId="about-banner"
+              guideline={{
+                vi: "Ảnh phong cảnh Tây Nguyên / Đắk Lắk hoặc ảnh ngoại cảnh hoạt động của Quỳnh Chi.",
+                en: "Central Highlands landscape or outdoor activity portrait of Quynh Chi."
+              }}
+              aspectRatio="aspect-[16/9] sm:aspect-[21/9]"
+              heightClass="min-h-[260px] sm:min-h-[380px]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent pointer-events-none" />
-            <div className="absolute bottom-6 left-6 right-6 text-white max-w-xl">
-              <span className="px-3 py-1 rounded-full bg-[#183e2b]/80 backdrop-blur-sm text-white text-xs font-mono font-semibold">
-                Dak Lak • Vietnam
-              </span>
-              <h2 className="font-anton text-2xl sm:text-4xl uppercase tracking-tight mt-2 text-white">
-                The Mind of an Analyst. The Heart of the Highlands.
-              </h2>
-            </div>
           </div>
 
-          {/* Bio & Philosophy 2-Column Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
-            <div className="rounded-3xl border border-[#d8d2c7] bg-[#f6f3eb] blueprint-grid p-8 sm:p-10 shadow-sm">
-              <span className="font-mono text-xs font-semibold text-[#d9531e] uppercase tracking-wider block mb-3">
-                {"// Background & Origins"}
-              </span>
-              <h2 className="font-anton text-2xl sm:text-3xl uppercase text-[#1c1510] mb-4">
-                Highland Roots &amp; Empirical Awakening
-              </h2>
-              <p className="text-sm sm:text-base text-[#382215] leading-relaxed">
-                Growing up in Dak Lak, the coffee capital of Vietnam, my childhood was defined by two sensory memories: the resonant echoes of the indigenous T’rưng instrument fading through loudspeakers, and the acrid smell of coffee husks burning along the highways. For years, I accepted these simply as the background of my hometown. But as I grew older, data revealed that 1.6M tons of burned agricultural waste creates 1.8M tons of CO2.stripping farmers of $80M in carbon value due to a lack of MRV tools.
-              </p>
-            </div>
+          {/* Hero Narrative Block: The Mind of an Analyst. The Heart of the Highlands. */}
+          <div className="relative rounded-3xl border border-[#d8d2c7] bg-[#f6f3eb] blueprint-grid p-8 sm:p-12 mb-20 shadow-sm overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+              {/* Left: Story Text */}
+              <div className="lg:col-span-7 space-y-6">
+                <h2 className="font-anton text-3xl sm:text-5xl uppercase tracking-tight text-[#1c1510] leading-tight">
+                  {t("about.headline")}
+                </h2>
 
-            <div className="rounded-3xl border border-[#d8d2c7] bg-[#f6f3eb] blueprint-grid p-8 sm:p-10 shadow-sm">
-              <span className="font-mono text-xs font-semibold text-[#183e2b] uppercase tracking-wider block mb-3">
-                {"// Core Philosophy"}
-              </span>
-              <h2 className="font-anton text-2xl sm:text-3xl uppercase text-[#1c1510] mb-4">
-                Empathy Meets Empirical Tools
-              </h2>
-              <p className="text-sm sm:text-base text-[#382215] leading-relaxed">
-                Empathy is merely a starting point. To protect what I love, I need empirical tools. Economics provides me with the systems-thinking required to design sustainable value chains, while Data Science equips me with the evidence needed to transform invisible assets.from a musical note to a carbon credit.into measurable, equitable impact. I don&apos;t just crunch numbers; I code solutions that protect the soil and elevate the soul of the Central Highlands.
-              </p>
+                <div className="space-y-4 text-sm sm:text-base text-[#382215] leading-relaxed font-normal">
+                  <p>{t("about.p1")}</p>
+                  <p>{t("about.p2")}</p>
+                  <p className="font-medium text-[#183e2b] bg-[#183e2b]/5 p-4 rounded-2xl border-l-4 border-[#183e2b]">
+                    <em>{t("about.p3")}</em>
+                  </p>
+                </div>
+              </div>
+
+              {/* Right: Photo & Tags */}
+              <div className="lg:col-span-5 flex flex-col gap-6">
+                <ProjectImageUpload
+                  slotId="about-analyst"
+                  guideline={{
+                    vi: "Ảnh Quỳnh Chi đang làm việc, nghiên cứu số liệu kinh tế lượng tại bàn hoặc trao đổi học thuật.",
+                    en: "Photo of Quynh Chi researching econometrics data at desk or academic work."
+                  }}
+                  aspectRatio="aspect-[4/3]"
+                />
+
+                {/* Data tags cluster */}
+                <div className="p-4 rounded-2xl bg-[#f6f3eb] border border-[#d8d2c7]">
+                  <span className="font-mono text-[10px] text-[#5e544a] font-bold uppercase tracking-wider block mb-2">
+                    {t("about.methods")}
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    {dataPills.map((pill, idx) => (
+                      <div
+                        key={idx}
+                        className={`px-3 py-1.5 rounded-full text-xs font-semibold shadow-xs transition-transform duration-200 hover:scale-105 select-none cursor-default ${pill.bg}`}
+                      >
+                        {pill.label}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -133,9 +159,6 @@ export default function AboutPage() {
             <blockquote className="font-anton text-2xl sm:text-4xl lg:text-5xl uppercase tracking-tight leading-tight text-white max-w-3xl">
               “I don&apos;t just crunch numbers; I code solutions that protect the soil and elevate the soul of the Central Highlands.”
             </blockquote>
-            <p className="mt-4 font-mono text-xs sm:text-sm text-[#d97706]">
-              {"// Phan Hoàng Quỳnh Chi . High School for The Gifted (VNUHCM)"}
-            </p>
           </div>
 
           {/* Experience Section */}
@@ -145,9 +168,6 @@ export default function AboutPage() {
                 <Briefcase className="w-6 h-6" />
               </div>
               <div>
-                <span className="font-mono text-xs font-semibold text-[#d9531e] uppercase tracking-wider block">
-                  {"// Track Record"}
-                </span>
                 <h2 className="font-anton text-4xl sm:text-6xl uppercase tracking-tight text-[#1c1510]">
                   EXPERIENCE &amp; INITIATIVES
                 </h2>
@@ -189,45 +209,50 @@ export default function AboutPage() {
 
           {/* Work Snapshots Gallery */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-24">
-            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-black/10 border border-[#d8d2c7] shadow-sm">
-              <Image
-                src="/images/quynhchi/cafloop-cascara.jpg"
-                alt="CAFLOOP Cascara Tea Venture"
-                fill
-                className="object-cover"
+            <div className="flex flex-col">
+              <span className="font-anton text-xs uppercase text-[#335C33] mb-2 tracking-wide">
+                CAFLOOP Cascara Tea &amp; QR
+              </span>
+              <ProjectImageUpload
+                slotId="mind-startup"
+                guideline={{
+                  vi: "Ảnh chế biến vỏ cà phê hoặc bao bì CAFLOOP.",
+                  en: "CAFLOOP coffee husk or packaging photo."
+                }}
+                aspectRatio="aspect-[4/3]"
               />
-              <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 to-transparent text-white text-xs font-medium">
-                CAFLOOP: Circular Cascara Tea &amp; QR Traceability
-              </div>
             </div>
 
-            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-black/10 border border-[#d8d2c7] shadow-sm">
-              <Image
-                src="/images/quynhchi/about-analyst.jpg"
-                alt="Quantitative Research at desk"
-                fill
-                className="object-cover"
+            <div className="flex flex-col">
+              <span className="font-anton text-xs uppercase text-[#335C33] mb-2 tracking-wide">
+                SPSS Quantitative Econometrics
+              </span>
+              <ProjectImageUpload
+                slotId="mind-research"
+                guideline={{
+                  vi: "Ảnh mô hình hồi quy SPSS hoặc số liệu nghiên cứu.",
+                  en: "SPSS regression model or research survey data."
+                }}
+                aspectRatio="aspect-[4/3]"
               />
-              <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 to-transparent text-white text-xs font-medium">
-                SPSS ANOVA &amp; Logistic Regression Research
-              </div>
             </div>
 
-            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-black/10 border border-[#d8d2c7] shadow-sm">
-              <Image
-                src="/images/quynhchi/trung-heritage.jpg"
-                alt="Traditional T'rưng Solo Performance"
-                fill
-                className="object-cover"
+            <div className="flex flex-col">
+              <span className="font-anton text-xs uppercase text-[#335C33] mb-2 tracking-wide">
+                T&apos;rưng Cultural Education
+              </span>
+              <ProjectImageUpload
+                slotId="heart-trung-preservation"
+                guideline={{
+                  vi: "Ảnh trình diễn hoặc lớp học đàn T'rưng.",
+                  en: "T'rưng performance or classroom workshop photo."
+                }}
+                aspectRatio="aspect-[4/3]"
               />
-              <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 to-transparent text-white text-xs font-medium">
-                T&apos;rưng Cultural Education &amp; Solo Recitals
-              </div>
             </div>
           </div>
         </div>
       </main>
-      <AboutSection />
       <PageNav
         prevHref="/"
         prevLabel="Home"

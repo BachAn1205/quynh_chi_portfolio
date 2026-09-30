@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { X, Download, FileText, Award, BookOpen, Sparkles } from "lucide-react";
 
@@ -63,9 +63,6 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
           {/* Header */}
           <div className="border-b border-[#335C33]/15 pb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
-              <span className="font-mono text-xs text-[#8C5A35] font-semibold uppercase tracking-wider block mb-1">
-                {"// Candidate Resume & Portfolio Dossier"}
-              </span>
               <h1 className="font-anton text-3xl sm:text-4xl uppercase tracking-tight text-[#2C2E2B]">
                 PHAN HOÀNG QUỲNH CHI
               </h1>

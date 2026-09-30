@@ -10,9 +10,6 @@ export default function NotFound() {
       <main className="pt-40 pb-28 min-h-[75vh] flex items-center justify-center">
         <div className="max-w-2xl mx-auto px-4 text-center">
           <div className="rounded-3xl border border-[#d6d6d6] bg-[#f5f2eb] blueprint-grid p-12 sm:p-20 shadow-sm">
-            <span className="font-mono text-sm font-semibold text-[#d9531e] uppercase tracking-wider block mb-2">
-              {"// Error 404"}
-            </span>
             <h1 className="font-anton text-7xl sm:text-9xl uppercase tracking-tight text-black mb-6 leading-none">
               404
             </h1>

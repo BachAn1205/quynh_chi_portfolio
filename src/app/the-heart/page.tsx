@@ -1,4 +1,4 @@
-﻿import { Navbar } from "@/components/layout/navbar";
+import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { TheHeartSection } from "@/components/sections/the-heart-section";
 import { PageNav } from "@/components/ui/page-nav";
@@ -12,11 +12,10 @@ export default function TheHeartPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-1 flex flex-col min-h-screen">
+      <main className="flex-1 flex flex-col min-h-screen bg-[#EAF1E4]">
         <TheHeartSection />
-        <div className="bg-[#0b1710]">
+        <div className="bg-[#EAF1E4]">
           <PageNav
-            dark
             prevHref="/the-mind"
             prevLabel="The Mind"
             nextHref="/the-competitor"

@@ -1,9 +1,11 @@
+"use client";
+
 import Link from "next/link";
-import Image from "next/image";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { caseStudies } from "@/data/case-studies";
 import { BookOpen, ArrowUpRight } from "lucide-react";
+import { ProjectImageUpload } from "@/components/ui/project-image-upload";
 
 export default function CaseStudyListPage() {
   return (
@@ -53,19 +55,44 @@ export default function CaseStudyListPage() {
                   {project.subtitle}
                 </p>
 
-                {/* Large Image Preview Card */}
-                <Link
-                  href={`/case-study/${project.slug}`}
-                  className="block relative rounded-3xl overflow-hidden aspect-[16/9] sm:aspect-[21/9] max-h-[520px] bg-[#1a201a] border border-[#2c332c] shadow-2xl transition-all duration-300 group-hover:border-[#e74723]/50"
-                >
-                  <Image
-                    src={project.heroImage}
-                    alt={project.title}
-                    fill
-                    priority={idx === 0}
-                    className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                {/* Large Image Preview Card / Upload */}
+                <div className="mb-4">
+                  <ProjectImageUpload
+                    slotId={
+                      project.slug === "cafloop-circular-coffee-husk"
+                        ? "mind-startup"
+                        : project.slug === "predictive-econometrics-sustainable-careers"
+                        ? "mind-research"
+                        : "heart-trung-preservation"
+                    }
+                    guideline={{
+                      vi:
+                        project.slug === "cafloop-circular-coffee-husk"
+                          ? "Ảnh chụp thực tế vỏ cà phê, chế biến Cascara hoặc bao bì thương mại CAFLOOP."
+                          : project.slug === "predictive-econometrics-sustainable-careers"
+                          ? "Ảnh phân tích mô hình kinh tế lượng SPSS, bảng số liệu hoặc khảo sát học sinh Đắk Lắk."
+                          : "Ảnh trình diễn nhạc cụ dân tộc đàn T'rưng hoặc lớp học truyền dạy âm nhạc Tây Nguyên.",
+                      en:
+                        project.slug === "cafloop-circular-coffee-husk"
+                          ? "Real coffee husk processing photo or commercial CAFLOOP packaging."
+                          : project.slug === "predictive-econometrics-sustainable-careers"
+                          ? "SPSS econometric model screenshot, regression tables, or survey photo."
+                          : "T'rưng performance or classroom workshop photo.",
+                    }}
+                    aspectRatio="aspect-[16/9] sm:aspect-[21/9]"
+                    heightClass="min-h-[260px] sm:min-h-[400px]"
                   />
-                </Link>
+                </div>
+
+                <div className="flex justify-end">
+                  <Link
+                    href={`/case-study/${project.slug}`}
+                    className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#e74723] hover:underline"
+                  >
+                    <span>Xem chi tiết Case Study</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
