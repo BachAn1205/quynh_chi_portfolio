@@ -74,8 +74,32 @@ export function ProjectImageUpload({
   };
 
   const processUpload = async (file: File) => {
-    if (!file.type.startsWith("image/")) {
-      alert(lang === "vi" ? "Vui lòng chọn một tệp hình ảnh!" : "Please select an image file!");
+    const fileName = file.name.toLowerCase();
+    const isImageExt = /\.(png|jpe?g|webp|gif|svg|jfif|bmp|avif)$/i.test(fileName);
+    const isImageMime = file.type ? file.type.startsWith("image/") : false;
+
+    if (!isImageMime && !isImageExt) {
+      if (fileName.endsWith(".pdf") || file.type === "application/pdf") {
+        alert(
+          lang === "vi"
+            ? "⚠️ Bạn đang chọn tệp PDF (thường do Canva mặc định chọn PDF).\n\n👉 Cách khắc phục: Trên Canva, bạn bấm 'Chia sẻ' > 'Tải xuống' > đổi mục 'Loại tệp' thành PNG hoặc JPG rồi tải lại nhé!"
+            : "⚠️ You selected a PDF file (often default in Canva).\n\nPlease download from Canva as PNG or JPG and try again!"
+        );
+      } else if (fileName.endsWith(".zip") || file.type.includes("zip")) {
+        alert(
+          lang === "vi"
+            ? "⚠️ Bạn đang chọn tệp nén ZIP. Vui lòng giải nén để lấy file ảnh PNG/JPG bên trong rồi tải lên nhé!"
+            : "⚠️ You selected a ZIP file. Please extract the PNG/JPG image first!"
+        );
+      } else if (fileName.endsWith(".pptx") || fileName.endsWith(".ppt")) {
+        alert(
+          lang === "vi"
+            ? "⚠️ Bạn đang chọn file PowerPoint. Vui lòng lưu slide thành file ảnh PNG/JPG rồi tải lên nhé!"
+            : "⚠️ You selected a PowerPoint file. Please save as PNG/JPG first!"
+        );
+      } else {
+        alert(lang === "vi" ? "Vui lòng chọn một tệp hình ảnh (.png, .jpg, .webp)!" : "Please select an image file (.png, .jpg, .webp)!");
+      }
       return;
     }
 
@@ -154,7 +178,7 @@ export function ProjectImageUpload({
         <input
           ref={fileInputRef}
           type="file"
-          accept="image/*"
+          accept="image/png,image/jpeg,image/jpg,image/webp,image/gif,image/*,.png,.jpg,.jpeg,.webp"
           className="hidden"
           onChange={handleFileChange}
         />
@@ -167,6 +191,8 @@ export function ProjectImageUpload({
               alt="Project media"
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               onError={() => setImageLoadError(true)}
+              loading="eager"
+              fetchPriority="high"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 

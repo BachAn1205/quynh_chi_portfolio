@@ -3,7 +3,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { ArrowDown, ArrowRight, FileText, ShieldCheck } from "lucide-react";
+import {
+  ArrowRight,
+  FileText,
+  ArrowUpRight,
+  Package,
+  TrendingUp,
+  QrCode,
+  Layers,
+  HeartHandshake,
+  Network,
+  Sparkles,
+} from "lucide-react";
 import { ResumeModal } from "@/components/ui/resume-modal";
 import { ProjectImageUpload } from "@/components/ui/project-image-upload";
 import { AvatarUpload } from "@/components/ui/avatar-upload";
@@ -14,6 +25,39 @@ export function Hero() {
   const [resumeOpen, setResumeOpen] = useState(false);
   const { t } = useLanguage();
 
+  const founderRoles = [
+    {
+      icon: Package,
+      titleKey: "hero.cafloop.role1.title",
+      descKey: "hero.cafloop.role1.desc",
+    },
+    {
+      icon: TrendingUp,
+      titleKey: "hero.cafloop.role2.title",
+      descKey: "hero.cafloop.role2.desc",
+    },
+    {
+      icon: QrCode,
+      titleKey: "hero.cafloop.role3.title",
+      descKey: "hero.cafloop.role3.desc",
+    },
+    {
+      icon: Layers,
+      titleKey: "hero.cafloop.role4.title",
+      descKey: "hero.cafloop.role4.desc",
+    },
+    {
+      icon: HeartHandshake,
+      titleKey: "hero.cafloop.role5.title",
+      descKey: "hero.cafloop.role5.desc",
+    },
+    {
+      icon: Network,
+      titleKey: "hero.cafloop.role6.title",
+      descKey: "hero.cafloop.role6.desc",
+    },
+  ];
+
   const pillars = [
     {
       id: 0,
@@ -23,8 +67,8 @@ export function Hero() {
       tag: t("hero.slide0.tag"),
       stat: t("hero.slide0.stat"),
       guideline: {
-        vi: "Ảnh minh họa dự án CAFLOOP: Vỏ cà phê, quy trình phơi sấy, hoặc bao bì thương mại có mã QR.",
-        en: "CAFLOOP project photo: coffee husk, drying process, or commercial QR packaging."
+        vi: "Ảnh Quỳnh Chi đang trực tiếp làm CAFLOOP / sản phẩm trà Cascara / quy trình phơi ủ xử lý / bao bì sản phẩm có mã QR.",
+        en: "Quynh Chi working on CAFLOOP, Cascara tea products, processing workflows, or QR-traceable packaging."
       },
       alt: "Phan Hoàng Quỳnh Chi in Dak Lak Coffee Farm",
       description: t("hero.slide0.desc"),
@@ -68,38 +112,44 @@ export function Hero() {
     <>
       <section className="relative pt-32 sm:pt-36 pb-12 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Top Headline Section */}
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 mb-10 sm:mb-14">
-            <div className="flex flex-col md:flex-row md:items-center gap-6">
-              <AvatarUpload />
-              <div>
-                <h1 className="font-anton text-3xl sm:text-5xl md:text-6xl lg:text-7xl uppercase tracking-tight text-[#242220] leading-none break-words">
-                  PHAN HOÀNG <span className="text-[#7B0323]">QUỲNH CHI</span>
-                </h1>
-                <p className="text-sm sm:text-lg md:text-xl text-[#7B0323] font-semibold mt-2 min-h-[1.75rem] flex items-center">
-                  {t("hero.subtitle")}
-                </p>
+          {/* Top Headline Section with Enlarged Avatar & Actions under Name */}
+          <div className="flex flex-col md:flex-row items-center md:items-start gap-8 lg:gap-12 mb-10 sm:mb-14">
+            {/* Left Column: Enlarged Portrait Avatar */}
+            <div className="shrink-0">
+              <AvatarUpload
+                sizeClass="w-52 h-64 sm:w-60 sm:h-76 md:w-68 md:h-84 lg:w-76 lg:h-96"
+                showGuide={true}
+              />
+            </div>
+
+            {/* Right Column: Name, Slogan, Badges & Action Buttons */}
+            <div className="flex-1 flex flex-col justify-center pt-1 sm:pt-3 text-center md:text-left">
+              <h1 className="font-anton text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase tracking-tight text-[#242220] leading-[1.05] break-words">
+                PHAN HOÀNG <span className="text-[#7B0323]">QUỲNH CHI</span>
+              </h1>
+              <p className="text-sm sm:text-lg md:text-xl text-[#7B0323] font-semibold mt-3 mb-6 min-h-[1.75rem] flex items-center justify-center md:justify-start">
+                {t("hero.subtitle")}
+              </p>
+
+              {/* Action Buttons directly under the Name & Slogan */}
+              <div className="flex flex-wrap items-center justify-center md:justify-start gap-3.5">
+                <Link
+                  href="/about"
+                  className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full text-xs sm:text-sm font-semibold bg-[#7B0323] text-white hover:bg-[#5E021A] transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 cursor-pointer"
+                >
+                  <span>{t("hero.cta.explore")}</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+
+                <button
+                  onClick={() => setResumeOpen(true)}
+                  className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full text-xs sm:text-sm font-semibold bg-[#FAF7F2] border border-[#7B0323]/25 text-[#242220] hover:bg-[#7B0323]/10 hover:border-[#7B0323]/50 transition-all duration-200 shadow-xs hover:shadow cursor-pointer"
+                >
+                  <FileText className="w-4 h-4 text-[#7B0323]" />
+                  <span>{t("hero.cta.resume")}</span>
+                </button>
               </div>
             </div>
-          </div>
-
-          {/* Action Buttons Row */}
-          <div className="flex flex-wrap items-center gap-3 mb-10 sm:mb-12">
-            <Link
-              href="/about"
-              className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold bg-[#7B0323] text-white hover:bg-[#5E021A] transition-all duration-200 shadow-sm hover:shadow hover:-translate-y-0.5 cursor-pointer"
-            >
-              <span>{t("hero.cta.explore")}</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-
-            <button
-              onClick={() => setResumeOpen(true)}
-              className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold bg-[#FAF7F2] border border-[#7B0323]/25 text-[#242220] hover:bg-[#7B0323]/10 hover:border-[#7B0323]/50 transition-all duration-200 shadow-sm cursor-pointer"
-            >
-              <FileText className="w-4 h-4 text-[#7B0323]" />
-              <span>{t("hero.cta.resume")}</span>
-            </button>
           </div>
 
           {/* Subtle Horizontal Divider */}
@@ -107,46 +157,160 @@ export function Hero() {
 
           {/* Featured Showcase Card */}
           <div className="relative rounded-3xl border border-[#1B3B2B]/15 bg-[#FFFFFF] blueprint-grid p-4 sm:p-8 lg:p-10 overflow-hidden shadow-sm">
-            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-6 relative z-20">
-              <div className="flex-1 min-w-0">
-                <h2 className="font-anton text-xl sm:text-3xl lg:text-4xl uppercase text-[#242220] tracking-tight">
-                  {current.title}
-                </h2>
-                <p className="text-xs sm:text-sm text-[#242220]/65 mt-1 max-w-xl min-h-[2.5rem] sm:min-h-[2.75rem] leading-relaxed">
-                  {current.description}
-                </p>
-              </div>
+            {activeSlide === 0 ? (
+              /* ─── TAB 1: CAFLOOP FOUNDER SECTION (SLIDE 1 MOCKUP) ─── */
+              <div>
+                {/* Header: 01, Slogan, Intro & View Project CTA */}
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-6 relative z-20">
+                  <div className="flex-1 min-w-0">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#7B0323]/10 border border-[#7B0323]/20 mb-2">
+                      <span className="font-mono text-xs font-bold text-[#7B0323]">01</span>
+                      <span className="text-[10px] font-mono uppercase text-[#7B0323] font-semibold tracking-wider">
+                        {t("hero.slide0.category")}
+                      </span>
+                    </div>
+                    <h2 className="font-anton text-2xl sm:text-3xl lg:text-4xl uppercase text-[#242220] tracking-tight leading-tight">
+                      {t("hero.cafloop.slogan")}
+                    </h2>
+                    <p className="text-xs sm:text-sm text-[#242220]/75 mt-2 max-w-3xl leading-relaxed">
+                      {t("hero.cafloop.desc")}
+                    </p>
+                  </div>
 
-              <div className="flex flex-col sm:items-end gap-2.5 shrink-0 pt-1">
-                <div className="flex items-center gap-2">
-                  {pillars.map((item, i) => (
-                    <button
-                      key={item.id}
-                      onClick={() => setActiveSlide(i)}
-                      aria-label={`View slide ${i + 1}: ${item.title}`}
-                      className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${i === activeSlide
-                        ? "w-8 bg-[#7B0323]"
-                        : "w-3 bg-[#1B3B2B]/20 hover:bg-[#1B3B2B]/40"
-                        }`}
-                    />
-                  ))}
+                  <div className="flex flex-col sm:items-end gap-3 shrink-0 pt-1">
+                    <Link
+                      href="/the-mind#cafloop"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-mono font-semibold bg-[#FAF7F2] border border-[#1B3B2B]/20 text-[#1B3B2B] hover:bg-[#1B3B2B] hover:text-white transition-all shadow-xs cursor-pointer"
+                    >
+                      <span>{t("hero.cafloop.viewProject")}</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </Link>
+
+                    {/* Slide Dots Indicator */}
+                    <div className="flex items-center gap-2 pt-1">
+                      {pillars.map((item, i) => (
+                        <button
+                          key={item.id}
+                          onClick={() => setActiveSlide(i)}
+                          aria-label={`View slide ${i + 1}: ${item.title}`}
+                          className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${i === activeSlide
+                            ? "w-8 bg-[#7B0323]"
+                            : "w-3 bg-[#1B3B2B]/20 hover:bg-[#1B3B2B]/40"
+                            }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Horizontal Image Upload */}
+                <div className="relative">
+                  <ProjectImageUpload
+                    key="hero-cafloop"
+                    slotId="hero-cafloop"
+                    guideline={{
+                      vi: "Ảnh Chi đang trực tiếp làm CAFLOOP / sản phẩm trà Cascara / quy trình xử lý phơi sấy / bao bì sản phẩm + mã QR truy xuất.",
+                      en: "Photo of Quynh Chi working on CAFLOOP, Cascara tea products, processing workflows, or QR-traceable packaging."
+                    }}
+                    aspectRatio="aspect-[16/9] sm:aspect-[21/9]"
+                    heightClass="min-h-[260px] sm:min-h-[360px]"
+                  />
+                </div>
+
+                {/* Founder Section Header Bar */}
+                <div className="mt-8 mb-4 px-4 py-2.5 rounded-2xl bg-[#E2ECE5]/70 border border-[#1B3B2B]/15 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-[#1B3B2B]" />
+                    <span className="font-anton text-xs sm:text-sm uppercase tracking-wider text-[#1B3B2B]">
+                      {t("hero.cafloop.founderRoles")}
+                    </span>
+                  </div>
+                  <span className="text-[10px] font-mono text-[#1B3B2B]/80 font-semibold uppercase tracking-wider hidden sm:inline">
+                    6 Core Capabilities
+                  </span>
+                </div>
+
+                {/* 6 Founder Capabilities Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3 mb-2">
+                  {founderRoles.map((role, rIdx) => {
+                    const Icon = role.icon;
+                    return (
+                      <div
+                        key={rIdx}
+                        className="rounded-2xl border border-[#1B3B2B]/15 bg-[#FAF7F2] p-3.5 flex flex-col justify-between hover:border-[#7B0323]/40 hover:shadow-xs transition-all duration-200 group"
+                      >
+                        <div>
+                          <div className="flex items-center justify-between mb-2 pb-1.5 border-b border-[#1B3B2B]/10">
+                            <span className="text-[10px] font-mono font-bold text-[#7B0323]">
+                              0{rIdx + 1}
+                            </span>
+                            <Icon className="w-3.5 h-3.5 text-[#1B3B2B] group-hover:text-[#7B0323] transition-colors" />
+                          </div>
+                          <h4 className="font-anton text-xs uppercase text-[#1B3B2B] mb-1.5 leading-snug tracking-tight">
+                            {t(role.titleKey)}
+                          </h4>
+                          <p className="text-[11px] text-[#242220]/75 leading-relaxed">
+                            {t(role.descKey)}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
-            </div>
+            ) : (
+              /* ─── TABS 2 & 3: STANDARD SHOWCASE LAYOUT ─── */
+              <div>
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-6 relative z-20">
+                  <div className="flex-1 min-w-0">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#7B0323]/10 border border-[#7B0323]/20 mb-2">
+                      <span className="font-mono text-xs font-bold text-[#7B0323]">
+                        0{activeSlide + 1}
+                      </span>
+                      <span className="text-[10px] font-mono uppercase text-[#7B0323] font-semibold tracking-wider">
+                        {current.category}
+                      </span>
+                    </div>
+                    <h2 className="font-anton text-xl sm:text-3xl lg:text-4xl uppercase text-[#242220] tracking-tight">
+                      {current.title}
+                    </h2>
+                    <p className="text-xs sm:text-sm text-[#242220]/70 mt-1 max-w-xl min-h-[2.5rem] sm:min-h-[2.75rem] leading-relaxed">
+                      {current.description}
+                    </p>
+                  </div>
 
-            {/* Project Image Upload & Preview */}
-            <div className="relative">
-              <ProjectImageUpload
-                key={current.slotId}
-                slotId={current.slotId}
-                guideline={current.guideline}
-                aspectRatio="aspect-[16/9] sm:aspect-[21/9]"
-                heightClass="min-h-[260px] sm:min-h-[380px]"
-              />
-            </div>
+                  <div className="flex flex-col sm:items-end gap-2.5 shrink-0 pt-1">
+                    <div className="flex items-center gap-2">
+                      {pillars.map((item, i) => (
+                        <button
+                          key={item.id}
+                          onClick={() => setActiveSlide(i)}
+                          aria-label={`View slide ${i + 1}: ${item.title}`}
+                          className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${i === activeSlide
+                            ? "w-8 bg-[#7B0323]"
+                            : "w-3 bg-[#1B3B2B]/20 hover:bg-[#1B3B2B]/40"
+                            }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Project Image Upload & Preview */}
+                <div className="relative">
+                  <ProjectImageUpload
+                    key={current.slotId}
+                    slotId={current.slotId}
+                    guideline={current.guideline}
+                    aspectRatio="aspect-[16/9] sm:aspect-[21/9]"
+                    heightClass="min-h-[260px] sm:min-h-[380px]"
+                  />
+                </div>
+              </div>
+            )}
 
             {/* 3 Tab Selector Buttons */}
-            <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 pt-6 border-t border-[#1B3B2B]/10">
               {pillars.map((item, idx) => {
                 const isSelected = idx === activeSlide;
                 return (

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState, useCallback } from "react";
+import { compressImage } from "@/lib/image-compress";
 
 interface ProjectImagesContextType {
   images: Record<string, string>;
@@ -20,46 +21,59 @@ const ProjectImagesContext = createContext<ProjectImagesContextType>({
 
 const STORAGE_KEY = "quynhchi_portfolio_project_images";
 
-export function ProjectImageProvider({ children }: { children: React.ReactNode }) {
-  const [images, setImages] = useState<Record<string, string>>({});
-  const [isLoading, setIsLoading] = useState(true);
+export const DEFAULT_STATIC_IMAGES: Record<string, string> = {
+  "profile-avatar": "/images/quynhchi/profile-avatar.jpg",
+  "hero-trung": "/images/quynhchi/trung-collage-1920x820.png",
+  "hero-cafloop": "/images/quynhchi/hero-coffee-farm.jpg",
+  "hero-econometrics": "/images/quynhchi/about-analyst.jpg",
+  "contact-portrait": "/images/quynhchi/contact-portrait.jpg",
+};
 
-  // Fetch initial images from API with localStorage fallback
-  const fetchImages = useCallback(async () => {
-    try {
-      // First try localStorage for instant UI display
-      if (typeof window !== "undefined") {
+export function ProjectImageProvider({
+  children,
+  initialImages,
+}: {
+  children: React.ReactNode;
+  initialImages?: Record<string, string>;
+}) {
+  const [images, setImages] = useState<Record<string, string>>(() => {
+    let base = { ...DEFAULT_STATIC_IMAGES, ...(initialImages || {}) };
+    if (typeof window !== "undefined") {
+      try {
         const cached = localStorage.getItem(STORAGE_KEY);
         if (cached) {
-          try {
-            setImages(JSON.parse(cached));
-          } catch {
-            // ignore
-          }
+          const parsed = JSON.parse(cached);
+          base = { ...base, ...parsed };
         }
+      } catch {
+        // ignore
       }
+    }
+    return base;
+  });
 
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Background sync with API (stale-while-revalidate pattern)
+  const fetchImages = useCallback(async () => {
+    try {
       const res = await fetch("/api/upload");
       if (res.ok) {
         const data = await res.json();
         setImages((prev) => {
-          // If server returned valid keys, use server state as authority; keep only unsynced base64 uploads if any
-          const merged = { ...data };
-          for (const key in prev) {
-            if (prev[key]?.startsWith("data:") && !merged[key]) {
-              merged[key] = prev[key];
-            }
-          }
+          const merged = { ...DEFAULT_STATIC_IMAGES, ...prev, ...data };
           if (typeof window !== "undefined") {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
+            try {
+              localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
+            } catch (e) {
+              console.warn("LocalStorage save warning:", e);
+            }
           }
           return merged;
         });
       }
     } catch (err) {
-      console.error("Failed to load project images:", err);
-    } finally {
-      setIsLoading(false);
+      console.warn("Background images sync:", err);
     }
   }, []);
 
@@ -75,10 +89,17 @@ export function ProjectImageProvider({ children }: { children: React.ReactNode }
   );
 
   const uploadImage = useCallback(async (slotId: string, file: File): Promise<string | null> => {
+    let fileToUpload = file;
+    try {
+      fileToUpload = await compressImage(file);
+    } catch (compressErr) {
+      console.warn("Client-side compression fallback to original:", compressErr);
+    }
+
     try {
       const formData = new FormData();
       formData.append("slotId", slotId);
-      formData.append("file", file);
+      formData.append("file", fileToUpload);
 
       const res = await fetch("/api/upload", {
         method: "POST",
@@ -86,7 +107,8 @@ export function ProjectImageProvider({ children }: { children: React.ReactNode }
       });
 
       if (!res.ok) {
-        throw new Error("Upload failed");
+        const errText = await res.text().catch(() => "");
+        throw new Error(`Upload failed: ${res.status} ${errText}`);
       }
 
       const data = await res.json();
@@ -95,7 +117,11 @@ export function ProjectImageProvider({ children }: { children: React.ReactNode }
       setImages((prev) => {
         const next = { ...prev, [slotId]: newUrl };
         if (typeof window !== "undefined") {
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+          try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+          } catch (e) {
+            console.warn("LocalStorage save warning:", e);
+          }
         }
         return next;
       });
@@ -111,14 +137,18 @@ export function ProjectImageProvider({ children }: { children: React.ReactNode }
           setImages((prev) => {
             const next = { ...prev, [slotId]: base64Url };
             if (typeof window !== "undefined") {
-              localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+              try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+              } catch (e) {
+                console.warn("LocalStorage quota error:", e);
+              }
             }
             return next;
           });
           resolve(base64Url);
         };
         reader.onerror = () => resolve(null);
-        reader.readAsDataURL(file);
+        reader.readAsDataURL(fileToUpload);
       });
     }
   }, []);

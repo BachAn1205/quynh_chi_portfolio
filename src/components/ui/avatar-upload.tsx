@@ -10,12 +10,14 @@ interface AvatarUploadProps {
   slotId?: string;
   sizeClass?: string;
   className?: string;
+  showGuide?: boolean;
 }
 
 export function AvatarUpload({
   slotId = "profile-avatar",
-  sizeClass = "w-24 h-24 sm:w-28 sm:h-28",
+  sizeClass = "w-48 h-56 sm:w-60 sm:h-72 md:w-68 md:h-80 lg:w-76 lg:h-92",
   className = "",
+  showGuide = true,
 }: AvatarUploadProps) {
   const { getImage, uploadImage, deleteImage } = useProjectImages();
   const { lang } = useLanguage();
@@ -38,8 +40,26 @@ export function AvatarUpload({
   };
 
   const processUpload = async (file: File) => {
-    if (!file.type.startsWith("image/")) {
-      alert(lang === "vi" ? "Vui lòng chọn một tệp hình ảnh!" : "Please select an image file!");
+    const fileName = file.name.toLowerCase();
+    const isImageExt = /\.(png|jpe?g|webp|gif|svg|jfif|bmp|avif)$/i.test(fileName);
+    const isImageMime = file.type ? file.type.startsWith("image/") : false;
+
+    if (!isImageMime && !isImageExt) {
+      if (fileName.endsWith(".pdf") || file.type === "application/pdf") {
+        alert(
+          lang === "vi"
+            ? "⚠️ Bạn đang chọn tệp PDF (thường do Canva mặc định chọn PDF).\n\n👉 Cách khắc phục: Trên Canva, bạn bấm 'Chia sẻ' > 'Tải xuống' > đổi mục 'Loại tệp' thành PNG hoặc JPG rồi tải lại nhé!"
+            : "⚠️ You selected a PDF file. Please download as PNG or JPG and try again!"
+        );
+      } else if (fileName.endsWith(".zip") || file.type.includes("zip")) {
+        alert(
+          lang === "vi"
+            ? "⚠️ Bạn đang chọn tệp nén ZIP. Vui lòng giải nén để lấy file ảnh PNG/JPG bên trong rồi tải lên nhé!"
+            : "⚠️ You selected a ZIP file. Please extract the PNG/JPG image first!"
+        );
+      } else {
+        alert(lang === "vi" ? "Vui lòng chọn một tệp hình ảnh (.png, .jpg, .webp)!" : "Please select an image file (.png, .jpg, .webp)!");
+      }
       return;
     }
 
@@ -81,35 +101,38 @@ export function AvatarUpload({
   const hasValidAvatar = Boolean(currentAvatar && !imageError);
 
   return (
-    <div className={`flex flex-col gap-2.5 max-w-full ${className}`}>
-      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3.5">
-        {/* Avatar Box */}
-        <div
-          onClick={() => fileInputRef.current?.click()}
-          className={`relative ${sizeClass} rounded-3xl overflow-hidden shrink-0 shadow-md border-2 cursor-pointer transition-all duration-300 group ${
-            hasValidAvatar
-              ? "border-[#1B3B2B]/40 bg-[#1B3B2B]"
-              : "border-dashed border-[#1B3B2B]/40 bg-[#E2ECE5]/50 hover:border-[#1B3B2B] hover:bg-[#E2ECE5]/80"
-          }`}
-          title={lang === "vi" ? "Nhấp để tải ảnh đại diện lên" : "Click to upload profile photo"}
-        >
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept="image/*"
-            className="hidden"
-            onChange={handleFileChange}
-          />
+    <div className={`flex flex-col items-center sm:items-start gap-3 ${className}`}>
+      {/* Avatar Box */}
+      <div
+        onClick={() => fileInputRef.current?.click()}
+        className={`relative ${sizeClass} rounded-3xl overflow-hidden shrink-0 shadow-lg border-2 cursor-pointer transition-all duration-300 group ${
+          hasValidAvatar
+            ? "border-[#1B3B2B]/30 bg-[#FAF7F2] hover:shadow-xl"
+            : "border-dashed border-[#1B3B2B]/40 bg-[#E2ECE5]/50 hover:border-[#1B3B2B] hover:bg-[#E2ECE5]/80 hover:scale-[1.01]"
+        }`}
+        title={lang === "vi" ? "Nhấp để tải hoặc thay đổi ảnh chân dung" : "Click to upload or change portrait photo"}
+      >
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/png,image/jpeg,image/jpg,image/webp,image/gif,image/*,.png,.jpg,.jpeg,.webp"
+          className="hidden"
+          onChange={handleFileChange}
+        />
 
-          {hasValidAvatar ? (
-            <div className="absolute inset-0 w-full h-full">
-              <img
-                src={currentAvatar!}
-                alt="Phan Hoàng Quỳnh Chi"
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                onError={() => setImageError(true)}
-              />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1.5">
+        {hasValidAvatar ? (
+          <div className="absolute inset-0 w-full h-full">
+            <img
+              src={currentAvatar!}
+              alt="Phan Hoàng Quỳnh Chi"
+              className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+              onError={() => setImageError(true)}
+              loading="eager"
+              fetchPriority="high"
+            />
+            {/* Quick Actions overlay on hover */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-between p-3.5">
+              <div className="flex justify-end gap-2">
                 <button
                   type="button"
                   onClick={(e) => {
@@ -118,89 +141,99 @@ export function AvatarUpload({
                   }}
                   disabled={isUploading}
                   title={lang === "vi" ? "Đổi ảnh" : "Change photo"}
-                  className="p-1.5 rounded-full bg-white text-[#1B3B2B] shadow hover:scale-110 transition-transform"
+                  className="p-2 rounded-full bg-white/95 text-[#1B3B2B] shadow-md hover:bg-white hover:scale-110 transition-all"
                 >
-                  <RefreshCw className={`w-3.5 h-3.5 ${isUploading ? "animate-spin" : ""}`} />
+                  <RefreshCw className={`w-4 h-4 ${isUploading ? "animate-spin" : ""}`} />
                 </button>
                 <button
                   type="button"
                   onClick={handleDelete}
                   title={lang === "vi" ? "Xóa ảnh" : "Remove photo"}
-                  className="p-1.5 rounded-full bg-red-600 text-white shadow hover:scale-110 transition-transform"
+                  className="p-2 rounded-full bg-red-600 text-white shadow-md hover:bg-red-700 hover:scale-110 transition-all"
                 >
-                  <Trash2 className="w-3.5 h-3.5" />
+                  <Trash2 className="w-4 h-4" />
                 </button>
               </div>
 
-              {uploadSuccess && (
-                <div className="absolute bottom-1.5 right-1.5 bg-[#1B3B2B] text-white p-1 rounded-full shadow-md">
-                  <CheckCircle2 className="w-3 h-3" />
-                </div>
-              )}
+              <div className="text-center text-white text-xs font-medium py-1 px-3 rounded-full bg-black/40 backdrop-blur-xs self-center">
+                {lang === "vi" ? "Nhấp để thay ảnh mới" : "Click to change photo"}
+              </div>
             </div>
-          ) : (
-            <div className="w-full h-full flex flex-col items-center justify-center p-2 text-center text-[#1B3B2B]">
-              {isUploading ? (
-                <RefreshCw className="w-6 h-6 animate-spin text-[#1B3B2B]" />
-              ) : (
-                <>
-                  <div className="w-8 h-8 rounded-full bg-[#1B3B2B]/15 flex items-center justify-center mb-1 group-hover:scale-110 transition-transform">
-                    <Camera className="w-4 h-4 text-[#1B3B2B]" />
-                  </div>
-                  <span className="text-[10px] font-bold leading-tight uppercase tracking-wider">
-                    {lang === "vi" ? "Tải ảnh" : "Upload"}
-                  </span>
-                </>
-              )}
-            </div>
-          )}
-        </div>
 
-        {/* Upload Action Button & Guide */}
-        <div className="flex flex-col justify-center">
+            {uploadSuccess && (
+              <div className="absolute bottom-2.5 right-2.5 bg-[#1B3B2B] text-white px-2.5 py-1 rounded-full text-xs font-medium shadow-md flex items-center gap-1">
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                <span>{lang === "vi" ? "Đã lưu" : "Saved"}</span>
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center text-[#1B3B2B]">
+            {isUploading ? (
+              <>
+                <RefreshCw className="w-10 h-10 animate-spin text-[#7B0323] mb-3" />
+                <span className="text-xs font-semibold text-[#7B0323]">
+                  {lang === "vi" ? "Đang xử lý tải ảnh..." : "Processing upload..."}
+                </span>
+              </>
+            ) : (
+              <>
+                <div className="w-14 h-14 rounded-2xl bg-[#1B3B2B]/10 flex items-center justify-center mb-3 group-hover:scale-110 group-hover:bg-[#1B3B2B]/20 transition-all">
+                  <Camera className="w-7 h-7 text-[#1B3B2B]" />
+                </div>
+                <span className="font-anton text-sm sm:text-base uppercase tracking-wider text-[#242220] mb-1">
+                  {lang === "vi" ? "Tải ảnh chân dung" : "Upload Portrait"}
+                </span>
+                <span className="text-[11px] text-[#242220]/65 leading-tight">
+                  {lang === "vi"
+                    ? "Nhấp vào khung hoặc kéo thả ảnh vào đây"
+                    : "Click or drag and drop photo here"}
+                </span>
+              </>
+            )}
+          </div>
+        )}
+      </div>
+
+      {/* Button & actions below avatar box */}
+      <div className="flex items-center gap-2">
+        <button
+          type="button"
+          disabled={isUploading}
+          onClick={() => fileInputRef.current?.click()}
+          className="px-3.5 py-1.5 rounded-full bg-[#FAF7F2] border border-[#7B0323]/30 text-[#7B0323] hover:bg-[#7B0323] hover:text-white text-xs font-semibold active:scale-95 transition-all flex items-center gap-1.5 shadow-2xs"
+        >
+          <Camera className="w-3.5 h-3.5" />
+          <span>
+            {hasValidAvatar
+              ? lang === "vi"
+                ? "Đổi ảnh chân dung"
+                : "Change portrait"
+              : lang === "vi"
+              ? "Chọn ảnh tải lên"
+              : "Select photo"}
+          </span>
+        </button>
+
+        {hasValidAvatar && (
           <button
             type="button"
-            disabled={isUploading}
-            onClick={() => fileInputRef.current?.click()}
-            className="self-start px-3 py-1.5 rounded-xl bg-[#7B0323] text-white text-xs font-semibold hover:bg-[#5E021A] active:scale-95 transition-all flex items-center gap-1.5 shadow-xs mb-1"
+            onClick={handleDelete}
+            title={lang === "vi" ? "Xóa ảnh" : "Remove"}
+            className="p-1.5 rounded-full text-red-600 hover:bg-red-50 transition-colors"
           >
-            <Camera className="w-3.5 h-3.5" />
-            <span>
-              {isUploading
-                ? lang === "vi"
-                  ? "Đang tải lên..."
-                  : "Uploading..."
-                : hasValidAvatar
-                ? lang === "vi"
-                  ? "Đổi ảnh đại diện"
-                  : "Change profile photo"
-                : lang === "vi"
-                ? "Tải ảnh đại diện lên"
-                : "Upload profile photo"}
-            </span>
+            <Trash2 className="w-3.5 h-3.5" />
           </button>
-          <span className="text-[11px] text-[#242220]/70 font-sans">
-            {lang === "vi"
-              ? "Tự do tải ảnh chân dung cá nhân của bạn"
-              : "Upload your personal profile portrait"}
-          </span>
-        </div>
+        )}
       </div>
 
-      {/* Instruction Line Underneath */}
-      <div className="flex items-start gap-1.5 px-3 py-1.5 rounded-xl bg-[#FAF7F2] border border-[#1B3B2B]/15 text-[11px] text-[#242220]/85 max-w-lg">
-        <AlertCircle className="w-3.5 h-3.5 text-[#7B0323] shrink-0 mt-0.5" />
-        <div>
-          <strong className="text-[#7B0323] font-semibold">
-            {lang === "vi" ? "Hướng dẫn ảnh chân dung: " : "Recommended Photo: "}
-          </strong>
-          <span>
-            {lang === "vi"
-              ? "Tải ảnh chân dung cá nhân của Quỳnh Chi (ảnh cận cảnh hoặc nửa người, tỷ lệ vuông 1:1, hình ảnh rõ nét)."
-              : "Upload a personal portrait of Quynh Chi (close-up or half-body shot, square 1:1 aspect ratio, high resolution)."}
-          </span>
-        </div>
-      </div>
+      {showGuide && (
+        <span className="text-[11px] text-[#242220]/65 max-w-[280px] leading-tight text-center sm:text-left">
+          {lang === "vi"
+            ? "Gợi ý: Ảnh chân dung góc nửa người (bản vest/smart-casual) sắc nét."
+            : "Recommended: Sharp half-body portrait (smart-casual/vest)."}
+        </span>
+      )}
     </div>
   );
 }

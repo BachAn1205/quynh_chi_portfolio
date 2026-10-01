@@ -45,16 +45,31 @@ export const viewport: Viewport = {
   themeColor: "#FAF7F2",
 };
 
-export default function RootLayout({
+import { promises as fs } from "fs";
+import path from "path";
+
+async function getInitialImages(): Promise<Record<string, string>> {
+  try {
+    const filePath = path.join(process.cwd(), "src", "data", "project-images.json");
+    const data = await fs.readFile(filePath, "utf-8");
+    return JSON.parse(data);
+  } catch {
+    return {};
+  }
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const initialImages = await getInitialImages();
+
   return (
     <html lang="en" className="scroll-smooth">
       <body className="min-h-screen bg-[#FAF7F2] text-[#242220] font-sans antialiased selection:bg-[#7B0323] selection:text-[#FFFFFF]">
         <LanguageProvider>
-          <ProjectImageProvider>
+          <ProjectImageProvider initialImages={initialImages}>
             {children}
             <ReviewFeedbackSystem />
           </ProjectImageProvider>
