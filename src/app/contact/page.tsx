@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/footer";
 import { Mail, Send, CheckCircle2, MapPin, FileText, ArrowUpRight } from "lucide-react";
 import { ResumeModal } from "@/components/ui/resume-modal";
 import { PageNav } from "@/components/ui/page-nav";
+import { ProjectImageUpload } from "@/components/ui/project-image-upload";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -24,47 +25,79 @@ export default function ContactPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-32 sm:pt-36 pb-24 min-h-screen bg-[#ebe6dd]">
+      <main className="pt-32 sm:pt-36 pb-24 min-h-screen bg-[#FAF7F2]">
         <div className="max-w-6xl mx-auto px-4">
           {/* Page Header */}
-          <div className="flex items-center gap-4 mb-16 pb-8 border-b border-[#d8d2c7]">
-            <div className="w-12 h-12 rounded-2xl bg-[#183e2b] flex items-center justify-center shrink-0 shadow-sm text-white">
-              <Mail className="w-6 h-6" />
+          <div className="flex items-center gap-4 mb-10 sm:mb-16 pb-6 sm:pb-8 border-b border-[#1B3B2B]/15">
+            <div className="w-12 h-12 rounded-2xl bg-[#1B3B2B] flex items-center justify-center shrink-0 shadow-sm text-white">
+              <Mail className="w-6 h-6 text-[#E2ECE5]" />
             </div>
             <div>
-              <h1 className="font-anton text-4xl sm:text-6xl lg:text-7xl uppercase tracking-tight text-[#1c1510]">
-                GET IN TOUCH
+              <h1 className="font-anton text-3xl sm:text-5xl lg:text-7xl uppercase tracking-tight text-[#242220] break-words">
+                GET IN <span className="text-[#7B0323]">TOUCH</span>
               </h1>
             </div>
           </div>
 
           {/* Split Content Cards */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20">
-            {/* Left Card: Dark Info Card */}
-            <div className="lg:col-span-5 rounded-3xl bg-[#0b1710] text-white p-8 sm:p-12 flex flex-col justify-end overflow-hidden relative shadow-xl blueprint-grid-dark min-h-[420px] border border-[#233529]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-14 sm:mb-20">
+            {/* Left Card: Dark Pine Info Card */}
+            <div className="lg:col-span-5 rounded-3xl bg-[#1B3B2B] text-white p-5 sm:p-7 flex flex-col justify-between overflow-hidden relative shadow-xl blueprint-grid-dark border border-[#1B3B2B]/30 gap-6">
+              {/* Top: Personal Portrait Upload */}
+              <div className="relative z-10 w-full flex flex-col">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="font-mono text-xs uppercase tracking-wider text-[#FAF7F2] font-semibold">
+                    Ảnh chân dung cá nhân
+                  </span>
+                  <span className="text-[10px] font-mono text-white/60">
+                    Portrait
+                  </span>
+                </div>
+                <ProjectImageUpload
+                  slotId="contact-portrait"
+                  guideline={{
+                    vi: "Ảnh chân dung cá nhân của Quỳnh Chi (ảnh nửa người, trang trọng hoặc đời thường).",
+                    en: "Personal portrait photo of Quynh Chi (half-body or professional portrait)."
+                  }}
+                  buttonText={{
+                    vi: "Tải ảnh cá nhân lên",
+                    en: "Upload personal photo"
+                  }}
+                  dark
+                  aspectRatio="aspect-[4/3] sm:aspect-[16/10]"
+                  heightClass="min-h-[220px] sm:min-h-[260px]"
+                  roundedClass="rounded-2xl"
+                />
+              </div>
+
               {/* Direct Info Box */}
-              <div className="relative z-10 p-5 rounded-2xl bg-[#121f16] border border-[#233529] space-y-3 text-xs font-mono">
+              <div className="relative z-10 p-4 sm:p-5 rounded-2xl bg-[#142C20] border border-white/10 space-y-3 text-xs font-mono">
                 <div className="flex items-center gap-2.5 text-white/90">
-                  <Mail className="w-4 h-4 text-[#d9531e]" />
-                  <span>quynhchi.phanhoang@gmail.com</span>
+                  <Mail className="w-4 h-4 text-[#7B0323]" />
+                  <a
+                    href="mailto:liliesmyllerz2k9@gmail.com"
+                    className="hover:text-[#FAF7F2] transition-colors break-all"
+                  >
+                    liliesmyllerz2k9@gmail.com
+                  </a>
                 </div>
                 <div className="flex items-center gap-2.5 text-white/90">
-                  <MapPin className="w-4 h-4 text-[#22c55e]" />
+                  <MapPin className="w-4 h-4 text-[#E2ECE5]" />
                   <span>Dak Lak &amp; Ho Chi Minh City, Vietnam</span>
                 </div>
-                <div className="pt-2 border-t border-[#233529] flex items-center justify-between">
+                <div className="pt-2 border-t border-white/10 flex items-center justify-between">
                   <button
                     onClick={() => setResumeOpen(true)}
-                    className="text-[#d97706] hover:underline flex items-center gap-1 cursor-pointer"
+                    className="text-[#FAF7F2] hover:underline flex items-center gap-1 cursor-pointer font-semibold"
                   >
-                    <FileText className="w-3.5 h-3.5" />
+                    <FileText className="w-3.5 h-3.5 text-[#7B0323]" />
                     <span>View Dossier (PDF)</span>
                   </button>
                   <a
-                    href="https://linkedin.com/in/quynhchi-phanhoang"
+                    href="https://www.linkedin.com/in/phanhoangquynhchi/"
                     target="_blank"
                     rel="noreferrer"
-                    className="text-white/60 hover:text-white flex items-center gap-1"
+                    className="text-white/70 hover:text-white flex items-center gap-1"
                   >
                     <span>LinkedIn</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
@@ -74,16 +107,16 @@ export default function ContactPage() {
             </div>
 
             {/* Right Card: Interactive Form */}
-            <div className="lg:col-span-7 rounded-3xl border border-[#d8d2c7] bg-[#f6f3eb] blueprint-grid p-8 sm:p-12 shadow-sm flex flex-col justify-center">
+            <div className="lg:col-span-7 rounded-3xl border border-[#1B3B2B]/15 bg-[#FFFFFF] blueprint-grid p-5 sm:p-8 lg:p-12 shadow-sm flex flex-col justify-center">
               {submitted ? (
                 <div className="py-16 text-center space-y-4">
-                  <div className="w-16 h-16 rounded-full bg-[#183e2b]/10 text-[#183e2b] flex items-center justify-center mx-auto mb-4 border border-[#183e2b]/20">
-                    <CheckCircle2 className="w-8 h-8 text-[#183e2b]" />
+                  <div className="w-16 h-16 rounded-full bg-[#1B3B2B]/10 text-[#1B3B2B] flex items-center justify-center mx-auto mb-4 border border-[#1B3B2B]/20">
+                    <CheckCircle2 className="w-8 h-8 text-[#1B3B2B]" />
                   </div>
-                  <h3 className="font-anton text-3xl uppercase text-[#1c1510]">
+                  <h3 className="font-anton text-3xl uppercase text-[#242220]">
                     Message Received!
                   </h3>
-                  <p className="text-sm text-[#5e544a] max-w-md mx-auto leading-relaxed">
+                  <p className="text-sm text-[#242220]/70 max-w-md mx-auto leading-relaxed">
                     Thank you for reaching out, {formData.name || "friend"}. Phan Hoàng Quỳnh Chi will review your message and reply promptly.
                   </p>
                   <button
@@ -91,7 +124,7 @@ export default function ContactPage() {
                       setSubmitted(false);
                       setFormData({ name: "", email: "", message: "" });
                     }}
-                    className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-semibold bg-[#183e2b] text-white hover:bg-[#122e20] transition-colors mt-4 cursor-pointer"
+                    className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-semibold bg-[#7B0323] text-white hover:bg-[#5E021A] transition-colors mt-4 cursor-pointer"
                   >
                     Send Another Message
                   </button>
@@ -100,7 +133,7 @@ export default function ContactPage() {
                 <form onSubmit={handleSubmit} className="space-y-5">
                   {/* Name field */}
                   <div>
-                    <label className="font-anton text-xs uppercase tracking-wider text-[#1c1510] block mb-2">
+                    <label className="font-anton text-xs uppercase tracking-wider text-[#242220] block mb-2">
                       YOUR NAME
                     </label>
                     <input
@@ -109,13 +142,13 @@ export default function ContactPage() {
                       placeholder="e.g. Dr. Nguyen / Admissions Committee / Partner"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-5 py-3 rounded-2xl bg-white border border-[#d8d2c7] text-[#1c1510] text-sm placeholder:text-[#999999] focus:outline-none focus:border-[#183e2b] transition-colors shadow-xs"
+                      className="w-full px-5 py-3 rounded-2xl bg-[#FAF7F2] border border-[#1B3B2B]/20 text-[#242220] text-sm placeholder:text-[#242220]/40 focus:outline-none focus:border-[#7B0323] transition-colors shadow-xs"
                     />
                   </div>
 
                   {/* Email field */}
                   <div>
-                    <label className="font-anton text-xs uppercase tracking-wider text-[#1c1510] block mb-2">
+                    <label className="font-anton text-xs uppercase tracking-wider text-[#242220] block mb-2">
                       EMAIL ADDRESS
                     </label>
                     <input
@@ -124,13 +157,13 @@ export default function ContactPage() {
                       placeholder="name@organization.edu"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-5 py-3 rounded-2xl bg-white border border-[#d8d2c7] text-[#1c1510] text-sm placeholder:text-[#999999] focus:outline-none focus:border-[#183e2b] transition-colors shadow-xs"
+                      className="w-full px-5 py-3 rounded-2xl bg-[#FAF7F2] border border-[#1B3B2B]/20 text-[#242220] text-sm placeholder:text-[#242220]/40 focus:outline-none focus:border-[#7B0323] transition-colors shadow-xs"
                     />
                   </div>
 
                   {/* Message field */}
                   <div>
-                    <label className="font-anton text-xs uppercase tracking-wider text-[#1c1510] block mb-2">
+                    <label className="font-anton text-xs uppercase tracking-wider text-[#242220] block mb-2">
                       MESSAGE DETAILS
                     </label>
                     <textarea
@@ -139,14 +172,14 @@ export default function ContactPage() {
                       placeholder="Share your proposal, research questions, or collaboration vision..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-5 py-3 rounded-2xl bg-white border border-[#d8d2c7] text-[#1c1510] text-sm placeholder:text-[#999999] focus:outline-none focus:border-[#183e2b] transition-colors shadow-xs resize-none"
+                      className="w-full px-5 py-3 rounded-2xl bg-[#FAF7F2] border border-[#1B3B2B]/20 text-[#242220] text-sm placeholder:text-[#242220]/40 focus:outline-none focus:border-[#7B0323] transition-colors shadow-xs resize-none"
                     />
                   </div>
 
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    className="w-full py-3.5 rounded-full text-sm font-semibold bg-[#183e2b] text-white hover:bg-[#122e20] transition-all duration-200 shadow-sm hover:shadow-md flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-3.5 rounded-full text-sm font-semibold bg-[#7B0323] text-white hover:bg-[#5E021A] transition-all duration-200 shadow-sm hover:shadow-md flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <Send className="w-4 h-4" />
                     <span>Send Inquiry to Quỳnh Chi</span>

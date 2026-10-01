@@ -1,4 +1,4 @@
-# Phan Hoàng Quỳnh Chi — Portfolio Website
+# Phan Hoàng Quỳnh Chi ,  Portfolio Website
 
 > **Curious by nature. Strategic by thought. Driven to create.**  
 > Bridging the cultural heartbeat of Vietnam's Central Highlands with predictive analytics, economic systems, and circular innovation.

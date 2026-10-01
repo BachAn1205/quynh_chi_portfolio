@@ -12,7 +12,7 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType>({
   lang: "en",
-  setLang: () => {},
+  setLang: () => { },
   t: (key) => key,
 });
 
@@ -56,8 +56,9 @@ export const translations: Record<Language, Record<string, string>> = {
     "about.title": "ABOUT ME",
     "about.headline": "The Mind of an Analyst. The Heart of the Highlands.",
     "about.p1": "Growing up in Dak Lak, the coffee capital of Vietnam, my childhood was defined by two distinct sensory memories: the resonant echoes of the indigenous T'rưng instrument fading through neighborhood loudspeakers, and the acrid smell of coffee husks burning along the highways. For a long time, I accepted these simply as the background of my hometown.",
-    "about.p2": "But as I grew older, the data began to tell a different, more urgent story. I learned that the 1.6 million tons of agricultural waste burned annually in Vietnam generated 1.8 million tons of CO2—stripping farmers of over $80 million in potential carbon market value simply because they lacked the Data Science tools for Measurement, Reporting, and Verification (MRV). Similarly, behind the stage lights, T'rưng artisans were abandoning their craft because cultural nostalgia alone could not sustain a livelihood without a viable economic ecosystem.",
-    "about.p3": "These harsh realities taught me a vital lesson: empathy is merely a starting point. To protect what I love, I need empirical tools. Economics provides me with the systems-thinking required to design sustainable value chains, while Data Science equips me with the evidence needed to transform invisible assets—from a musical note to a carbon credit—into measurable, equitable impact. I don't just crunch numbers; I code solutions that protect the soil and elevate the soul of the Central Highlands.",
+    "about.p2": "But as I grew older, the data began to tell a different, more urgent story. I learned that the 1.6 million tons of agricultural waste burned annually in Vietnam generated 1.8 million tons of CO2, stripping farmers of over $80 million in potential carbon market value simply because they lacked the Data Science tools for Measurement, Reporting, and Verification (MRV). Similarly, behind the stage lights, T'rưng artisans were abandoning their craft because cultural nostalgia alone could not sustain a livelihood without a viable economic ecosystem.",
+    "about.p3": "These harsh realities taught me a vital lesson: empathy is merely a starting point. To protect what I love, I need empirical tools. Economics provides me with the systems-thinking required to design sustainable value chains, while Data Science equips me with the evidence needed to transform invisible assets, from a musical note to a carbon credit, into measurable, equitable impact. I don't just crunch numbers; I code solutions that protect the soil and elevate the soul of the Central Highlands.",
+    "about.quote": "“I don't just crunch numbers; I code solutions that protect the soil and elevate the soul of the Central Highlands.”",
     "about.methods": "Core Methodologies & Research Focus",
     "about.photo.caption": "Translating Highland Realities Into Empirical Models",
     "about.photo.label": "Grounded Quantitative Research",
@@ -108,8 +109,8 @@ export const translations: Record<Language, Record<string, string>> = {
     // Footer
     "footer.badge": "Section 6 . Vision & Partnership",
     "footer.headline": "Building Transparent Ecosystems.",
-    "footer.p1": "When I hold my degree in Business Analytics and Information Systems, my first destination will be the agricultural supply chains of the Central Highlands. My vision is to build systemic data architectures that make agricultural data transparent, accessible, and actionable—ensuring that local resources and the people who cultivate them are accurately valued and equitably rewarded.",
-    "footer.p2": "Whether you are a university admissions committee seeking a data-driven innovator, a professor looking for a dedicated quantitative researcher, or a partner passionate about circular economies—I would love to connect.",
+    "footer.p1": "When I hold my degree in Business Analytics and Information Systems, my first destination will be the agricultural supply chains of the Central Highlands. My vision is to build systemic data architectures that make agricultural data transparent, accessible, and actionable, ensuring that local resources and the people who cultivate them are accurately valued and equitably rewarded.",
+    "footer.p2": "Whether you are a university admissions committee seeking a data-driven innovator, a professor looking for a dedicated quantitative researcher, or a partner passionate about circular economies, I would love to connect.",
     "footer.cta.resume": "Download Full Resume PDF",
     "footer.cta.email": "Send an Email",
     "footer.nav.title": "Navigation",
@@ -165,8 +166,9 @@ export const translations: Record<Language, Record<string, string>> = {
     "about.title": "VỀ TÔI",
     "about.headline": "Tư Duy của Nhà Phân Tích. Trái Tim của Vùng Cao.",
     "about.p1": "Lớn lên ở Đắk Lắk, thủ phủ cà phê của Việt Nam, tuổi thơ tôi gắn liền với hai ký ức cảm quan: tiếng vang vọng của đàn T'rưng bản địa qua loa phát thanh xóm nhỏ, và mùi vỏ cà phê cháy dọc các con đường. Trong một thời gian dài, tôi chỉ coi đó là phông nền quen thuộc của quê hương.",
-    "about.p2": "Nhưng khi lớn lên, dữ liệu bắt đầu kể một câu chuyện khác, cấp bách hơn. Tôi nhận ra rằng 1,6 triệu tấn phế phụ phẩm nông nghiệp bị đốt hàng năm tại Việt Nam tạo ra 1,8 triệu tấn CO2—tước đoạt của nông dân hơn 80 triệu đô la giá trị thị trường carbon tiềm năng chỉ vì thiếu công cụ Đo lường, Báo cáo và Xác minh (MRV). Tương tự, các nghệ nhân T'rưng đang bỏ nghề vì hoài niệm văn hóa không thể nuôi sống họ mà không có hệ sinh thái kinh tế bền vững.",
-    "about.p3": "Những thực tế nghiệt ngã đó dạy tôi một bài học quan trọng: đồng cảm chỉ là điểm khởi đầu. Để bảo vệ những gì tôi yêu thương, tôi cần công cụ thực nghiệm. Kinh tế học cho tôi tư duy hệ thống để thiết kế chuỗi giá trị bền vững, còn Khoa học Dữ liệu trang bị cho tôi bằng chứng cần thiết để biến các tài sản vô hình—từ một nốt nhạc đến một tín chỉ carbon—thành tác động đo lường được và công bằng.",
+    "about.p2": "Nhưng khi lớn lên, dữ liệu bắt đầu kể một câu chuyện khác, cấp bách hơn. Tôi nhận ra rằng 1,6 triệu tấn phế phụ phẩm nông nghiệp bị đốt hàng năm tại Việt Nam tạo ra 1,8 triệu tấn CO2, tước đoạt của nông dân hơn 80 triệu đô la giá trị thị trường carbon tiềm năng chỉ vì thiếu công cụ Đo lường, Báo cáo và Xác minh (MRV). Tương tự, các nghệ nhân T'rưng đang bỏ nghề vì hoài niệm văn hóa không thể nuôi sống họ mà không có hệ sinh thái kinh tế bền vững.",
+    "about.p3": "Những thực tế nghiệt ngã đó dạy tôi một bài học quan trọng: đồng cảm chỉ là điểm khởi đầu. Để bảo vệ những gì tôi yêu thương, tôi cần công cụ thực nghiệm. Kinh tế học cho tôi tư duy hệ thống để thiết kế chuỗi giá trị bền vững, còn Khoa học Dữ liệu trang bị cho tôi bằng chứng cần thiết để biến các tài sản vô hình, từ một nốt nhạc đến một tín chỉ carbon, thành tác động đo lường được và công bằng.",
+    "about.quote": "“Tôi không chỉ tính toán những con số; tôi lập trình những giải pháp bảo vệ đất mẹ và nâng tầm tâm hồn Tây Nguyên.”",
     "about.methods": "Phương pháp & Trọng tâm nghiên cứu",
     "about.photo.caption": "Chuyển hóa Thực tế Tây Nguyên thành Mô hình Thực nghiệm",
     "about.photo.label": "Nghiên cứu định lượng thực địa",
@@ -217,8 +219,8 @@ export const translations: Record<Language, Record<string, string>> = {
     // Footer
     "footer.badge": "Mục 6 . Tầm nhìn & Hợp tác",
     "footer.headline": "Xây dựng Hệ sinh thái Minh bạch.",
-    "footer.p1": "Khi cầm tấm bằng Phân tích Kinh doanh và Hệ thống Thông tin, điểm đến đầu tiên của tôi sẽ là chuỗi cung ứng nông nghiệp Tây Nguyên. Tầm nhìn của tôi là xây dựng kiến trúc dữ liệu hệ thống giúp dữ liệu nông nghiệp trở nên minh bạch, dễ tiếp cận và khả thi—đảm bảo các nguồn tài nguyên địa phương và người canh tác được định giá chính xác và đền bù công bằng.",
-    "footer.p2": "Dù bạn là hội đồng tuyển sinh đại học tìm kiếm nhà đổi mới dựa trên dữ liệu, giáo sư tìm kiếm nhà nghiên cứu định lượng tận tâm, hay đối tác đam mê kinh tế tuần hoàn—tôi rất muốn được kết nối.",
+    "footer.p1": "Khi cầm tấm bằng Phân tích Kinh doanh và Hệ thống Thông tin, điểm đến đầu tiên của tôi sẽ là chuỗi cung ứng nông nghiệp Tây Nguyên. Tầm nhìn của tôi là xây dựng kiến trúc dữ liệu hệ thống giúp dữ liệu nông nghiệp trở nên minh bạch, dễ tiếp cận và khả thi, đảm bảo các nguồn tài nguyên địa phương và người canh tác được định giá chính xác và đền bù công bằng.",
+    "footer.p2": "Dù bạn là hội đồng tuyển sinh đại học tìm kiếm nhà đổi mới dựa trên dữ liệu, giáo sư tìm kiếm nhà nghiên cứu định lượng tận tâm, hay đối tác đam mê kinh tế tuần hoàn, tôi rất muốn được kết nối.",
     "footer.cta.resume": "Tải CV PDF đầy đủ",
     "footer.cta.email": "Gửi Email",
     "footer.nav.title": "Điều hướng",

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n";
 import { ProjectImageProvider } from "@/lib/project-images-context";
+import { ReviewFeedbackSystem } from "@/components/ui/review-feedback-system";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://quynhchi-portfolio.vercel.app"),
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#F6F6EE",
+  themeColor: "#FAF7F2",
 };
 
 export default function RootLayout({
@@ -51,10 +52,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="min-h-screen bg-[#F6F6EE] text-[#2C2E2B] font-sans antialiased selection:bg-[#335C33] selection:text-[#F6F6EE]">
+      <body className="min-h-screen bg-[#FAF7F2] text-[#242220] font-sans antialiased selection:bg-[#7B0323] selection:text-[#FFFFFF]">
         <LanguageProvider>
           <ProjectImageProvider>
             {children}
+            <ReviewFeedbackSystem />
           </ProjectImageProvider>
         </LanguageProvider>
       </body>

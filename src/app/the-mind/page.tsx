@@ -12,7 +12,7 @@ export default function TheMindPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-1 flex flex-col min-h-screen">
+      <main className="flex-1 flex flex-col min-h-screen pt-20 sm:pt-24">
         <TheMindSection />
         <PageNav
           prevHref="/about"

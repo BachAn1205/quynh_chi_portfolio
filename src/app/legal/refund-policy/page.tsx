@@ -1,4 +1,4 @@
-﻿import { Navbar } from "@/components/layout/navbar";
+import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { FileText } from "lucide-react";
 
@@ -13,13 +13,13 @@ export default function TermsOfServicePage() {
             <div className="w-12 h-12 rounded-2xl bg-[#e74723] flex items-center justify-center shrink-0 shadow-sm text-white">
               <FileText className="w-6 h-6" />
             </div>
-            <h1 className="font-anton text-4xl sm:text-6xl uppercase tracking-tight text-black">
+            <h1 className="font-anton text-3xl sm:text-5xl lg:text-6xl uppercase tracking-tight text-black break-words">
               TERMS OF SERVICE
             </h1>
           </div>
 
           {/* Terms Content Card */}
-          <div className="rounded-3xl border border-[#d6d6d6] bg-[#f5f2eb] blueprint-grid p-8 sm:p-14 shadow-sm space-y-10 text-[#333333] leading-relaxed">
+          <div className="rounded-3xl border border-[#d6d6d6] bg-[#f5f2eb] blueprint-grid p-5 sm:p-8 lg:p-14 shadow-sm space-y-8 sm:space-y-10 text-[#333333] leading-relaxed">
             <p className="text-lg">
               Welcome to Phan Hoàng Quỳnh Chi’s Portfolio Website (“we,” “our,” or “us”). By accessing or using this website, you agree to comply with and be bound by the following Terms of Service. Please read them carefully before using this site.
             </p>

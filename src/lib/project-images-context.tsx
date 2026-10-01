@@ -43,7 +43,13 @@ export function ProjectImageProvider({ children }: { children: React.ReactNode }
       if (res.ok) {
         const data = await res.json();
         setImages((prev) => {
-          const merged = { ...prev, ...data };
+          // If server returned valid keys, use server state as authority; keep only unsynced base64 uploads if any
+          const merged = { ...data };
+          for (const key in prev) {
+            if (prev[key]?.startsWith("data:") && !merged[key]) {
+              merged[key] = prev[key];
+            }
+          }
           if (typeof window !== "undefined") {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
           }

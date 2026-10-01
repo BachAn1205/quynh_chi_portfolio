@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
-import { ArrowDown, FileText, ShieldCheck } from "lucide-react";
+import { ArrowDown, ArrowRight, FileText, ShieldCheck } from "lucide-react";
 import { ResumeModal } from "@/components/ui/resume-modal";
 import { ProjectImageUpload } from "@/components/ui/project-image-upload";
 import { AvatarUpload } from "@/components/ui/avatar-upload";
@@ -72,10 +73,10 @@ export function Hero() {
             <div className="flex flex-col md:flex-row md:items-center gap-6">
               <AvatarUpload />
               <div>
-                <h1 className="font-anton text-4xl sm:text-6xl lg:text-7xl uppercase tracking-tight text-[#2C2E2B] leading-none">
-                  PHAN HOÀNG QUỲNH CHI
+                <h1 className="font-anton text-3xl sm:text-5xl md:text-6xl lg:text-7xl uppercase tracking-tight text-[#242220] leading-none break-words">
+                  PHAN HOÀNG <span className="text-[#7B0323]">QUỲNH CHI</span>
                 </h1>
-                <p className="text-base sm:text-xl text-[#335C33] font-semibold mt-2 min-h-[1.75rem] flex items-center">
+                <p className="text-sm sm:text-lg md:text-xl text-[#7B0323] font-semibold mt-2 min-h-[1.75rem] flex items-center">
                   {t("hero.subtitle")}
                 </p>
               </div>
@@ -83,35 +84,35 @@ export function Hero() {
           </div>
 
           {/* Action Buttons Row */}
-          <div className="flex flex-wrap items-center gap-3.5 mb-12">
-            <a
-              href="#about"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs sm:text-sm font-semibold bg-[#335C33] text-[#F6F6EE] hover:bg-[#284828] transition-all duration-200 shadow-sm hover:shadow hover:-translate-y-0.5"
+          <div className="flex flex-wrap items-center gap-3 mb-10 sm:mb-12">
+            <Link
+              href="/about"
+              className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold bg-[#7B0323] text-white hover:bg-[#5E021A] transition-all duration-200 shadow-sm hover:shadow hover:-translate-y-0.5 cursor-pointer"
             >
               <span>{t("hero.cta.explore")}</span>
-              <ArrowDown className="w-4 h-4" />
-            </a>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
 
             <button
               onClick={() => setResumeOpen(true)}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs sm:text-sm font-semibold bg-[#FAF9F2] border border-[#335C33]/25 text-[#2C2E2B] hover:bg-[#E3EDD3] hover:border-[#335C33]/40 transition-all duration-200 shadow-sm"
+              className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold bg-[#FAF7F2] border border-[#7B0323]/25 text-[#242220] hover:bg-[#7B0323]/10 hover:border-[#7B0323]/50 transition-all duration-200 shadow-sm cursor-pointer"
             >
-              <FileText className="w-4 h-4 text-[#8C5A35]" />
+              <FileText className="w-4 h-4 text-[#7B0323]" />
               <span>{t("hero.cta.resume")}</span>
             </button>
           </div>
 
           {/* Subtle Horizontal Divider */}
-          <div className="border-t border-[#335C33]/15 mb-12" />
+          <div className="border-t border-[#1B3B2B]/15 mb-10 sm:mb-12" />
 
           {/* Featured Showcase Card */}
-          <div className="relative rounded-3xl border border-[#335C33]/20 bg-[#FAF9F2] blueprint-grid p-6 sm:p-10 overflow-hidden shadow-sm">
+          <div className="relative rounded-3xl border border-[#1B3B2B]/15 bg-[#FFFFFF] blueprint-grid p-4 sm:p-8 lg:p-10 overflow-hidden shadow-sm">
             <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-6 relative z-20">
               <div className="flex-1 min-w-0">
-                <h2 className="font-anton text-2xl sm:text-4xl uppercase text-[#2C2E2B] tracking-tight">
+                <h2 className="font-anton text-xl sm:text-3xl lg:text-4xl uppercase text-[#242220] tracking-tight">
                   {current.title}
                 </h2>
-                <p className="text-xs sm:text-sm text-[#2C2E2B]/60 mt-1 max-w-xl min-h-[2.5rem] sm:min-h-[2.75rem] leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#242220]/65 mt-1 max-w-xl min-h-[2.5rem] sm:min-h-[2.75rem] leading-relaxed">
                   {current.description}
                 </p>
               </div>
@@ -123,9 +124,9 @@ export function Hero() {
                       key={item.id}
                       onClick={() => setActiveSlide(i)}
                       aria-label={`View slide ${i + 1}: ${item.title}`}
-                      className={`h-2 rounded-full transition-all duration-300 ${i === activeSlide
-                        ? "w-8 bg-[#335C33]"
-                        : "w-3 bg-[#335C33]/20 hover:bg-[#335C33]/40"
+                      className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${i === activeSlide
+                        ? "w-8 bg-[#7B0323]"
+                        : "w-3 bg-[#1B3B2B]/20 hover:bg-[#1B3B2B]/40"
                         }`}
                     />
                   ))}
@@ -153,12 +154,12 @@ export function Hero() {
                     key={item.id}
                     onClick={() => setActiveSlide(idx)}
                     className={`p-3.5 rounded-2xl text-left border transition-all duration-200 cursor-pointer h-full min-h-[70px] flex flex-col justify-between ${isSelected
-                      ? "bg-[#335C33] text-[#F6F6EE] border-[#335C33] shadow-sm"
-                      : "bg-[#FAF9F2]/80 text-[#2C2E2B] border-[#335C33]/20 hover:bg-[#E3EDD3]/50"
+                      ? "bg-[#1B3B2B] text-white border-[#1B3B2B] shadow-sm"
+                      : "bg-[#FAF7F2] text-[#242220] border-[#1B3B2B]/15 hover:bg-[#E2ECE5]/50"
                       }`}
                   >
                     <div className="flex items-center justify-between mb-1">
-                      <span className={`text-[10px] font-mono font-bold uppercase tracking-wider ${isSelected ? "text-[#E3EDD3]" : "text-[#8C5A35]"}`}>
+                      <span className={`text-[10px] font-mono font-bold uppercase tracking-wider ${isSelected ? "text-[#E2ECE5]" : "text-[#7B0323]"}`}>
                         {"0"}{idx + 1}
                       </span>
                     </div>
@@ -173,12 +174,12 @@ export function Hero() {
 
           {/* Scroll Indicator */}
           <div className="mt-14 flex flex-col items-center">
-            <a href="#about" aria-label="Scroll to About Me" className="group flex flex-col items-center">
-              <div className="w-5 h-8 border-2 border-[#2C2E2B] rounded-full flex justify-center pt-1.5 transition-transform group-hover:translate-y-1">
-                <div className="w-1 h-2 bg-[#335C33] rounded-full animate-bounce" />
+            <Link href="/about" aria-label="Go to About Me" className="group flex flex-col items-center cursor-pointer">
+              <div className="w-5 h-8 border-2 border-[#242220] rounded-full flex justify-center pt-1.5 transition-transform group-hover:translate-y-1">
+                <div className="w-1 h-2 bg-[#7B0323] rounded-full animate-bounce" />
               </div>
-              <div className="w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[5px] border-t-[#2C2E2B] mt-1" />
-            </a>
+              <div className="w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[5px] border-t-[#242220] mt-1" />
+            </Link>
           </div>
         </div>
       </section>

@@ -46,10 +46,10 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
           {/* Project Title & Tags */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-8 pb-8 border-b border-[#2c332c]">
             <div className="max-w-3xl">
-              <h1 className="font-anton text-4xl sm:text-6xl lg:text-7xl uppercase tracking-tight text-white leading-[1.05] mb-4">
+              <h1 className="font-anton text-3xl sm:text-5xl lg:text-7xl uppercase tracking-tight text-white leading-[1.05] mb-4 break-words">
                 {project.title}
               </h1>
-              <p className="text-lg sm:text-xl text-white/70 leading-relaxed">
+              <p className="text-base sm:text-xl text-white/70 leading-relaxed">
                 {project.subtitle}
               </p>
             </div>
@@ -91,20 +91,20 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
           </div>
 
           {/* Challenge & Solutions Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16 sm:mb-24">
             {/* Challenge Card */}
-            <div className="rounded-3xl border border-[#2c332c] bg-[#121612] p-8 sm:p-12 shadow-lg">
-              <h2 className="font-anton text-3xl sm:text-4xl uppercase text-white mb-6">
+            <div className="rounded-3xl border border-[#2c332c] bg-[#121612] p-5 sm:p-8 lg:p-12 shadow-lg">
+              <h2 className="font-anton text-2xl sm:text-4xl uppercase text-white mb-4 sm:mb-6">
                 Challenges
               </h2>
-              <p className="text-base sm:text-lg text-white/80 leading-relaxed">
+              <p className="text-sm sm:text-base lg:text-lg text-white/80 leading-relaxed">
                 {project.challenge}
               </p>
             </div>
 
             {/* Solutions Card */}
-            <div className="rounded-3xl border border-[#2c332c] bg-[#121612] p-8 sm:p-12 shadow-lg">
-              <h2 className="font-anton text-3xl sm:text-4xl uppercase text-white mb-6">
+            <div className="rounded-3xl border border-[#2c332c] bg-[#121612] p-5 sm:p-8 lg:p-12 shadow-lg">
+              <h2 className="font-anton text-2xl sm:text-4xl uppercase text-white mb-4 sm:mb-6">
                 Solutions
               </h2>
               <ul className="space-y-4">

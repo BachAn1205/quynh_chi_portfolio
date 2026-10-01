@@ -18,7 +18,7 @@ export default function JournalListPage() {
                 <Newspaper className="w-6 h-6" />
               </div>
               <div>
-                <h1 className="font-anton text-4xl sm:text-6xl lg:text-7xl uppercase tracking-tight text-white">
+                <h1 className="font-anton text-3xl sm:text-5xl lg:text-7xl uppercase tracking-tight text-white break-words">
                   JOURNAL &amp; WRITING
                 </h1>
               </div>

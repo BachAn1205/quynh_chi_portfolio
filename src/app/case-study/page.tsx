@@ -19,25 +19,25 @@ export default function CaseStudyListPage() {
               <div className="w-12 h-12 rounded-2xl bg-[#e74723] flex items-center justify-center shrink-0 shadow-sm text-white">
                 <BookOpen className="w-6 h-6" />
               </div>
-              <h1 className="font-anton text-4xl sm:text-6xl lg:text-7xl uppercase tracking-tight text-white">
+              <h1 className="font-anton text-3xl sm:text-5xl lg:text-7xl uppercase tracking-tight text-white break-words">
                 CASE STUDY
               </h1>
             </div>
 
-            <p className="text-base sm:text-lg text-white/60 max-w-sm">
+            <p className="text-sm sm:text-lg text-white/60 max-w-sm">
               In-depth looks at how design decisions solved real business challenges.
             </p>
           </div>
 
           {/* Case Studies List */}
-          <div className="space-y-24 sm:space-y-32">
+          <div className="space-y-16 sm:space-y-32">
             {caseStudies.map((project, idx) => (
               <div key={idx} className="group">
                 {/* Title & Tags Row */}
                 <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8 pb-6 border-b border-[#2c332c]/60">
                   <Link
                     href={`/case-study/${project.slug}`}
-                    className="font-anton text-3xl sm:text-5xl lg:text-6xl uppercase tracking-tight text-white group-hover:text-[#e74723] transition-colors leading-[1.1] max-w-2xl flex items-start gap-2"
+                    className="font-anton text-2xl sm:text-4xl lg:text-5xl uppercase tracking-tight text-white group-hover:text-[#e74723] transition-colors leading-[1.1] max-w-2xl flex items-start gap-2 break-words"
                   >
                     <span>{project.title}</span>
                     <ArrowUpRight className="w-6 h-6 sm:w-8 sm:h-8 opacity-0 group-hover:opacity-100 transition-opacity text-[#e74723] shrink-0 mt-1" />

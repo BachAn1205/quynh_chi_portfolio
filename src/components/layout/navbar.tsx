@@ -35,15 +35,15 @@ export function Navbar() {
     <>
       <header className="fixed top-4 left-0 right-0 z-40 px-3 sm:px-4">
         {/* ── DESKTOP: single unified pill with stable geometry ── */}
-        <div className="hidden lg:flex w-full max-w-6xl xl:max-w-7xl mx-auto items-center justify-between bg-[#FAF9F2]/95 backdrop-blur-md border border-[#335C33]/20 rounded-full shadow-sm px-3.5 py-1.5 gap-2">
+        <div className="hidden lg:flex w-full max-w-6xl xl:max-w-7xl mx-auto items-center justify-between bg-[#FAF7F2]/95 backdrop-blur-md border border-[#1B3B2B]/15 rounded-full shadow-sm px-3.5 py-1.5 gap-2">
 
           {/* LEFT: Identity / Brand Logo */}
           <div className="shrink-0 flex items-center justify-start pl-1">
             <Link
               href="/"
-              className="inline-flex items-center gap-2.5 py-1 px-2 rounded-full hover:bg-[#335C33]/5 transition-colors group select-none"
+              className="inline-flex items-center gap-2.5 py-1 px-2 rounded-full hover:bg-[#1B3B2B]/5 transition-colors group select-none"
             >
-              <div className="w-7 h-7 rounded-full overflow-hidden bg-[#335C33] flex items-center justify-center text-white shrink-0 border border-[#335C33]/20 shadow-xs relative">
+              <div className="w-7 h-7 rounded-full overflow-hidden bg-[#1B3B2B] flex items-center justify-center text-white shrink-0 border border-[#1B3B2B]/20 shadow-xs relative">
                 {avatarUrl ? (
                   <Image
                     src={avatarUrl}
@@ -57,34 +57,33 @@ export function Navbar() {
                 )}
               </div>
               <div className="flex flex-col text-left">
-                <span className="font-anton text-xs xl:text-sm tracking-wide text-[#2C2E2B] group-hover:text-[#335C33] transition-colors leading-tight whitespace-nowrap">
+                <span className="font-anton text-xs xl:text-sm tracking-wide text-[#242220] group-hover:text-[#7B0323] transition-colors leading-tight whitespace-nowrap">
                   QUỲNH CHI
                 </span>
-                <span className="text-[9px] font-mono text-[#8C5A35] leading-none whitespace-nowrap hidden xl:inline">
+                <span className="text-[9px] font-mono text-[#7B0323] leading-none whitespace-nowrap hidden xl:inline">
                   Central Highlands
                 </span>
               </div>
             </Link>
           </div>
 
-          {/* CENTER: Nav links — each link has fixed-width slot so positions NEVER shift */}
+          {/* CENTER: Nav links ,  each link has fixed-width slot so positions NEVER shift */}
           <nav className="flex-1 flex items-center justify-center overflow-hidden">
             {navLinks.map((link, idx) => (
               <div key={link.href} className="flex items-center shrink-0">
                 <div className={`${link.slotWidth} flex items-center justify-center shrink-0`}>
                   <Link
                     href={link.href}
-                    className={`inline-flex items-center justify-center whitespace-nowrap text-[11px] xl:text-xs font-semibold px-2 xl:px-2.5 py-1.5 rounded-full transition-all duration-150 uppercase tracking-wide text-center ${
-                      isActive(link.href)
-                        ? "bg-[#335C33] text-[#F6F6EE] shadow-sm"
-                        : "text-[#2C2E2B] hover:text-[#8C5A35] hover:bg-[#335C33]/5"
-                    }`}
+                    className={`inline-flex items-center justify-center whitespace-nowrap text-[11px] xl:text-xs font-semibold px-2 xl:px-2.5 py-1.5 rounded-full transition-all duration-150 uppercase tracking-wide text-center ${isActive(link.href)
+                        ? "bg-[#1B3B2B] text-white shadow-sm"
+                        : "text-[#242220] hover:text-[#7B0323] hover:bg-[#1B3B2B]/5"
+                      }`}
                   >
                     {link.label}
                   </Link>
                 </div>
                 {idx < navLinks.length - 1 && (
-                  <span className="text-[#335C33]/25 text-[10px] select-none shrink-0 w-2 text-center">•</span>
+                  <span className="text-[#1B3B2B]/25 text-[10px] select-none shrink-0 w-2 text-center">•</span>
                 )}
               </div>
             ))}
@@ -92,19 +91,19 @@ export function Navbar() {
 
           {/* RIGHT: Language Switcher + Resume + Connect */}
           <div className="shrink-0 flex items-center justify-end gap-2 pr-1">
-            {/* Language Toggle Capsule (Styled like user screenshot) */}
+            {/* Language Toggle Capsule */}
             <button
               onClick={() => setLang(lang === "en" ? "vi" : "en")}
               title={lang === "en" ? "Chuyển sang Tiếng Việt" : "Switch to English"}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-[#E3EDD3] text-[#335C33] border border-[#335C33]/25 hover:bg-[#D5E3C0] transition-all duration-200 select-none cursor-pointer shadow-xs whitespace-nowrap"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-[#E2ECE5] text-[#1B3B2B] border border-[#1B3B2B]/20 hover:bg-[#D2E2D7] transition-all duration-200 select-none cursor-pointer shadow-xs whitespace-nowrap"
             >
-              <Globe className="w-3.5 h-3.5 text-[#335C33] shrink-0" />
+              <Globe className="w-3.5 h-3.5 text-[#1B3B2B] shrink-0" />
               <span className="font-mono text-xs font-bold tracking-wider">{lang === "en" ? "EN" : "VI"}</span>
             </button>
 
             <button
               onClick={() => setResumeModalOpen(true)}
-              className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] xl:text-xs font-semibold bg-[#335C33] text-[#F6F6EE] hover:bg-[#284828] transition-all duration-200 shadow-sm whitespace-nowrap cursor-pointer min-w-[76px]"
+              className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] xl:text-xs font-semibold bg-[#1B3B2B] text-white hover:bg-[#142C20] transition-all duration-200 shadow-sm whitespace-nowrap cursor-pointer min-w-[76px]"
             >
               <FileText className="w-3 h-3 xl:w-3.5 xl:h-3.5 shrink-0" />
               <span>{t("nav.resume")}</span>
@@ -112,7 +111,7 @@ export function Navbar() {
 
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] xl:text-xs font-semibold bg-[#8C5A35] text-[#F6F6EE] hover:bg-[#7a4d2d] transition-all duration-200 shadow-sm whitespace-nowrap min-w-[76px]"
+              className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-full text-[11px] xl:text-xs font-semibold bg-[#7B0323] text-white hover:bg-[#5E021A] transition-all duration-200 shadow-sm whitespace-nowrap min-w-[76px]"
             >
               <Mail className="w-3 h-3 xl:w-3.5 xl:h-3.5 shrink-0" />
               <span>{t("nav.contact")}</span>
@@ -121,10 +120,10 @@ export function Navbar() {
         </div>
 
         {/* ── MOBILE: floating bar ── */}
-        <div className="lg:hidden flex items-center justify-between bg-[#FAF9F2]/95 backdrop-blur-md border border-[#335C33]/20 rounded-full shadow-sm px-3 py-1.5">
+        <div className="lg:hidden flex items-center justify-between bg-[#FAF7F2]/95 backdrop-blur-md border border-[#1B3B2B]/15 rounded-full shadow-sm px-3 py-1.5">
           {/* Left: Avatar / Logo */}
           <Link href="/" className="inline-flex items-center gap-2 select-none">
-            <div className="w-6 h-6 rounded-full overflow-hidden bg-[#335C33] flex items-center justify-center text-white shrink-0 border border-[#335C33]/20 relative">
+            <div className="w-6 h-6 rounded-full overflow-hidden bg-[#1B3B2B] flex items-center justify-center text-white shrink-0 border border-[#1B3B2B]/20 relative">
               {avatarUrl ? (
                 <Image
                   src={avatarUrl}
@@ -137,7 +136,7 @@ export function Navbar() {
                 <User className="w-3 h-3 text-white/90" />
               )}
             </div>
-            <span className="font-anton text-xs uppercase tracking-wide text-[#2C2E2B]">
+            <span className="font-anton text-xs uppercase tracking-wide text-[#242220]">
               QUỲNH CHI
             </span>
           </Link>
@@ -147,16 +146,16 @@ export function Navbar() {
             {/* Language toggle pill */}
             <button
               onClick={() => setLang(lang === "en" ? "vi" : "en")}
-              className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-bold bg-[#E3EDD3] text-[#335C33] border border-[#335C33]/25 hover:bg-[#D5E3C0] transition-all shadow-xs select-none"
+              className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-bold bg-[#E2ECE5] text-[#1B3B2B] border border-[#1B3B2B]/20 hover:bg-[#D2E2D7] transition-all shadow-xs select-none"
             >
-              <Globe className="w-3 h-3 text-[#335C33]" />
+              <Globe className="w-3 h-3 text-[#1B3B2B]" />
               <span className="font-mono text-[11px] font-bold">{lang === "en" ? "EN" : "VI"}</span>
             </button>
 
             {/* Resume */}
             <button
               onClick={() => setResumeModalOpen(true)}
-              className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-semibold bg-[#335C33] text-[#F6F6EE] shadow-xs"
+              className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-semibold bg-[#1B3B2B] text-white shadow-xs"
             >
               <FileText className="w-3.5 h-3.5" />
             </button>
@@ -164,7 +163,7 @@ export function Navbar() {
             {/* Hamburger */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="bg-[#FAF9F2]/95 border border-[#335C33]/20 p-1.5 rounded-full text-[#2C2E2B] hover:text-[#335C33] transition-colors shadow-xs"
+              className="bg-[#FAF7F2]/95 border border-[#1B3B2B]/15 p-1.5 rounded-full text-[#242220] hover:text-[#7B0323] transition-colors shadow-xs"
               aria-label="Toggle mobile menu"
             >
               {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -174,17 +173,16 @@ export function Navbar() {
 
         {/* ── MOBILE MENU DROPDOWN ── */}
         {mobileMenuOpen && (
-          <div className="lg:hidden mt-3 max-w-xs ml-auto bg-[#FAF9F2]/98 backdrop-blur-xl border border-[#335C33]/20 rounded-3xl p-4 shadow-2xl flex flex-col gap-1.5">
+          <div className="lg:hidden mt-3 w-full max-w-sm sm:max-w-md ml-auto bg-[#FAF7F2]/98 backdrop-blur-xl border border-[#1B3B2B]/15 rounded-3xl p-4 sm:p-5 shadow-2xl flex flex-col gap-1.5 animate-in fade-in slide-in-from-top-2 duration-200">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`px-4 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
-                  isActive(link.href)
-                    ? "bg-[#335C33] text-[#F6F6EE]"
-                    : "text-[#2C2E2B] hover:bg-[#E3EDD3] hover:text-[#335C33]"
-                }`}
+                className={`px-4 py-2.5 rounded-xl text-sm font-semibold transition-colors ${isActive(link.href)
+                    ? "bg-[#1B3B2B] text-white"
+                    : "text-[#242220] hover:bg-[#E2ECE5] hover:text-[#1B3B2B]"
+                  }`}
               >
                 {link.label}
               </Link>
@@ -193,16 +191,16 @@ export function Navbar() {
             {/* Language Toggle */}
             <button
               onClick={() => setLang(lang === "en" ? "vi" : "en")}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-[#335C33] bg-[#E3EDD3] hover:bg-[#D5E3C0] transition-colors mt-1"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-[#1B3B2B] bg-[#E2ECE5] hover:bg-[#D2E2D7] transition-colors mt-1"
             >
               <span className="text-base">{lang === "en" ? "🇻🇳" : "🇬🇧"}</span>
               <span>{lang === "en" ? "Tiếng Việt" : "English"}</span>
             </button>
 
-            <div className="pt-2 border-t border-[#335C33]/15 grid grid-cols-2 gap-2">
+            <div className="pt-2 border-t border-[#1B3B2B]/15 grid grid-cols-2 gap-2">
               <button
                 onClick={() => { setMobileMenuOpen(false); setResumeModalOpen(true); }}
-                className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-xs font-semibold bg-[#335C33] text-[#F6F6EE]"
+                className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-xs font-semibold bg-[#1B3B2B] text-white"
               >
                 <FileText className="w-3.5 h-3.5" />
                 {t("nav.resume")}
@@ -210,7 +208,7 @@ export function Navbar() {
               <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-xs font-semibold bg-[#8C5A35] text-[#F6F6EE]"
+                className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-xs font-semibold bg-[#7B0323] text-white"
               >
                 <Mail className="w-3.5 h-3.5" />
                 {t("nav.contact")}

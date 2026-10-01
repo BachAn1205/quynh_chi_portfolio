@@ -13,13 +13,13 @@ export default function PrivacyPolicyPage() {
             <div className="w-12 h-12 rounded-2xl bg-[#e74723] flex items-center justify-center shrink-0 shadow-sm text-white">
               <Shield className="w-6 h-6" />
             </div>
-            <h1 className="font-anton text-4xl sm:text-6xl uppercase tracking-tight text-black">
+            <h1 className="font-anton text-3xl sm:text-5xl lg:text-6xl uppercase tracking-tight text-black break-words">
               PRIVACY POLICY
             </h1>
           </div>
 
           {/* Policy Content Card */}
-          <div className="rounded-3xl border border-[#d6d6d6] bg-[#f5f2eb] blueprint-grid p-8 sm:p-14 shadow-sm space-y-10 text-[#333333] leading-relaxed">
+          <div className="rounded-3xl border border-[#d6d6d6] bg-[#f5f2eb] blueprint-grid p-5 sm:p-8 lg:p-14 shadow-sm space-y-8 sm:space-y-10 text-[#333333] leading-relaxed">
             <p className="text-lg">
               Welcome to Phan Hoàng Quỳnh Chi’s Portfolio Website. Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your personal information when you visit or interact with this website.
             </p>
@@ -78,7 +78,7 @@ export default function PrivacyPolicyPage() {
                 5. Your Rights &amp; Contact
               </h2>
               <p>
-                You have the right to request access to, correction, or deletion of any personal data you have shared with us. If you have any questions, please contact: <span className="text-[#183e2b] font-semibold">quynhchi.phanhoang@gmail.com</span>.
+                You have the right to request access to, correction, or deletion of any personal data you have shared with us. If you have any questions, please contact: <span className="text-[#183e2b] font-semibold">liliesmyllerz2k9@gmail.com</span>.
               </p>
             </section>
           </div>

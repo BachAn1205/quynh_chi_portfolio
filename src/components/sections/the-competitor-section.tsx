@@ -185,22 +185,21 @@ export function TheCompetitorSection() {
 
   return (
     <>
-      <section id="the-competitor" className="py-24 sm:py-32 overflow-hidden bg-[#F6F6EE] border-t border-[#335C33]/15">
+      <section id="the-competitor" className="py-24 sm:py-32 overflow-hidden bg-[#FAF7F2] border-t border-[#1B3B2B]/15">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
-          <div className="flex items-center justify-between gap-6 mb-12 pb-8 border-b border-[#335C33]/15">
+          <div className="flex items-center justify-between gap-6 mb-10 sm:mb-12 pb-6 sm:pb-8 border-b border-[#1B3B2B]/15">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#335C33] flex items-center justify-center shrink-0 shadow-sm text-[#F6F6EE]">
-                <Trophy className="w-6 h-6 text-[#E3EDD3]" />
+              <div className="w-12 h-12 rounded-2xl bg-[#1B3B2B] flex items-center justify-center shrink-0 shadow-sm text-[#FAF7F2]">
+                <Trophy className="w-6 h-6 text-[#E2ECE5]" />
               </div>
               <div>
-                <h2 className="font-anton text-4xl sm:text-6xl uppercase tracking-tight text-[#2C2E2B]">
+                <h2 className="font-anton text-3xl sm:text-5xl lg:text-6xl uppercase tracking-tight text-[#242220]">
                   {t("competitor.title")}
                 </h2>
               </div>
             </div>
           </div>
-
 
           {/* Interactive Category Tabs */}
           <div className="flex flex-wrap items-center gap-2 mb-8">
@@ -211,9 +210,9 @@ export function TheCompetitorSection() {
                 <button
                   key={cat.id}
                   onClick={() => setActiveCategory(idx)}
-                  className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-mono font-semibold transition-all duration-200 cursor-pointer ${isSelected
-                      ? "bg-[#335C33] text-[#F6F6EE] shadow-sm"
-                      : "bg-[#FAF9F2] text-[#2C2E2B] border border-[#335C33]/20 hover:bg-[#E3EDD3]"
+                  className={`inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full text-xs font-mono font-semibold transition-all duration-200 cursor-pointer ${isSelected
+                      ? "bg-[#1B3B2B] text-[#FAF7F2] shadow-sm"
+                      : "bg-[#FFFFFF] text-[#242220] border border-[#1B3B2B]/20 hover:bg-[#E2ECE5]"
                     }`}
                 >
                   <Icon className="w-3.5 h-3.5" />
@@ -224,20 +223,20 @@ export function TheCompetitorSection() {
           </div>
 
           {/* Selected Category Content Box */}
-          <div className="rounded-3xl border border-[#335C33]/15 bg-[#FAF9F2] blueprint-grid p-6 sm:p-10 shadow-sm">
-            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-6 pb-4 border-b border-[#335C33]/15">
+          <div className="rounded-3xl border border-[#1B3B2B]/15 bg-[#FFFFFF] blueprint-grid p-4 sm:p-8 lg:p-10 shadow-sm">
+            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-6 pb-4 border-b border-[#1B3B2B]/15">
               <div>
-                <h3 className="font-anton text-2xl sm:text-3xl uppercase tracking-tight text-[#2C2E2B]">
+                <h3 className="font-anton text-xl sm:text-3xl uppercase tracking-tight text-[#242220]">
                   {current.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-[#2C2E2B]/60 mt-0.5">
+                <p className="text-xs sm:text-sm text-[#242220]/60 mt-0.5">
                   {current.description}
                 </p>
               </div>
 
               <button
                 onClick={() => setResumeOpen(true)}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-[#FAF9F2] border border-[#335C33]/20 text-[#335C33] hover:bg-[#E3EDD3] transition-colors self-start sm:self-auto shrink-0 cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-[#FAF7F2] border border-[#7B0323]/30 text-[#7B0323] hover:bg-[#7B0323] hover:text-[#FFFFFF] transition-all self-start sm:self-auto shrink-0 cursor-pointer shadow-xs"
               >
                 <FileText className="w-3.5 h-3.5" />
                 <span>{t("competitor.open")}</span>
@@ -245,31 +244,31 @@ export function TheCompetitorSection() {
             </div>
 
             {/* Items List */}
-            <div className="divide-y divide-[#335C33]/10">
+            <div className="divide-y divide-[#1B3B2B]/10">
               {current.items.map((item, iIdx) => (
                 <div
                   key={iIdx}
-                  className="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-start justify-between gap-4 group hover:bg-[#335C33]/[0.02] px-3 -mx-3 rounded-2xl transition-colors"
+                  className="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-start justify-between gap-4 group hover:bg-[#1B3B2B]/[0.02] px-3 -mx-3 rounded-2xl transition-colors"
                 >
                   <div className="space-y-1 min-w-0 flex-1">
                     <div className="flex items-center gap-2 min-w-0">
-                      <h4 className="font-anton text-base sm:text-lg uppercase tracking-tight text-[#2C2E2B] group-hover:text-[#335C33] transition-colors leading-snug flex-1">
+                      <h4 className="font-anton text-base sm:text-lg uppercase tracking-tight text-[#242220] group-hover:text-[#7B0323] transition-colors leading-snug flex-1">
                         {item.title}
                       </h4>
                       {item.highlight && (
-                        <span className="w-2 h-2 rounded-full bg-[#335C33] shrink-0" />
+                        <span className="w-2 h-2 rounded-full bg-[#7B0323] shrink-0" />
                       )}
                     </div>
-                    <p className="text-xs sm:text-sm font-semibold text-[#335C33]">
+                    <p className="text-xs sm:text-sm font-semibold text-[#7B0323]">
                       {item.subtitle}
                     </p>
-                    <p className="text-xs text-[#2C2E2B]/60 leading-relaxed pt-1">
+                    <p className="text-xs text-[#242220]/70 leading-relaxed pt-1">
                       {item.detail}
                     </p>
                   </div>
 
                   <div className="shrink-0 self-start">
-                    <span className="px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-[#F6F6EE] border border-[#335C33]/20 text-[#2C2E2B] shadow-xs">
+                    <span className="px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-[#FAF7F2] border border-[#1B3B2B]/15 text-[#1B3B2B] shadow-xs">
                       {item.badge}
                     </span>
                   </div>

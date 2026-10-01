@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Anton&family=Fragment+Mono:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500;1,9..144,600&family=Lexend:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Fragment+Mono:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500;1,9..144,600&family=Lexend:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -13,27 +13,33 @@
   --font-anton: "Anton", sans-serif;
   --font-heading: 'Fraunces', Georgia, serif;
   
-  /* ─── CAFLOOP DESIGN SYSTEM ────────────────────────────────── */
-  --color-brand-primary: #335C33;
-  --color-brand-primary-hover: #284828;
-  --color-brand-matcha: #E3EDD3;
-  --color-brand-matcha-hover: #D5E3C0;
+  /* ─── LUXURY EDITORIAL DESIGN SYSTEM ───────────────────────── */
+  --color-brand-primary: #7B0323; /* Đỏ rượu vang */
+  --color-brand-primary-hover: #5E021A;
+  --color-brand-wine: #7B0323;
+  --color-brand-wine-hover: #5E021A;
+
+  --color-brand-forest: #1B3B2B; /* Màu xanh đậm hơn */
+  --color-brand-forest-hover: #142C20;
+  --color-brand-forest-dark: #0F2017;
+
+  --color-brand-matcha: #E2ECE5;
+  --color-brand-matcha-hover: #D2E2D7;
   --color-brand-terracotta: #8C5A35;
-  --color-brand-charcoal: #2C2E2B;
-  --color-bg-cream: #F6F6EE;
-  --color-surface-light: #FAF9F2;
+  --color-brand-charcoal: #242220;
+  --color-bg-cream: #FAF7F2;
+  --color-surface-light: #FFFFFF;
+  --color-surface-card: #FDFCF7;
 
   /* Legacy mapped aliases */
-  --color-brand-orange: #8C5A35;
-  --color-brand-orange-light: rgba(140, 90, 53, 0.12);
-  --color-brand-forest: #335C33;
-  --color-brand-forest-dark: #284828;
+  --color-brand-orange: #7B0323;
+  --color-brand-orange-light: rgba(123, 3, 35, 0.1);
   --color-brand-gold: #8C5A35;
   --color-brand-gold-light: rgba(140, 90, 53, 0.12);
-  --color-brand-green: #4A7F4A;
-  --color-brand-border: rgba(51, 92, 51, 0.2);
-  --color-brand-dark-border: rgba(51, 92, 51, 0.4);
-  --color-brand-card: #FAF9F2;
+  --color-brand-green: #1B3B2B;
+  --color-brand-border: rgba(27, 59, 43, 0.15);
+  --color-brand-dark-border: rgba(27, 59, 43, 0.35);
+  --color-brand-card: #FFFFFF;
 
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
@@ -44,24 +50,24 @@
 }
 
 :root {
-  --background: #F6F6EE;
-  --foreground: #2C2E2B;
-  --card: #FAF9F2;
-  --card-foreground: #2C2E2B;
-  --popover: #FDFCF7;
-  --popover-foreground: #2C2E2B;
-  --primary: #335C33;
-  --primary-foreground: #F6F6EE;
-  --secondary: #E3EDD3;
-  --secondary-foreground: #335C33;
-  --muted: #FAF9F2;
-  --muted-foreground: rgba(44, 46, 43, 0.6);
-  --accent: #8C5A35;
-  --accent-foreground: #F6F6EE;
+  --background: #FAF7F2;
+  --foreground: #242220;
+  --card: #FFFFFF;
+  --card-foreground: #242220;
+  --popover: #FFFFFF;
+  --popover-foreground: #242220;
+  --primary: #7B0323;
+  --primary-foreground: #FFFFFF;
+  --secondary: #1B3B2B;
+  --secondary-foreground: #FAF7F2;
+  --muted: #F5F0E6;
+  --muted-foreground: rgba(36, 34, 32, 0.65);
+  --accent: #7B0323;
+  --accent-foreground: #FFFFFF;
   --destructive: #ef4444;
-  --border: rgba(51, 92, 51, 0.2);
-  --input: rgba(51, 92, 51, 0.2);
-  --ring: #335C33;
+  --border: rgba(27, 59, 43, 0.15);
+  --input: rgba(27, 59, 43, 0.15);
+  --ring: #7B0323;
   --radius: 1rem;
 }
 
@@ -77,12 +83,12 @@
   html {
     scroll-behavior: smooth;
     font-family: var(--font-sans);
-    background-color: #F6F6EE;
-    color: #2C2E2B;
+    background-color: #FAF7F2;
+    color: #242220;
   }
   body {
-    background-color: #F6F6EE;
-    color: #2C2E2B;
+    background-color: #FAF7F2;
+    color: #242220;
     font-family: 'Lexend', system-ui, sans-serif;
     font-size: 16px;
     line-height: 1.6;
@@ -92,8 +98,8 @@
     -moz-osx-font-smoothing: grayscale;
   }
   ::selection {
-    background-color: #335C33;
-    color: #F6F6EE;
+    background-color: #7B0323;
+    color: #FFFFFF;
   }
   input,
   textarea,
@@ -116,16 +122,16 @@
     height: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: rgba(227, 237, 211, 0.3);
+    background: rgba(226, 236, 229, 0.3);
     border-radius: 9999px;
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(51, 92, 51, 0.3);
+    background: rgba(123, 3, 35, 0.3);
     border-radius: 9999px;
     min-height: 60px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(51, 92, 51, 0.55);
+    background: rgba(123, 3, 35, 0.6);
   }
   ::-webkit-scrollbar-button {
     display: none !important;
@@ -134,7 +140,7 @@
   }
   * {
     scrollbar-width: thin;
-    scrollbar-color: rgba(51, 92, 51, 0.3) rgba(227, 237, 211, 0.2);
+    scrollbar-color: rgba(123, 3, 35, 0.3) rgba(226, 236, 229, 0.2);
   }
 
   /* Shimmer Animation Keyframe */
@@ -157,16 +163,16 @@
   font-family: 'Lexend', sans-serif;
 }
 
-/* Section Badge . CAFLOOP Style */
+/* Section Badge . Luxury Style */
 .section-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
   padding: 0.35rem 0.85rem;
   border-radius: 9999px;
-  background-color: #E3EDD3;
-  color: #335C33;
-  border: 1px solid rgba(51, 92, 51, 0.15);
+  background-color: #E2ECE5;
+  color: #1B3B2B;
+  border: 1px solid rgba(27, 59, 43, 0.18);
   font-family: 'Lexend', sans-serif;
   font-size: 0.75rem;
   line-height: 1.25;
@@ -180,46 +186,46 @@
 .blueprint-grid {
   background-size: 28px 28px;
   background-image: 
-    linear-gradient(to right, rgba(51, 92, 51, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(51, 92, 51, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(27, 59, 43, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(27, 59, 43, 0.04) 1px, transparent 1px);
 }
 
 .blueprint-grid-dashed {
   background-size: 28px 28px;
   background-image: 
-    repeating-linear-gradient(to right, rgba(51, 92, 51, 0.07) 0, rgba(51, 92, 51, 0.07) 3px, transparent 3px, transparent 28px),
-    repeating-linear-gradient(to bottom, rgba(51, 92, 51, 0.07) 0, rgba(51, 92, 51, 0.07) 3px, transparent 3px, transparent 28px);
+    repeating-linear-gradient(to right, rgba(27, 59, 43, 0.06) 0, rgba(27, 59, 43, 0.06) 3px, transparent 3px, transparent 28px),
+    repeating-linear-gradient(to bottom, rgba(27, 59, 43, 0.06) 0, rgba(27, 59, 43, 0.06) 3px, transparent 3px, transparent 28px);
 }
 
 .blueprint-grid-dark {
   background-size: 28px 28px;
   background-image: 
-    linear-gradient(to right, rgba(227, 237, 211, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(227, 237, 211, 0.06) 1px, transparent 1px);
+    linear-gradient(to right, rgba(226, 236, 229, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(226, 236, 229, 0.06) 1px, transparent 1px);
 }
 
 .blueprint-grid-dark-dashed {
   background-size: 28px 28px;
   background-image: 
-    repeating-linear-gradient(to right, rgba(227, 237, 211, 0.08) 0, rgba(227, 237, 211, 0.08) 3px, transparent 3px, transparent 28px),
-    repeating-linear-gradient(to bottom, rgba(227, 237, 211, 0.08) 0, rgba(227, 237, 211, 0.08) 3px, transparent 3px, transparent 28px);
+    repeating-linear-gradient(to right, rgba(226, 236, 229, 0.08) 0, rgba(226, 236, 229, 0.08) 3px, transparent 3px, transparent 28px),
+    repeating-linear-gradient(to bottom, rgba(226, 236, 229, 0.08) 0, rgba(226, 236, 229, 0.08) 3px, transparent 3px, transparent 28px);
 }
 
 /* Giant outline watermark text at bottom */
 .quynhchi-outline-text {
   font-family: 'Anton', sans-serif;
   color: transparent;
-  -webkit-text-stroke: 1.5px #335C33;
-  opacity: 0.2;
+  -webkit-text-stroke: 1.5px #1B3B2B;
+  opacity: 0.18;
   letter-spacing: 0.05em;
   user-select: none;
 }
 
 /* Custom dashed border utilities */
 .dashed-border-box {
-  border: 1px dashed rgba(51, 92, 51, 0.3);
+  border: 1px dashed rgba(27, 59, 43, 0.25);
 }
 
 .dashed-border-dark {
-  border: 1px dashed rgba(227, 237, 211, 0.2);
+  border: 1px dashed rgba(226, 236, 229, 0.2);
 }

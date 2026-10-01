@@ -15,8 +15,8 @@ interface PageNavProps {
 
 export function PageNav({ nextHref, nextLabel, nextSub, prevHref, prevLabel, dark }: PageNavProps) {
   const { t } = useLanguage();
-  const borderColor = dark ? "border-[#335C33]/40" : "border-[#335C33]/15";
-  const prevTextColor = dark ? "text-white/50 hover:text-white/80" : "text-[#2C2E2B]/60 hover:text-[#2C2E2B]";
+  const borderColor = dark ? "border-[#1B3B2B]/40" : "border-[#1B3B2B]/15";
+  const prevTextColor = dark ? "text-white/60 hover:text-white" : "text-[#242220]/60 hover:text-[#7B0323]";
 
   return (
     <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 flex flex-col sm:flex-row items-center justify-between gap-6 border-t ${borderColor} mt-0`}>
@@ -36,16 +36,16 @@ export function PageNav({ nextHref, nextLabel, nextSub, prevHref, prevLabel, dar
       {/* Next CTA */}
       <Link
         href={nextHref}
-        className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#335C33] text-[#F6F6EE] hover:bg-[#284828] transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 group"
+        className="w-full sm:w-auto inline-flex items-center justify-between sm:justify-start gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full bg-[#7B0323] text-[#FFFFFF] hover:bg-[#5E021A] transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 group"
       >
         <div className="text-left">
-          <div className="text-[10px] font-mono text-white/60 uppercase tracking-widest mb-0.5">
+          <div className="text-[10px] font-mono text-white/70 uppercase tracking-widest mb-0.5">
             {t("pagenav.upnext")}
           </div>
           <div className="text-sm font-semibold leading-none flex items-center gap-2">
             {nextLabel}
             {nextSub && (
-              <span className="text-white/60 text-xs font-normal hidden sm:inline">. {nextSub}</span>
+              <span className="text-white/70 text-xs font-normal hidden sm:inline">. {nextSub}</span>
             )}
           </div>
         </div>

@@ -12,9 +12,9 @@ export default function TheHeartPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-1 flex flex-col min-h-screen bg-[#EAF1E4]">
+      <main className="flex-1 flex flex-col min-h-screen bg-[#FAF7F2] pt-20 sm:pt-24">
         <TheHeartSection />
-        <div className="bg-[#EAF1E4]">
+        <div className="bg-[#FAF7F2]">
           <PageNav
             prevHref="/the-mind"
             prevLabel="The Mind"

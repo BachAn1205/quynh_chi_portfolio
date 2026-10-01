@@ -58,17 +58,17 @@ export default async function JournalDetailPage({ params }: PageProps) {
               </span>
             </div>
 
-            <h1 className="font-anton text-3xl sm:text-5xl lg:text-6xl uppercase tracking-tight text-white leading-[1.1] mb-6">
+            <h1 className="font-anton text-2xl sm:text-4xl lg:text-5xl uppercase tracking-tight text-white leading-[1.1] mb-6 break-words">
               {post.title}
             </h1>
 
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#335C33] border border-[#22c55e]/40 overflow-hidden flex items-center justify-center shrink-0 text-white font-bold font-mono text-sm">
+              <div className="w-10 h-10 rounded-full bg-[#1B3B2B] border border-[#7B0323]/40 overflow-hidden flex items-center justify-center shrink-0 text-white font-bold font-mono text-sm">
                 QC
               </div>
               <div className="text-sm">
                 <span className="font-bold text-white block">Phan Hoàng Quỳnh Chi</span>
-                <span className="text-xs text-[#22c55e] font-mono">Researcher &amp; Founder • Dak Lak</span>
+                <span className="text-xs text-[#FAF7F2]/80 font-mono">Researcher &amp; Founder • Dak Lak</span>
               </div>
             </div>
           </div>

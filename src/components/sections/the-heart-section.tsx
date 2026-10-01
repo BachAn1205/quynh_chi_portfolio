@@ -125,16 +125,16 @@ export function TheHeartSection() {
   ];
 
   return (
-    <section id="the-heart" className="bg-[#EAF1E4] text-[#2C2E2B] py-24 sm:py-32 overflow-hidden blueprint-grid border-t border-[#335C33]/15">
+    <section id="the-heart" className="bg-[#FAF7F2] text-[#242220] py-24 sm:py-32 overflow-hidden blueprint-grid border-t border-[#1B3B2B]/15">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-8 border-b border-[#335C33]/15">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16 pb-6 sm:pb-8 border-b border-[#1B3B2B]/15">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-[#335C33] flex items-center justify-center shrink-0 shadow-sm text-[#F6F6EE]">
-              <HeartHandshake className="w-6 h-6 text-[#E3EDD3]" />
+            <div className="w-12 h-12 rounded-2xl bg-[#1B3B2B] flex items-center justify-center shrink-0 shadow-sm text-[#FAF7F2]">
+              <HeartHandshake className="w-6 h-6 text-[#E2ECE5]" />
             </div>
             <div>
-              <h2 className="font-anton text-4xl sm:text-6xl uppercase tracking-tight text-[#2C2E2B]">
+              <h2 className="font-anton text-3xl sm:text-5xl lg:text-6xl uppercase tracking-tight text-[#242220]">
                 {t("heart.title")}
               </h2>
             </div>
@@ -142,10 +142,10 @@ export function TheHeartSection() {
         </div>
 
         {/* Featured Multimedia Showcase: T'rưng Heritage & Music */}
-        <div className="relative rounded-3xl border border-[#335C33]/20 bg-[#FAF9F2] p-6 sm:p-10 mb-16 overflow-hidden shadow-sm">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="relative rounded-3xl border border-[#1B3B2B]/15 bg-[#FFFFFF] p-4 sm:p-8 lg:p-10 mb-12 sm:mb-16 overflow-hidden shadow-sm">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start lg:items-center">
             {/* Visual stage / instrument upload */}
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-7 self-center">
               <ProjectImageUpload
                 slotId="heart-showcase"
                 guideline={{
@@ -157,23 +157,23 @@ export function TheHeartSection() {
             </div>
 
             {/* Showcase story */}
-            <div className="lg:col-span-5 space-y-4">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#335C33]/10 text-[#335C33] border border-[#335C33]/20 text-xs font-mono font-semibold">
+            <div className="lg:col-span-5 space-y-4 self-center">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#7B0323]/10 text-[#7B0323] border border-[#7B0323]/20 text-xs font-mono font-semibold">
                 <Music className="w-3.5 h-3.5" />
                 <span>{t("heart.showcase.badge")}</span>
               </div>
-              <h3 className="font-anton text-2xl sm:text-3xl uppercase tracking-tight text-[#2C2E2B] leading-tight">
+              <h3 className="font-anton text-xl sm:text-3xl uppercase tracking-tight text-[#242220] leading-tight">
                 {t("heart.showcase.title")}
               </h3>
-              <p className="text-xs sm:text-sm text-[#2C2E2B]/75 leading-relaxed min-h-[4rem]">
+              <p className="text-xs sm:text-sm text-[#242220]/75 leading-relaxed">
                 {t("heart.showcase.desc")}
               </p>
-              <div className="p-3.5 rounded-2xl bg-[#F6F6EE] border border-[#335C33]/15 flex items-center justify-between text-xs font-mono">
-                <div className="flex items-center gap-2 text-[#8C5A35]">
-                  <Video className="w-4 h-4 text-red-500" />
+              <div className="p-3.5 rounded-2xl bg-[#FAF7F2] border border-[#1B3B2B]/15 flex items-center justify-between text-xs font-mono">
+                <div className="flex items-center gap-2 text-[#7B0323]">
+                  <Video className="w-4 h-4 text-[#7B0323]" />
                   <span>{t("heart.showcase.stat1")}</span>
                 </div>
-                <span className="text-[#335C33] font-bold">{t("heart.showcase.stat2")}</span>
+                <span className="text-[#1B3B2B] font-bold">{t("heart.showcase.stat2")}</span>
               </div>
             </div>
           </div>
@@ -187,36 +187,36 @@ export function TheHeartSection() {
             return (
               <div
                 key={project.id}
-                className={`rounded-3xl border border-[#335C33]/15 bg-[#FAF9F2] p-6 sm:p-8 flex flex-col justify-between hover:border-[#335C33]/35 hover:shadow-md transition-all duration-300 shadow-sm ${
+                className={`rounded-3xl border border-[#1B3B2B]/15 bg-[#FFFFFF] p-6 sm:p-8 flex flex-col justify-between hover:border-[#1B3B2B]/35 hover:shadow-md transition-all duration-300 shadow-sm ${
                   isFeatured ? "md:col-span-2" : ""
                 }`}
               >
                 <div>
                   {/* Card Header */}
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-[#335C33]/15">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-[#1B3B2B]/15">
                     <div className="flex items-center gap-2.5 min-w-0">
-                      <div className="w-8 h-8 rounded-xl bg-[#335C33] text-[#F6F6EE] flex items-center justify-center shrink-0">
-                        <Icon className="w-4 h-4 text-[#E3EDD3]" />
+                      <div className="w-8 h-8 rounded-xl bg-[#1B3B2B] text-[#FAF7F2] flex items-center justify-center shrink-0">
+                        <Icon className="w-4 h-4 text-[#E2ECE5]" />
                       </div>
-                      <span className="font-mono text-xs font-bold text-[#8C5A35] uppercase tracking-wide">
+                      <span className="font-mono text-xs font-bold text-[#7B0323] uppercase tracking-wide">
                         {project.category}
                       </span>
                     </div>
-                    <span className="self-start sm:self-auto text-xs font-mono font-semibold px-3 py-1 rounded-full bg-[#335C33]/10 text-[#335C33] border border-[#335C33]/20 shrink-0">
+                    <span className="self-start sm:self-auto text-xs font-mono font-semibold px-3 py-1 rounded-full bg-[#7B0323]/10 text-[#7B0323] border border-[#7B0323]/20 shrink-0">
                       {project.badge}
                     </span>
                   </div>
 
                   {/* Title & Role */}
-                  <h4 className="font-anton text-xl sm:text-2xl uppercase tracking-tight text-[#2C2E2B] mb-1 leading-snug min-h-[2.5rem] flex items-center">
+                  <h4 className="font-anton text-xl sm:text-2xl uppercase tracking-tight text-[#242220] mb-1 leading-snug min-h-[2.5rem] flex items-center">
                     {project.title}
                   </h4>
-                  <p className="text-xs font-mono text-[#8C5A35] font-semibold mb-4 min-h-[1.25rem] flex items-center">
+                  <p className="text-xs font-mono text-[#7B0323] font-semibold mb-4 min-h-[1.25rem] flex items-center">
                     {project.role}
                   </p>
 
                   {/* Body Text */}
-                  <p className="text-xs sm:text-sm text-[#2C2E2B]/75 leading-relaxed mb-4">
+                  <p className="text-xs sm:text-sm text-[#242220]/75 leading-relaxed mb-4">
                     {project.description}
                   </p>
 
@@ -224,11 +224,11 @@ export function TheHeartSection() {
                   {project.subItems && (
                     <div className="space-y-2.5 pt-2">
                       {project.subItems.map((sub, sIdx) => (
-                        <div key={sIdx} className="p-3 rounded-xl bg-[#F6F6EE] border border-[#335C33]/15 text-xs">
-                          <span className="font-bold text-[#2C2E2B] block mb-0.5">
+                        <div key={sIdx} className="p-3 rounded-xl bg-[#FAF7F2] border border-[#1B3B2B]/15 text-xs">
+                          <span className="font-bold text-[#242220] block mb-0.5">
                             {sub.label}
                           </span>
-                          <span className="text-[#2C2E2B]/70 leading-relaxed block">
+                          <span className="text-[#242220]/70 leading-relaxed block">
                             {sub.text}
                           </span>
                         </div>
@@ -238,13 +238,13 @@ export function TheHeartSection() {
 
                   {/* Impact detail if present */}
                   {project.impact && (
-                    <div className="mt-3 p-3 rounded-xl bg-[#E3EDD3]/50 border border-[#335C33]/20 text-xs text-[#335C33] font-medium">
+                    <div className="mt-3 p-3 rounded-xl bg-[#E2ECE5]/50 border border-[#1B3B2B]/20 text-xs text-[#1B3B2B] font-medium">
                       {project.impact}
                     </div>
                   )}
 
                   {/* Upload & Preview */}
-                  <div className="mt-6 pt-4 border-t border-[#335C33]/15">
+                  <div className="mt-6 pt-4 border-t border-[#1B3B2B]/15">
                     <ProjectImageUpload
                       slotId={project.slotId}
                       guideline={project.guideline}

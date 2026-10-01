@@ -12,13 +12,13 @@ export default function AboutPage() {
   const { t } = useLanguage();
 
   const dataPills = [
-    { label: "1.6M Tons Ag Waste", bg: "bg-[#335C33] text-[#F6F6EE] -rotate-3" },
-    { label: "1.8M Tons CO2 Impact", bg: "bg-[#FAF9F2] text-[#2C2E2B] border border-[#335C33]/20 rotate-2" },
-    { label: "$80M Carbon Value Loss", bg: "bg-[#8C5A35] text-[#F6F6EE] -rotate-2" },
-    { label: "SPSS Econometric Modeling", bg: "bg-[#284828] text-[#E3EDD3] rotate-3" },
-    { label: "83.5% Predictive Accuracy", bg: "bg-[#FAF9F2] text-[#335C33] border border-[#335C33]/40 -rotate-1" },
-    { label: "T'rưng Oral Heritage", bg: "bg-[#335C33] text-[#F6F6EE] rotate-2" },
-    { label: "2,300+ Students Engaged", bg: "bg-[#8C5A35] text-[#F6F6EE] -rotate-3" },
+    { label: "1.6M Tons Ag Waste", bg: "bg-[#1B3B2B] text-[#FAF7F2] -rotate-3" },
+    { label: "1.8M Tons CO2 Impact", bg: "bg-[#FFFFFF] text-[#242220] border border-[#1B3B2B]/20 rotate-2" },
+    { label: "$80M Carbon Value Loss", bg: "bg-[#7B0323] text-[#FFFFFF] -rotate-2" },
+    { label: "SPSS Econometric Modeling", bg: "bg-[#1B3B2B] text-[#E2ECE5] rotate-3" },
+    { label: "83.5% Predictive Accuracy", bg: "bg-[#FFFFFF] text-[#7B0323] border border-[#7B0323]/30 -rotate-1" },
+    { label: "T'rưng Oral Heritage", bg: "bg-[#1B3B2B] text-[#FAF7F2] rotate-2" },
+    { label: "2,300+ Students Engaged", bg: "bg-[#7B0323] text-[#FFFFFF] -rotate-3" },
   ];
   const experiences = [
     {
@@ -42,14 +42,14 @@ export default function AboutPage() {
       ],
     },
     {
-      role: "Founder & President",
-      company: "Dakonomics Club",
+      role: "Head of Expert & Mentor of Game Theory",
+      company: "Shark club (head of eexpert) & Geniusstar business club (mentor of game theory )",
       period: "2024 . Present",
       bullets: [
-        "Established the first high-school economics club in Dak Lak with a 9-person core team spanning 5 schools.",
-        "Curated a digital 'CaseBank' for real-world business analysis and trained students in micro/macro models.",
-        "Organized the 'Dakonomics Green Ideas Competition' (SDG 12) with participants from 18 provinces.",
-        "Selected Top 14 teams and facilitated workshops for 50+ students with national startup experts.",
+        "Head of Expert at Shark Club, curating economic curricula and guiding peers through empirical analysis.",
+        "Mentor of Game Theory at Geniusstar business club, teaching Nash Equilibrium and strategic decision-making simulations.",
+        "Taught interactive economic frameworks ('2 Ice Cream Shops on a Beach') to help peers deduce market equilibria.",
+        "Facilitated workshops and mentored youth teams in business case competitions.",
       ],
     },
     {
@@ -77,22 +77,22 @@ export default function AboutPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-32 sm:pt-36 pb-20 bg-[#ebe6dd] min-h-screen">
+      <main className="pt-32 sm:pt-36 pb-20 bg-[#FAF7F2] min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Page Header */}
-          <div className="flex items-center gap-4 mb-12 pb-6 border-b border-[#d8d2c7]">
-            <div className="w-12 h-12 rounded-2xl bg-[#183e2b] flex items-center justify-center shrink-0 shadow-sm text-white">
-              <User className="w-6 h-6" />
+          <div className="flex items-center gap-4 mb-8 sm:mb-12 pb-6 border-b border-[#1B3B2B]/15">
+            <div className="w-12 h-12 rounded-2xl bg-[#1B3B2B] flex items-center justify-center shrink-0 shadow-sm text-white">
+              <User className="w-6 h-6 text-[#E2ECE5]" />
             </div>
             <div>
-              <h1 className="font-anton text-4xl sm:text-6xl lg:text-7xl uppercase tracking-tight text-[#1c1510]">
-                ABOUT QUỲNH CHI
+              <h1 className="font-anton text-3xl sm:text-5xl lg:text-7xl uppercase tracking-tight text-[#242220] break-words">
+                ABOUT <span className="text-[#7B0323]">QUỲNH CHI</span>
               </h1>
             </div>
           </div>
 
           {/* Large Glowing Portrait Banner */}
-          <div className="mb-14">
+          <div className="mb-10 sm:mb-14">
             <ProjectImageUpload
               slotId="about-banner"
               guideline={{
@@ -100,23 +100,23 @@ export default function AboutPage() {
                 en: "Central Highlands landscape or outdoor activity portrait of Quynh Chi."
               }}
               aspectRatio="aspect-[16/9] sm:aspect-[21/9]"
-              heightClass="min-h-[260px] sm:min-h-[380px]"
+              heightClass="min-h-[240px] sm:min-h-[380px]"
             />
           </div>
 
           {/* Hero Narrative Block: The Mind of an Analyst. The Heart of the Highlands. */}
-          <div className="relative rounded-3xl border border-[#d8d2c7] bg-[#f6f3eb] blueprint-grid p-8 sm:p-12 mb-20 shadow-sm overflow-hidden">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          <div className="relative rounded-3xl border border-[#1B3B2B]/15 bg-[#FFFFFF] blueprint-grid p-5 sm:p-8 lg:p-12 mb-14 sm:mb-20 shadow-sm overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
               {/* Left: Story Text */}
-              <div className="lg:col-span-7 space-y-6">
-                <h2 className="font-anton text-3xl sm:text-5xl uppercase tracking-tight text-[#1c1510] leading-tight">
+              <div className="lg:col-span-7 space-y-5 sm:space-y-6">
+                <h2 className="font-anton text-2xl sm:text-4xl lg:text-5xl uppercase tracking-tight text-[#242220] leading-tight">
                   {t("about.headline")}
                 </h2>
 
-                <div className="space-y-4 text-sm sm:text-base text-[#382215] leading-relaxed font-normal">
+                <div className="space-y-4 text-sm sm:text-base text-[#242220]/75 leading-relaxed font-normal">
                   <p>{t("about.p1")}</p>
                   <p>{t("about.p2")}</p>
-                  <p className="font-medium text-[#183e2b] bg-[#183e2b]/5 p-4 rounded-2xl border-l-4 border-[#183e2b]">
+                  <p className="font-medium text-[#7B0323] bg-[#7B0323]/5 p-4 rounded-2xl border-l-4 border-[#7B0323]">
                     <em>{t("about.p3")}</em>
                   </p>
                 </div>
@@ -134,8 +134,8 @@ export default function AboutPage() {
                 />
 
                 {/* Data tags cluster */}
-                <div className="p-4 rounded-2xl bg-[#f6f3eb] border border-[#d8d2c7]">
-                  <span className="font-mono text-[10px] text-[#5e544a] font-bold uppercase tracking-wider block mb-2">
+                <div className="p-4 rounded-2xl bg-[#FAF7F2] border border-[#1B3B2B]/15">
+                  <span className="font-mono text-[10px] text-[#242220]/60 font-bold uppercase tracking-wider block mb-2">
                     {t("about.methods")}
                   </span>
                   <div className="flex flex-wrap gap-2">
@@ -154,21 +154,21 @@ export default function AboutPage() {
           </div>
 
           {/* Quote Banner */}
-          <div className="rounded-3xl bg-[#0b1710] text-white p-10 sm:p-16 mb-24 relative overflow-hidden blueprint-grid-dark shadow-xl border border-[#233529]">
-            <Quote className="w-12 h-12 text-[#22c55e] mb-6 opacity-80" />
-            <blockquote className="font-anton text-2xl sm:text-4xl lg:text-5xl uppercase tracking-tight leading-tight text-white max-w-3xl">
-              “I don&apos;t just crunch numbers; I code solutions that protect the soil and elevate the soul of the Central Highlands.”
+          <div className="rounded-3xl bg-[#1B3B2B] text-white p-6 sm:p-10 lg:p-16 mb-16 sm:mb-24 relative overflow-hidden blueprint-grid-dark shadow-xl border border-[#1B3B2B]/30">
+            <Quote className="w-10 h-10 sm:w-12 sm:h-12 text-[#E2ECE5] mb-4 sm:mb-6 opacity-80" />
+            <blockquote className="font-heading italic text-xl sm:text-2xl lg:text-4xl text-white/95 leading-relaxed max-w-3xl font-normal">
+              {t("about.quote")}
             </blockquote>
           </div>
 
           {/* Experience Section */}
           <div className="mb-24">
-            <div className="flex items-center gap-4 mb-12 pb-6 border-b border-[#d8d2c7]">
-              <div className="w-12 h-12 rounded-2xl bg-[#183e2b] flex items-center justify-center shrink-0 shadow-sm text-white">
-                <Briefcase className="w-6 h-6" />
+            <div className="flex items-center gap-4 mb-12 pb-6 border-b border-[#1B3B2B]/15">
+              <div className="w-12 h-12 rounded-2xl bg-[#1B3B2B] flex items-center justify-center shrink-0 shadow-sm text-white">
+                <Briefcase className="w-6 h-6 text-[#E2ECE5]" />
               </div>
               <div>
-                <h2 className="font-anton text-4xl sm:text-6xl uppercase tracking-tight text-[#1c1510]">
+                <h2 className="font-anton text-3xl sm:text-5xl lg:text-6xl uppercase tracking-tight text-[#242220] break-words">
                   EXPERIENCE &amp; INITIATIVES
                 </h2>
               </div>
@@ -178,26 +178,26 @@ export default function AboutPage() {
               {experiences.map((exp, idx) => (
                 <div
                   key={idx}
-                  className="rounded-3xl border border-[#d8d2c7] bg-[#f6f3eb] blueprint-grid p-6 sm:p-8 shadow-sm hover:border-[#b8b0a2] transition-colors"
+                  className="rounded-3xl border border-[#1B3B2B]/15 bg-[#FFFFFF] blueprint-grid p-4 sm:p-6 lg:p-8 shadow-sm hover:border-[#1B3B2B]/35 transition-colors"
                 >
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-3 border-b border-[#d8d2c7]">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-3 border-b border-[#1B3B2B]/15">
                     <div>
-                      <h3 className="font-anton text-xl sm:text-2xl uppercase text-[#1c1510]">
+                      <h3 className="font-anton text-xl sm:text-2xl uppercase text-[#242220]">
                         {exp.role}
                       </h3>
-                      <p className="text-xs sm:text-sm font-semibold text-[#183e2b]">
+                      <p className="text-xs sm:text-sm font-semibold text-[#7B0323]">
                         {exp.company}
                       </p>
                     </div>
-                    <span className="font-mono text-xs text-[#5e544a] bg-white px-3.5 py-1 rounded-full border border-[#d8d2c7] self-start sm:self-auto">
+                    <span className="font-mono text-xs text-[#1B3B2B] bg-[#FAF7F2] px-3.5 py-1 rounded-full border border-[#1B3B2B]/15 self-start sm:self-auto">
                       {exp.period}
                     </span>
                   </div>
 
-                  <ul className="space-y-2 text-xs sm:text-sm text-[#4a3f35]">
+                  <ul className="space-y-2 text-xs sm:text-sm text-[#242220]/75">
                     {exp.bullets.map((bullet, bIdx) => (
                       <li key={bIdx} className="flex items-start gap-2.5">
-                        <span className="text-[#d9531e] font-bold mt-0.5">•</span>
+                        <span className="text-[#7B0323] font-bold mt-0.5">•</span>
                         <span>{bullet}</span>
                       </li>
                     ))}
@@ -210,7 +210,7 @@ export default function AboutPage() {
           {/* Work Snapshots Gallery */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-24">
             <div className="flex flex-col">
-              <span className="font-anton text-xs uppercase text-[#335C33] mb-2 tracking-wide">
+              <span className="font-anton text-xs uppercase text-[#7B0323] mb-2 tracking-wide">
                 CAFLOOP Cascara Tea &amp; QR
               </span>
               <ProjectImageUpload
@@ -224,7 +224,7 @@ export default function AboutPage() {
             </div>
 
             <div className="flex flex-col">
-              <span className="font-anton text-xs uppercase text-[#335C33] mb-2 tracking-wide">
+              <span className="font-anton text-xs uppercase text-[#7B0323] mb-2 tracking-wide">
                 SPSS Quantitative Econometrics
               </span>
               <ProjectImageUpload
@@ -238,7 +238,7 @@ export default function AboutPage() {
             </div>
 
             <div className="flex flex-col">
-              <span className="font-anton text-xs uppercase text-[#335C33] mb-2 tracking-wide">
+              <span className="font-anton text-xs uppercase text-[#7B0323] mb-2 tracking-wide">
                 T&apos;rưng Cultural Education
               </span>
               <ProjectImageUpload
