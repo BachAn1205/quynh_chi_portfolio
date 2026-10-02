@@ -168,7 +168,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "hero.slide0.tag": "1,6 triệu tấn phế phụ phẩm",
     "hero.slide0.stat": "Tiềm năng thị trường $80 triệu",
     "hero.slide0.desc": "Chuyển hóa vỏ cà phê thải CO2 tại Đắk Lắk thành trà Cascara thương mại và tín chỉ carbon phi tập trung (C4F).",
-    "hero.cafloop.slogan": "From Coffee Husk to Bright Future",
+    "hero.cafloop.slogan": "Từ Vỏ Cà Phê Đến Tương Lai Tươi Sáng",
     "hero.cafloop.desc": "Sáng lập dự án kinh tế tuần hoàn chuyển hóa phế phụ phẩm vỏ cà phê tại Đắk Lắk thành trà Cascara thương mại, theo dõi chi phí COGS, tích hợp mã QR truy xuất chuỗi cung ứng và tái đầu tư lợi nhuận ban đầu vào đồ dùng học tập cho học sinh vùng khó khăn.",
     "hero.cafloop.viewProject": "Xem dự án CAFLOOP",
     "hero.cafloop.founderRoles": "VAI TRÒ CỦA TÔI VỚI TƯ CÁCH FOUNDER",
