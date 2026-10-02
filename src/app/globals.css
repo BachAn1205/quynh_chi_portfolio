@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Fragment+Mono:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500;1,9..144,600&family=Lexend:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -9,7 +8,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-lexend), 'Lexend', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: var(--font-mono), "Fragment Mono", monospace;
+  --font-mono: var(--font-mono), 'JetBrains Mono', monospace;
   --font-anton: var(--font-anton), "Anton", sans-serif;
   --font-heading: var(--font-heading), 'Fraunces', Georgia, serif;
   
@@ -156,7 +155,7 @@
 }
 
 .font-mono {
-  font-family: var(--font-mono), 'Fragment Mono', monospace;
+  font-family: var(--font-mono), 'JetBrains Mono', monospace;
 }
 
 .font-sans {

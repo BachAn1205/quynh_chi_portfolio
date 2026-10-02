@@ -45,7 +45,7 @@ export const viewport: Viewport = {
   themeColor: "#FAF7F2",
 };
 
-import { Anton, Lexend, Fragment_Mono, Fraunces } from "next/font/google";
+import { Anton, Lexend, JetBrains_Mono, Fraunces } from "next/font/google";
 import { fetchDatabaseImages } from "@/lib/get-db-images";
 
 const anton = Anton({
@@ -62,9 +62,9 @@ const lexend = Lexend({
   display: "swap",
 });
 
-const fragmentMono = Fragment_Mono({
-  weight: "400",
-  subsets: ["latin"],
+const jetbrainsMono = JetBrains_Mono({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin", "vietnamese"],
   variable: "--font-mono",
   display: "swap",
 });
@@ -85,7 +85,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`scroll-smooth ${anton.variable} ${lexend.variable} ${fragmentMono.variable} ${fraunces.variable}`}
+      className={`scroll-smooth ${anton.variable} ${lexend.variable} ${jetbrainsMono.variable} ${fraunces.variable}`}
     >
       <body className="min-h-screen bg-[#FAF7F2] text-[#242220] font-sans antialiased selection:bg-[#7B0323] selection:text-[#FFFFFF]">
         <LanguageProvider>
