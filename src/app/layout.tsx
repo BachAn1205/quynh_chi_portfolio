@@ -45,7 +45,35 @@ export const viewport: Viewport = {
   themeColor: "#FAF7F2",
 };
 
+import { Anton, Lexend, Fragment_Mono, Fraunces } from "next/font/google";
 import { fetchDatabaseImages } from "@/lib/get-db-images";
+
+const anton = Anton({
+  weight: "400",
+  subsets: ["latin", "vietnamese"],
+  variable: "--font-anton",
+  display: "swap",
+});
+
+const lexend = Lexend({
+  weight: ["300", "400", "500", "600", "700", "800"],
+  subsets: ["latin", "vietnamese"],
+  variable: "--font-lexend",
+  display: "swap",
+});
+
+const fragmentMono = Fragment_Mono({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
+const fraunces = Fraunces({
+  subsets: ["latin", "vietnamese"],
+  variable: "--font-heading",
+  display: "swap",
+});
 
 export default async function RootLayout({
   children,
@@ -55,7 +83,10 @@ export default async function RootLayout({
   const initialImages = await fetchDatabaseImages();
 
   return (
-    <html lang="en" className="scroll-smooth">
+    <html
+      lang="en"
+      className={`scroll-smooth ${anton.variable} ${lexend.variable} ${fragmentMono.variable} ${fraunces.variable}`}
+    >
       <body className="min-h-screen bg-[#FAF7F2] text-[#242220] font-sans antialiased selection:bg-[#7B0323] selection:text-[#FFFFFF]">
         <LanguageProvider>
           <ProjectImageProvider initialImages={initialImages}>

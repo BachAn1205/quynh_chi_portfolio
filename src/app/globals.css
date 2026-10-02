@@ -8,10 +8,10 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: 'Lexend', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: "Fragment Mono", monospace;
-  --font-anton: "Anton", sans-serif;
-  --font-heading: 'Fraunces', Georgia, serif;
+  --font-sans: var(--font-lexend), 'Lexend', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: var(--font-mono), "Fragment Mono", monospace;
+  --font-anton: var(--font-anton), "Anton", sans-serif;
+  --font-heading: var(--font-heading), 'Fraunces', Georgia, serif;
   
   /* ─── LUXURY EDITORIAL DESIGN SYSTEM ───────────────────────── */
   --color-brand-primary: #7B0323; /* Đỏ rượu vang */
@@ -151,16 +151,16 @@
 }
 
 .font-anton {
-  font-family: 'Anton', sans-serif;
+  font-family: var(--font-anton), 'Anton', sans-serif;
   letter-spacing: 0.02em;
 }
 
 .font-mono {
-  font-family: 'Fragment Mono', monospace;
+  font-family: var(--font-mono), 'Fragment Mono', monospace;
 }
 
 .font-sans {
-  font-family: 'Lexend', sans-serif;
+  font-family: var(--font-lexend), 'Lexend', sans-serif;
 }
 
 /* Section Badge . Luxury Style */
