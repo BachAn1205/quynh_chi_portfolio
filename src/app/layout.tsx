@@ -45,25 +45,14 @@ export const viewport: Viewport = {
   themeColor: "#FAF7F2",
 };
 
-import { promises as fs } from "fs";
-import path from "path";
-
-async function getInitialImages(): Promise<Record<string, string>> {
-  try {
-    const filePath = path.join(process.cwd(), "src", "data", "project-images.json");
-    const data = await fs.readFile(filePath, "utf-8");
-    return JSON.parse(data);
-  } catch {
-    return {};
-  }
-}
+import { fetchDatabaseImages } from "@/lib/get-db-images";
 
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const initialImages = await getInitialImages();
+  const initialImages = await fetchDatabaseImages();
 
   return (
     <html lang="en" className="scroll-smooth">

@@ -29,31 +29,16 @@ async function saveLocalDb(data: Record<string, string>): Promise<void> {
   }
 }
 
+import { fetchDatabaseImages } from "@/lib/get-db-images";
+
 export async function GET() {
   try {
-    // 1. Try Supabase Cloud Database first
-    if (isSupabaseConfigured()) {
-      const supabase = getServiceSupabase();
-      if (supabase) {
-        const { data, error } = await supabase
-          .from(TABLE_NAME)
-          .select("id, image_url");
-
-        if (!error && data) {
-          const map: Record<string, string> = {};
-          for (const item of data) {
-            map[item.id] = item.image_url;
-          }
-          return NextResponse.json(map);
-        } else if (error) {
-          console.warn("Supabase query error:", error.message);
-        }
-      }
-    }
-
-    // 2. Fallback to local JSON
-    const images = await getLocalDb();
-    return NextResponse.json(images);
+    const images = await fetchDatabaseImages();
+    return NextResponse.json(images, {
+      headers: {
+        "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
+      },
+    });
   } catch (error) {
     console.error("GET images error:", error);
     return NextResponse.json({});

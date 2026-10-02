@@ -21,14 +21,6 @@ const ProjectImagesContext = createContext<ProjectImagesContextType>({
 
 const STORAGE_KEY = "quynhchi_portfolio_project_images";
 
-export const DEFAULT_STATIC_IMAGES: Record<string, string> = {
-  "profile-avatar": "/images/quynhchi/profile-avatar.jpg",
-  "hero-trung": "/images/quynhchi/trung-collage-1920x820.png",
-  "hero-cafloop": "/images/quynhchi/hero-coffee-farm.jpg",
-  "hero-econometrics": "/images/quynhchi/about-analyst.jpg",
-  "contact-portrait": "/images/quynhchi/contact-portrait.jpg",
-};
-
 export function ProjectImageProvider({
   children,
   initialImages,
@@ -37,13 +29,15 @@ export function ProjectImageProvider({
   initialImages?: Record<string, string>;
 }) {
   const [images, setImages] = useState<Record<string, string>>(() => {
-    let base = { ...DEFAULT_STATIC_IMAGES, ...(initialImages || {}) };
+    // Ưu tiên 100% dữ liệu lấy trực tiếp từ Database thông qua Server SSR
+    let base = { ...(initialImages || {}) };
     if (typeof window !== "undefined") {
       try {
         const cached = localStorage.getItem(STORAGE_KEY);
         if (cached) {
           const parsed = JSON.parse(cached);
-          base = { ...base, ...parsed };
+          // Dữ liệu database mới nhất từ SSR ghi đè lên cache cũ của localStorage
+          base = { ...parsed, ...(initialImages || {}) };
         }
       } catch {
         // ignore
@@ -54,14 +48,15 @@ export function ProjectImageProvider({
 
   const [isLoading, setIsLoading] = useState(false);
 
-  // Background sync with API (stale-while-revalidate pattern)
+  // Background sync với Database API (đảm bảo luôn khớp 100% với Supabase)
   const fetchImages = useCallback(async () => {
     try {
-      const res = await fetch("/api/upload");
+      const res = await fetch("/api/upload", { cache: "no-store" });
       if (res.ok) {
         const data = await res.json();
         setImages((prev) => {
-          const merged = { ...DEFAULT_STATIC_IMAGES, ...prev, ...data };
+          // Database là nguồn chân lý duy nhất (Source of Truth)
+          const merged = { ...prev, ...data };
           if (typeof window !== "undefined") {
             try {
               localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
@@ -73,7 +68,7 @@ export function ProjectImageProvider({
         });
       }
     } catch (err) {
-      console.warn("Background images sync:", err);
+      console.warn("Database images sync error:", err);
     }
   }, []);
 
