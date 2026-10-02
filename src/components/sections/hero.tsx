@@ -128,7 +128,7 @@ export function Hero() {
                 <span className="text-[#1B3B2B]">PHAN HOÀNG</span>{" "}
                 <span className="text-[#7B0323]">QUỲNH CHI</span>
               </h1>
-              <p className="text-sm sm:text-lg md:text-xl text-[#7B0323] font-semibold mt-3 mb-6 min-h-[1.75rem] flex items-center justify-center md:justify-start">
+              <p className="text-sm sm:text-lg md:text-xl text-[#7B0323] font-light tracking-wide mt-3 mb-6 min-h-[1.75rem] flex items-center justify-center md:justify-start">
                 {t("hero.subtitle")}
               </p>
 
