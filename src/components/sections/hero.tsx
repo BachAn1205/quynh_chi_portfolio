@@ -124,7 +124,7 @@ export function Hero() {
 
             {/* Right Column: Name, Slogan, Badges & Action Buttons */}
             <div className="flex-1 flex flex-col justify-center pt-1 sm:pt-3 text-center md:text-left">
-              <h1 className="font-anton text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase tracking-tight leading-[1.05] break-words">
+              <h1 className="font-anton text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase tracking-tight leading-[1.05] md:whitespace-nowrap">
                 <span className="text-[#1B3B2B]">PHAN HOÀNG</span>{" "}
                 <span className="text-[#7B0323]">QUỲNH CHI</span>
               </h1>
@@ -234,7 +234,7 @@ export function Hero() {
                 </div>
 
                 {/* 6 Founder Capabilities Grid: 2 dòng, mỗi dòng 3 thẻ */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5 sm:gap-4 mb-2">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4 mb-2">
                   {founderRoles.map((role, rIdx) => {
                     const Icon = role.icon;
                     return (

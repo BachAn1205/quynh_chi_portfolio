@@ -22,7 +22,6 @@ export function TheCompetitorSection() {
       title: t("competitor.tab0"),
       shortTitle: "Academics",
       icon: GraduationCap,
-      description: "Selective high school admittance, near-perfect GPA, and top standardized test scores.",
       items: [
         {
           title: "VNUHCM - High School for The Gifted (2024 . 2027)",
@@ -59,7 +58,6 @@ export function TheCompetitorSection() {
       title: t("competitor.tab1"),
       shortTitle: "Olympiads",
       icon: Trophy,
-      description: "International and national competition podium finishes in economics, finance, and business cases.",
       items: [
         {
           title: "Harvard Crimson Business Case (HCBC) 2025",
@@ -110,7 +108,6 @@ export function TheCompetitorSection() {
       title: t("competitor.tab2"),
       shortTitle: "Debate & Arts",
       icon: Award,
-      description: "National championships in parliamentary debate, international art exhibitions, and traditional solo music.",
       items: [
         {
           title: "Strategic Debate: DAS-DO Debate Open 2025",
@@ -147,7 +144,6 @@ export function TheCompetitorSection() {
       title: t("competitor.tab3"),
       shortTitle: "Skills & Profile",
       icon: Code2,
-      description: "Empirical data toolset, programming environments, languages, and personal passions.",
       items: [
         {
           title: "Technical & Quantitative Methodologies",
@@ -229,9 +225,6 @@ export function TheCompetitorSection() {
                 <h3 className="font-anton text-xl sm:text-3xl uppercase tracking-tight text-[#242220]">
                   {current.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-[#242220]/60 mt-0.5">
-                  {current.description}
-                </p>
               </div>
 
               <button

@@ -45,14 +45,6 @@ export default function ContactPage() {
             <div className="lg:col-span-5 rounded-3xl bg-[#1B3B2B] text-white p-5 sm:p-7 flex flex-col justify-between overflow-hidden relative shadow-xl blueprint-grid-dark border border-[#1B3B2B]/30 gap-6">
               {/* Top: Personal Portrait Upload */}
               <div className="relative z-10 w-full flex flex-col">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="font-mono text-xs uppercase tracking-wider text-[#FAF7F2] font-semibold">
-                    Ảnh chân dung cá nhân
-                  </span>
-                  <span className="text-[10px] font-mono text-white/60">
-                    Portrait
-                  </span>
-                </div>
                 <ProjectImageUpload
                   slotId="contact-portrait"
                   guideline={{

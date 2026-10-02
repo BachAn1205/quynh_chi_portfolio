@@ -43,11 +43,11 @@ export default function AboutPage() {
     },
     {
       role: "Head of Expert & Mentor of Game Theory",
-      company: "Shark club (head of eexpert) & Geniusstar business club (mentor of game theory )",
+      company: "Shark Club (Head of Expert) & Geniusstar Business Club (Mentor of Game Theory)",
       period: "2024 . Present",
       bullets: [
         "Head of Expert at Shark Club, curating economic curricula and guiding peers through empirical analysis.",
-        "Mentor of Game Theory at Geniusstar business club, teaching Nash Equilibrium and strategic decision-making simulations.",
+        "Mentor of Game Theory at Geniusstar Business Club, teaching Nash Equilibrium and strategic decision-making simulations.",
         "Taught interactive economic frameworks ('2 Ice Cream Shops on a Beach') to help peers deduce market equilibria.",
         "Facilitated workshops and mentored youth teams in business case competitions.",
       ],
@@ -109,7 +109,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
               {/* Left: Story Text */}
               <div className="lg:col-span-7 space-y-5 sm:space-y-6">
-                <h2 className="font-anton text-2xl sm:text-4xl lg:text-5xl uppercase tracking-tight text-[#242220] leading-tight">
+                <h2 className="font-anton text-xl sm:text-2xl lg:text-3xl uppercase tracking-tight text-[#242220] leading-tight">
                   {t("about.headline")}
                 </h2>
 
@@ -154,9 +154,9 @@ export default function AboutPage() {
           </div>
 
           {/* Quote Banner */}
-          <div className="rounded-3xl bg-[#1B3B2B] text-white p-6 sm:p-10 lg:p-16 mb-16 sm:mb-24 relative overflow-hidden blueprint-grid-dark shadow-xl border border-[#1B3B2B]/30">
-            <Quote className="w-10 h-10 sm:w-12 sm:h-12 text-[#E2ECE5] mb-4 sm:mb-6 opacity-80" />
-            <blockquote className="font-heading italic text-xl sm:text-2xl lg:text-4xl text-white/95 leading-relaxed max-w-3xl font-normal">
+          <div className="rounded-3xl bg-[#1B3B2B] text-white p-6 sm:p-10 lg:p-14 mb-16 sm:mb-24 relative overflow-hidden blueprint-grid-dark shadow-xl border border-[#1B3B2B]/30">
+            <Quote className="w-8 h-8 sm:w-10 sm:h-10 text-[#E2ECE5] mb-3 sm:mb-5 opacity-80" />
+            <blockquote className="font-heading italic text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/95 leading-relaxed max-w-4xl font-normal">
               {t("about.quote")}
             </blockquote>
           </div>

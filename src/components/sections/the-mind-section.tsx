@@ -22,7 +22,7 @@ interface ProjectItem {
   category: string;
   icon: any;
   badge?: string;
-  title: string;
+  title: string | React.ReactNode;
   subtitle?: string;
   highlights: ProjectHighlight[];
   slotId: string;
@@ -71,7 +71,12 @@ export function TheMindSection() {
       id: "startup",
       category: "Circular Economy Startup & Operations",
       icon: Boxes,
-      title: "CAFLOOP (Green Coffee Husk Project) & Business Operations",
+      title: (
+        <>
+          CAFLOOP (Green Coffee Husk Project)
+          <br className="hidden sm:inline" /> &amp; Business Operations
+        </>
+      ),
       subtitle: "Founder & Product Strategist (Sep 2024 . Present)",
       highlights: [
         {
@@ -101,7 +106,7 @@ export function TheMindSection() {
       id: "lab",
       category: "International Data Lab",
       icon: Cpu,
-      title: "NSYSU Science & Innovation Camp (Taiwan, Jul 2026)",
+      title: "NSYSU Science & Innovation Camp",
       subtitle: "Fully-Funded Researcher, Taiwan, Jul 2026",
       highlights: [
         {
@@ -129,22 +134,23 @@ export function TheMindSection() {
     },
     {
       id: "pedagogy",
-      category: "Shark Club & Geniusstar Business Club",
+      category: "Mentorship & Academic Leadership",
       icon: GraduationCap,
-      title: "Shark club (head of eexpert) & Geniusstar business club (mentor of game theory )",
+      title: "Shark Club & Geniusstar Business Club",
+      subtitle: "Head of Expert (Shark Club) & Mentor of Game Theory (Geniusstar Business Club)",
       highlights: [
         {
-          heading: "Shark club (head of eexpert)",
+          heading: "Shark Club (Head of Expert)",
           detail:
             "Curated academic curricula on supply-demand elasticity and market mechanics. Guided student members through foundational economic principles and real-world case analysis.",
         },
         {
-          heading: "Geniusstar business club (mentor of game theory )",
+          heading: "Geniusstar Business Club (Mentor of Game Theory)",
           detail:
             "Designed curricula on strategic decision-making. Taught Nash Equilibrium through a '2 Ice Cream Shops on a Beach' simulation, prompting students to deduce the equilibrium before revealing the formal mathematical theory.",
         },
         {
-          heading: "Youth For Impact & Case Mentorship",
+          heading: "Youth For Impact Ambassador & Case Mentorship - AIESEC Vietnam",
           detail:
             "Acted as a private mentor for Team Lục Long Công Chúa (the eventual Champions) and served as core operations staff for the Business Training Series and Final Pitch, advocating for SDG 8.6 and impacting over 200 attendees.",
         },
@@ -260,7 +266,7 @@ export function TheMindSection() {
                   {/* Left 7 Cols: Detailed Highlights */}
                   <div className="lg:col-span-7 space-y-6">
                     <div>
-                      <h3 className="font-anton text-xl sm:text-3xl lg:text-4xl uppercase tracking-tight text-[#242220] leading-tight">
+                      <h3 className="font-anton text-lg sm:text-2xl lg:text-3xl uppercase tracking-tight text-[#242220] leading-tight">
                         {item.title}
                       </h3>
                       {item.subtitle && (
