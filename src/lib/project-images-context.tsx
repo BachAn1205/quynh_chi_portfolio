@@ -28,25 +28,23 @@ export function ProjectImageProvider({
   children: React.ReactNode;
   initialImages?: Record<string, string>;
 }) {
-  const [images, setImages] = useState<Record<string, string>>(() => {
-    // Ưu tiên 100% dữ liệu lấy trực tiếp từ Database thông qua Server SSR
-    let base = { ...(initialImages || {}) };
-    if (typeof window !== "undefined") {
-      try {
-        const cached = localStorage.getItem(STORAGE_KEY);
-        if (cached) {
-          const parsed = JSON.parse(cached);
-          // Dữ liệu database mới nhất từ SSR ghi đè lên cache cũ của localStorage
-          base = { ...parsed, ...(initialImages || {}) };
-        }
-      } catch {
-        // ignore
-      }
-    }
-    return base;
-  });
-
+  // Khởi tạo state bằng initialImages đồng nhất giữa Server (SSR) và Client để tránh Hydration Mismatch
+  const [images, setImages] = useState<Record<string, string>>(initialImages || {});
   const [isLoading, setIsLoading] = useState(false);
+
+  // Đọc cache từ localStorage sau khi client đã mount thành công
+  useEffect(() => {
+    try {
+      const cached = localStorage.getItem(STORAGE_KEY);
+      if (cached) {
+        const parsed = JSON.parse(cached);
+        setImages((prev) => ({ ...parsed, ...prev }));
+      }
+    } catch {
+      // ignore
+    }
+  }, []);
+
 
   // Background sync với Database API (đảm bảo luôn khớp 100% với Supabase)
   const fetchImages = useCallback(async () => {

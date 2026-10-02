@@ -105,6 +105,7 @@ export function AvatarUpload({
       {/* Avatar Box */}
       <div
         onClick={() => fileInputRef.current?.click()}
+        style={{ aspectRatio: "3 / 2" }}
         className={`relative ${sizeClass} rounded-3xl overflow-hidden shrink-0 shadow-lg border-2 cursor-pointer transition-all duration-300 group ${
           hasValidAvatar
             ? "border-[#1B3B2B]/30 bg-[#FAF7F2] hover:shadow-xl"
@@ -125,7 +126,8 @@ export function AvatarUpload({
             <img
               src={currentAvatar!}
               alt="Phan Hoàng Quỳnh Chi"
-              className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+              style={{ objectFit: "cover", objectPosition: "center" }}
+              className="w-full h-full transition-transform duration-500 group-hover:scale-105"
               onError={() => setImageError(true)}
               loading="eager"
               fetchPriority="high"
@@ -228,10 +230,10 @@ export function AvatarUpload({
       </div>
 
       {showGuide && (
-        <span className="text-[11px] text-[#242220]/65 max-w-[280px] leading-tight text-center sm:text-left">
+        <span className="text-[11px] text-[#242220]/65 max-w-[400px] leading-tight text-center sm:text-left">
           {lang === "vi"
-            ? "Gợi ý: Ảnh chân dung góc nửa người (bản vest/smart-casual) sắc nét."
-            : "Recommended: Sharp half-body portrait (smart-casual/vest)."}
+            ? "Gợi ý: Ảnh chân dung hoặc ảnh hoạt động nghệ thuật sắc nét."
+            : "Recommended: Sharp portrait or artistic activity photo."}
         </span>
       )}
     </div>

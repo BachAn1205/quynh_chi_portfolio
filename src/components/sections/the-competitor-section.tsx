@@ -185,10 +185,10 @@ export function TheCompetitorSection() {
 
   return (
     <>
-      <section id="the-competitor" className="py-24 sm:py-32 overflow-hidden bg-[#FAF7F2] border-t border-[#1B3B2B]/15">
+      <section id="the-competitor" className="pt-6 sm:pt-8 pb-12 sm:pb-16 overflow-hidden bg-[#FAF7F2] border-t border-[#1B3B2B]/15">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
-          <div className="flex items-center justify-between gap-6 mb-10 sm:mb-12 pb-6 sm:pb-8 border-b border-[#1B3B2B]/15">
+          <div className="flex items-center justify-between gap-4 mb-6 sm:mb-8 pb-4 sm:pb-5 border-b border-[#1B3B2B]/15">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-2xl bg-[#1B3B2B] flex items-center justify-center shrink-0 shadow-sm text-[#FAF7F2]">
                 <Trophy className="w-6 h-6 text-[#E2ECE5]" />
@@ -202,7 +202,7 @@ export function TheCompetitorSection() {
           </div>
 
           {/* Interactive Category Tabs */}
-          <div className="flex flex-wrap items-center gap-2 mb-8">
+          <div className="flex flex-wrap items-center gap-2 mb-6">
             {categories.map((cat, idx) => {
               const Icon = cat.icon;
               const isSelected = idx === activeCategory;

@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "sync-images": "node scripts/sync-to-static.js"
   },
   "dependencies": {
     "@base-ui/react": "^1.3.0",

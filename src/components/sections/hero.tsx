@@ -110,22 +110,23 @@ export function Hero() {
 
   return (
     <>
-      <section className="relative pt-32 sm:pt-36 pb-12 overflow-hidden">
+      <section className="relative pt-32 sm:pt-36 pb-4 sm:pb-6 overflow-hidden blueprint-grid">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Top Headline Section with Enlarged Avatar & Actions under Name */}
           <div className="flex flex-col md:flex-row items-center md:items-start gap-8 lg:gap-12 mb-10 sm:mb-14">
-            {/* Left Column: Enlarged Portrait Avatar */}
-            <div className="shrink-0">
+            {/* Left Column: Enlarged Landscape Avatar */}
+            <div className="shrink-0 w-full md:w-auto flex justify-center md:block">
               <AvatarUpload
-                sizeClass="w-52 h-64 sm:w-60 sm:h-76 md:w-68 md:h-84 lg:w-76 lg:h-96"
+                sizeClass="w-full max-w-[340px] sm:max-w-[420px] md:w-[380px] lg:w-[460px] xl:w-[500px] aspect-[3/2]"
                 showGuide={true}
               />
             </div>
 
             {/* Right Column: Name, Slogan, Badges & Action Buttons */}
             <div className="flex-1 flex flex-col justify-center pt-1 sm:pt-3 text-center md:text-left">
-              <h1 className="font-anton text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase tracking-tight text-[#242220] leading-[1.05] break-words">
-                PHAN HOÀNG <span className="text-[#7B0323]">QUỲNH CHI</span>
+              <h1 className="font-anton text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase tracking-tight leading-[1.05] break-words">
+                <span className="text-[#1B3B2B]">PHAN HOÀNG</span>{" "}
+                <span className="text-[#7B0323]">QUỲNH CHI</span>
               </h1>
               <p className="text-sm sm:text-lg md:text-xl text-[#7B0323] font-semibold mt-3 mb-6 min-h-[1.75rem] flex items-center justify-center md:justify-start">
                 {t("hero.subtitle")}
@@ -179,7 +180,9 @@ export function Hero() {
 
                   <div className="flex flex-col sm:items-end gap-3 shrink-0 pt-1">
                     <Link
-                      href="/the-mind#cafloop"
+                      href="https://www.cafloop.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-mono font-semibold bg-[#FAF7F2] border border-[#1B3B2B]/20 text-[#1B3B2B] hover:bg-[#1B3B2B] hover:text-white transition-all shadow-xs cursor-pointer"
                     >
                       <span>{t("hero.cafloop.viewProject")}</span>
@@ -226,30 +229,30 @@ export function Hero() {
                     </span>
                   </div>
                   <span className="text-[10px] font-mono text-[#1B3B2B]/80 font-semibold uppercase tracking-wider hidden sm:inline">
-                    6 Core Capabilities
+                    {t("hero.cafloop.coreCapabilities")}
                   </span>
                 </div>
 
-                {/* 6 Founder Capabilities Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3 mb-2">
+                {/* 6 Founder Capabilities Grid: 2 dòng, mỗi dòng 3 thẻ */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5 sm:gap-4 mb-2">
                   {founderRoles.map((role, rIdx) => {
                     const Icon = role.icon;
                     return (
                       <div
                         key={rIdx}
-                        className="rounded-2xl border border-[#1B3B2B]/15 bg-[#FAF7F2] p-3.5 flex flex-col justify-between hover:border-[#7B0323]/40 hover:shadow-xs transition-all duration-200 group"
+                        className="rounded-2xl border border-[#1B3B2B]/15 bg-[#FAF7F2] p-4 sm:p-5 flex flex-col justify-between hover:border-[#7B0323]/40 hover:shadow-xs transition-all duration-200 group"
                       >
                         <div>
-                          <div className="flex items-center justify-between mb-2 pb-1.5 border-b border-[#1B3B2B]/10">
-                            <span className="text-[10px] font-mono font-bold text-[#7B0323]">
+                          <div className="flex items-center justify-between mb-2.5 pb-2 border-b border-[#1B3B2B]/10">
+                            <span className="text-xs font-mono font-bold text-[#7B0323]">
                               0{rIdx + 1}
                             </span>
-                            <Icon className="w-3.5 h-3.5 text-[#1B3B2B] group-hover:text-[#7B0323] transition-colors" />
+                            <Icon className="w-4 h-4 text-[#1B3B2B] group-hover:text-[#7B0323] transition-colors" />
                           </div>
-                          <h4 className="font-anton text-xs uppercase text-[#1B3B2B] mb-1.5 leading-snug tracking-tight">
+                          <h4 className="font-anton text-xs sm:text-sm uppercase text-[#1B3B2B] mb-2 leading-snug tracking-tight">
                             {t(role.titleKey)}
                           </h4>
-                          <p className="text-[11px] text-[#242220]/75 leading-relaxed">
+                          <p className="text-[11px] sm:text-xs text-[#242220]/75 leading-relaxed">
                             {t(role.descKey)}
                           </p>
                         </div>
@@ -337,7 +340,7 @@ export function Hero() {
           </div>
 
           {/* Scroll Indicator */}
-          <div className="mt-14 flex flex-col items-center">
+          <div className="mt-6 sm:mt-8 flex flex-col items-center">
             <Link href="/about" aria-label="Go to About Me" className="group flex flex-col items-center cursor-pointer">
               <div className="w-5 h-8 border-2 border-[#242220] rounded-full flex justify-center pt-1.5 transition-transform group-hover:translate-y-1">
                 <div className="w-1 h-2 bg-[#7B0323] rounded-full animate-bounce" />

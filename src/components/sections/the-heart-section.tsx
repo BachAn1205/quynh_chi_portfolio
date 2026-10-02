@@ -125,10 +125,10 @@ export function TheHeartSection() {
   ];
 
   return (
-    <section id="the-heart" className="bg-[#FAF7F2] text-[#242220] py-24 sm:py-32 overflow-hidden blueprint-grid border-t border-[#1B3B2B]/15">
+    <section id="the-heart" className="bg-[#FAF7F2] text-[#242220] pt-6 sm:pt-8 pb-12 sm:pb-16 overflow-hidden blueprint-grid border-t border-[#1B3B2B]/15">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16 pb-6 sm:pb-8 border-b border-[#1B3B2B]/15">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 sm:mb-8 pb-4 sm:pb-5 border-b border-[#1B3B2B]/15">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-2xl bg-[#1B3B2B] flex items-center justify-center shrink-0 shadow-sm text-[#FAF7F2]">
               <HeartHandshake className="w-6 h-6 text-[#E2ECE5]" />

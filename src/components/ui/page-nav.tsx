@@ -19,7 +19,7 @@ export function PageNav({ nextHref, nextLabel, nextSub, prevHref, prevLabel, dar
   const prevTextColor = dark ? "text-white/60 hover:text-white" : "text-[#242220]/60 hover:text-[#7B0323]";
 
   return (
-    <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 flex flex-col sm:flex-row items-center justify-between gap-6 border-t ${borderColor} mt-0`}>
+    <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 flex flex-col sm:flex-row items-center justify-between gap-6 border-t ${borderColor} mt-0`}>
       {/* Prev */}
       <div className="flex-1">
         {prevHref && prevLabel && (

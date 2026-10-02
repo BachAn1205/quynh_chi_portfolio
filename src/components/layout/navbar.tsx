@@ -43,7 +43,7 @@ export function Navbar() {
               href="/"
               className="inline-flex items-center gap-2.5 py-1 px-2 rounded-full hover:bg-[#1B3B2B]/5 transition-colors group select-none"
             >
-              <div className="w-7 h-7 rounded-full overflow-hidden bg-[#1B3B2B] flex items-center justify-center text-white shrink-0 border border-[#1B3B2B]/20 shadow-xs relative">
+              <div suppressHydrationWarning className="w-7 h-7 rounded-full overflow-hidden bg-[#1B3B2B] flex items-center justify-center text-white shrink-0 border border-[#1B3B2B]/20 shadow-xs relative">
                 {avatarUrl ? (
                   <Image
                     src={avatarUrl}
@@ -123,7 +123,7 @@ export function Navbar() {
         <div className="lg:hidden flex items-center justify-between bg-[#FAF7F2]/95 backdrop-blur-md border border-[#1B3B2B]/15 rounded-full shadow-sm px-3 py-1.5">
           {/* Left: Avatar / Logo */}
           <Link href="/" className="inline-flex items-center gap-2 select-none">
-            <div className="w-6 h-6 rounded-full overflow-hidden bg-[#1B3B2B] flex items-center justify-center text-white shrink-0 border border-[#1B3B2B]/20 relative">
+            <div suppressHydrationWarning className="w-6 h-6 rounded-full overflow-hidden bg-[#1B3B2B] flex items-center justify-center text-white shrink-0 border border-[#1B3B2B]/20 relative">
               {avatarUrl ? (
                 <Image
                   src={avatarUrl}

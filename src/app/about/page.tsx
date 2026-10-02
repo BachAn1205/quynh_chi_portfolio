@@ -77,10 +77,10 @@ export default function AboutPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-32 sm:pt-36 pb-20 bg-[#FAF7F2] min-h-screen">
+      <main className="pt-24 sm:pt-28 pb-8 sm:pb-10 bg-[#FAF7F2] min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Page Header */}
-          <div className="flex items-center gap-4 mb-8 sm:mb-12 pb-6 border-b border-[#1B3B2B]/15">
+          <div className="flex items-center gap-4 mb-6 sm:mb-8 pb-4 sm:pb-5 border-b border-[#1B3B2B]/15">
             <div className="w-12 h-12 rounded-2xl bg-[#1B3B2B] flex items-center justify-center shrink-0 shadow-sm text-white">
               <User className="w-6 h-6 text-[#E2ECE5]" />
             </div>

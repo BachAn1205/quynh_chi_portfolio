@@ -5,16 +5,16 @@
  */
 export async function compressImage(
   file: File,
-  maxDimension = 2400,
-  maxSizeBytes = 3.2 * 1024 * 1024
+  maxDimension = 3840,
+  maxSizeBytes = 4.2 * 1024 * 1024
 ): Promise<File> {
   // SVG shouldn't be processed via Canvas
   if (file.type === "image/svg+xml") {
     return file;
   }
 
-  // If file is already small (e.g. <= 1.5MB), check if it's already safe
-  if (file.size <= 1.5 * 1024 * 1024 && file.type !== "image/gif") {
+  // If file is already small (e.g. <= 2.5MB), check if it's already safe
+  if (file.size <= 2.5 * 1024 * 1024 && file.type !== "image/gif") {
     return file;
   }
 
@@ -46,11 +46,15 @@ export async function compressImage(
         canvas.width = width;
         canvas.height = height;
 
-        const ctx = canvas.getContext("2d");
+        const ctx = canvas.getContext("2d", { alpha: false });
         if (!ctx) {
           resolve(file);
           return;
         }
+
+        // Enable ultra-high quality bicubic smoothing
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = "high";
 
         // Fill white background for transparent images converted to JPEG
         ctx.fillStyle = "#FFFFFF";
@@ -61,7 +65,7 @@ export async function compressImage(
 
         // Convert to high-quality JPEG for maximum web compression & compatibility
         const outputMime = "image/jpeg";
-        let currentQuality = 0.88;
+        let currentQuality = 0.94;
 
         const attemptBlob = (quality: number) => {
           canvas.toBlob(

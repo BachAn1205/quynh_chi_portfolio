@@ -10,14 +10,6 @@ interface ResumeModalProps {
 export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
   if (!isOpen) return null;
 
-  const handleSavePDF = () => {
-    // Set document title for filename, then print to PDF
-    const prevTitle = document.title;
-    document.title = "Phan_Hoang_Quynh_Chi_Resume_2026";
-    window.print();
-    document.title = prevTitle;
-  };
-
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
       <div
@@ -41,13 +33,14 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
           </div>
 
           <div className="flex items-center gap-2">
-            <button
-              onClick={handleSavePDF}
+            <a
+              href="/uploads/Resume.pdf"
+              download="Resume.pdf"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-[#FFFFFF] border border-[#1B3B2B]/20 text-[#242220] hover:bg-[#E2ECE5] transition-colors cursor-pointer"
             >
               <Download className="w-3.5 h-3.5 text-[#7B0323]" />
               <span className="hidden sm:inline">Save as PDF</span>
-            </button>
+            </a>
             <button
               onClick={onClose}
               className="p-1.5 rounded-full bg-[#FFFFFF] border border-[#1B3B2B]/20 hover:bg-[#E2ECE5] text-[#242220] transition-colors cursor-pointer"
@@ -254,13 +247,14 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
           <p className="text-xs text-[#242220]/60 font-mono">
             Phan Hoàng Quỳnh Chi • Ready for University Admissions &amp; Research Labs
           </p>
-          <button
-            onClick={handleSavePDF}
+          <a
+            href="/uploads/Resume.pdf"
+            download="Resume.pdf"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold bg-[#7B0323] text-[#FFFFFF] hover:bg-[#5E021A] transition-all shadow-sm cursor-pointer"
           >
             <Download className="w-4 h-4" />
             <span>Download / Save Dossier</span>
-          </button>
+          </a>
         </div>
       </div>
     </div>

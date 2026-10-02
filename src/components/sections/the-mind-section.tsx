@@ -161,10 +161,10 @@ export function TheMindSection() {
   const filteredProjects = activeTab === "all" ? projects : projects.filter((p) => p.id === activeTab);
 
   return (
-    <section id="the-mind" className="py-24 sm:py-32 overflow-hidden bg-[#FAF7F2] border-t border-[#1B3B2B]/15">
+    <section id="the-mind" className="pt-6 sm:pt-8 pb-12 sm:pb-16 overflow-hidden bg-[#FAF7F2] border-t border-[#1B3B2B]/15">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 pb-8 border-b border-[#1B3B2B]/15">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 sm:mb-8 pb-4 sm:pb-5 border-b border-[#1B3B2B]/15">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-2xl bg-[#1B3B2B] flex items-center justify-center shrink-0 shadow-sm text-white">
               <BrainCircuit className="w-6 h-6" />
@@ -178,7 +178,7 @@ export function TheMindSection() {
         </div>
 
         {/* Tab Filters */}
-        <div className="flex flex-wrap items-center gap-2 mb-10 sm:mb-12">
+        <div className="flex flex-wrap items-center gap-2 mb-6 sm:mb-8">
           <button
             onClick={() => setActiveTab("all")}
             className={`px-3.5 sm:px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all duration-200 cursor-pointer ${activeTab === "all"
