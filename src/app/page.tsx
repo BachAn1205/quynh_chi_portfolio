@@ -1,9 +1,14 @@
+"use client";
+
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Hero } from "@/components/sections/hero";
 import { PageNav } from "@/components/ui/page-nav";
+import { useLanguage } from "@/lib/i18n";
 
 export default function Home() {
+  const { lang } = useLanguage();
+
   return (
     <>
       <Navbar />
@@ -11,8 +16,8 @@ export default function Home() {
         <Hero />
         <PageNav
           nextHref="/about"
-          nextLabel="About Me"
-          nextSub="Origins & Philosophy"
+          nextLabel={lang === "vi" ? "Về Tôi" : "About Me"}
+          nextSub={lang === "vi" ? "Nguồn cội & Triết lý" : "Origins & Philosophy"}
         />
       </main>
       <Footer />
