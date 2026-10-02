@@ -2,7 +2,17 @@
   "hero-trung": "/images/static/hero-trung.jpg",
   "contact-portrait": "/images/static/contact-portrait.jpg",
   "profile-avatar": "/images/static/profile-avatar.jpg",
-  "hero-cafloop": "/images/static/hero-cafloop.jpg",
   "mind-startup": "/images/static/mind-startup.png",
-  "about-banner": "/images/static/about-banner.jpg"
+  "mind-lab": "/images/static/mind-lab.jpg",
+  "mind-pedagogy": "/images/static/mind-pedagogy.jpg",
+  "about-banner": "/images/static/about-banner.jpg",
+  "about-analyst": "/images/static/about-analyst.jpg",
+  "heart-showcase": "/images/static/heart-showcase.jpg",
+  "heart-trung-preservation": "/images/static/heart-trung-preservation.jpg",
+  "heart-artistic-voice": "/images/static/heart-artistic-voice.jpg",
+  "heart-ea-wer": "/images/static/heart-ea-wer.jpg",
+  "heart-debate": "/images/static/heart-debate.jpg",
+  "mind-research": "/images/static/mind-research.png",
+  "hero-econometrics": "/images/static/hero-econometrics.png",
+  "hero-cafloop": "/images/static/hero-cafloop.jpg"
 }

@@ -13,18 +13,19 @@ import {
 export async function fetchDatabaseImages(): Promise<Record<string, string>> {
   try {
     const filePath = path.join(process.cwd(), "src", "data", "project-images.json");
-    
+    const fileData = await fs.readFile(filePath, "utf-8").catch(() => "{}");
+    const localMap: Record<string, string> = JSON.parse(fileData);
+
     // 0. Nếu người dùng bật chế độ ảnh tĩnh cục bộ (Static Mode)
     const isStaticMode =
       process.env.NEXT_PUBLIC_USE_STATIC_IMAGES === "true" ||
       process.env.USE_STATIC_IMAGES === "true";
 
     if (isStaticMode) {
-      const fileData = await fs.readFile(filePath, "utf-8").catch(() => "{}");
-      return JSON.parse(fileData);
+      return localMap;
     }
 
-    // 1. Query Supabase Database
+    // 1. Query Supabase Database & merge with local fallback
     if (isSupabaseConfigured()) {
       const supabase = getServiceSupabase();
       if (supabase) {
@@ -33,7 +34,7 @@ export async function fetchDatabaseImages(): Promise<Record<string, string>> {
           .select("id, image_url");
 
         if (!error && data && data.length > 0) {
-          const map: Record<string, string> = {};
+          const map: Record<string, string> = { ...localMap };
           for (const item of data) {
             if (item.id && item.image_url) {
               map[item.id] = item.image_url;
@@ -47,8 +48,7 @@ export async function fetchDatabaseImages(): Promise<Record<string, string>> {
     }
 
     // 2. Fallback to local JSON if Supabase is not configured or offline
-    const fileData = await fs.readFile(filePath, "utf-8").catch(() => "{}");
-    return JSON.parse(fileData);
+    return localMap;
   } catch (err) {
     console.error("Error fetching database images:", err);
     return {};
