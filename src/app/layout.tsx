@@ -87,7 +87,7 @@ export default async function RootLayout({
       lang="en"
       className={`scroll-smooth ${anton.variable} ${lexend.variable} ${jetbrainsMono.variable} ${fraunces.variable}`}
     >
-      <body className="min-h-screen bg-[#FAF7F2] text-[#242220] font-sans antialiased selection:bg-[#7B0323] selection:text-[#FFFFFF]">
+      <body className="min-h-screen bg-[#FAF7F2] blueprint-grid text-[#242220] font-sans antialiased selection:bg-[#7B0323] selection:text-[#FFFFFF]">
         <LanguageProvider>
           <ProjectImageProvider initialImages={initialImages}>
             {children}

@@ -181,7 +181,7 @@ export function TheCompetitorSection() {
 
   return (
     <>
-      <section id="the-competitor" className="pt-6 sm:pt-8 pb-12 sm:pb-16 overflow-hidden bg-[#FAF7F2] border-t border-[#1B3B2B]/15">
+      <section id="the-competitor" className="pt-6 sm:pt-8 pb-12 sm:pb-16 overflow-hidden bg-[#FAF7F2] blueprint-grid border-t border-[#1B3B2B]/15">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="flex items-center justify-between gap-4 mb-6 sm:mb-8 pb-4 sm:pb-5 border-b border-[#1B3B2B]/15">

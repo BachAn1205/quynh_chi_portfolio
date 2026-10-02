@@ -87,6 +87,10 @@
   }
   body {
     background-color: #FAF7F2;
+    background-size: 28px 28px;
+    background-image: 
+      linear-gradient(to right, rgba(27, 59, 43, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(27, 59, 43, 0.04) 1px, transparent 1px);
     color: #242220;
     font-family: 'Lexend', system-ui, sans-serif;
     font-size: 16px;

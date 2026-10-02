@@ -25,7 +25,7 @@ export default function ContactPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-32 sm:pt-36 pb-24 min-h-screen bg-[#FAF7F2]">
+      <main className="pt-32 sm:pt-36 pb-24 min-h-screen bg-[#FAF7F2] blueprint-grid">
         <div className="max-w-6xl mx-auto px-4">
           {/* Page Header */}
           <div className="flex items-center gap-4 mb-10 sm:mb-16 pb-6 sm:pb-8 border-b border-[#1B3B2B]/15">

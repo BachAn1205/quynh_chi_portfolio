@@ -16,7 +16,7 @@ export function Footer() {
 
   return (
     <>
-      <footer id="vision" className="w-full pt-16 pb-8 overflow-hidden bg-[#FAF7F2] border-t border-[#1B3B2B]/15">
+      <footer id="vision" className="w-full pt-16 pb-8 overflow-hidden bg-[#FAF7F2] blueprint-grid border-t border-[#1B3B2B]/15">
         {/* Top CTA Banner */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
           <div className="relative rounded-3xl border border-[#1B3B2B]/20 bg-[#FFFFFF] blueprint-grid overflow-hidden py-16 sm:py-24 px-6 sm:px-12 text-center shadow-sm">

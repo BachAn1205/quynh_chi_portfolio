@@ -12,7 +12,7 @@ export default function TheCompetitorPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-1 flex flex-col min-h-screen pt-20 sm:pt-24">
+      <main className="flex-1 flex flex-col min-h-screen pt-20 sm:pt-24 blueprint-grid">
         <TheCompetitorSection />
         <PageNav
           prevHref="/the-heart"

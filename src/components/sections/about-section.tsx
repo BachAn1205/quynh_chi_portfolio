@@ -18,7 +18,7 @@ export function AboutSection() {
   ];
 
   return (
-    <section id="about" className="py-20 sm:py-28 overflow-hidden bg-[#FAF7F2]">
+    <section id="about" className="py-20 sm:py-28 overflow-hidden bg-[#FAF7F2] blueprint-grid">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Narrative Block */}
         <div className="relative rounded-3xl border border-[#1B3B2B]/15 bg-[#FFFFFF] blueprint-grid p-5 sm:p-8 lg:p-12 mb-12 shadow-sm overflow-hidden">

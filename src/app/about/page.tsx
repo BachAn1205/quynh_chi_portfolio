@@ -77,7 +77,7 @@ export default function AboutPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-24 sm:pt-28 pb-8 sm:pb-10 bg-[#FAF7F2] min-h-screen">
+      <main className="pt-24 sm:pt-28 pb-8 sm:pb-10 bg-[#FAF7F2] blueprint-grid min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Page Header */}
           <div className="flex items-center gap-4 mb-6 sm:mb-8 pb-4 sm:pb-5 border-b border-[#1B3B2B]/15">
