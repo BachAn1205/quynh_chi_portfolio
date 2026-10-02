@@ -22,6 +22,8 @@ interface ProjectImageUploadProps {
   heightClass?: string;
   roundedClass?: string;
   showPreviewText?: boolean;
+  objectFit?: "cover" | "contain";
+  objectPosition?: string;
 }
 
 export function ProjectImageUpload({
@@ -34,6 +36,8 @@ export function ProjectImageUpload({
   heightClass,
   roundedClass = "rounded-2xl",
   showPreviewText = true,
+  objectFit = "cover",
+  objectPosition,
 }: ProjectImageUploadProps) {
   const { getImage, uploadImage, deleteImage } = useProjectImages();
   const { lang } = useLanguage();
@@ -185,16 +189,28 @@ export function ProjectImageUpload({
 
         {hasValidImage ? (
           /* Render Uploaded Image with Action Overlay */
-          <div className="absolute inset-0 w-full h-full">
+          <div className="absolute inset-0 w-full h-full overflow-hidden">
+            {/* Ambient Blur Backdrop khi objectFit === 'contain' để ảnh hòa hợp tuyệt đối với khung mà không bị khoảng trống thô */}
+            {objectFit === "contain" && (
+              <div
+                className="absolute inset-0 w-full h-full bg-cover bg-center filter blur-xl scale-125 opacity-35 pointer-events-none transition-all duration-700"
+                style={{ backgroundImage: `url(${currentImage!})` }}
+              />
+            )}
             <img
               src={currentImage!}
               alt="Project media"
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              className={`relative z-[1] w-full h-full ${
+                objectFit === "contain"
+                  ? "object-contain"
+                  : "object-cover transition-transform duration-500 group-hover:scale-105"
+              }`}
+              style={objectPosition ? { objectPosition } : undefined}
               onError={() => setImageLoadError(true)}
               loading="eager"
               fetchPriority="high"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+            <div className="absolute inset-0 z-[2] bg-gradient-to-t from-black/60 via-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
             {/* Quick Actions Bar */}
             <div className="absolute top-3 right-3 flex items-center gap-2 z-10 opacity-90 group-hover:opacity-100 transition-opacity">

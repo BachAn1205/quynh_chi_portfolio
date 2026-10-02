@@ -310,7 +310,9 @@ export function TheMindSection() {
                     <ProjectImageUpload
                       slotId={item.slotId}
                       guideline={item.guideline}
-                      aspectRatio="aspect-[4/3]"
+                      aspectRatio="aspect-[4/3] sm:aspect-[4/5] lg:aspect-[3/4]"
+                      heightClass="min-h-[360px] sm:min-h-[460px] lg:min-h-[500px]"
+                      objectFit="contain"
                     />
                   </div>
                 </div>

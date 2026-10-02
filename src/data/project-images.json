@@ -1,5 +1,8 @@
 {
   "hero-trung": "/images/static/hero-trung.jpg",
   "contact-portrait": "/images/static/contact-portrait.jpg",
-  "profile-avatar": "/images/static/profile-avatar.jpg"
+  "profile-avatar": "/images/static/profile-avatar.jpg",
+  "hero-cafloop": "/images/static/hero-cafloop.jpg",
+  "mind-startup": "/images/static/mind-startup.png",
+  "about-banner": "/images/static/about-banner.jpg"
 }

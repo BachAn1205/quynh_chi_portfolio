@@ -99,8 +99,9 @@ export default function AboutPage() {
                 vi: "Ảnh phong cảnh Tây Nguyên / Đắk Lắk hoặc ảnh ngoại cảnh hoạt động của Quỳnh Chi.",
                 en: "Central Highlands landscape or outdoor activity portrait of Quynh Chi."
               }}
-              aspectRatio="aspect-[16/9] sm:aspect-[21/9]"
-              heightClass="min-h-[240px] sm:min-h-[380px]"
+              aspectRatio="aspect-[16/10] sm:aspect-[16/9]"
+              heightClass="min-h-[340px] sm:min-h-[460px] lg:min-h-[520px]"
+              objectFit="contain"
             />
           </div>
 
