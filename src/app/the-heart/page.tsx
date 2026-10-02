@@ -1,14 +1,14 @@
+"use client";
+
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { TheHeartSection } from "@/components/sections/the-heart-section";
 import { PageNav } from "@/components/ui/page-nav";
-
-export const metadata = {
-  title: "The Heart | Phan Hoàng Quỳnh Chi",
-  description: "Culture, Empathy & Advocacy . T'rưng Heritage, Social Projects and Community Action",
-};
+import { useLanguage } from "@/lib/i18n";
 
 export default function TheHeartPage() {
+  const { lang } = useLanguage();
+
   return (
     <>
       <Navbar />
@@ -17,10 +17,11 @@ export default function TheHeartPage() {
         <div className="bg-[#FAF7F2] blueprint-grid">
           <PageNav
             prevHref="/the-mind"
-            prevLabel="The Mind"
+            prevLabel={lang === "vi" ? "Tư Duy" : "The Mind"}
+            prevSub={lang === "vi" ? "Nghiên Cứu & Doanh Nghiệp" : "Quantitative Research & Enterprise"}
             nextHref="/the-competitor"
-            nextLabel="The Competitor"
-            nextSub="Academic Profile & Awards"
+            nextLabel={lang === "vi" ? "Thành Tích" : "The Competitor"}
+            nextSub={lang === "vi" ? "Hồ sơ Học thuật & Danh hiệu" : "Academic Profile & Awards"}
           />
         </div>
       </main>

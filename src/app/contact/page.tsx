@@ -7,8 +7,10 @@ import { Mail, Send, CheckCircle2, MapPin, FileText, ArrowUpRight } from "lucide
 import { ResumeModal } from "@/components/ui/resume-modal";
 import { PageNav } from "@/components/ui/page-nav";
 import { ProjectImageUpload } from "@/components/ui/project-image-upload";
+import { useLanguage } from "@/lib/i18n";
 
 export default function ContactPage() {
+  const { lang, t } = useLanguage();
   const [submitted, setSubmitted] = useState(false);
   const [resumeOpen, setResumeOpen] = useState(false);
   const [formData, setFormData] = useState({
@@ -34,7 +36,15 @@ export default function ContactPage() {
             </div>
             <div>
               <h1 className="font-anton text-3xl sm:text-5xl lg:text-7xl uppercase tracking-tight text-[#242220] break-words">
-                GET IN <span className="text-[#7B0323]">TOUCH</span>
+                {lang === "vi" ? (
+                  <>
+                    KẾT NỐI VỚI <span className="text-[#7B0323]">QUỲNH CHI</span>
+                  </>
+                ) : (
+                  <>
+                    GET IN <span className="text-[#7B0323]">TOUCH</span>
+                  </>
+                )}
               </h1>
             </div>
           </div>
@@ -75,7 +85,11 @@ export default function ContactPage() {
                 </div>
                 <div className="flex items-center gap-2.5 text-white/90">
                   <MapPin className="w-4 h-4 text-[#E2ECE5]" />
-                  <span>Dak Lak &amp; Ho Chi Minh City, Vietnam</span>
+                  <span>
+                    {lang === "vi"
+                      ? "Đắk Lắk & TP. Hồ Chí Minh, Việt Nam"
+                      : "Dak Lak & Ho Chi Minh City, Vietnam"}
+                  </span>
                 </div>
                 <div className="pt-2 border-t border-white/10 flex items-center justify-between">
                   <button
@@ -83,7 +97,7 @@ export default function ContactPage() {
                     className="text-[#FAF7F2] hover:underline flex items-center gap-1 cursor-pointer font-semibold"
                   >
                     <FileText className="w-3.5 h-3.5 text-[#7B0323]" />
-                    <span>View Dossier (PDF)</span>
+                    <span>{lang === "vi" ? "Xem Hồ sơ (PDF)" : "View Dossier (PDF)"}</span>
                   </button>
                   <a
                     href="https://www.linkedin.com/in/phanhoangquynhchi/"
@@ -106,10 +120,12 @@ export default function ContactPage() {
                     <CheckCircle2 className="w-8 h-8 text-[#1B3B2B]" />
                   </div>
                   <h3 className="font-anton text-3xl uppercase text-[#242220]">
-                    Message Received!
+                    {lang === "vi" ? "Đã Gửi Thành Công!" : "Message Received!"}
                   </h3>
                   <p className="text-sm text-[#242220]/70 max-w-md mx-auto leading-relaxed">
-                    Thank you for reaching out, {formData.name || "friend"}. Phan Hoàng Quỳnh Chi will review your message and reply promptly.
+                    {lang === "vi"
+                      ? `Cảm ơn bạn ${formData.name || ""}. Phan Hoàng Quỳnh Chi đã nhận được thư và sẽ phản hồi đến bạn trong thời gian sớm nhất.`
+                      : `Thank you for reaching out, ${formData.name || "friend"}. Phan Hoàng Quỳnh Chi will review your message and reply promptly.`}
                   </p>
                   <button
                     onClick={() => {
@@ -118,7 +134,7 @@ export default function ContactPage() {
                     }}
                     className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-semibold bg-[#7B0323] text-white hover:bg-[#5E021A] transition-colors mt-4 cursor-pointer"
                   >
-                    Send Another Message
+                    {lang === "vi" ? "Gửi Tin Nhắn Khác" : "Send Another Message"}
                   </button>
                 </div>
               ) : (
@@ -126,12 +142,16 @@ export default function ContactPage() {
                   {/* Name field */}
                   <div>
                     <label className="font-anton text-xs uppercase tracking-wider text-[#242220] block mb-2">
-                      YOUR NAME
+                      {lang === "vi" ? "HỌ VÀ TÊN CỦA BẠN" : "YOUR NAME"}
                     </label>
                     <input
                       type="text"
                       required
-                      placeholder="e.g. Dr. Nguyen / Admissions Committee / Partner"
+                      placeholder={
+                        lang === "vi"
+                          ? "Ví dụ: Thầy/Cô Hội đồng Tuyển sinh / Đối tác / Nhà nghiên cứu"
+                          : "e.g. Dr. Nguyen / Admissions Committee / Partner"
+                      }
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="w-full px-5 py-3 rounded-2xl bg-[#FAF7F2] border border-[#1B3B2B]/20 text-[#242220] text-sm placeholder:text-[#242220]/40 focus:outline-none focus:border-[#7B0323] transition-colors shadow-xs"
@@ -141,7 +161,7 @@ export default function ContactPage() {
                   {/* Email field */}
                   <div>
                     <label className="font-anton text-xs uppercase tracking-wider text-[#242220] block mb-2">
-                      EMAIL ADDRESS
+                      {lang === "vi" ? "ĐỊA CHỈ EMAIL" : "EMAIL ADDRESS"}
                     </label>
                     <input
                       type="email"
@@ -156,12 +176,16 @@ export default function ContactPage() {
                   {/* Message field */}
                   <div>
                     <label className="font-anton text-xs uppercase tracking-wider text-[#242220] block mb-2">
-                      MESSAGE DETAILS
+                      {lang === "vi" ? "NỘI DUNG TIN NHẮN" : "MESSAGE DETAILS"}
                     </label>
                     <textarea
                       required
                       rows={5}
-                      placeholder="Share your proposal, research questions, or collaboration vision..."
+                      placeholder={
+                        lang === "vi"
+                          ? "Chia sẻ đề xuất hợp tác, câu hỏi nghiên cứu hoặc tầm nhìn của bạn..."
+                          : "Share your proposal, research questions, or collaboration vision..."
+                      }
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       className="w-full px-5 py-3 rounded-2xl bg-[#FAF7F2] border border-[#1B3B2B]/20 text-[#242220] text-sm placeholder:text-[#242220]/40 focus:outline-none focus:border-[#7B0323] transition-colors shadow-xs resize-none"
@@ -174,7 +198,11 @@ export default function ContactPage() {
                     className="w-full py-3.5 rounded-full text-sm font-semibold bg-[#7B0323] text-white hover:bg-[#5E021A] transition-all duration-200 shadow-sm hover:shadow-md flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <Send className="w-4 h-4" />
-                    <span>Send Inquiry to Quỳnh Chi</span>
+                    <span>
+                      {lang === "vi"
+                        ? "Gửi tin nhắn đến Quỳnh Chi"
+                        : "Send Inquiry to Quỳnh Chi"}
+                    </span>
                   </button>
                 </form>
               )}
@@ -185,9 +213,9 @@ export default function ContactPage() {
 
       <PageNav
         prevHref="/the-competitor"
-        prevLabel="The Competitor"
+        prevLabel={lang === "vi" ? "Thành Tích" : "The Competitor"}
         nextHref="/"
-        nextLabel="Back to Home"
+        nextLabel={lang === "vi" ? "Trang Chủ" : "Back to Home"}
       />
       <Footer />
 

@@ -9,67 +9,149 @@ import { ProjectImageUpload } from "@/components/ui/project-image-upload";
 import { useLanguage } from "@/lib/i18n";
 
 export default function AboutPage() {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
 
   const dataPills = [
-    { label: "1.6M Tons Ag Waste", bg: "bg-[#1B3B2B] text-[#FAF7F2] -rotate-3" },
-    { label: "1.8M Tons CO2 Impact", bg: "bg-[#FFFFFF] text-[#242220] border border-[#1B3B2B]/20 rotate-2" },
-    { label: "$80M Carbon Value Loss", bg: "bg-[#7B0323] text-[#FFFFFF] -rotate-2" },
-    { label: "SPSS Econometric Modeling", bg: "bg-[#1B3B2B] text-[#E2ECE5] rotate-3" },
-    { label: "83.5% Predictive Accuracy", bg: "bg-[#FFFFFF] text-[#7B0323] border border-[#7B0323]/30 -rotate-1" },
-    { label: "T'rưng Oral Heritage", bg: "bg-[#1B3B2B] text-[#FAF7F2] rotate-2" },
-    { label: "2,300+ Students Engaged", bg: "bg-[#7B0323] text-[#FFFFFF] -rotate-3" },
+    {
+      label: lang === "vi" ? "1,6 triệu tấn phế phụ phẩm" : "1.6M Tons Ag Waste",
+      bg: "bg-[#1B3B2B] text-[#FAF7F2] -rotate-3",
+    },
+    {
+      label: lang === "vi" ? "1,8 triệu tấn phát thải CO2" : "1.8M Tons CO2 Impact",
+      bg: "bg-[#FFFFFF] text-[#242220] border border-[#1B3B2B]/20 rotate-2",
+    },
+    {
+      label: lang === "vi" ? "Thất thoát $80M giá trị carbon" : "$80M Carbon Value Loss",
+      bg: "bg-[#7B0323] text-[#FFFFFF] -rotate-2",
+    },
+    {
+      label: lang === "vi" ? "Mô hình Kinh tế lượng SPSS" : "SPSS Econometric Modeling",
+      bg: "bg-[#1B3B2B] text-[#E2ECE5] rotate-3",
+    },
+    {
+      label: lang === "vi" ? "Độ chính xác dự báo 83,5%" : "83.5% Predictive Accuracy",
+      bg: "bg-[#FFFFFF] text-[#7B0323] border border-[#7B0323]/30 -rotate-1",
+    },
+    {
+      label: lang === "vi" ? "Di sản truyền khẩu T'rưng" : "T'rưng Oral Heritage",
+      bg: "bg-[#1B3B2B] text-[#FAF7F2] rotate-2",
+    },
+    {
+      label: lang === "vi" ? "2.300+ Học sinh tiếp cận" : "2,300+ Students Engaged",
+      bg: "bg-[#7B0323] text-[#FFFFFF] -rotate-3",
+    },
   ];
+
   const experiences = [
     {
-      role: "Founder & Product Strategist",
-      company: "CAFLOOP (Green Coffee Husk Project)",
-      period: "Sep 2024 . Present",
+      role:
+        lang === "vi"
+          ? "Người sáng lập & Chiến lược Sản phẩm"
+          : "Founder & Product Strategist",
+      company:
+        lang === "vi"
+          ? "CAFLOOP (Dự án Vỏ Cà phê Xanh)"
+          : "CAFLOOP (Green Coffee Husk Project)",
+      period: lang === "vi" ? "Tháng 9/2024 . Hiện tại" : "Sep 2024 . Present",
       bullets: [
-        "Initiated a circular-economy venture transforming CO2-emitting coffee husks in Dak Lak into commercial Cascara tea.",
-        "Managed the bootstrapping phase by tracking production costs (COGS), structuring budgets, and optimizing pricing.",
-        "Integrated a QR-code traceability system on packaging for radical transparency.",
-        "Directed venture profits to donate 77 bicycles and 2 smart TVs to primary students at Buon Drang Phok.",
+        lang === "vi"
+          ? "Khởi xướng doanh nghiệp kinh tế tuần hoàn chuyển hóa vỏ cà phê phát thải CO2 tại Đắk Lắk thành trà Cascara thương mại."
+          : "Initiated a circular-economy venture transforming CO2-emitting coffee husks in Dak Lak into commercial Cascara tea.",
+        lang === "vi"
+          ? "Quản lý giai đoạn tự lực vốn bằng cách kiểm soát chặt chẽ giá vốn hàng bán (COGS), lập ngân sách và tối ưu hóa giá bán."
+          : "Managed the bootstrapping phase by tracking production costs (COGS), structuring budgets, and optimizing pricing.",
+        lang === "vi"
+          ? "Tích hợp hệ thống truy xuất mã QR trên bao bì để minh bạch tuyệt đối chuỗi cung ứng."
+          : "Integrated a QR-code traceability system on packaging for radical transparency.",
+        lang === "vi"
+          ? "Dành toàn bộ lợi nhuận ban đầu trao tặng 77 xe đạp và 2 Smart TV cho học sinh tiểu học buôn Đrăng Phốk."
+          : "Directed venture profits to donate 77 bicycles and 2 smart TVs to primary students at Buon Drang Phok.",
       ],
     },
     {
-      role: "Student Intern, Business & Financial Analysis",
-      company: "SI CAFE (Dak Lak Branch)",
-      period: "Jul . Aug 2025",
+      role:
+        lang === "vi"
+          ? "Thực tập sinh Phân tích Kinh doanh & Tài chính"
+          : "Student Intern, Business & Financial Analysis",
+      company:
+        lang === "vi" ? "SI CAFE (Chi nhánh Đắk Lắk)" : "SI CAFE (Dak Lak Branch)",
+      period: lang === "vi" ? "Tháng 7 - Tháng 8/2025" : "Jul . Aug 2025",
       bullets: [
-        "Shadowed operational supply-chain workflows and audited inventory data entry at a local coffee processing facility.",
-        "Grounded theoretical economics into daily agricultural facility operations and supply-chain logistics.",
+        lang === "vi"
+          ? "Quan sát quy trình vận hành chuỗi cung ứng và kiểm toán số liệu nhập kho tại cơ sở chế biến cà phê địa phương."
+          : "Shadowed operational supply-chain workflows and audited inventory data entry at a local coffee processing facility.",
+        lang === "vi"
+          ? "Áp dụng lý thuyết kinh tế học vào thực tế vận hành cơ sở nông nghiệp và logistics chuỗi cung ứng hàng ngày."
+          : "Grounded theoretical economics into daily agricultural facility operations and supply-chain logistics.",
       ],
     },
     {
-      role: "Head of Expert & Mentor of Game Theory",
-      company: "Shark Club (Head of Expert) & Geniusstar Business Club (Mentor of Game Theory)",
-      period: "2024 . Present",
+      role:
+        lang === "vi"
+          ? "Trưởng ban Chuyên môn & Cố vấn Lý thuyết Trò chơi"
+          : "Head of Expert & Mentor of Game Theory",
+      company:
+        lang === "vi"
+          ? "Shark Club (Trưởng ban Chuyên môn) & CLB Kinh doanh Geniusstar (Cố vấn)"
+          : "Shark Club (Head of Expert) & Geniusstar Business Club (Mentor of Game Theory)",
+      period: lang === "vi" ? "2024 . Hiện tại" : "2024 . Present",
       bullets: [
-        "Head of Expert at Shark Club, curating economic curricula and guiding peers through empirical analysis.",
-        "Mentor of Game Theory at Geniusstar Business Club, teaching Nash Equilibrium and strategic decision-making simulations.",
-        "Taught interactive economic frameworks ('2 Ice Cream Shops on a Beach') to help peers deduce market equilibria.",
-        "Facilitated workshops and mentored youth teams in business case competitions.",
+        lang === "vi"
+          ? "Trưởng ban Chuyên môn tại Shark Club, biên soạn giáo trình kinh tế và hướng dẫn học sinh phân tích thực nghiệm."
+          : "Head of Expert at Shark Club, curating economic curricula and guiding peers through empirical analysis.",
+        lang === "vi"
+          ? "Cố vấn Lý thuyết Trò chơi tại CLB Kinh doanh Geniusstar, giảng dạy Cân bằng Nash và mô phỏng ra quyết định chiến lược."
+          : "Mentor of Game Theory at Geniusstar Business Club, teaching Nash Equilibrium and strategic decision-making simulations.",
+        lang === "vi"
+          ? "Giảng dạy khung kinh tế tương tác ('2 Quán kem trên bãi biển') giúp học sinh tự suy luận điểm cân bằng thị trường."
+          : "Taught interactive economic frameworks ('2 Ice Cream Shops on a Beach') to help peers deduce market equilibria.",
+        lang === "vi"
+          ? "Điều phối các workshop và cố vấn các đội thi học sinh trong các cuộc thi tình huống kinh doanh."
+          : "Facilitated workshops and mentored youth teams in business case competitions.",
       ],
     },
     {
-      role: "Fully-Funded Student Researcher",
-      company: "NSYSU Computational Materials Lab (Taiwan)",
-      period: "Jul 2026",
+      role:
+        lang === "vi"
+          ? "Nhà nghiên cứu Học bổng Toàn phần"
+          : "Fully-Funded Student Researcher",
+      company:
+        lang === "vi"
+          ? "Phòng Lab Vật liệu Tính toán NSYSU (Đài Loan)"
+          : "NSYSU Computational Materials Lab (Taiwan)",
+      period: lang === "vi" ? "Tháng 7/2026" : "Jul 2026",
       bullets: [
-        "Awarded a 100% scholarship for high-performance computational materials simulations in Taiwan.",
-        "Mastered basic C++, Linux/HPC environments, VESTA, and Density Functional Theory (DFT) within days.",
-        "Realized that computational models must answer to physical ground truths; pitched a wastewater startup to faculty.",
+        lang === "vi"
+          ? "Đạt học bổng 100% tham gia mô phỏng vật liệu tính toán hiệu năng cao tại Đài Loan."
+          : "Awarded a 100% scholarship for high-performance computational materials simulations in Taiwan.",
+        lang === "vi"
+          ? "Làm chủ C++ cơ bản, môi trường Linux/HPC, VESTA và Lý thuyết Phiếm hàm Mật độ (DFT) chỉ trong vài ngày."
+          : "Mastered basic C++, Linux/HPC environments, VESTA, and Density Functional Theory (DFT) within days.",
+        lang === "vi"
+          ? "Nhận thức sâu sắc mô hình tính toán phải phản ánh đúng thực tế vật lý; thuyết trình dự án khởi nghiệp nước thải trước hội đồng giáo sư."
+          : "Realized that computational models must answer to physical ground truths; pitched a wastewater startup to faculty.",
       ],
     },
     {
-      role: "Founder, Organizer & Traditional Soloist",
-      company: "T'rưng Cultural Education & Heritage Project",
-      period: "Nov 2024 . Present",
+      role:
+        lang === "vi"
+          ? "Người sáng lập, Điều phối viên & Nghệ sĩ Độc tấu Đàn T'rưng"
+          : "Founder, Organizer & Traditional Soloist",
+      company:
+        lang === "vi"
+          ? "Dự án Di sản & Giáo dục Văn hóa Đàn T'rưng"
+          : "T'rưng Cultural Education & Heritage Project",
+      period: lang === "vi" ? "Tháng 11/2024 . Hiện tại" : "Nov 2024 . Present",
       bullets: [
-        "Synthesized oral Central Highlands music heritage into structured workshop curricula across 12+ schools for ~2,300 students.",
-        "Managed cultural media page (5,000+ followers) and digitized YouTube performance archives (10,000+ views).",
-        "Lead soloist at 'Thanh Âm Đất Việt' in HCMC; exhibited visual art at Museo ning Angeles, Philippines.",
+        lang === "vi"
+          ? "Hệ thống hóa di sản âm nhạc truyền khẩu Tây Nguyên thành chương trình workshop bài bản tại 12+ trường học cho ~2.300 học sinh."
+          : "Synthesized oral Central Highlands music heritage into structured workshop curricula across 12+ schools for ~2,300 students.",
+        lang === "vi"
+          ? "Quản lý trang truyền thông văn hóa (5.000+ người theo dõi) và số hóa kho lưu trữ biểu diễn YouTube (10.000+ lượt xem)."
+          : "Managed cultural media page (5,000+ followers) and digitized YouTube performance archives (10,000+ views).",
+        lang === "vi"
+          ? "Nghệ sĩ độc tấu chính tại 'Thanh Âm Đất Việt' tại TP.HCM; triển lãm nghệ thuật thị giác tại Bảo tàng Museo ning Angeles, Philippines."
+          : "Lead soloist at 'Thanh Âm Đất Việt' in HCMC; exhibited visual art at Museo ning Angeles, Philippines.",
       ],
     },
   ];
@@ -86,7 +168,7 @@ export default function AboutPage() {
             </div>
             <div>
               <h1 className="font-anton text-3xl sm:text-5xl lg:text-7xl uppercase tracking-tight text-[#242220] break-words">
-                ABOUT <span className="text-[#7B0323]">QUỲNH CHI</span>
+                {lang === "vi" ? "VỀ" : "ABOUT"} <span className="text-[#7B0323]">QUỲNH CHI</span>
               </h1>
             </div>
           </div>
@@ -170,7 +252,7 @@ export default function AboutPage() {
               </div>
               <div>
                 <h2 className="font-anton text-3xl sm:text-5xl lg:text-6xl uppercase tracking-tight text-[#242220] break-words">
-                  EXPERIENCE &amp; INITIATIVES
+                  {lang === "vi" ? "KINH NGHIỆM & SÁNG KIẾN" : "EXPERIENCE & INITIATIVES"}
                 </h2>
               </div>
             </div>
@@ -212,7 +294,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-24">
             <div className="flex flex-col">
               <span className="font-anton text-xs uppercase text-[#7B0323] mb-2 tracking-wide">
-                CAFLOOP Cascara Tea &amp; QR
+                {lang === "vi" ? "Trà Cascara CAFLOOP & Mã QR" : "CAFLOOP Cascara Tea & QR"}
               </span>
               <ProjectImageUpload
                 slotId="mind-startup"
@@ -226,7 +308,7 @@ export default function AboutPage() {
 
             <div className="flex flex-col">
               <span className="font-anton text-xs uppercase text-[#7B0323] mb-2 tracking-wide">
-                SPSS Quantitative Econometrics
+                {lang === "vi" ? "Kinh tế lượng định lượng SPSS" : "SPSS Quantitative Econometrics"}
               </span>
               <ProjectImageUpload
                 slotId="mind-research"
@@ -240,7 +322,7 @@ export default function AboutPage() {
 
             <div className="flex flex-col">
               <span className="font-anton text-xs uppercase text-[#7B0323] mb-2 tracking-wide">
-                T&apos;rưng Cultural Education
+                {lang === "vi" ? "Giáo dục văn hóa Đàn T'rưng" : "T'rưng Cultural Education"}
               </span>
               <ProjectImageUpload
                 slotId="heart-trung-preservation"
@@ -256,10 +338,10 @@ export default function AboutPage() {
       </main>
       <PageNav
         prevHref="/"
-        prevLabel="Home"
+        prevLabel={lang === "vi" ? "Trang chủ" : "Home"}
         nextHref="/the-mind"
-        nextLabel="The Mind"
-        nextSub="Quantitative Research & Enterprise"
+        nextLabel={lang === "vi" ? "Tư Duy" : "The Mind"}
+        nextSub={lang === "vi" ? "Nghiên cứu Định lượng & Khởi nghiệp" : "Quantitative Research & Enterprise"}
       />
       <Footer />
     </>

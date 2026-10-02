@@ -1,6 +1,7 @@
 "use client";
 
 import { X, Download, FileText, Award, BookOpen, Sparkles } from "lucide-react";
+import { useLanguage } from "@/lib/i18n";
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -8,6 +9,7 @@ interface ResumeModalProps {
 }
 
 export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
+  const { lang } = useLanguage();
   if (!isOpen) return null;
 
   return (
@@ -24,10 +26,10 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             </div>
             <div>
               <h3 className="font-anton text-lg uppercase tracking-tight text-[#242220]">
-                Phan Hoàng Quỳnh Chi . Comprehensive Profile
+                {lang === "vi" ? "Phan Hoàng Quỳnh Chi . Hồ sơ toàn diện" : "Phan Hoàng Quỳnh Chi . Comprehensive Profile"}
               </h3>
               <p className="text-xs text-[#242220]/60 font-mono">
-                Curriculum Vitae • Updated 2026 • Verified Academic Data
+                {lang === "vi" ? "Sơ yếu lý lịch • Cập nhật 2026 • Dữ liệu học thuật đã kiểm chứng" : "Curriculum Vitae • Updated 2026 • Verified Academic Data"}
               </p>
             </div>
           </div>
@@ -39,7 +41,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-[#FFFFFF] border border-[#1B3B2B]/20 text-[#242220] hover:bg-[#E2ECE5] transition-colors cursor-pointer"
             >
               <Download className="w-3.5 h-3.5 text-[#7B0323]" />
-              <span className="hidden sm:inline">Save as PDF</span>
+              <span className="hidden sm:inline">{lang === "vi" ? "Lưu tệp PDF" : "Save as PDF"}</span>
             </a>
             <button
               onClick={onClose}

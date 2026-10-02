@@ -1,14 +1,14 @@
+"use client";
+
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { TheCompetitorSection } from "@/components/sections/the-competitor-section";
 import { PageNav } from "@/components/ui/page-nav";
-
-export const metadata = {
-  title: "The Competitor | Phan Hoàng Quỳnh Chi",
-  description: "Comprehensive Academic Profile . GPA, AP Exams, Olympiads, Debate & Technical Skills",
-};
+import { useLanguage } from "@/lib/i18n";
 
 export default function TheCompetitorPage() {
+  const { lang } = useLanguage();
+
   return (
     <>
       <Navbar />
@@ -16,10 +16,11 @@ export default function TheCompetitorPage() {
         <TheCompetitorSection />
         <PageNav
           prevHref="/the-heart"
-          prevLabel="The Heart"
+          prevLabel={lang === "vi" ? "Trái Tim" : "The Heart"}
+          prevSub={lang === "vi" ? "Văn Hóa & Cộng Đồng" : "Heritage & Community"}
           nextHref="/contact"
-          nextLabel="Connect"
-          nextSub="Get in Touch"
+          nextLabel={lang === "vi" ? "Liên Hệ" : "Connect"}
+          nextSub={lang === "vi" ? "Kết nối trực tiếp" : "Get in Touch"}
         />
       </main>
       <Footer />

@@ -10,10 +10,11 @@ interface PageNavProps {
   nextSub?: string;
   prevHref?: string;
   prevLabel?: string;
+  prevSub?: string;
   dark?: boolean;
 }
 
-export function PageNav({ nextHref, nextLabel, nextSub, prevHref, prevLabel, dark }: PageNavProps) {
+export function PageNav({ nextHref, nextLabel, nextSub, prevHref, prevLabel, prevSub, dark }: PageNavProps) {
   const { t } = useLanguage();
   const borderColor = dark ? "border-[#1B3B2B]/40" : "border-[#1B3B2B]/15";
   const prevTextColor = dark ? "text-white/60 hover:text-white" : "text-[#242220]/60 hover:text-[#7B0323]";
@@ -28,7 +29,10 @@ export function PageNav({ nextHref, nextLabel, nextSub, prevHref, prevLabel, dar
             className={`inline-flex items-center gap-2 text-xs font-mono font-semibold transition-colors group ${prevTextColor}`}
           >
             <ArrowRight className="w-4 h-4 rotate-180 transition-transform group-hover:-translate-x-1" />
-            <span className="uppercase tracking-wide">{prevLabel}</span>
+            <span className="uppercase tracking-wide">
+              {prevLabel}
+              {prevSub && <span className="opacity-70 font-normal"> • {prevSub}</span>}
+            </span>
           </Link>
         )}
       </div>

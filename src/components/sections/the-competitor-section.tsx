@@ -14,41 +14,77 @@ import { useLanguage } from "@/lib/i18n";
 export function TheCompetitorSection() {
   const [activeCategory, setActiveCategory] = useState<number>(0);
   const [resumeOpen, setResumeOpen] = useState(false);
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
 
   const categories = [
     {
       id: 0,
       title: t("competitor.tab0"),
-      shortTitle: "Academics",
+      shortTitle: lang === "vi" ? "Học thuật" : "Academics",
       icon: GraduationCap,
       items: [
         {
-          title: "VNUHCM - High School for The Gifted (2024 . 2027)",
-          subtitle: "English Specialization • GPA: 9.6 / 10.0 • Top 6% Student of Grade",
-          detail: "Selected as 1 of only 2 admitted students from Dak Lak Province to one of Vietnam's most selective institutions.",
-          badge: "Top 6% • 1 of 2 Dak Lak Admits",
+          title:
+            lang === "vi"
+              ? "Trường Phổ thông Năng khiếu - ĐHQG TP.HCM (2024 . 2027)"
+              : "VNUHCM - High School for The Gifted (2024 . 2027)",
+          subtitle:
+            lang === "vi"
+              ? "Chuyên Anh • GPA: 9.6 / 10.0 • Top 6% Học sinh Xuất sắc toàn khối"
+              : "English Specialization • GPA: 9.6 / 10.0 • Top 6% Student of Grade",
+          detail:
+            lang === "vi"
+              ? "1 trong 2 học sinh duy nhất của tỉnh Đắk Lắk trúng tuyển vào một trong những ngôi trường trung học chuyên chọn lọc nhất Việt Nam."
+              : "Selected as 1 of only 2 admitted students from Dak Lak Province to one of Vietnam's most selective institutions.",
+          badge: lang === "vi" ? "Top 6% • 1/2 Học sinh Đắk Lắk" : "Top 6% • 1 of 2 Dak Lak Admits",
           highlight: true,
         },
         {
-          title: "Phan Chu Trinh Secondary School (2020 . 2024)",
-          subtitle: "GPA: 8.8 / 10.0 • Provincial Third Prize in English (2023)",
-          detail: "Consistent academic leadership and provincial distinctions in humanities.",
-          badge: "Provincial Prize",
+          title:
+            lang === "vi"
+              ? "THCS Phan Chu Trinh (2020 . 2024)"
+              : "Phan Chu Trinh Secondary School (2020 . 2024)",
+          subtitle:
+            lang === "vi"
+              ? "GPA: 8.8 / 10.0 • Giải Ba Học sinh giỏi Tiếng Anh cấp Tỉnh (2023)"
+              : "GPA: 8.8 / 10.0 • Provincial Third Prize in English (2023)",
+          detail:
+            lang === "vi"
+              ? "Duy trì năng lực học thuật xuất sắc và đạt nhiều giải thưởng học sinh giỏi cấp tỉnh môn khoa học xã hội."
+              : "Consistent academic leadership and provincial distinctions in humanities.",
+          badge: lang === "vi" ? "Giải Ba Cấp Tỉnh" : "Provincial Prize",
           highlight: false,
         },
         {
-          title: "Standardized Testing (SAT & IELTS)",
-          subtitle: "SAT: 1510 posite • IELTS Academic: 7.5 Overall",
-          detail: "Demonstrated advanced quantitative reasoning and English proficiency across standardized metrics.",
-          badge: "SAT 1450 • IELTS 7.5",
+          title:
+            lang === "vi"
+              ? "Bài thi Chuẩn hóa Quốc tế (SAT & IELTS)"
+              : "Standardized Testing (SAT & IELTS)",
+          subtitle:
+            lang === "vi"
+              ? "SAT: 1510 / 1600 • IELTS Academic: 7.5 Overall"
+              : "SAT: 1510 Composite • IELTS Academic: 7.5 Overall",
+          detail:
+            lang === "vi"
+              ? "Khẳng định tư duy định lượng vượt trội và năng lực tiếng Anh học thuật xuất sắc qua các kỳ thi chuẩn hóa quốc tế."
+              : "Demonstrated advanced quantitative reasoning and English proficiency across standardized metrics.",
+          badge: "SAT 1510 • IELTS 7.5",
           highlight: true,
         },
         {
-          title: "Advanced Placement (AP Exams)",
-          subtitle: "Four Perfect Scores of 5 across Quantitative & Economic Fields",
-          detail: "AP Calculus AB (5), AP Statistics (5), AP Microeconomics (5), AP Macroeconomics (5).",
-          badge: "4x Perfect Score of 5",
+          title:
+            lang === "vi"
+              ? "Kỳ thi Nâng cao AP (Advanced Placement)"
+              : "Advanced Placement (AP Exams)",
+          subtitle:
+            lang === "vi"
+              ? "Bốn Điểm 5 Tuyệt đối trong các lĩnh vực Định lượng & Kinh tế học"
+              : "Four Perfect Scores of 5 across Quantitative & Economic Fields",
+          detail:
+            lang === "vi"
+              ? "AP Calculus AB (Điểm 5), AP Statistics (Điểm 5), AP Microeconomics (Điểm 5), AP Macroeconomics (Điểm 5)."
+              : "AP Calculus AB (5), AP Statistics (5), AP Microeconomics (5), AP Macroeconomics (5).",
+          badge: lang === "vi" ? "4x Điểm 5 Tuyệt đối" : "4x Perfect Score of 5",
           highlight: true,
         },
       ],
@@ -56,48 +92,84 @@ export function TheCompetitorSection() {
     {
       id: 1,
       title: t("competitor.tab1"),
-      shortTitle: "Olympiads",
+      shortTitle: lang === "vi" ? "Olympic" : "Olympiads",
       icon: Trophy,
       items: [
         {
           title: "Harvard Crimson Business Case (HCBC) 2025",
-          subtitle: "Global Finalist (Top 30 / 2,000 Teams Worldwide)",
-          detail: "Sole Vietnamese representative team invited to compete on Harvard campus in Boston, MA. Built financial forecasting and CAC/LTV models.",
-          badge: "Global Top 30 @ Harvard",
+          subtitle:
+            lang === "vi"
+              ? "Chung kết Toàn cầu (Top 30 / 2.000 Đội thi Toàn thế giới)"
+              : "Global Finalist (Top 30 / 2,000 Teams Worldwide)",
+          detail:
+            lang === "vi"
+              ? "Đội đại diện duy nhất của Việt Nam được mời tranh tài trực tiếp tại khuôn viên Đại học Harvard (Boston, MA). Xây dựng mô hình dự báo tài chính và bảng điều khiển CAC/LTV."
+              : "Sole Vietnamese representative team invited to compete on Harvard campus in Boston, MA. Built financial forecasting and CAC/LTV models.",
+          badge: lang === "vi" ? "Top 30 Toàn Cầu @ Harvard" : "Global Top 30 @ Harvard",
           highlight: true,
         },
         {
           title: "World Economics Cup (WEC) 2025",
-          subtitle: "Silver Award (Asia & Oceania) & Top 10 Fundamentals Worldwide",
-          detail: "Comprehensive theoretical examination spanning micro, macro, and international trade.",
-          badge: "Silver Medalist",
+          subtitle:
+            lang === "vi"
+              ? "Huy chương Bạc (Châu Á & Châu Đại Dương) & Top 10 Điểm Lý thuyết Toàn cầu"
+              : "Silver Award (Asia & Oceania) & Top 10 Fundamentals Worldwide",
+          detail:
+            lang === "vi"
+              ? "Bài thi lý thuyết toàn diện bao quát kinh tế vi mô, kinh tế vĩ mô và thương mại quốc tế."
+              : "Comprehensive theoretical examination spanning micro, macro, and international trade.",
+          badge: lang === "vi" ? "Huy Chương Bạc WEC" : "Silver Medalist",
           highlight: true,
         },
         {
           title: "International Economics Olympiad (IEO) 2025 & 2026",
-          subtitle: "National Top 5 Selection (Ranked 3rd Nationally across Vietnam)",
-          detail: "Represented elite national cohort through intensive economic theory and simulated business rounds.",
-          badge: "National Rank 3",
+          subtitle:
+            lang === "vi"
+              ? "Top 5 Tuyển chọn Đội tuyển Quốc gia (Xếp hạng 3 toàn quốc Việt Nam)"
+              : "National Top 5 Selection (Ranked 3rd Nationally across Vietnam)",
+          detail:
+            lang === "vi"
+              ? "Đại diện nhóm học sinh tinh hoa quốc gia qua các vòng thi lý thuyết kinh tế chuyên sâu và mô phỏng giải quyết tình huống kinh doanh thực tế."
+              : "Represented elite national cohort through intensive economic theory and simulated business rounds.",
+          badge: lang === "vi" ? "Top 3 Toàn Quốc" : "National Rank 3",
           highlight: true,
         },
         {
           title: "Vietnam Economics Olympiad (VEO) 2025 & 2026",
-          subtitle: "National Bronze Medalist (Two Consecutive Years)",
-          detail: "Competitive examination among Vietnam's top high school economics scholars.",
-          badge: "Bronze Medalist",
+          subtitle:
+            lang === "vi"
+              ? "Huy chương Đồng Toàn quốc (Hai năm liên tiếp)"
+              : "National Bronze Medalist (Two Consecutive Years)",
+          detail:
+            lang === "vi"
+              ? "Kỳ thi kinh tế học danh giá và cạnh tranh khốc liệt nhất giữa các học sinh THPT chuyên trên toàn quốc."
+              : "Competitive examination among Vietnam's top high school economics scholars.",
+          badge: lang === "vi" ? "Huy Chương Đồng" : "Bronze Medalist",
           highlight: false,
         },
         {
           title: "Vietnam Business Innovation Challenge (VBIC) 2025",
-          subtitle: "Top 10 Grand Final (Team Lead)",
-          detail: "Led product strategy, go-to-market plan, and financial modeling for scalable venture concept.",
-          badge: "Top 10 Finalist",
+          subtitle:
+            lang === "vi"
+              ? "Top 10 Chung kết Toàn quốc (Trưởng nhóm)"
+              : "Top 10 Grand Final (Team Lead)",
+          detail:
+            lang === "vi"
+              ? "Dẫn dắt chiến lược sản phẩm, kế hoạch thâm nhập thị trường (go-to-market) và mô hình hóa tài chính cho mô hình kinh doanh có khả năng nhân rộng."
+              : "Led product strategy, go-to-market plan, and financial modeling for scalable venture concept.",
+          badge: lang === "vi" ? "Top 10 Toàn Quốc" : "Top 10 Finalist",
           highlight: false,
         },
         {
-          title: "Aspiring Vietnam Contest 2025 & ACCA Futurist Scholarship",
-          subtitle: "Top 4 Individual (Trade Division) & Top 50 Vietnam Merit Award",
-          detail: "Recognized as emerging finance talent by the Association of Chartered Certified Accountants (ACCA).",
+          title: "Aspiring Vietnam Contest 2025 & Học bổng ACCA Futurist",
+          subtitle:
+            lang === "vi"
+              ? "Top 4 Cá nhân (Bảng Thương mại) & Giải Danh dự Top 50 Việt Nam"
+              : "Top 4 Individual (Trade Division) & Top 50 Vietnam Merit Award",
+          detail:
+            lang === "vi"
+              ? "Được vinh danh là tài năng tài chính trẻ triển vọng bởi Hiệp hội Kế toán Công chứng Anh quốc (ACCA)."
+              : "Recognized as emerging finance talent by the Association of Chartered Certified Accountants (ACCA).",
           badge: "Top 4 / Top 50 ACCA",
           highlight: false,
         },
@@ -106,35 +178,69 @@ export function TheCompetitorSection() {
     {
       id: 2,
       title: t("competitor.tab2"),
-      shortTitle: "Debate & Arts",
+      shortTitle: lang === "vi" ? "Tranh biện & Nghệ thuật" : "Debate & Arts",
       icon: Award,
       items: [
         {
-          title: "Strategic Debate: DAS-DO Debate Open 2025",
-          subtitle: "National Champion (4th Seed)",
-          detail: "Adjudicated and competed on high-stakes policy motions using empirical logic and economic incentives.",
-          badge: "National Champion",
+          title:
+            lang === "vi"
+              ? "Tranh biện Chiến lược: DAS-DO Debate Open 2025"
+              : "Strategic Debate: DAS-DO Debate Open 2025",
+          subtitle:
+            lang === "vi" ? "Quán quân Toàn quốc (Hạt giống số 4)" : "National Champion (4th Seed)",
+          detail:
+            lang === "vi"
+              ? "Tranh biện và phản biện các kiến nghị chính sách quan trọng bằng lập luận thực nghiệm và động lực kinh tế học."
+              : "Adjudicated and competed on high-stakes policy motions using empirical logic and economic incentives.",
+          badge: lang === "vi" ? "Quán Quân Toàn Quốc" : "National Champion",
           highlight: true,
         },
         {
-          title: "Model United Nations: VSGMUN 2026",
-          subtitle: "Best Position Paper Award (UNHCR Council)",
-          detail: "Authored policy framework addressing displaced climate refugees and rural livelihood protections.",
-          badge: "Best Position Paper",
+          title:
+            lang === "vi"
+              ? "Mô phỏng Liên Hợp Quốc: VSGMUN 2026"
+              : "Model United Nations: VSGMUN 2026",
+          subtitle:
+            lang === "vi"
+              ? "Giải Bài lập trường Xuất sắc nhất (Hội đồng UNHCR)"
+              : "Best Position Paper Award (UNHCR Council)",
+          detail:
+            lang === "vi"
+              ? "Tác giả khung chính sách giải quyết vấn đề người tị nạn do biến đổi khí hậu và bảo vệ sinh kế nông thôn."
+              : "Authored policy framework addressing displaced climate refugees and rural livelihood protections.",
+          badge: lang === "vi" ? "Bài Lập Trường Xuất Sắc" : "Best Position Paper",
           highlight: false,
         },
         {
-          title: "Traditional T'rưng Artist (Lead Soloist)",
-          subtitle: "Featured Soloist at 'Thanh Âm Đất Việt' Showcase (HCMC 2025)",
-          detail: "Performed Central Highlands indigenous music for ~150 urban attendees to bridge rural-urban cultural gaps.",
-          badge: "Lead Soloist",
+          title:
+            lang === "vi"
+              ? "Nghệ sĩ Độc tấu Đàn T'rưng Truyền thống"
+              : "Traditional T'rưng Artist (Lead Soloist)",
+          subtitle:
+            lang === "vi"
+              ? "Nghệ sĩ Độc tấu chính tại Đêm nhạc 'Thanh Âm Đất Việt' (TP.HCM 2025)"
+              : "Featured Soloist at 'Thanh Âm Đất Việt' Showcase (HCMC 2025)",
+          detail:
+            lang === "vi"
+              ? "Trình diễn âm nhạc bản địa Tây Nguyên trước ~150 khán giả đô thị nhằm kết nối di sản vùng cao với nhịp sống hiện đại."
+              : "Performed Central Highlands indigenous music for ~150 urban attendees to bridge rural-urban cultural gaps.",
+          badge: lang === "vi" ? "Nghệ Sĩ Độc Tấu Chính" : "Lead Soloist",
           highlight: true,
         },
         {
-          title: "International Art Exhibition (Philippines 2026)",
-          subtitle: "Exhibited at Museo ning Angeles, Philippines (Jul 2026)",
-          detail: "Exhibited original visual work 'Along the Waters of Srepok 3 Hydropower Plant, Dak Lak' highlighting ecological narratives.",
-          badge: "International Exhibitor",
+          title:
+            lang === "vi"
+              ? "Triển lãm Nghệ thuật Quốc tế (Philippines 2026)"
+              : "International Art Exhibition (Philippines 2026)",
+          subtitle:
+            lang === "vi"
+              ? "Trưng bày tác phẩm tại Bảo tàng Museo ning Angeles, Philippines (Tháng 7/2026)"
+              : "Exhibited at Museo ning Angeles, Philippines (Jul 2026)",
+          detail:
+            lang === "vi"
+              ? "Trưng bày tác phẩm hội họa gốc 'Bên dòng nước Thủy điện Sêrêpôk 3, Đắk Lắk', lan tỏa thông điệp sinh thái quê hương ra trường quốc tế."
+              : "Exhibited original visual work 'Along the Waters of Srepok 3 Hydropower Plant, Dak Lak' highlighting ecological narratives.",
+          badge: lang === "vi" ? "Triển Lãm Quốc Tế" : "International Exhibitor",
           highlight: true,
         },
       ],
@@ -142,34 +248,67 @@ export function TheCompetitorSection() {
     {
       id: 3,
       title: t("competitor.tab3"),
-      shortTitle: "Skills & Profile",
+      shortTitle: lang === "vi" ? "Kỹ năng & Hồ sơ" : "Skills & Profile",
       icon: Code2,
       items: [
         {
-          title: "Technical & Quantitative Methodologies",
-          subtitle: "Econometrics • ANOVA • Logistic Regression • Data Science",
-          detail: "SPSS Econometric modeling, Binary Logistic Regression, MS Excel/Google Sheets advanced modeling, Canva visual communication.",
+          title:
+            lang === "vi"
+              ? "Phương pháp Kỹ thuật & Nghiên cứu Định lượng"
+              : "Technical & Quantitative Methodologies",
+          subtitle:
+            lang === "vi"
+              ? "Kinh tế lượng • ANOVA • Hồi quy Logistic • Khoa học Dữ liệu"
+              : "Econometrics • ANOVA • Logistic Regression • Data Science",
+          detail:
+            lang === "vi"
+              ? "Mô hình hóa kinh tế lượng trên SPSS, hồi quy nhị phân Binary Logistic, xây dựng mô hình tài chính trên MS Excel/Google Sheets, thiết kế truyền thông trực quan trên Canva."
+              : "SPSS Econometric modeling, Binary Logistic Regression, MS Excel/Google Sheets advanced modeling, Canva visual communication.",
           badge: "SPSS Econometrics",
           highlight: true,
         },
         {
-          title: "Computational & Scientific Environments",
-          subtitle: "Basic C++ • Linux HPC • VESTA • DFT Materials Modeling",
-          detail: "Mastered at NSYSU Computational Materials Research Lab for physical modeling and simulations.",
+          title:
+            lang === "vi"
+              ? "Môi trường Điện toán & Mô phỏng Khoa học"
+              : "Computational & Scientific Environments",
+          subtitle:
+            lang === "vi"
+              ? "C++ cơ bản • Môi trường Linux HPC • VESTA • Mô phỏng Vật liệu DFT"
+              : "Basic C++ • Linux HPC • VESTA • DFT Materials Modeling",
+          detail:
+            lang === "vi"
+              ? "Thành thạo trong quá trình nghiên cứu tại Phòng Lab Vật liệu Tính toán NSYSU (Đài Loan) phục vụ mô phỏng cấu trúc vật lý và xử lý dữ liệu lớn."
+              : "Mastered at NSYSU Computational Materials Research Lab for physical modeling and simulations.",
           badge: "HPC & DFT",
           highlight: false,
         },
         {
-          title: "Languages",
-          subtitle: "Vietnamese (Native) • English (Proficient - IELTS 7.5) • Japanese (Basic)",
-          detail: "Fluent academic and debate discourse in English; professional presentation skills.",
-          badge: "Multilingual",
+          title: lang === "vi" ? "Ngôn ngữ" : "Languages",
+          subtitle:
+            lang === "vi"
+              ? "Tiếng Việt (Bản ngữ) • Tiếng Anh (Thành thạo - IELTS 7.5) • Tiếng Nhật (Cơ bản)"
+              : "Vietnamese (Native) • English (Proficient - IELTS 7.5) • Japanese (Basic)",
+          detail:
+            lang === "vi"
+              ? "Giao tiếp và tranh biện học thuật lưu loát bằng tiếng Anh; kỹ năng thuyết trình và bảo vệ đề án chuyên nghiệp."
+              : "Fluent academic and debate discourse in English; professional presentation skills.",
+          badge: lang === "vi" ? "Đa Ngôn Ngữ" : "Multilingual",
           highlight: false,
         },
         {
-          title: "Interests & Strategic Thinking",
-          subtitle: "T'rưng Performance • Game Theory • Swimming • Badminton",
-          detail: "Passionate about analyzing strategic interaction through Nash Equilibrium simulations and traditional polyrhythms.",
+          title:
+            lang === "vi"
+              ? "Sở thích & Tư duy Chiến lược"
+              : "Interests & Strategic Thinking",
+          subtitle:
+            lang === "vi"
+              ? "Biểu diễn đàn T'rưng • Lý thuyết Trò chơi (Game Theory) • Bơi lội • Cầu lông"
+              : "T'rưng Performance • Game Theory • Swimming • Badminton",
+          detail:
+            lang === "vi"
+              ? "Đam mê phân tích các tương tác chiến lược thông qua mô phỏng Cân bằng Nash (Nash Equilibrium) và cảm thụ đa nhịp điệu của âm nhạc truyền thống."
+              : "Passionate about analyzing strategic interaction through Nash Equilibrium simulations and traditional polyrhythms.",
           badge: "Game Theory & T'rưng",
           highlight: false,
         },

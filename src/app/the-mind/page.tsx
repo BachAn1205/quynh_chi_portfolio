@@ -1,14 +1,14 @@
+"use client";
+
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { TheMindSection } from "@/components/sections/the-mind-section";
 import { PageNav } from "@/components/ui/page-nav";
-
-export const metadata = {
-  title: "The Mind | Phan Hoàng Quỳnh Chi",
-  description: "Quantitative Research, Econometrics, Circular Economy Startup & International Data Lab",
-};
+import { useLanguage } from "@/lib/i18n";
 
 export default function TheMindPage() {
+  const { lang } = useLanguage();
+
   return (
     <>
       <Navbar />
@@ -16,10 +16,11 @@ export default function TheMindPage() {
         <TheMindSection />
         <PageNav
           prevHref="/about"
-          prevLabel="About"
+          prevLabel={lang === "vi" ? "Về Tôi" : "About"}
+          prevSub={lang === "vi" ? "Nguồn cội & Triết lý" : "Origins & Philosophy"}
           nextHref="/the-heart"
-          nextLabel="The Heart"
-          nextSub="Culture, Empathy & Advocacy"
+          nextLabel={lang === "vi" ? "Trái Tim" : "The Heart"}
+          nextSub={lang === "vi" ? "Văn Hóa, Đồng Cảm & Cộng Đồng" : "Culture, Empathy & Advocacy"}
         />
       </main>
       <Footer />
