@@ -546,7 +546,7 @@ Hãy tìm file mã nguồn tương ứng và sửa lại theo đúng yêu cầu 
       )}
 
       {/* ─── FLOATING REVIEW BADGE / LAUNCHER (GÓC DƯỚI BÊN PHẢI) ─────── */}
-      <div className="fixed bottom-6 right-6 z-[9980] flex items-center gap-2">
+      <div className="print:hidden fixed bottom-6 right-6 z-[9980] flex items-center gap-2">
         <button
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Mở bảng nhận xét"
@@ -573,7 +573,7 @@ Hãy tìm file mã nguồn tương ứng và sửa lại theo đúng yêu cầu 
 
       {/* ─── REVIEW SIDEBAR / DRAWER ─────────────────────────────────── */}
       {isOpen && (
-        <div className="fixed inset-0 z-[9990] flex justify-end bg-black/30 backdrop-blur-2xs animate-in fade-in duration-150">
+        <div className="print:hidden fixed inset-0 z-[9990] flex justify-end bg-black/30 backdrop-blur-2xs animate-in fade-in duration-150">
           <div
             ref={drawerRef}
             className="w-full max-w-md h-full bg-[#FAF7F2] shadow-2xl flex flex-col border-l border-[#1B3B2B]/20 animate-in slide-in-from-right duration-250 text-[#242220]"
