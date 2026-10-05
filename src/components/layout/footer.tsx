@@ -3,14 +3,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { Mail, FileText, ArrowUpRight, MapPin, Send, User } from "lucide-react";
+import { Mail, FileText, ArrowUpRight, MapPin, Send, User, Printer } from "lucide-react";
 import { ResumeModal } from "@/components/ui/resume-modal";
 import { useLanguage } from "@/lib/i18n";
 import { useProjectImages } from "@/lib/project-images-context";
 
 export function Footer() {
   const [resumeModalOpen, setResumeModalOpen] = useState(false);
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const { getImage } = useProjectImages();
   const avatarUrl = getImage("profile-avatar");
 
@@ -170,6 +170,15 @@ export function Footer() {
                     <FileText className="w-3.5 h-3.5 text-[#7B0323]" />
                     <span>{t("footer.connect.dossier")}</span>
                   </button>
+                </li>
+                <li>
+                  <Link
+                    href="/print"
+                    className="hover:text-[#7B0323] transition-colors flex items-center gap-1.5 text-left cursor-pointer"
+                  >
+                    <Printer className="w-3.5 h-3.5 text-[#1B3B2B]" />
+                    <span>{lang === "vi" ? "Bản in Portfolio Toàn diện (PDF A4)" : "Full Print Dossier (A4 PDF)"}</span>
+                  </Link>
                 </li>
               </ul>
             </div>

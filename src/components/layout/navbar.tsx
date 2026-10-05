@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { FileText, Menu, X, Mail, Globe, User } from "lucide-react";
+import { FileText, Menu, X, Mail, Globe, User, Printer } from "lucide-react";
 import { ResumeModal } from "@/components/ui/resume-modal";
 import { useLanguage } from "@/lib/i18n";
 import { useProjectImages } from "@/lib/project-images-context";
@@ -100,6 +100,16 @@ export function Navbar() {
               <Globe className="w-3.5 h-3.5 text-[#1B3B2B] shrink-0" />
               <span className="font-mono text-xs font-bold tracking-wider">{lang === "en" ? "EN" : "VI"}</span>
             </button>
+
+            {/* Print Portfolio Full Dossier */}
+            <Link
+              href="/print"
+              title={lang === "vi" ? "Xem & In bản PDF toàn bộ Portfolio" : "View & Print Full Portfolio PDF"}
+              className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] xl:text-xs font-semibold bg-[#E2ECE5] text-[#1B3B2B] hover:bg-[#D2E2D7] border border-[#1B3B2B]/20 transition-all duration-200 shadow-xs whitespace-nowrap cursor-pointer"
+            >
+              <Printer className="w-3.5 h-3.5 text-[#7B0323] shrink-0" />
+              <span>{lang === "vi" ? "Bản in PDF" : "Print PDF"}</span>
+            </Link>
 
             <button
               onClick={() => setResumeModalOpen(true)}
@@ -197,20 +207,28 @@ export function Navbar() {
               <span>{lang === "en" ? "Tiếng Việt" : "English"}</span>
             </button>
 
-            <div className="pt-2 border-t border-[#1B3B2B]/15 grid grid-cols-2 gap-2">
+            <div className="pt-2 border-t border-[#1B3B2B]/15 grid grid-cols-3 gap-1.5">
               <button
                 onClick={() => { setMobileMenuOpen(false); setResumeModalOpen(true); }}
-                className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-xs font-semibold bg-[#1B3B2B] text-white"
+                className="flex items-center justify-center gap-1 py-2.5 rounded-xl text-xs font-semibold bg-[#1B3B2B] text-white"
               >
-                <FileText className="w-3.5 h-3.5" />
+                <FileText className="w-3 h-3" />
                 {t("nav.resume")}
               </button>
               <Link
+                href="/print"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-center gap-1 py-2.5 rounded-xl text-xs font-semibold bg-[#E2ECE5] text-[#1B3B2B] border border-[#1B3B2B]/20"
+              >
+                <Printer className="w-3 h-3 text-[#7B0323]" />
+                {lang === "vi" ? "In PDF" : "Print"}
+              </Link>
+              <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-xs font-semibold bg-[#7B0323] text-white"
+                className="flex items-center justify-center gap-1 py-2.5 rounded-xl text-xs font-semibold bg-[#7B0323] text-white"
               >
-                <Mail className="w-3.5 h-3.5" />
+                <Mail className="w-3 h-3" />
                 {t("nav.contact")}
               </Link>
             </div>
