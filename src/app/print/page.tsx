@@ -82,8 +82,8 @@ export default function PrintPortfolioPage() {
   useEffect(() => {
     document.title =
       lang === "vi"
-        ? "Phan Hoàng Quỳnh Chi - Hồ Sơ Năng Lực Toàn Diện (Bản In Liền Mạch)"
-        : "Phan Hoang Quynh Chi - Full Seamless Portfolio Dossier (Print PDF)";
+        ? "Phan Hoàng Quỳnh Chi - Hồ Sơ Năng Lực Toàn Diện (Bản In Chuẩn Tỷ Lệ)"
+        : "Phan Hoang Quynh Chi - Full Portfolio Dossier (Exact Aspect Ratios)";
   }, [lang]);
 
   return (
@@ -153,8 +153,8 @@ export default function PrintPortfolioPage() {
             </Link>
             <span className="text-xs text-white/80 font-medium hidden sm:inline">
               {lang === "vi"
-                ? "Bản in gom liền mạch (Xóa bỏ khoảng trắng thừa, tối ưu kín trang A4)"
-                : "Continuous seamless layout (No empty gaps, compact A4 flow)"}
+                ? "Bản in chuẩn tỷ lệ gốc trên web (Không bóp méo ảnh, gom kín trang A4)"
+                : "Exact web aspect ratio dossier (No distorted photos, continuous A4 flow)"}
             </span>
           </div>
 
@@ -191,7 +191,7 @@ export default function PrintPortfolioPage() {
         </div>
 
         <div className="max-w-5xl mx-auto mt-1 pt-1 border-t border-white/10 text-[11px] text-white/80">
-          💡 <strong>Mẹo in PDF:</strong> Khổ giấy <strong>A4</strong>, Tùy chọn: Bật{" "}
+          💡 <strong>Mẹo in PDF chuẩn A4:</strong> Tùy chọn in: Bật{" "}
           <strong>&quot;Background graphics&quot; (Đồ họa nền)</strong> và bỏ chọn{" "}
           <strong>&quot;Headers and footers&quot;</strong>.
         </div>
@@ -201,7 +201,7 @@ export default function PrintPortfolioPage() {
       <main className="max-w-5xl mx-auto p-4 sm:p-6 lg:p-8 space-y-5 bg-white text-[#242220]">
         
         {/* ══════════════════════════════════════════════════════════════
-            0. HEADER / MASTHEAD (COMPACT & SEAMLESS)
+            0. HEADER / MASTHEAD (AVATAR TỶ LỆ 3/2 NHƯ TRÊN WEB)
             ══════════════════════════════════════════════════════════════ */}
         <header className="item-card border-b-2 border-[#1B3B2B]/20 pb-4">
           <div className="flex items-center justify-between gap-4">
@@ -248,8 +248,8 @@ export default function PrintPortfolioPage() {
               </div>
             </div>
 
-            {/* Masthead Avatar Thumbnail */}
-            <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden border-2 border-[#1B3B2B]/20 relative shrink-0 shadow-sm">
+            {/* Avatar Tỷ lệ 3/2 chuẩn web */}
+            <div className="w-32 sm:w-40 aspect-[3/2] rounded-xl overflow-hidden border-2 border-[#1B3B2B]/20 relative shrink-0 shadow-sm">
               <Image
                 src={avatarUrl}
                 alt="Phan Hoàng Quỳnh Chi"
@@ -275,10 +275,10 @@ export default function PrintPortfolioPage() {
             </h2>
           </div>
 
-          {/* SLIDE 0: CAFLOOP & 6 FOUNDER CAPABILITIES (COMPACT) */}
+          {/* SLIDE 0: CAFLOOP (TỶ LỆ 16/10 CHUẨN WEB) */}
           <div className="item-card p-3.5 rounded-xl bg-white border border-[#1B3B2B]/15 space-y-2.5">
             <div className="flex flex-col sm:flex-row gap-3.5 items-start">
-              <div className="w-full sm:w-40 h-28 relative rounded-lg overflow-hidden border border-[#1B3B2B]/15 shrink-0">
+              <div className="w-full sm:w-5/12 aspect-[16/10] relative rounded-lg overflow-hidden border border-[#1B3B2B]/15 shrink-0">
                 <Image
                   src={cafloopUrl}
                   alt="CAFLOOP Cascara"
@@ -340,22 +340,20 @@ export default function PrintPortfolioPage() {
             </div>
           </div>
 
-          {/* SLIDE 1 & SLIDE 2: KINH TẾ LƯỢNG & ĐÀN T'RƯNG (SIDE-BY-SIDE) */}
+          {/* SLIDE 1 & SLIDE 2: KINH TẾ LƯỢNG & ĐÀN T'RƯNG (TỶ LỆ 16/9 CHUẨN WEB) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {/* Slide 1 */}
-            <div className="item-card p-3 rounded-xl bg-white border border-[#1B3B2B]/15 space-y-1.5">
-              <div className="flex gap-3 items-center">
-                <div className="w-24 h-16 relative rounded-lg overflow-hidden border border-[#1B3B2B]/15 shrink-0">
-                  <Image src={mindResearchUrl} alt="SPSS Econometrics" fill className="object-cover" unoptimized />
-                </div>
-                <div>
-                  <span className="px-2 py-0.5 rounded-full bg-[#1B3B2B]/10 text-[#1B3B2B] text-[9.5px] font-mono font-bold">
-                    02 • {lang === "vi" ? "Nghiên Cứu Định Lượng" : "Quantitative Research"}
-                  </span>
-                  <h3 className="font-anton text-sm uppercase text-[#242220] leading-tight mt-0.5">
-                    {lang === "vi" ? "Kinh Tế Lượng Dự Báo (SPSS 83,5%)" : "Predictive Econometrics (SPSS 83.5%)"}
-                  </h3>
-                </div>
+            <div className="item-card p-3 rounded-xl bg-white border border-[#1B3B2B]/15 space-y-2">
+              <div className="w-full aspect-[16/9] relative rounded-lg overflow-hidden border border-[#1B3B2B]/15">
+                <Image src={mindResearchUrl} alt="SPSS Econometrics" fill className="object-cover" unoptimized />
+              </div>
+              <div>
+                <span className="px-2 py-0.5 rounded-full bg-[#1B3B2B]/10 text-[#1B3B2B] text-[9.5px] font-mono font-bold">
+                  02 • {lang === "vi" ? "Nghiên Cứu Định Lượng" : "Quantitative Research"}
+                </span>
+                <h3 className="font-anton text-sm uppercase text-[#242220] leading-tight mt-0.5">
+                  {lang === "vi" ? "Kinh Tế Lượng Dự Báo (SPSS 83,5%)" : "Predictive Econometrics (SPSS 83.5%)"}
+                </h3>
               </div>
               <p className="text-[10.5px] text-[#242220]/80 leading-relaxed">
                 {lang === "vi"
@@ -365,19 +363,17 @@ export default function PrintPortfolioPage() {
             </div>
 
             {/* Slide 2 */}
-            <div className="item-card p-3 rounded-xl bg-white border border-[#1B3B2B]/15 space-y-1.5">
-              <div className="flex gap-3 items-center">
-                <div className="w-24 h-16 relative rounded-lg overflow-hidden border border-[#1B3B2B]/15 shrink-0">
-                  <Image src={trungPreservationUrl} alt="T'rưng Cultural Heritage" fill className="object-cover" unoptimized />
-                </div>
-                <div>
-                  <span className="px-2 py-0.5 rounded-full bg-[#7B0323]/10 text-[#7B0323] text-[9.5px] font-mono font-bold">
-                    03 • {lang === "vi" ? "Bảo Tồn Đàn T'rưng" : "T'rưng Cultural Preservation"}
-                  </span>
-                  <h3 className="font-anton text-sm uppercase text-[#242220] leading-tight mt-0.5">
-                    {lang === "vi" ? "Di Sản Truyền Khẩu & Biểu Diễn Đô Thị" : "Oral Heritage & Urban Showcases"}
-                  </h3>
-                </div>
+            <div className="item-card p-3 rounded-xl bg-white border border-[#1B3B2B]/15 space-y-2">
+              <div className="w-full aspect-[16/9] relative rounded-lg overflow-hidden border border-[#1B3B2B]/15">
+                <Image src={trungPreservationUrl} alt="T'rưng Cultural Heritage" fill className="object-cover" unoptimized />
+              </div>
+              <div>
+                <span className="px-2 py-0.5 rounded-full bg-[#7B0323]/10 text-[#7B0323] text-[9.5px] font-mono font-bold">
+                  03 • {lang === "vi" ? "Bảo Tồn Đàn T'rưng" : "T'rưng Cultural Preservation"}
+                </span>
+                <h3 className="font-anton text-sm uppercase text-[#242220] leading-tight mt-0.5">
+                  {lang === "vi" ? "Di Sản Truyền Khẩu & Biểu Diễn Đô Thị" : "Oral Heritage & Urban Showcases"}
+                </h3>
               </div>
               <p className="text-[10.5px] text-[#242220]/80 leading-relaxed">
                 {lang === "vi"
@@ -401,8 +397,8 @@ export default function PrintPortfolioPage() {
             </h2>
           </div>
 
-          {/* Banner ảnh vừa phải, không chiếm nguyên trang */}
-          <div className="item-card w-full h-40 sm:h-48 relative rounded-xl overflow-hidden border border-[#1B3B2B]/20">
+          {/* Banner ảnh Tỷ lệ 3/2 chuẩn web */}
+          <div className="item-card w-full aspect-[3/2] max-h-80 relative rounded-xl overflow-hidden border border-[#1B3B2B]/20">
             <Image
               src={aboutBannerUrl}
               alt="About Banner Quynh Chi"
@@ -412,7 +408,7 @@ export default function PrintPortfolioPage() {
             />
           </div>
 
-          {/* Story Narrative & Analyst Image */}
+          {/* Story Narrative & Analyst Image (Tỷ lệ 4/3 chuẩn web) */}
           <div className="item-card grid grid-cols-1 md:grid-cols-12 gap-3.5 items-start">
             <div className="md:col-span-8 space-y-2 text-[11px] text-[#242220]/80 leading-relaxed text-justify">
               <h3 className="font-anton text-base uppercase tracking-tight text-[#242220]">
@@ -431,7 +427,7 @@ export default function PrintPortfolioPage() {
             </div>
 
             <div className="md:col-span-4 space-y-2">
-              <div className="w-full h-32 relative rounded-xl overflow-hidden border border-[#1B3B2B]/20">
+              <div className="w-full aspect-[4/3] relative rounded-xl overflow-hidden border border-[#1B3B2B]/20">
                 <Image src={aboutAnalystUrl} alt="Analyst Quynh Chi" fill className="object-cover" unoptimized />
               </div>
 
@@ -506,10 +502,10 @@ export default function PrintPortfolioPage() {
             </div>
           </div>
 
-          {/* 3 Work Snapshots Gallery */}
+          {/* 3 Work Snapshots Gallery (Tỷ lệ 4/3 chuẩn web) */}
           <div className="grid grid-cols-3 gap-2.5 pt-1">
             <div className="item-card space-y-1">
-              <div className="w-full h-24 relative rounded-lg overflow-hidden border border-[#1B3B2B]/15">
+              <div className="w-full aspect-[4/3] relative rounded-lg overflow-hidden border border-[#1B3B2B]/15">
                 <Image src={cafloopUrl} alt="Cascara QR" fill className="object-cover" unoptimized />
               </div>
               <span className="font-anton text-[9.5px] uppercase text-[#7B0323] block text-center">
@@ -517,7 +513,7 @@ export default function PrintPortfolioPage() {
               </span>
             </div>
             <div className="item-card space-y-1">
-              <div className="w-full h-24 relative rounded-lg overflow-hidden border border-[#1B3B2B]/15">
+              <div className="w-full aspect-[4/3] relative rounded-lg overflow-hidden border border-[#1B3B2B]/15">
                 <Image src={mindResearchUrl} alt="SPSS Regression" fill className="object-cover" unoptimized />
               </div>
               <span className="font-anton text-[9.5px] uppercase text-[#7B0323] block text-center">
@@ -525,7 +521,7 @@ export default function PrintPortfolioPage() {
               </span>
             </div>
             <div className="item-card space-y-1">
-              <div className="w-full h-24 relative rounded-lg overflow-hidden border border-[#1B3B2B]/15">
+              <div className="w-full aspect-[4/3] relative rounded-lg overflow-hidden border border-[#1B3B2B]/15">
                 <Image src={trungPreservationUrl} alt="T'rưng Project" fill className="object-cover" unoptimized />
               </div>
               <span className="font-anton text-[9.5px] uppercase text-[#7B0323] block text-center">
@@ -537,6 +533,7 @@ export default function PrintPortfolioPage() {
 
         {/* ══════════════════════════════════════════════════════════════
             3. PHẦN TƯ DUY: CẢ 4 DỰ ÁN NGHIÊN CỨU & KHỞI NGHIỆP (THE MIND)
+            (ẢNH TỶ LỆ 4/3 CHUẨN WEB)
             ══════════════════════════════════════════════════════════════ */}
         <section className="space-y-3 pt-2">
           <div className="flex items-center gap-2 border-b border-[#1B3B2B]/15 pb-1.5">
@@ -549,20 +546,18 @@ export default function PrintPortfolioPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {/* Project 1: Nghiên cứu Định lượng Độc lập */}
+            {/* Project 1: Nghiên cứu Định lượng Độc lập (Ảnh 4/3 chuẩn web) */}
             <div className="item-card p-3 rounded-xl bg-white border border-[#1B3B2B]/15 space-y-2">
-              <div className="flex gap-2.5 items-center">
-                <div className="w-20 h-16 relative rounded-lg overflow-hidden border border-[#1B3B2B]/15 shrink-0">
-                  <Image src={mindResearchUrl} alt="Mind Research" fill className="object-cover" unoptimized />
-                </div>
-                <div>
-                  <span className="text-[9px] font-mono uppercase font-bold text-[#7B0323] px-1.5 py-0.5 rounded bg-[#7B0323]/10">
-                    {lang === "vi" ? "Nghiên Cứu Độc Lập" : "Independent Research"}
-                  </span>
-                  <h3 className="font-anton text-sm uppercase text-[#242220] leading-tight mt-0.5">
-                    {lang === "vi" ? "Làm Sáng Tỏ Bất Bình Đẳng Qua Dữ Liệu" : "Revealing Disparities"}
-                  </h3>
-                </div>
+              <div className="w-full aspect-[4/3] relative rounded-lg overflow-hidden border border-[#1B3B2B]/15">
+                <Image src={mindResearchUrl} alt="Mind Research" fill className="object-cover" unoptimized />
+              </div>
+              <div>
+                <span className="text-[9px] font-mono uppercase font-bold text-[#7B0323] px-1.5 py-0.5 rounded bg-[#7B0323]/10">
+                  {lang === "vi" ? "Nghiên Cứu Độc Lập" : "Independent Research"}
+                </span>
+                <h3 className="font-anton text-sm uppercase text-[#242220] leading-tight mt-0.5">
+                  {lang === "vi" ? "Làm Sáng Tỏ Bất Bình Đẳng Qua Dữ Liệu" : "Revealing Disparities"}
+                </h3>
               </div>
               <ul className="text-[10px] text-[#242220]/80 space-y-1 list-disc pl-3.5">
                 <li><strong>Khảo sát nghề bền vững 2024:</strong> 200 học sinh Đắk Lắk, mô hình hồi quy SPSS 83,5%, xác suất tăng 3,482 lần.</li>
@@ -571,20 +566,18 @@ export default function PrintPortfolioPage() {
               </ul>
             </div>
 
-            {/* Project 2: CAFLOOP & Vận hành */}
+            {/* Project 2: CAFLOOP & Vận hành (Ảnh 4/3 chuẩn web) */}
             <div className="item-card p-3 rounded-xl bg-white border border-[#1B3B2B]/15 space-y-2">
-              <div className="flex gap-2.5 items-center">
-                <div className="w-20 h-16 relative rounded-lg overflow-hidden border border-[#1B3B2B]/15 shrink-0">
-                  <Image src={cafloopUrl} alt="CAFLOOP Project" fill className="object-cover" unoptimized />
-                </div>
-                <div>
-                  <span className="text-[9px] font-mono uppercase font-bold text-[#1B3B2B] px-1.5 py-0.5 rounded bg-[#1B3B2B]/10">
-                    {lang === "vi" ? "Khởi Nghiệp Tuần Hoàn" : "Circular Enterprise"}
-                  </span>
-                  <h3 className="font-anton text-sm uppercase text-[#242220] leading-tight mt-0.5">
-                    {lang === "vi" ? "CAFLOOP & Vận Hành Chuỗi Cung Ứng" : "CAFLOOP & Operations"}
-                  </h3>
-                </div>
+              <div className="w-full aspect-[4/3] relative rounded-lg overflow-hidden border border-[#1B3B2B]/15">
+                <Image src={cafloopUrl} alt="CAFLOOP Project" fill className="object-cover" unoptimized />
+              </div>
+              <div>
+                <span className="text-[9px] font-mono uppercase font-bold text-[#1B3B2B] px-1.5 py-0.5 rounded bg-[#1B3B2B]/10">
+                  {lang === "vi" ? "Khởi Nghiệp Tuần Hoàn" : "Circular Enterprise"}
+                </span>
+                <h3 className="font-anton text-sm uppercase text-[#242220] leading-tight mt-0.5">
+                  {lang === "vi" ? "CAFLOOP & Vận Hành Chuỗi Cung Ứng" : "CAFLOOP & Operations"}
+                </h3>
               </div>
               <ul className="text-[10px] text-[#242220]/80 space-y-1 list-disc pl-3.5">
                 <li><strong>Trà Cascara & Định mức giá vốn (COGS):</strong> Thu gom vỏ cà phê, dán mã QR truy xuất minh bạch.</li>
@@ -593,20 +586,18 @@ export default function PrintPortfolioPage() {
               </ul>
             </div>
 
-            {/* Project 3: NSYSU */}
+            {/* Project 3: NSYSU (Ảnh 4/3 chuẩn web) */}
             <div className="item-card p-3 rounded-xl bg-white border border-[#1B3B2B]/15 space-y-1.5">
-              <div className="flex gap-2.5 items-center">
-                <div className="w-20 h-14 relative rounded-lg overflow-hidden border border-[#1B3B2B]/15 shrink-0">
-                  <Image src={mindLabUrl} alt="NSYSU Lab" fill className="object-cover" unoptimized />
-                </div>
-                <div>
-                  <span className="text-[9px] font-mono uppercase font-bold text-[#1B3B2B]">
-                    {lang === "vi" ? "Vật Liệu Tính Toán" : "Materials Science"}
-                  </span>
-                  <h3 className="font-anton text-xs uppercase text-[#242220]">
-                    {lang === "vi" ? "Phòng Lab ĐH Tôn Dật Tiên (NSYSU, Đài Loan)" : "NSYSU Taiwan Lab"}
-                  </h3>
-                </div>
+              <div className="w-full aspect-[4/3] relative rounded-lg overflow-hidden border border-[#1B3B2B]/15">
+                <Image src={mindLabUrl} alt="NSYSU Lab" fill className="object-cover" unoptimized />
+              </div>
+              <div>
+                <span className="text-[9px] font-mono uppercase font-bold text-[#1B3B2B]">
+                  {lang === "vi" ? "Vật Liệu Tính Toán" : "Materials Science"}
+                </span>
+                <h3 className="font-anton text-xs uppercase text-[#242220]">
+                  {lang === "vi" ? "Phòng Lab ĐH Tôn Dật Tiên (NSYSU, Đài Loan)" : "NSYSU Taiwan Lab"}
+                </h3>
               </div>
               <p className="text-[10px] text-[#242220]/75 leading-relaxed">
                 {lang === "vi"
@@ -615,20 +606,18 @@ export default function PrintPortfolioPage() {
               </p>
             </div>
 
-            {/* Project 4: Sư phạm kinh tế */}
+            {/* Project 4: Sư phạm kinh tế (Ảnh 4/3 chuẩn web) */}
             <div className="item-card p-3 rounded-xl bg-white border border-[#1B3B2B]/15 space-y-1.5">
-              <div className="flex gap-2.5 items-center">
-                <div className="w-20 h-14 relative rounded-lg overflow-hidden border border-[#1B3B2B]/15 shrink-0">
-                  <Image src={mindPedagogyUrl} alt="Pedagogy Shark Club" fill className="object-cover" unoptimized />
-                </div>
-                <div>
-                  <span className="text-[9px] font-mono uppercase font-bold text-[#7B0323]">
-                    {lang === "vi" ? "Sư Phạm & Lan Tỏa" : "Pedagogy"}
-                  </span>
-                  <h3 className="font-anton text-xs uppercase text-[#242220]">
-                    Shark Club & CLB Geniusstar
-                  </h3>
-                </div>
+              <div className="w-full aspect-[4/3] relative rounded-lg overflow-hidden border border-[#1B3B2B]/15">
+                <Image src={mindPedagogyUrl} alt="Pedagogy Shark Club" fill className="object-cover" unoptimized />
+              </div>
+              <div>
+                <span className="text-[9px] font-mono uppercase font-bold text-[#7B0323]">
+                  {lang === "vi" ? "Sư Phạm & Lan Tỏa" : "Pedagogy"}
+                </span>
+                <h3 className="font-anton text-xs uppercase text-[#242220]">
+                  Shark Club & CLB Geniusstar
+                </h3>
               </div>
               <p className="text-[10px] text-[#242220]/75 leading-relaxed">
                 {lang === "vi"
@@ -641,6 +630,7 @@ export default function PrintPortfolioPage() {
 
         {/* ══════════════════════════════════════════════════════════════
             4. PHẦN TRÁI TIM: CẢ 5 DỰ ÁN VĂN HÓA & XÃ HỘI (THE HEART)
+            (ẢNH TỶ LỆ 16/9 CHUẨN WEB)
             ══════════════════════════════════════════════════════════════ */}
         <section className="space-y-3 pt-2">
           <div className="flex items-center gap-2 border-b border-[#1B3B2B]/15 pb-1.5">
@@ -652,9 +642,9 @@ export default function PrintPortfolioPage() {
             </h2>
           </div>
 
-          {/* Compact Featured Showcase Banner */}
+          {/* Compact Featured Showcase Banner (Ảnh 16/9 chuẩn web) */}
           <div className="item-card p-3 rounded-xl bg-[#1B3B2B] text-white flex flex-col sm:flex-row gap-3.5 items-center">
-            <div className="w-full sm:w-44 h-28 relative rounded-lg overflow-hidden border border-white/20 shrink-0">
+            <div className="w-full sm:w-5/12 aspect-[16/9] relative rounded-lg overflow-hidden border border-white/20 shrink-0">
               <Image src={trungPreservationUrl} alt="T'rung Soloist" fill className="object-cover" unoptimized />
             </div>
             <div className="space-y-1">
@@ -672,10 +662,10 @@ export default function PrintPortfolioPage() {
             </div>
           </div>
 
-          {/* Toàn bộ 5 dự án dàn trải gọn gàng */}
+          {/* Toàn bộ 5 dự án dàn trải (Ảnh 16/9 chuẩn web) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             <div className="item-card p-2.5 rounded-lg bg-white border border-[#1B3B2B]/15 flex gap-2.5 items-start">
-              <div className="w-16 h-16 relative rounded-md overflow-hidden border border-[#1B3B2B]/15 shrink-0">
+              <div className="w-24 aspect-[16/9] relative rounded-md overflow-hidden border border-[#1B3B2B]/15 shrink-0">
                 <Image src={trungPreservationUrl} alt="T'rưng Project" fill className="object-cover" unoptimized />
               </div>
               <div className="space-y-0.5 text-[10px]">
@@ -685,7 +675,7 @@ export default function PrintPortfolioPage() {
             </div>
 
             <div className="item-card p-2.5 rounded-lg bg-white border border-[#1B3B2B]/15 flex gap-2.5 items-start">
-              <div className="w-16 h-16 relative rounded-md overflow-hidden border border-[#1B3B2B]/15 shrink-0">
+              <div className="w-24 aspect-[16/9] relative rounded-md overflow-hidden border border-[#1B3B2B]/15 shrink-0">
                 <Image src={artistVoiceUrl} alt="Artist Voice" fill className="object-cover" unoptimized />
               </div>
               <div className="space-y-0.5 text-[10px]">
@@ -695,7 +685,7 @@ export default function PrintPortfolioPage() {
             </div>
 
             <div className="item-card p-2.5 rounded-lg bg-white border border-[#1B3B2B]/15 flex gap-2.5 items-start">
-              <div className="w-16 h-16 relative rounded-md overflow-hidden border border-[#1B3B2B]/15 shrink-0">
+              <div className="w-24 aspect-[16/9] relative rounded-md overflow-hidden border border-[#1B3B2B]/15 shrink-0">
                 <Image src={eaWerUrl} alt="Ea Wer Relief" fill className="object-cover" unoptimized />
               </div>
               <div className="space-y-0.5 text-[10px]">
@@ -705,7 +695,7 @@ export default function PrintPortfolioPage() {
             </div>
 
             <div className="item-card p-2.5 rounded-lg bg-white border border-[#1B3B2B]/15 flex gap-2.5 items-start">
-              <div className="w-16 h-16 relative rounded-md overflow-hidden border border-[#1B3B2B]/15 shrink-0">
+              <div className="w-24 aspect-[16/9] relative rounded-md overflow-hidden border border-[#1B3B2B]/15 shrink-0">
                 <Image src={wildlifeUrl} alt="Wildlife" fill className="object-cover" unoptimized />
               </div>
               <div className="space-y-0.5 text-[10px]">
@@ -715,7 +705,7 @@ export default function PrintPortfolioPage() {
             </div>
 
             <div className="item-card sm:col-span-2 p-2.5 rounded-lg bg-white border border-[#1B3B2B]/15 flex gap-2.5 items-start">
-              <div className="w-16 h-16 relative rounded-md overflow-hidden border border-[#1B3B2B]/15 shrink-0">
+              <div className="w-24 aspect-[16/9] relative rounded-md overflow-hidden border border-[#1B3B2B]/15 shrink-0">
                 <Image src={adjudicatorUrl} alt="Adjudicator" fill className="object-cover" unoptimized />
               </div>
               <div className="space-y-0.5 text-[10px]">
@@ -839,10 +829,11 @@ export default function PrintPortfolioPage() {
 
         {/* ══════════════════════════════════════════════════════════════
             6. PHẦN LIÊN HỆ & TẦM NHÌN TƯƠNG LAI (CONTACT & VISION)
+            (ẢNH CHÂN DUNG TỶ LỆ 4/3 CHUẨN WEB)
             ══════════════════════════════════════════════════════════════ */}
         <section className="item-card border-t-2 border-[#1B3B2B]/20 pt-3 space-y-2.5">
           <div className="p-3.5 rounded-xl bg-white border border-[#1B3B2B]/15 flex flex-col sm:flex-row gap-3.5 items-center">
-            <div className="w-24 h-24 sm:w-28 sm:h-28 relative rounded-lg overflow-hidden border border-[#1B3B2B]/15 shrink-0">
+            <div className="w-28 sm:w-36 aspect-[4/3] relative rounded-lg overflow-hidden border border-[#1B3B2B]/15 shrink-0">
               <Image
                 src={contactPortraitUrl}
                 alt="Contact Portrait Quynh Chi"
