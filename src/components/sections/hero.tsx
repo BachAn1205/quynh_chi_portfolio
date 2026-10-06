@@ -128,7 +128,7 @@ export function Hero() {
                 <span className="text-[#1B3B2B]">PHAN HOÀNG</span>{" "}
                 <span className="text-[#7B0323]">QUỲNH CHI</span>
               </h1>
-              <p className="text-sm sm:text-lg md:text-xl text-[#7B0323] font-light tracking-wide mt-3 mb-6 min-h-[1.75rem] flex items-center justify-center md:justify-start">
+              <p className="text-xs sm:text-base md:text-lg text-[#7B0323] font-light tracking-wide mt-2 mb-6 min-h-[1.75rem] flex items-center justify-center md:justify-start">
                 {t("hero.subtitle")}
               </p>
 
@@ -229,7 +229,7 @@ export function Hero() {
                       {t("hero.cafloop.founderRoles")}
                     </span>
                   </div>
-                  <span className="text-[10px] font-mono text-[#1B3B2B]/80 font-semibold uppercase tracking-wider hidden sm:inline">
+                  <span className="text-xs sm:text-sm font-anton uppercase tracking-wider text-[#1B3B2B] font-bold">
                     {t("hero.cafloop.coreCapabilities")}
                   </span>
                 </div>
@@ -328,11 +328,14 @@ export function Hero() {
                   >
                     <div className="flex items-center justify-between mb-1">
                       <span className={`text-[10px] font-mono font-bold uppercase tracking-wider ${isSelected ? "text-[#E2ECE5]" : "text-[#7B0323]"}`}>
-                        {"0"}{idx + 1}
+                        {item.title.includes(":") ? item.title.split(":")[0].trim() : `0${idx + 1}`}
                       </span>
                     </div>
                     <div className="font-anton text-xs sm:text-sm uppercase tracking-tight line-clamp-1">
-                      {item.title}
+                      {item.title.includes(":") ? item.title.split(":")[1].trim() : item.title}
+                    </div>
+                    <div className={`text-[10px] font-mono mt-1 line-clamp-1 ${isSelected ? "text-white/80" : "text-[#242220]/65"}`}>
+                      {item.category}
                     </div>
                   </button>
                 );

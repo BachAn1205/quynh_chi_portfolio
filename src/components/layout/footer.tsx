@@ -37,31 +37,31 @@ export function Footer() {
               </h2>
 
               {/* Vision Paragraphs */}
-              <div className="space-y-4 text-sm sm:text-base text-[#242220]/75 leading-relaxed mb-10 max-w-2xl font-normal">
+              <div className="space-y-4 text-sm sm:text-base text-[#242220]/80 leading-relaxed max-w-2xl font-normal">
                 <p>
                   {t("footer.p1")}
                 </p>
               </div>
-
-              {/* CTA Action Buttons */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 w-full sm:w-auto">
-                <button
-                  onClick={() => setResumeModalOpen(true)}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-sm sm:text-base font-semibold bg-[#7B0323] text-[#FFFFFF] hover:bg-[#5E021A] transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 cursor-pointer min-w-0 sm:min-w-[210px]"
-                >
-                  <FileText className="w-4 h-4 shrink-0" />
-                  <span>{t("footer.cta.resume")}</span>
-                </button>
-
-                <a
-                  href="mailto:liliesmyllerz2k9@gmail.com"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-sm sm:text-base font-semibold bg-[#1B3B2B] text-[#FFFFFF] hover:bg-[#142C20] transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 cursor-pointer min-w-0 sm:min-w-[170px]"
-                >
-                  <Send className="w-4 h-4 shrink-0" />
-                  <span>{t("footer.cta.email")}</span>
-                </a>
-              </div>
             </div>
+          </div>
+
+          {/* Action Buttons đặt ra ngoài, co nhỏ lại, sát bên phải */}
+          <div className="flex flex-wrap items-center justify-end gap-3 mt-4 sm:mt-5">
+            <button
+              onClick={() => setResumeModalOpen(true)}
+              className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold bg-[#7B0323] text-[#FFFFFF] hover:bg-[#5E021A] transition-all duration-200 shadow-sm hover:shadow hover:-translate-y-0.5 cursor-pointer"
+            >
+              <FileText className="w-3.5 h-3.5 shrink-0" />
+              <span>{t("footer.cta.resume")}</span>
+            </button>
+
+            <a
+              href="mailto:liliesmyllerz2k9@gmail.com"
+              className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold bg-[#1B3B2B] text-[#FFFFFF] hover:bg-[#142C20] transition-all duration-200 shadow-sm hover:shadow hover:-translate-y-0.5 cursor-pointer"
+            >
+              <Send className="w-3.5 h-3.5 shrink-0" />
+              <span>{t("footer.cta.email")}</span>
+            </a>
           </div>
         </div>
 
@@ -71,7 +71,7 @@ export function Footer() {
             {/* Column 1: Identity & Location */}
             <div className="md:col-span-2 space-y-4">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl overflow-hidden bg-[#E2ECE5] border border-[#1B3B2B]/20 shrink-0 relative flex items-center justify-center">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl overflow-hidden bg-[#E2ECE5] border border-[#1B3B2B]/20 shrink-0 relative flex items-center justify-center">
                   {avatarUrl ? (
                     <Image
                       src={avatarUrl}
@@ -81,23 +81,23 @@ export function Footer() {
                       unoptimized
                     />
                   ) : (
-                    <User className="w-4 h-4 text-[#1B3B2B]" />
+                    <User className="w-5 h-5 text-[#1B3B2B]" />
                   )}
                 </div>
                 <div>
-                  <h3 className="font-anton text-xl uppercase text-[#242220] tracking-tight">
+                  <h3 className="font-anton text-[23px] sm:text-2xl uppercase text-[#242220] tracking-tight">
                     PHAN HOÀNG QUỲNH CHI
                   </h3>
-                  <p className="text-xs text-[#242220]/60 font-mono">
+                  <p className="text-xs sm:text-[13px] text-[#242220]/70 font-mono">
                     High School for The Gifted (VNUHCM) • Central Highlands, VN
                   </p>
                 </div>
               </div>
-              <p className="text-xs text-[#242220]/60 leading-relaxed max-w-md">
+              <p className="text-sm text-[#242220]/75 leading-relaxed max-w-md">
                 {t("footer.bio")}
               </p>
-              <div className="flex items-center gap-2 text-xs font-mono text-[#1B3B2B]">
-                <MapPin className="w-4 h-4 text-[#7B0323]" />
+              <div className="flex items-center gap-2 text-sm font-mono text-[#1B3B2B]">
+                <MapPin className="w-4 h-4 text-[#7B0323] shrink-0" />
                 <span>{t("footer.location")}</span>
               </div>
             </div>
@@ -107,7 +107,7 @@ export function Footer() {
               <h4 className="font-anton text-sm uppercase text-[#242220] tracking-wider mb-4">
                 {t("footer.nav.title")}
               </h4>
-              <ul className="space-y-2.5 text-xs text-[#242220]/70 font-medium">
+              <ul className="space-y-2.5 text-sm text-[#242220]/80 font-medium">
                 <li>
                   <Link href="/about" className="hover:text-[#7B0323] transition-colors">
                     {t("footer.nav.about")}
@@ -141,13 +141,13 @@ export function Footer() {
               <h4 className="font-anton text-sm uppercase text-[#242220] tracking-wider mb-4">
                 {t("footer.connect.title")}
               </h4>
-              <ul className="space-y-2.5 text-xs text-[#242220]/70 font-medium">
+              <ul className="space-y-2.5 text-sm text-[#242220]/80 font-medium">
                 <li>
                   <a
                     href="mailto:liliesmyllerz2k9@gmail.com"
-                    className="hover:text-[#7B0323] transition-colors flex items-center gap-1.5"
+                    className="hover:text-[#7B0323] transition-colors flex items-center gap-2"
                   >
-                    <Mail className="w-3.5 h-3.5 text-[#7B0323]" />
+                    <Mail className="w-4 h-4 text-[#7B0323] shrink-0" />
                     <span>liliesmyllerz2k9@gmail.com</span>
                   </a>
                 </li>
@@ -156,27 +156,27 @@ export function Footer() {
                     href="https://www.linkedin.com/in/phanhoangquynhchi/"
                     target="_blank"
                     rel="noreferrer"
-                    className="hover:text-[#7B0323] transition-colors flex items-center gap-1.5"
+                    className="hover:text-[#7B0323] transition-colors flex items-center gap-2"
                   >
-                    <ArrowUpRight className="w-3.5 h-3.5 text-[#1B3B2B]" />
+                    <ArrowUpRight className="w-4 h-4 text-[#1B3B2B] shrink-0" />
                     <span>{t("footer.connect.linkedin")}</span>
                   </a>
                 </li>
                 <li>
                   <button
                     onClick={() => setResumeModalOpen(true)}
-                    className="hover:text-[#7B0323] transition-colors flex items-center gap-1.5 text-left cursor-pointer"
+                    className="hover:text-[#7B0323] transition-colors flex items-center gap-2 text-left cursor-pointer"
                   >
-                    <FileText className="w-3.5 h-3.5 text-[#7B0323]" />
+                    <FileText className="w-4 h-4 text-[#7B0323] shrink-0" />
                     <span>{t("footer.connect.dossier")}</span>
                   </button>
                 </li>
                 <li>
                   <Link
                     href="/print"
-                    className="hover:text-[#7B0323] transition-colors flex items-center gap-1.5 text-left cursor-pointer"
+                    className="hover:text-[#7B0323] transition-colors flex items-center gap-2 text-left cursor-pointer"
                   >
-                    <Printer className="w-3.5 h-3.5 text-[#1B3B2B]" />
+                    <Printer className="w-4 h-4 text-[#1B3B2B] shrink-0" />
                     <span>{lang === "vi" ? "Bản in Portfolio Toàn diện (PDF A4)" : "Full Print Dossier (A4 PDF)"}</span>
                   </Link>
                 </li>
@@ -206,8 +206,8 @@ export function Footer() {
             className="font-anton text-[11vw] uppercase tracking-wider leading-none text-center"
             style={{
               color: "transparent",
-              WebkitTextStroke: "1.5px #1B3B2B",
-              opacity: 0.15,
+              WebkitTextStroke: "2px #143021",
+              opacity: 0.38,
             }}
           >
             QUYNH CHI

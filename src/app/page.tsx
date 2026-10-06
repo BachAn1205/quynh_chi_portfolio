@@ -16,8 +16,8 @@ export default function Home() {
         <Hero />
         <PageNav
           nextHref="/about"
-          nextLabel={lang === "vi" ? "Về Tôi" : "About Me"}
-          nextSub={lang === "vi" ? "Nguồn cội & Triết lý" : "Origins & Philosophy"}
+          nextLabel={lang === "vi" ? "Về Quỳnh Chi" : "About Quynh Chi"}
+          nextSub={lang === "vi" ? "Khởi nguồn & Triết lý" : "Origins & Philosophy"}
         />
       </main>
       <Footer />

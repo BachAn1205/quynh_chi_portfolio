@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   Printer,
   ArrowLeft,
@@ -16,13 +16,19 @@ import {
   Globe,
   Quote,
   BarChart2,
+  Send,
+  FileText,
+  ArrowUpRight,
+  User,
 } from "lucide-react";
+import { ResumeModal } from "@/components/ui/resume-modal";
 import { useLanguage } from "@/lib/i18n";
 import { useProjectImages } from "@/lib/project-images-context";
 
 export default function PrintPortfolioPage() {
-  const { lang, setLang } = useLanguage();
+  const { lang, setLang, t } = useLanguage();
   const { getImage } = useProjectImages();
+  const [resumeModalOpen, setResumeModalOpen] = useState(false);
 
   // ─── DYNAMIC IMAGE RESOLUTION ────────────────────────────────
   const avatarUrl =
