@@ -19,11 +19,11 @@ export function Navbar() {
 
   const navLinks = [
     { href: "/", label: t("nav.home"), slotWidth: "w-[86px] xl:w-[92px]" },
-    { href: "/about", label: t("nav.about"), slotWidth: "w-[72px] xl:w-[78px]" },
-    { href: "/the-mind", label: t("nav.mind"), slotWidth: "w-[84px] xl:w-[90px]" },
-    { href: "/the-heart", label: t("nav.heart"), slotWidth: "w-[90px] xl:w-[96px]" },
-    { href: "/the-competitor", label: t("nav.competitor"), slotWidth: "w-[134px] xl:w-[140px]" },
-    { href: "/contact", label: t("nav.contact"), slotWidth: "w-[80px] xl:w-[86px]" },
+    { href: "/about", label: t("nav.about"), slotWidth: "w-[68px] xl:w-[74px]" },
+    { href: "/the-mind", label: t("nav.mind"), slotWidth: "w-[68px] xl:w-[74px]" },
+    { href: "/the-heart", label: t("nav.heart"), slotWidth: "w-[84px] xl:w-[90px]" },
+    { href: "/the-competitor", label: t("nav.competitor"), slotWidth: "w-[128px] xl:w-[136px]" },
+    { href: "/contact", label: t("nav.contact"), slotWidth: "w-[76px] xl:w-[82px]" },
   ];
 
   const isActive = (href: string) => {

@@ -17,10 +17,10 @@ export default function TheHeartPage() {
         <div className="bg-[#FAF7F2] blueprint-grid">
           <PageNav
             prevHref="/the-mind"
-            prevLabel={lang === "vi" ? "Tư Duy" : "The Mind"}
-            prevSub={lang === "vi" ? "Nghiên Cứu & Doanh Nghiệp" : "Quantitative Research & Enterprise"}
+            prevLabel={lang === "vi" ? "Think: Nghiên cứu Dữ liệu" : "Think: Quantitative Research"}
+            prevSub={lang === "vi" ? "Khoa học, SiFarm & Olympic" : "Data, SiFarm & Academic Honors"}
             nextHref="/the-competitor"
-            nextLabel={lang === "vi" ? "Thành Tích" : "The Competitor"}
+            nextLabel={lang === "vi" ? "The Competitor: Thành Tích" : "The Competitor: Honors & Profile"}
             nextSub={lang === "vi" ? "Hồ sơ Học thuật & Danh hiệu" : "Academic Profile & Awards"}
           />
         </div>

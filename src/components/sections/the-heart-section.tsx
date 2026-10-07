@@ -4,11 +4,11 @@ import { ProjectImageUpload } from "@/components/ui/project-image-upload";
 import {
   HeartHandshake,
   Music,
-  Palette,
   Bike,
   ShieldAlert,
-  Scale,
-  Video
+  GraduationCap,
+  Users,
+  Video,
 } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 
@@ -17,194 +17,159 @@ export function TheHeartSection() {
 
   const projects = [
     {
-      id: "trung-preservation",
-      icon: Music,
-      category: lang === "vi" ? "Bảo tồn Văn hóa" : "Cultural Preservation",
-      badge: lang === "vi" ? "2.300+ Học sinh • 12+ Trường học" : "2,300+ Students • 12+ Schools",
-      title:
-        lang === "vi"
-          ? "Dự án Giáo dục Văn hóa Đàn T'rưng"
-          : "T'rưng Cultural Education Project",
-      role:
-        lang === "vi"
-          ? "Người sáng lập & Điều phối (Tháng 11/2024 . Hiện tại)"
-          : "Founder & Organizer (Nov 2024 . Present)",
-      description:
-        lang === "vi"
-          ? "Từ chối để âm nhạc bản địa trở thành hiện vật bảo tàng, tôi khởi xướng sáng kiến giáo dục có hệ thống. Tôi hệ thống hóa di sản truyền khẩu Tây Nguyên thành chương trình giảng dạy bài bản. Mở rộng tác động, tôi điều phối các buổi biểu diễn và workshop tương tác tại 12+ trường học, tiếp cận ~2.300 học sinh."
-          : "Refusing to let indigenous music become a museum relic, I launched a systemic educational initiative. I synthesized indigenous oral heritage from the Central Highlands into a structured curriculum. Scaling the impact, I coordinated performances and interactive workshops across 12+ schools, engaging ~2,300 students.",
-      impact:
-        lang === "vi"
-          ? "Tác động số: Quản lý trang truyền thông văn hóa (5.000+ người theo dõi) và số hóa các màn trình diễn qua kho lưu trữ YouTube (10.000+ lượt xem) để thúc đẩy bảo tồn văn hóa."
-          : "Digital Impact: Managed a cultural media page (5,000+ followers) and digitized performances via a YouTube archive (10,000+ views) to promote cultural preservation.",
-      slotId: "heart-trung-preservation",
-      guideline: {
-        vi: "Ảnh lớp học truyền dạy đàn T'rưng, buổi hòa nhạc tương tác cùng học sinh tại 12+ trường học.",
-        en: "Workshops teaching T'rưng or interactive performances at schools."
-      },
-      accent: "text-[#4A7F4A]",
-    },
-    {
-      id: "artistic-voice",
-      icon: Palette,
-      category:
-        lang === "vi"
-          ? "Đại sứ Văn hóa & Biểu đạt Nghệ thuật"
-          : "Cultural Ambassadorship & Artistic Expression",
-      badge:
-        lang === "vi"
-          ? "Nghệ sĩ Độc tấu chính & Triển lãm Quốc tế"
-          : "Lead Soloist & International Exhibitor",
-      title:
-        lang === "vi"
-          ? "Tiếng nói Nghệ sĩ: Gắn kết Khoảng cách qua Nghệ thuật"
-          : "The Artist's Voice: Bridging Gaps Through Arts",
-      role:
-        lang === "vi"
-          ? "Nghệ sĩ Độc tấu Đàn T'rưng & Tác giả Triển lãm Quốc tế"
-          : "Traditional T'rưng Soloist & International Exhibitor",
-      description:
-        lang === "vi"
-          ? "Nghệ thuật là cầu nối trực giác và sâu sắc nhất để bảo tồn văn hóa. Tôi tích cực mang tâm hồn Tây Nguyên đến với công chúng rộng rãi thông qua cả âm nhạc và nghệ thuật thị giác."
-          : "Art is the most visceral medium for cultural preservation. I actively bring the soul of the Central Highlands to broader audiences through both music and visual arts.",
-      subItems: [
-        {
-          label:
-            lang === "vi"
-              ? "Biểu diễn Âm nhạc (Thanh Âm Đất Việt 2025, TP.HCM)"
-              : "Musical Performance (Thanh Âm Đất Việt 2025, HCMC)",
-          text:
-            lang === "vi"
-              ? "Nghệ sĩ độc tấu chính (Đàn T'rưng truyền thống) cho ~150 khán giả đô thị, dùng nghệ thuật để thu hẹp khoảng cách văn hóa giữa vùng cao và đô thị hiện đại."
-              : "Served as the featured lead artist (Traditional T'rưng Soloist) for ~150 urban attendees, intentionally using art to bridge the cultural gap between rural highlands and the modern metropolis.",
-        },
-        {
-          label:
-            lang === "vi"
-              ? "Nghệ thuật Thị giác & Triển lãm Quốc tế (Philippines 2026)"
-              : "Visual Arts & International Exhibition (Philippines 2026)",
-          text:
-            lang === "vi"
-              ? "Tác phẩm tranh 'Bên dòng nước Thủy điện Sêrêpôk 3, Đắk Lắk' được trưng bày tại triển lãm quốc tế ở Bảo tàng Museo ning Angeles (Tháng 7/2026), lan tỏa thông điệp sinh thái quê hương ra thế giới."
-              : "My artwork, 'Along the Waters of Srepok 3 Hydropower Plant, Dak Lak,' was featured in an international exhibition at the Museo ning Angeles, Philippines (Jul 2026), projecting hometown ecological narratives on a global stage.",
-        },
-      ],
-      slotId: "heart-artistic-voice",
-      guideline: {
-        vi: "Ảnh biểu diễn tại Thanh Âm Đất Việt hoặc ảnh tranh nghệ thuật trưng bày tại triển lãm Philippines.",
-        en: "Performance at Thanh Âm Đất Việt or artwork in Philippines exhibition."
-      },
-      accent: "text-[#8C5A35]",
-    },
-    {
       id: "ea-wer",
       icon: Bike,
-      category: lang === "vi" ? "Thiện nguyện & Sự Đồng cảm" : "Philanthropy & Empathy",
-      badge: lang === "vi" ? "77 Xe đạp • 2 Smart TV" : "77 Bicycles • 2 Smart TVs",
+      category: lang === "vi" ? "Thiện nguyện & Đồng hành cùng Học sinh Nghèo" : "Philanthropy & Underserved Student Aid",
+      badge: lang === "vi" ? "77 Xe đạp • 2 Smart TV • Buôn Đrăng Phốk" : "77 Bicycles • 2 Smart TVs • Buon Drang Phok",
       title:
         lang === "vi"
-          ? "Dự án Ea Wer & Tái Đầu tư Xã hội"
-          : "The Ea Wer Project & Social Reinvestment",
-      role: lang === "vi" ? "Điều phối viên (2024 . Hiện tại)" : "Coordinator (2024 . Present)",
+          ? "Dự án Thiện nguyện Ea Wer & Hỗ trợ Giáo dục Buôn Đrăng Phốk"
+          : "The Ea Wer Project & Buon Drang Phok Educational Support",
+      role: lang === "vi" ? "Điều phối viên Dự án (2024 . Hiện tại)" : "Project Coordinator (2024 . Present)",
       description:
         lang === "vi"
-          ? "Dành toàn bộ lợi nhuận ban đầu từ CAFLOOP và vận động nguồn lực cộng đồng để trao tặng 77 xe đạp và 2 Smart TV cho học sinh tiểu học buôn Đrăng Phốk (xã Ea Wer, Đắk Lắk). Tận mắt chứng kiến sự tương phản giữa những chiếc xe đạp mới bóng loáng và những chiếc xe máy rỉ sét cũ kỹ của gia đình các em đã củng cố niềm tin trong tôi: món quà trao đi không chỉ là phương tiện di chuyển, mà là điểm tựa giữ vững ước mơ đến trường trước những khắc nghiệt đời thường."
-          : "Directed early profits from CAFLOOP and mobilized community resources to donate 77 bicycles and 2 smart TVs to underserved primary students in Dak Lak (Buon Drang Phok). Visiting their homes... cemented my belief that our gifts were not just vehicles, but essential fulcrums holding up their dreams of education amidst harsh realities.",
+          ? "Vận động nguồn lực cộng đồng và trích toàn bộ lợi nhuận ban đầu từ dự án kinh tế tuần hoàn CAFLOOP để trao tặng 77 xe đạp và 2 Smart TV cho học sinh tiểu học có hoàn cảnh đặc biệt khó khăn tại xã Ea Wer và buôn Đrăng Phốk (tỉnh Đắk Lắk). Trực tiếp đến thăm từng gia đình, thấu hiểu quãng đường bùn đất hiểm trở hàng ngày các em phải cuốc bộ tới trường, biến sự đồng cảm thành những chiếc xe đạp và thiết bị học tập thực tế giúp giữ vững ước mơ học tập."
+          : "Mobilized community resources and directed early profits from CAFLOOP venture to donate 77 bicycles and 2 smart TVs to underserved primary students in Dak Lak (Buon Drang Phok, Ea Wer commune). Visiting student homes cemented the conviction that these bicycles were not just transportation, but vital fulcrums keeping educational dreams alive.",
+      impact:
+        lang === "vi"
+          ? "Tác động thực chứng: 77 học sinh có phương tiện đến trường, giảm thiểu tỷ lệ bỏ học mùa mưa lũ; 2 Smart TV hỗ trợ phòng học số hóa cho trường tiểu học buôn vùng sâu."
+          : "Verifiable Impact: 77 students empowered with reliable school transport reducing dropout rates; 2 smart TVs equipped for rural primary school classrooms.",
       slotId: "heart-ea-wer",
       guideline: {
-        vi: "Ảnh hoạt động thiện nguyện trao tặng 77 xe đạp và smart TV cho học sinh nghèo tại buôn Đrăng Phốk.",
-        en: "Charity event donating 77 bicycles and 2 smart TVs in Buon Drang Phok."
+        vi: "Ảnh lễ trao tặng 77 xe đạp và smart TV cho học sinh tiểu học tại buôn Đrăng Phốk hoặc ảnh thực tế hỗ trợ tại xã Ea Wer.",
+        en: "Photo of donating 77 bicycles and smart TVs in Buon Drang Phok or community work in Ea Wer."
       },
-      accent: "text-[#8C5A35]",
+      accent: "text-[#1B3B2B]",
     },
     {
-      id: "advocacy",
+      id: "wildlife",
       icon: ShieldAlert,
       category:
         lang === "vi"
-          ? "Hành động vì Môi trường & Cộng đồng"
-          : "Environmental & Community Advocacy",
+          ? "Bảo vệ Động vật Hoang dã & Gây quỹ Xã hội"
+          : "Wildlife Conservation & Social Fundraising",
       badge:
         lang === "vi"
-          ? "Bảo vệ Động vật hoang dã & An toàn Giao thông"
-          : "Wildlife & Road Safety",
+          ? "4.000.000 VNĐ Lợi nhuận Ròng • Trạm Cứu hộ Củ Chi"
+          : "4,000,000 VND Net Profit • Cu Chi Wildlife Station",
       title:
         lang === "vi"
-          ? "Whisper of the Wild & Liên minh Hoa Sen Bridge"
-          : "Whisper of the Wild & Hoa Sen Bridge Alliance",
+          ? "Whisper of the Wild - Gây quỹ Bảo tồn Động vật Hoang dã"
+          : "Whisper of the Wild - Cu Chi Wildlife Rescue Fundraiser",
       role:
         lang === "vi"
-          ? "Trưởng chiến dịch & Hoạt động Công ích"
-          : "Campaign Lead & Public Service",
+          ? "Trưởng ban Đối ngoại (2024 . Hiện tại)"
+          : "Head of External Relations (2024 . Present)",
       description:
         lang === "vi"
-          ? "Thúc đẩy các hành động thiết thực từ cơ sở thông qua kỷ luật tài chính và mạng lưới liên minh thanh niên quốc tế."
-          : "Mobilizing tangible grassroots action through financial discipline and international youth alliances.",
-      subItems: [
-        {
-          label:
-            lang === "vi"
-              ? "Whisper of the Wild (Trưởng ban Đối ngoại)"
-              : "Whisper of the Wild (Head of External Relations)",
-          text:
-            lang === "vi"
-              ? "Thương mại hóa hoạt động bảo tồn qua gây quỹ sản phẩm. Sử dụng bảng tính quản trị chi phí COGS, đem lại 4.000.000 VNĐ lợi nhuận ròng tài trợ Trạm cứu hộ Động vật hoang dã Củ Chi thông qua sổ tay tương tác và phong bao lì xì sinh thái."
-              : "Monetized conservation through product-based fundraising. Utilized financial spreadsheets to track COGS and generated 4,000,000 VND net profit for the Củ Chi Wildlife Rescue Station through interactive notebooks and eco-red packets.",
-        },
-        {
-          label:
-            lang === "vi"
-              ? "Liên minh Hoa Sen Bridge (Tháng 7/2026 . Hiện tại)"
-              : "Hoa Sen Bridge Alliance (Jul 2026 . Present)",
-          text:
-            lang === "vi"
-              ? "Đồng tổ chức chiến dịch an toàn giao thông do thanh niên dẫn dắt cùng IKU và KIYA. Trong số 35.000 vòng tay phản quang phân phối toàn cầu, trực tiếp trao tặng 500 vòng tay và tổ chức workshop cho học sinh vùng khó khăn tại Đắk Lắk."
-              : "Co-organized a youth-led road safety campaign with IKU and KIYA. Out of 35,000 reflective wristbands distributed globally, directly presented 500 wristbands and hosted workshops for students in a disadvantaged Dak Lak commune.",
-        },
-        {
-          label:
-            lang === "vi"
-              ? "Phục vụ Học thuật Cộng đồng"
-              : "Public Academic Service",
-          text:
-            lang === "vi"
-              ? "Hỗ trợ hậu cần cho Ngày hội Toán học Mở VIASM và làm phiên dịch viên tại Triển lãm Trường Nội trú Hoa Kỳ."
-              : "Supported logistics for the VIASM Math Open Day and served as a translator for US Boarding School Fairs.",
-        },
-      ],
-      slotId: "heart-advocacy",
+          ? "Trực tiếp chỉ đạo và điều hành chiến dịch gây quỹ thương mại hóa các sản phẩm sáng tạo nhằm gây quỹ cho Trạm Cứu hộ Động vật Hoang dã Củ Chi. Ứng dụng kỹ năng tài chính và bảng tính phân tích giá vốn (COGS) chặt chẽ, tối ưu hóa chi phí sản xuất sổ tay tương tác và phong bao lì xì sinh thái, đem lại 4.000.000 VNĐ lợi nhuận ròng tài trợ trực tiếp cho công tác chăm sóc động vật được cứu hộ."
+          : "Directed a product-based fundraising campaign, utilizing financial spreadsheets to track COGS and generating 4,000,000 VND in net profit for the Cu Chi Wildlife Rescue Station. Monetized conservation through interactive notebooks and eco-red packets with rigorous unit economics.",
+      impact:
+        lang === "vi"
+          ? "Tác động tài chính & bảo tồn: 4.000.000 VNĐ lợi nhuận ròng giải ngân cho y tế & dinh dưỡng thú hoang dã cứu hộ; lan tỏa thông điệp bảo vệ hệ sinh thái rừng đến giới trẻ."
+          : "Conservation Impact: 4,000,000 VND net profit directly disbursed for medical supplies and nutrition at Cu Chi Station; raised wildlife awareness across youth networks.",
+      slotId: "heart-wildlife",
       guideline: {
-        vi: "Ảnh chiến dịch gây quỹ Trạm cứu hộ Củ Chi hoặc hoạt động trao tặng vòng tay phản quang an toàn giao thông.",
-        en: "Cu Chi Wildlife rescue fundraiser or reflective safety wristband campaign."
+        vi: "Ảnh các sản phẩm gây quỹ sổ tay/bao lì xì Whisper of the Wild, hoặc hoạt động trao quỹ tại Trạm Cứu hộ Củ Chi.",
+        en: "Photo of Whisper of the Wild fundraising notebooks/packets or donation at Cu Chi Wildlife Station."
       },
-      accent: "text-[#4A7F4A]",
+      accent: "text-[#7B0323]",
     },
     {
-      id: "debate",
-      icon: Scale,
-      category: lang === "vi" ? "Chính sách Công & Tranh biện" : "Public Policy & Debate",
+      id: "public-service",
+      icon: GraduationCap,
+      category:
+        lang === "vi"
+          ? "Phục vụ Học thuật & Hoạt động Công ích"
+          : "Public Academic Service & Educational Volunteerism",
       badge:
         lang === "vi"
-          ? "Trọng tài Breaking Judge & Quán quân"
-          : "Breaking Judge & Champion",
+          ? "VIASM Math Open Day • US Boarding School Fairs"
+          : "VIASM Math Open Day • US Boarding School Fairs",
       title:
         lang === "vi"
-          ? "Trọng tài Tranh biện dựa trên Logic & Kinh tế"
-          : "The Logical Adjudicator",
+          ? "Hoạt động Công ích & Phục vụ Học thuật Cộng đồng"
+          : "Public Academic Service & Educational Volunteering",
       role:
         lang === "vi"
-          ? "Quán quân Tranh biện Toàn quốc & Trọng tài Breaking Judge"
-          : "National Debate Champion & Breaking Judge",
+          ? "Tình nguyện viên Hậu cần & Phiên dịch viên (2024 . Hiện tại)"
+          : "Logistics Volunteer & Event Translator (2024 . Present)",
       description:
         lang === "vi"
-          ? "Với vai trò Trọng tài Breaking Judge tại các giải tranh biện quốc gia và Quán quân toàn quốc, tôi đánh giá lập luận không dựa trên tài hùng biện suông, mà qua lăng kính kinh tế học và logic thực nghiệm. Tôi phân tích các giả định ngầm, đối chiếu bằng chứng thực nghiệm và phân tích động cơ hành vi của con người, luôn đặt câu hỏi: 'Nếu chính sách này được ban hành, các bên liên quan sẽ thực sự phản ứng như thế nào?'"
-          : "Serving as a Breaking Judge at national debates and a National Champion Competitor, I assess claims not by rhetoric, but through economics and logic. I dissect assumptions, trace empirical evidence, and analyze human incentives, constantly asking: 'If this policy is enacted, how will stakeholders actually react?'",
-      slotId: "heart-debate",
+          ? "Tích cực cống hiến sức trẻ cho các sự kiện học thuật cộng đồng quy mô lớn. Đảm nhận công tác hỗ trợ hậu cần điều phối trong Ngày hội Toán học Mở (Math Open Day) do Viện Nghiên cứu Cao cấp về Toán (VIASM) chủ trì; đồng thời tình nguyện làm phiên dịch viên Anh - Việt tại Triển lãm Du học Trường Nội trú Hoa Kỳ (US Boarding School Fairs), hỗ trợ hàng trăm học sinh và phụ huynh tiếp cận thông tin học thuật và học bổng quốc tế."
+          : "Supported logistics for the VIASM Math Open Day organized by the Vietnam Institute for Advanced Study in Mathematics, and served as a dedicated translator for US Boarding School Fairs, assisting hundreds of students and parents in navigating scholarship and academic opportunities.",
+      impact:
+        lang === "vi"
+          ? "Đóng góp công ích: Hỗ trợ vận hành sự kiện toán học học thuật cho hàng nghìn người tham dự và làm cầu nối ngôn ngữ cho các gia đình tìm kiếm cơ hội học tập quốc tế."
+          : "Public Contribution: Supported major academic mathematics outreach and provided bilingual bridging for students seeking international education.",
+      slotId: "heart-public-service",
       guideline: {
-        vi: "Ảnh làm trọng tài Breaking Judge hoặc thi đấu tại giải tranh biện toàn quốc.",
-        en: "Photo as Breaking Judge or competitor at National Debate Championship."
+        vi: "Ảnh hoạt động hỗ trợ hậu cần tại Ngày hội Toán học VIASM hoặc ảnh làm phiên dịch viên tại Triển lãm Du học Nội trú Mỹ.",
+        en: "Photo supporting VIASM Math Open Day logistics or serving as translator at US Boarding School Fairs."
       },
-      accent: "text-[#8C5A35]",
+      accent: "text-[#1B3B2B]",
+    },
+    {
+      id: "road-safety",
+      icon: Users,
+      category:
+        lang === "vi"
+          ? "Chiến dịch An toàn Giao thông & Sức khỏe Cộng đồng"
+          : "Youth Road Safety & Community Health Advocacy",
+      badge:
+        lang === "vi"
+          ? "500 Vòng tay Phản quang • Xã khó khăn Đắk Lắk"
+          : "500 Reflective Wristbands • Rural Dak Lak",
+      title:
+        lang === "vi"
+          ? "Liên minh Hoa Sen Bridge - An toàn Giao thông Học đường"
+          : "Hoa Sen Bridge Alliance - Youth-Led Road Safety",
+      role:
+        lang === "vi"
+          ? "Điều phối viên Chiến dịch Địa phương"
+          : "Local Campaign Coordinator",
+      description:
+        lang === "vi"
+          ? "Đồng tổ chức chiến dịch an toàn giao thông do thanh niên dẫn dắt phối hợp cùng liên minh IKU và KIYA. Trước thực trạng các tuyến đường liên thôn vùng cao thiếu đèn chiếu sáng khiến học sinh gặp nhiều rủi ro khi tan học vào buổi tối, tôi trực tiếp vận chuyển và trao tặng 500 vòng tay phản quang chuyên dụng, đồng thời tổ chức workshop kỹ năng nhận diện rủi ro giao thông cho học sinh tại xã vùng khó khăn thuộc tỉnh Đắk Lắk."
+          : "Co-organized a youth-led road safety campaign with international youth alliances IKU and KIYA. Addressing the hazard of unlit rural roads in the Central Highlands, directly distributed 500 reflective safety wristbands and hosted interactive road safety workshops for students in a disadvantaged Dak Lak commune.",
+      impact:
+        lang === "vi"
+          ? "Bảo vệ cộng đồng: 500 học sinh nông thôn được trang bị thiết bị phản quang nhận diện từ xa, giảm thiểu tai nạn giao thông học đường trong điều kiện thiếu sáng."
+          : "Safety Impact: 500 rural students equipped with high-visibility reflective wristbands, substantially improving commuting safety in unlit conditions.",
+      slotId: "heart-road-safety",
+      guideline: {
+        vi: "Ảnh trao tặng 500 vòng tay phản quang hoặc workshop an toàn giao thông cho học sinh tại xã vùng cao Đắk Lắk.",
+        en: "Photo distributing reflective safety wristbands or conducting road safety workshop in rural Dak Lak."
+      },
+      accent: "text-[#7B0323]",
+    },
+    {
+      id: "trung-preservation",
+      icon: Music,
+      category: lang === "vi" ? "Bảo tồn Văn hóa & Giáo dục Di sản" : "Cultural Heritage & Educational Preservation",
+      badge: lang === "vi" ? "2.300+ Học sinh • 12+ Trường • 10k+ Views" : "2,300+ Students • 12+ Schools • 10k+ Views",
+      title:
+        lang === "vi"
+          ? "Giáo dục Di sản Văn hóa Đàn T'rưng cho Thế hệ Trẻ"
+          : "T'rưng Cultural Heritage & Youth Education Project",
+      role:
+        lang === "vi"
+          ? "Người sáng lập, Điều phối viên & Nghệ sĩ Độc tấu (Tháng 11/2024 . Hiện tại)"
+          : "Founder, Organizer & Traditional Soloist (Nov 2024 . Present)",
+      description:
+        lang === "vi"
+          ? "Từ chối để âm nhạc bản địa trở thành hiện vật bảo tàng, tôi khởi xướng sáng kiến đưa văn hóa cồng chiêng và đàn T'rưng trở lại đời sống giới trẻ. Hệ thống hóa di sản truyền khẩu Tây Nguyên thành giáo trình trực quan; điều phối chuỗi biểu diễn và workshop tương tác tại 12+ trường học, tiếp cận ~2.300 học sinh; quản lý trang truyền thông (5.000+ followers) và số hóa kho lưu trữ YouTube (10.000+ views); nghệ sĩ độc tấu tại showcase 'Thanh Âm Đất Việt' (TP.HCM, 2025) và triển lãm nghệ thuật tại Bảo tàng Museo ning Angeles, Philippines (2026)."
+          : "Refusing to let indigenous music become a museum relic, launched an educational initiative synthesizing oral T'rưng traditions into structured curricula across 12+ schools for ~2,300 students. Managed media channel (5,000+ followers) and digitized YouTube archive (10,000+ views); lead soloist at 'Thanh Am Dat Viet' in HCMC and visual art exhibitor at Museo ning Angeles, Philippines.",
+      impact:
+        lang === "vi"
+          ? "Tác động văn hóa rộng khắp: 2.300+ học sinh được tiếp cận đàn T'rưng trực tiếp; 10.000+ lượt xem số hóa toàn cầu; gắn kết văn hóa Tây Nguyên với đô thị hiện đại."
+          : "Cultural Impact: 2,300+ students directly engaged with T'rưng workshops; 10,000+ digital archive views; bridged highland heritage with urban metropolitan audiences.",
+      slotId: "heart-trung-preservation",
+      guideline: {
+        vi: "Ảnh lớp học truyền dạy đàn T'rưng, buổi hòa nhạc tương tác cùng học sinh tại 12+ trường học hoặc ảnh độc tấu trên sân khấu.",
+        en: "Photo teaching T'rưng at schools, interactive workshops with 2,300+ students, or live stage performance."
+      },
+      accent: "text-[#1B3B2B]",
     },
   ];
 
@@ -219,8 +184,11 @@ export function TheHeartSection() {
             </div>
             <div>
               <h2 className="font-anton text-3xl sm:text-5xl lg:text-6xl uppercase tracking-tight text-[#242220]">
-                {t("heart.title")}
+                PRESERVE <span className="text-[#7B0323]">. PHAN HOÀNG QUỲNH CHI</span>
               </h2>
+              <p className="text-xs sm:text-sm font-mono text-[#7B0323] font-semibold mt-1">
+                {lang === "vi" ? "Dự Án Cộng Đồng, Thiện Nguyện, Lao Động Xã Hội & Bảo Tồn Di Sản" : "Community Initiatives, Philanthropy, Public Service & Cultural Preservation"}
+              </p>
             </div>
           </div>
         </div>
@@ -303,22 +271,6 @@ export function TheHeartSection() {
                   <p className="text-xs sm:text-sm text-[#242220]/75 leading-relaxed mb-4">
                     {project.description}
                   </p>
-
-                  {/* Sub-items if present */}
-                  {project.subItems && (
-                    <div className="space-y-2.5 pt-2">
-                      {project.subItems.map((sub, sIdx) => (
-                        <div key={sIdx} className="p-3 rounded-xl bg-[#FAF7F2] border border-[#1B3B2B]/15 text-xs">
-                          <span className="font-bold text-[#242220] block mb-0.5">
-                            {sub.label}
-                          </span>
-                          <span className="text-[#242220]/70 leading-relaxed block">
-                            {sub.text}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
 
                   {/* Impact detail if present */}
                   {project.impact && (

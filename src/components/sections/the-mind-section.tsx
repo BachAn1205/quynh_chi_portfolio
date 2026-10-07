@@ -7,7 +7,8 @@ import {
   BarChart2,
   Boxes,
   Cpu,
-  GraduationCap
+  Trophy,
+  Award,
 } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 
@@ -42,118 +43,62 @@ export function TheMindSection() {
       id: "research",
       category:
         lang === "vi"
-          ? "Nghiên cứu Định lượng Độc lập"
-          : "Independent Quantitative Research",
+          ? "Nghiên cứu Định lượng Độc lập & Công bố Khoa học"
+          : "Independent Quantitative Research & Publications",
+      badge: lang === "vi" ? "Harvard Review • Tạp chí Quốc tế" : "Harvard Review • International Journal",
       icon: BarChart2,
       title:
         lang === "vi"
           ? "Làm Sáng Tỏ Bất Bình Đẳng Qua Dữ Liệu"
           : "Revealing Disparities Through Data",
+      subtitle:
+        lang === "vi"
+          ? "Nghiên cứu Kinh tế lượng, Thói quen Tiêu dùng & Tín chỉ Carbon (2024 - 2026)"
+          : "Econometrics Research, Consumer Behavior & Circular Carbon Credits (2024 - 2026)",
       highlights: [
         {
           heading:
             lang === "vi"
-              ? "Chênh lệch Nhận thức trong Lựa chọn Nghề nghiệp Bền vững (2024)"
-              : "Awareness Disparities in Sustainable Career Choices (2024)",
+              ? "Tín chỉ Tuần hoàn cho Nông dân (C4F) - Harvard International Review (Tháng 1/2026)"
+              : "Circular Credits for Farmers (C4F) - Harvard International Review (Jan 2026)",
           detail:
             lang === "vi"
-              ? "Thực hiện khảo sát cắt ngang phân tầng nông thôn - thành thị trên 200 học sinh THPT tại Đắk Lắk. Áp dụng ANOVA và Hồi quy Logistic Nhị phân trên SPSS, tôi xây dựng mô hình dự báo (độ chính xác 83,5%) chứng minh rằng nhận thức về tính bền vững tăng 1 đơn vị sẽ giúp tăng xác suất chọn nghề nghiệp xanh lên 3,482 lần. Nghiên cứu chỉ ra khoảng trống nghiêm trọng trong tiếp cận thông tin nghề nghiệp của học sinh nông thôn."
-              : "Conducted an urban-rural stratified cross-sectional survey among 200 high school students in Dak Lak. Applying ANOVA and Binary Logistic Regression via SPSS, I built a predictive model (83.5% accuracy) proving that a one-unit increase in sustainability awareness boosts the odds of choosing a sustainable career by 3.482 times. It exposed a critical information access gap for rural youth.",
+              ? "Đoạt Giải Bài viết Xuất sắc Toàn cầu (Global Outstanding Writing Content Prize) từ Tạp chí Quan hệ Quốc tế Harvard. Điều tra sự bất bình đẳng mang tính hệ thống trên thị trường carbon toàn cầu đối với ngành canh tác cà phê tại Gia Lai và Đắk Lắk. Đề xuất mô hình tín chỉ tuần hoàn phi tập trung trên nền tảng blockchain nhằm liên kết giá trị carbon trực tiếp với hành động canh tác thực tế của nông dân."
+              : "Awarded the Global Outstanding Writing Content Prize at the Harvard International Review Academic Writing Contest 2026. Investigated systemic inequalities in global carbon markets with a focus on coffee farming in Gia Lai and Dak Lak. Proposed a conceptual blockchain-based circular credit model (C4F) to decentralize carbon value distribution and link carbon credits directly to verifiable farming actions.",
         },
         {
           heading:
             lang === "vi"
-              ? "Truy xuất Nguồn gốc Thực phẩm dựa trên Mã QR (Tháng 12/2025)"
-              : "QR Code-Based Food Traceability (Dec 2025)",
+              ? "Truy xuất Nguồn gốc Thực phẩm dựa trên Mã QR & Hành vi Tiêu dùng (Tháng 12/2025)"
+              : "QR Code-Based Food Traceability & Consumer Behavior Toward Food Safety (Dec 2025)",
           detail:
             lang === "vi"
-              ? "Đồng tác giả bài báo khoa học xuất bản trên Tạp chí Trao quyền Quốc tế Phục vụ Cộng đồng Tennessee. Hỗ trợ thiết kế khảo sát cắt ngang trên 400+ người tiêu dùng tại Hà Nội và TP.HCM, sử dụng mô hình kinh tế lượng chứng minh truy xuất nguồn gốc số giúp giảm rủi ro cảm nhận, dù tác động nghiêng nhiều về nhóm thu nhập cao."
-              : "Co-authored a paper published in the Tennessee Community Service International of Empowerment Journal. Assisted in designing a cross-sectional survey of 400+ consumers in Hanoi and HCMC, utilizing econometric models to prove that digital traceability reduces perceived risk, though its impact skews heavily toward higher-income demographics.",
+              ? "Đồng tác giả (Co-Author) bài báo khoa học xuất bản trên Tạp chí Tennessee Community Service International of Empowerment (Vol. 2, Iss. 2, pp. 18-36) cùng TS. Đỗ Hải Yến (Trưởng khoa Kinh tế & Quản trị Kinh doanh - Đại học Tân Trào). Thiết kế và triển khai khảo sát cắt ngang trên 400+ người tiêu dùng tại Hà Nội và TP.HCM; ứng dụng mô hình kinh tế lượng phân tích mối tương quan giữa truy xuất số và ý định mua hàng."
+              : "Co-authored a paper published in the Tennessee Community Service International of Empowerment Journal, 2(2), 18-36, with Dr. Do Hai Yen (Dean of Faculty of Economics & Business Administration, Tan Trao University). Designed and executed a cross-sectional survey of 400+ consumers in Hanoi and HCMC; utilized econometric models to evaluate correlation between digital traceability and consumer purchase intent.",
         },
         {
           heading:
             lang === "vi"
-              ? "Tín chỉ Tuần hoàn cho Nông dân - C4F (Tháng 1/2026)"
-              : "Circular Credits for Farmers - C4F (Jan 2026)",
+              ? "Chênh lệch Nhận thức Phát triển Bền vững & Lựa chọn Nghề nghiệp THPT Đắk Lắk (2024)"
+              : "Awareness Disparities in Sustainable Development & Career Choices in Dak Lak (2024)",
           detail:
             lang === "vi"
-              ? "Đoạt Giải Bài viết Xuất sắc Toàn cầu từ Tạp chí Quan hệ Quốc tế Harvard (Harvard International Review). Đề xuất mô hình sổ cái blockchain phân quyền giá trị carbon, đặt câu hỏi về quyền sở hữu dữ liệu và phân phối lợi ích kinh tế công bằng cho nông dân canh tác bền vững tại Gia Lai và Đắk Lắk."
-              : "Awarded the Global Outstanding Writing Content Prize by the Harvard International Review. Proposed a conceptual blockchain-based model to decentralize carbon value distribution, questioning who truly owns the data and reaps the economic rewards of sustainable farming in Gia Lai and Dak Lak.",
+              ? "Thực hiện khảo sát cắt ngang phân tầng nông thôn - thành thị trên học sinh THPT tại tỉnh Đắk Lắk. Áp dụng phương pháp phân tích phương sai ANOVA và Hồi quy Logistic Nhị phân trên phần mềm SPSS, xây dựng mô hình dự báo đạt độ chính xác 83,5%, chứng minh nhận thức bền vững tăng 1 đơn vị giúp tăng xác suất chọn nghề nghiệp xanh lên 3,482 lần."
+              : "Conducted an urban-rural stratified cross-sectional survey among high school students in Dak Lak Province. Applied ANOVA and logistic regression via SPSS to build an 83.5% accuracy predictive model evaluating factors influencing sustainable career orientations.",
         },
       ],
       slotId: "mind-research",
       guideline: {
-        vi: "Ảnh chụp màn hình phân tích mô hình SPSS, bảng số liệu hồi quy/ANOVA, hoặc khảo sát thực địa học sinh Đắk Lắk.",
-        en: "SPSS econometrics model screenshot, ANOVA regression table, or field survey."
+        vi: "Ảnh bài báo khoa học, giải thưởng Harvard International Review, hoặc biểu đồ mô hình hồi quy SPSS/khảo sát thực địa.",
+        en: "Photo of journal paper, Harvard International Review award, or SPSS regression model charts."
       },
-      tags: ["SPSS", "ANOVA", "Binary Logistic Regression", "Econometrics", "Blockchain Carbon Ledger"],
-    },
-    {
-      id: "startup",
-      category:
-        lang === "vi"
-          ? "Khởi nghiệp Tuần hoàn & Vận hành Doanh nghiệp"
-          : "Circular Economy Startup & Operations",
-      icon: Boxes,
-      title:
-        lang === "vi" ? (
-          <>
-            Dự án Vỏ Cà phê Xanh CAFLOOP
-            <br className="hidden sm:inline" /> &amp; Vận Hành Doanh Nghiệp
-          </>
-        ) : (
-          <>
-            CAFLOOP (Green Coffee Husk Project)
-            <br className="hidden sm:inline" /> &amp; Business Operations
-          </>
-        ),
-      subtitle:
-        lang === "vi"
-          ? "Người sáng lập & Chiến lược Sản phẩm (Tháng 9/2024 . Hiện tại)"
-          : "Founder & Product Strategist (Sep 2024 . Present)",
-      highlights: [
-        {
-          heading:
-            lang === "vi"
-              ? "Tự lực Vốn (Bootstrapping) & Kỹ thuật Chuỗi Giá trị"
-              : "Bootstrapping & Value Chain Engineering",
-          detail:
-            lang === "vi"
-              ? "Khởi xướng doanh nghiệp kinh tế tuần hoàn chuyển hóa vỏ cà phê phát thải CO2 tại Đắk Lắk thành trà Cascara thương mại. Quản lý giai đoạn tự lực vốn bằng cách kiểm soát chặt chẽ giá vốn hàng bán (COGS), lập ngân sách và tối ưu hóa giá bán. Tích hợp hệ thống truy xuất mã QR trên bao bì để minh bạch tuyệt đối chuỗi cung ứng."
-              : "Initiated a circular-economy venture transforming CO2-emitting coffee husks in Dak Lak into commercial Cascara tea. Managed the bootstrapping phase by tracking production costs (COGS), structuring budgets, and optimizing pricing. To ensure radical transparency, integrated a QR-code traceability system on the packaging.",
-        },
-        {
-          heading:
-            lang === "vi"
-              ? "Trải nghiệm Chuỗi Cung ứng Ngành (SI CAFE Đắk Lắk)"
-              : "Industry Supply Chain Experience (SI CAFE Dak Lak)",
-          detail:
-            lang === "vi"
-              ? "Thực tập sinh Phân tích Kinh doanh & Tài chính tại SI CAFE (Chi nhánh Đắk Lắk, Tháng 7-8/2025), theo dõi quy trình chuỗi cung ứng và nhập liệu kho vận tại cơ sở chế biến cà phê địa phương."
-              : "Served as Student Intern for Business & Financial Analysis at SI CAFE (Dak Lak Branch, Jul-Aug 2025), shadowing supply-chain operations and managing data entry for a local coffee processing facility.",
-        },
-        {
-          heading:
-            lang === "vi"
-              ? "Tình huống Kinh doanh Harvard Crimson (HCBC 2025)"
-              : "Harvard Crimson Business Case (HCBC 2025)",
-          detail:
-            lang === "vi"
-              ? "Trưởng nhóm Tài chính & Chiến lược, đồng xây dựng mô hình tài chính dự báo doanh thu và bảng điều khiển mô phỏng CAC/LTV, lọt vào Chung kết Toàn cầu (Top 30/2000 đội thi toàn thế giới)."
-              : "Acted as Team Lead for Finance & Strategy, co-developing a financial model for revenue forecasting and building a mock CAC/LTV dashboard, advancing to Global Finalist (Top 30/2000).",
-        },
-      ],
-      slotId: "mind-startup",
-      guideline: {
-        vi: "Ảnh chụp thực tế vỏ cà phê thải, quy trình sấy chế biến Cascara hoặc sản phẩm bao bì CAFLOOP có mã QR.",
-        en: "Real coffee husk upcycling photo, cascara drying/processing, or CAFLOOP QR packaging."
-      },
-      tags: ["Circular Economy", "COGS Budgeting", "Traceability QR", "CAC/LTV Modeling", "Supply Chain"],
+      tags: ["Harvard International Review", "C4F Carbon Model", "Tennessee Journal", "Dr. Do Hai Yen", "SPSS ANOVA & Logistic Regression", "Food Safety Traceability"],
     },
     {
       id: "lab",
       category:
-        lang === "vi" ? "Phòng Thí nghiệm Dữ liệu Quốc tế" : "International Data Lab",
+        lang === "vi" ? "Nghiên cứu Vật liệu & Điện toán Hiệu năng cao" : "Computational Materials & HPC Research",
+      badge: lang === "vi" ? "Học bổng Toàn phần 100% • Đài Loan" : "100% Fully-Funded Delegate • Taiwan",
       icon: Cpu,
       title:
         lang === "vi"
@@ -161,100 +106,163 @@ export function TheMindSection() {
           : "NSYSU Science & Innovation Camp",
       subtitle:
         lang === "vi"
-          ? "Nhà nghiên cứu Học bổng Toàn phần, Đài Loan, Tháng 7/2026"
-          : "Fully-Funded Researcher, Taiwan, Jul 2026",
+          ? "Đại biểu Học bổng Toàn phần, Đại học Quốc lập Tôn Trung Sơn (Đài Loan, Tháng 7/2026)"
+          : "Fully-Funded Delegate, National Sun Yat-sen University (Taiwan, Jul 2026)",
       highlights: [
         {
           heading:
             lang === "vi"
-              ? "Điện toán Hiệu năng cao & Mô phỏng Vật liệu"
-              : "High-Performance Computing & Materials Simulation",
+              ? "Nghiên cứu Vật liệu Dựa trên Dữ liệu & Điện toán Hiệu năng cao (HPC)"
+              : "Data-Driven Materials Research & High-Performance Computing",
           detail:
             lang === "vi"
-              ? "Đạt học bổng 100% tham gia nghiên cứu vật liệu dựa trên dữ liệu tại Phòng Lab Vật liệu Tính toán. Dù chưa từng học lập trình trước đó, tôi đã phối hợp cùng các cố vấn quốc tế để làm chủ C++ cơ bản, môi trường Linux/HPC và các phần mềm như VESTA, DFT chỉ trong vài ngày."
-              : "Awarded a 100% scholarship to participate in data-driven materials research at the Computational Materials Research Lab. Despite having no prior coding background, collaborated with international mentors to master basic C++, Linux/HPC environments, and software like VESTA and DFT within days.",
+              ? "Đạt học bổng toàn phần 100% tham gia nghiên cứu vật liệu tính toán tại Đại học Quốc lập Tôn Trung Sơn (NSYSU). Làm chủ cú pháp C++ cơ bản, làm việc trên môi trường máy chủ Linux/HPC và vận hành các công cụ tính toán mô phỏng VESTA và Lý thuyết Phiếm hàm Mật độ (DFT) chỉ trong vài ngày."
+              : "Awarded a 100% scholarship to participate in data-driven materials research at NSYSU. Mastered basic C++, Linux/HPC high-performance terminal environments, and computational simulation tools including VESTA and Density Functional Theory (DFT).",
         },
         {
           heading:
             lang === "vi"
-              ? "Vượt qua Bẫy 'Hộp Đen' của Khoa học Dữ liệu"
-              : "Overcoming the 'Black Box' Trap of Data Science",
+              ? "Thuyết trình Dự án Khởi nghiệp Xử lý Nước thải trước Hội đồng Giáo sư"
+              : "Conceptual Wastewater Purification Startup Pitch to Faculty",
           detail:
             lang === "vi"
-              ? "Nhận ra rằng dữ liệu tính toán chỉ có sức mạnh thực sự khi bám sát thực tế vật lý khách quan, giúp tôi luôn kiểm định nghiêm ngặt tập dữ liệu và tránh cạm bẫy 'hộp đen' của các mô hình trừu tượng."
-              : "Realized that computational data is only as powerful as its adherence to physical reality.teaching me to critically audit my datasets and avoid the black box trap of abstract modeling.",
+              ? "Ứng dụng các hiểu biết mô phỏng vật liệu để phát triển ý tưởng khởi nghiệp hệ thống lọc nước thải dựa trên cấu trúc vật liệu mới, trực tiếp thuyết trình và bảo vệ đề tài trước hội đồng giáo sư chuyên môn quốc tế."
+              : "Synthesized materials research insights to pitch a conceptual wastewater purification startup directly to university faculty, bridging deep tech with ecological problem-solving.",
         },
         {
           heading:
             lang === "vi"
-              ? "Ý tưởng Khởi nghiệp Xử lý Nước thải"
-              : "Wastewater Innovation Pitch",
+              ? "Vượt qua Bẫy 'Hộp Đen' trong Khoa học Dữ liệu"
+              : "Critical Dataset Auditing & Overcoming the Black-Box Trap",
           detail:
             lang === "vi"
-              ? "Tổng hợp các hiểu biết mô phỏng vật liệu tính toán thành dự án khởi nghiệp lọc nước thải và thuyết trình trực tiếp trước hội đồng giáo sư đại học."
-              : "Synthesized computational material simulation insights into a conceptual wastewater purification startup pitched directly to university faculty.",
+              ? "Kinh nghiệm thực nghiệm giúp nhận thức sâu sắc rằng dữ liệu tính toán chỉ có giá trị thực sự khi bám sát thực tế vật lý khách quan, rèn luyện tư duy kiểm toán dữ liệu nghiêm ngặt và không phụ thuộc mù quáng vào các mô hình trừu tượng."
+              : "Gained firsthand insight that computational simulations must answer to physical ground truths, establishing a disciplined habit of auditing datasets and avoiding abstract black-box assumptions.",
         },
       ],
       slotId: "mind-lab",
       guideline: {
-        vi: "Ảnh chụp phòng lab mô phỏng vật liệu DFT/VESTA, máy chủ HPC hoặc buổi báo cáo khoa học tại Đài Loan (NSYSU).",
-        en: "DFT/VESTA material simulation lab, Linux HPC terminal, or research presentation at NSYSU (Taiwan)."
+        vi: "Ảnh chụp tại Trại khoa học NSYSU Đài Loan, buổi thuyết trình dự án nước thải hoặc làm việc với phần mềm mô phỏng VESTA/HPC.",
+        en: "Photo at NSYSU Taiwan camp, wastewater startup presentation, or working with VESTA/HPC terminal."
       },
-      tags: ["C++", "Linux HPC", "VESTA", "DFT", "Materials Data", "Wastewater Pitch"],
+      tags: ["National Sun Yat-sen University", "100% Scholarship", "C++", "Linux HPC", "VESTA", "DFT", "Wastewater Pitch"],
     },
     {
-      id: "pedagogy",
+      id: "sifarm",
       category:
         lang === "vi"
-          ? "Cố vấn & Lãnh đạo Học thuật"
-          : "Mentorship & Academic Leadership",
-      icon: GraduationCap,
-      title:
-        lang === "vi"
-          ? "Shark Club & CLB Kinh doanh Geniusstar"
-          : "Shark Club & Geniusstar Business Club",
+          ? "Phân tích Chuỗi Cung ứng & Kinh tế Nông nghiệp Thực địa"
+          : "Agricultural Supply Chain & Field Operations Analysis",
+      badge: lang === "vi" ? "SI CAFE Đắk Lắk • Thực tế Nông nghiệp" : "SI CAFE Dak Lak • Field Operations",
+      icon: Boxes,
+      title: "SiFarm (SI CAFE Agricultural Supply Chain)",
       subtitle:
         lang === "vi"
-          ? "Trưởng ban Chuyên môn (Shark Club) & Cố vấn Lý thuyết Trò chơi (Geniusstar)"
-          : "Head of Expert (Shark Club) & Mentor of Game Theory (Geniusstar Business Club)",
+          ? "Thực tập sinh Phân tích Kinh doanh & Tài chính, SI CAFE - Chi nhánh Đắk Lắk (Tháng 7 - Tháng 8/2025)"
+          : "Student Intern - Business & Financial Analysis, SI CAFE (Dak Lak Branch, Jul - Aug 2025)",
       highlights: [
         {
           heading:
             lang === "vi"
-              ? "Shark Club (Trưởng ban Chuyên môn)"
-              : "Shark Club (Head of Expert)",
+              ? "Khảo sát Thực tế Vận hành Chuỗi Cung ứng Nông sản Địa phương"
+              : "Shadowing Ground-Level Agricultural Supply Chain Operations",
           detail:
             lang === "vi"
-              ? "Biên soạn chương trình học thuật về độ co giãn cung cầu và cơ chế thị trường. Hướng dẫn các thành viên học sinh nắm vững các nguyên lý kinh tế nền tảng và phân tích tình huống thực tế."
-              : "Curated academic curricula on supply-demand elasticity and market mechanics. Guided student members through foundational economic principles and real-world case analysis.",
+              ? "Trực tiếp khảo sát và học hỏi quy trình vận hành chuỗi cung ứng tại cơ sở sơ chế và chế biến cà phê địa phương ở Đắk Lắk. Quan sát các điểm nghẽn thực tế từ thu hoạch nông hộ, phân loại nhân, phơi sấy đến lưu kho bảo quản."
+              : "Shadowed supply-chain operations and assisted with operational tracking at a local coffee processing facility in Dak Lak Province, observing real bottlenecks across farmer sourcing, sorting, drying, and storage.",
         },
         {
           heading:
             lang === "vi"
-              ? "CLB Kinh doanh Geniusstar (Cố vấn Lý thuyết Trò chơi)"
-              : "Geniusstar Business Club (Mentor of Game Theory)",
+              ? "Kiểm toán Số liệu Nhập kho & Theo dõi Chi phí Vận hành"
+              : "Inventory Data Entry, Cost Auditing & Facility Tracking",
           detail:
             lang === "vi"
-              ? "Thiết kế giáo trình về ra quyết định chiến lược. Giảng dạy Cân bằng Nash thông qua mô phỏng tương tác '2 Quán kem trên bãi biển', giúp học sinh tự suy luận ra điểm cân bằng trước khi tiếp cận công thức toán học."
-              : "Designed curricula on strategic decision-making. Taught Nash Equilibrium through a '2 Ice Cream Shops on a Beach' simulation, prompting students to deduce the equilibrium before revealing the formal mathematical theory.",
+              ? "Hỗ trợ nhập liệu số liệu kho vận hàng ngày, đối soát hóa đơn đầu vào, kiểm kê hao hụt tỷ lệ độ ẩm và theo dõi chi phí nhân công, năng lượng sơ chế tại xưởng."
+              : "Assisted with basic data entry, daily inventory tracking, moisture loss audits, and operational cost accounting at the processing plant.",
         },
         {
           heading:
             lang === "vi"
-              ? "Đại sứ Youth For Impact & Cố vấn Tình huống - AIESEC Việt Nam"
-              : "Youth For Impact Ambassador & Case Mentorship - AIESEC Vietnam",
+              ? "Gắn kết Lý thuyết Kinh tế học vào Thực tế Nông trường Tây Nguyên"
+              : "Connecting Theoretical Economics with Highland Agricultural Realities",
           detail:
             lang === "vi"
-              ? "Cố vấn riêng cho Đội Lục Long Công Chúa (đội giành chức Quán quân) và phụ trách vận hành Chuỗi đào tạo Doanh nghiệp & Vòng chung kết, lan tỏa Mục tiêu SDG 8.6 đến hơn 200 người tham dự."
-              : "Acted as a private mentor for Team Lục Long Công Chúa (the eventual Champions) and served as core operations staff for the Business Training Series and Final Pitch, advocating for SDG 8.6 and impacting over 200 attendees.",
+              ? "Trải nghiệm tại SI CAFE là bước đệm then chốt giúp chuyển hóa lý thuyết kinh tế học vĩ mô và vi mô thành sự hiểu biết sâu sắc về sinh kế của người nông dân và cấu trúc chi phí thật của chuỗi giá trị nông nghiệp Tây Nguyên."
+              : "Grounded academic economic theories into physical agricultural realities, developing an authentic understanding of farmer livelihoods and value-chain economics in the Central Highlands.",
         },
       ],
-      slotId: "mind-pedagogy",
+      slotId: "mind-sifarm",
       guideline: {
-        vi: "Ảnh sinh hoạt tại Shark Club, Geniusstar Business Club, hoặc buổi giảng dạy mô hình Game Theory cho học sinh.",
-        en: "Shark Club, Geniusstar Business Club activities, or Game Theory teaching session."
+        vi: "Ảnh thực tế cơ sở chế biến cà phê SI CAFE Đắk Lắk, quy trình phân loại nông sản hoặc hoạt động nhập liệu kho vận.",
+        en: "Photo of SI CAFE coffee processing facility in Dak Lak, sorting workflow, or inventory tracking."
       },
-      tags: ["Shark Club", "Geniusstar", "Game Theory", "Nash Equilibrium", "CaseBank", "SDG 12", "SDG 8.6"],
+      tags: ["SI CAFE", "Agricultural Supply Chain", "Dak Lak Facility", "Inventory Audit", "Field Economics", "Value Chain"],
+    },
+    {
+      id: "honors",
+      category:
+        lang === "vi"
+          ? "Giải Thưởng Học Thuật & Olympic Kinh Tế Quốc Tế"
+          : "Academic Honors, Olympiads & Case Competitions",
+      badge: lang === "vi" ? "Top 3 Quốc gia IEO • Chung kết Harvard" : "National Top 3 IEO • Harvard HCBC Finalist",
+      icon: Trophy,
+      title:
+        lang === "vi"
+          ? "Các Giải Thưởng & Olympic Học Thuật Quốc Tế"
+          : "International Academic Honors & Business Olympiads",
+      subtitle:
+        lang === "vi"
+          ? "Thành tích Nổi bật tại các Đấu trường Học thuật Quốc gia & Toàn cầu"
+          : "Verified Distinctions in Global Economics, Finance, Business Cases & Policy Debate",
+      highlights: [
+        {
+          heading:
+            lang === "vi"
+              ? "Olympic Kinh tế Quốc tế (IEO 2025 & 2026) & Olympic Kinh tế Việt Nam (VEO)"
+              : "International Economics Olympiad (IEO) & Vietnam Economics Olympiad (VEO)",
+          detail:
+            lang === "vi"
+              ? "Đạt Top 5 Tuyển chọn Toàn quốc (Xếp hạng 3 Quốc gia) tham gia Đội tuyển Olympic Kinh tế Quốc tế (IEO) cả 2 năm 2025 & 2026; Huy chương Đồng Quốc gia (National Bronze Medalist) tại Vietnam Economics Olympiad (VEO) 2025 & 2026."
+              : "National Top 5 Selection (Ranked 3rd Nationally) for International Economics Olympiad (IEO) in both 2025 & 2026; National Bronze Medalist at Vietnam Economics Olympiad (VEO) in 2025 & 2026.",
+        },
+        {
+          heading:
+            lang === "vi"
+              ? "Harvard Crimson Business Case Competition (HCBC 2025) - Chung kết Toàn cầu tại Mỹ"
+              : "Harvard Crimson Business Case (HCBC 2025) - Global Finalist (Top 30/2000)",
+          detail:
+            lang === "vi"
+              ? "Lọt vào Chung kết Toàn cầu (Top 30/2000 đội thi toàn thế giới) - Đội thi duy nhất đại diện Việt Nam được mời tham dự vòng chung kết trực tiếp tại khuôn viên Đại học Harvard (Mỹ). Đảm nhận vai trò Trưởng nhóm Tài chính & Chiến lược (Team Lead - Finance & Strategy), đồng phát triển mô hình tài chính dự báo doanh thu và bảng điều khiển mô phỏng CAC/LTV."
+              : "Global Finalist (Top 30/2000 teams worldwide). Sole Vietnamese representative team invited to compete on Harvard campus. Served as Team Lead - Finance & Strategy: co-developed a financial model for revenue forecasting and built a mock CAC/LTV dashboard.",
+        },
+        {
+          heading:
+            lang === "vi"
+              ? "World Economics Cup (WEC 2025) & Vietnam Business Innovation Challenge (VBIC)"
+              : "World Economics Cup (WEC 2025) & Vietnam Business Innovation Challenge (VBIC)",
+          detail:
+            lang === "vi"
+              ? "Đạt Giải Bạc (Silver Award) khu vực Châu Á & Châu Đại Dương và Top 10 Kiến thức Nền tảng (Top 10 Fundamentals) tại World Economics Cup (WEC 2025); Trưởng nhóm đưa đội lọt vào Top 10 Chung kết Toàn quốc (Top 10 Grand Final) tại Vietnam Business Innovation Challenge (VBIC 2025)."
+              : "Silver Award (Asia & Oceania) & Top 10 Fundamentals at World Economics Cup (WEC 2025); Team Lead leading squad to Top 10 Grand Final at Vietnam Business Innovation Challenge (VBIC 2025).",
+        },
+        {
+          heading:
+            lang === "vi"
+              ? "Học bổng Tài chính ACCA Futurist, Aspiring Vietnam & Tranh biện Quốc gia"
+              : "ACCA Futurist Scholarship Top 50, Aspiring Vietnam & Debate Champion",
+          detail:
+            lang === "vi"
+              ? "Top 50 Toàn quốc Học bổng ACCA Futurist 2025 (học bổng danh giá dành cho tài năng tài chính trẻ); Top 4 Cá nhân Vòng Chung kết phân ban Thương mại cuộc thi Aspiring Vietnam Contest 2025; Quán quân Toàn quốc giải Tranh biện DAS-DO Debate Open 2025 (4th Seed); Best Position Paper tại Hội nghị Mô phỏng LHQ VSGMUN 2026 (UNHCR)."
+              : "Top 50 Vietnam: ACCA Futurist Scholarship 2025; Top 4 Individual, Trade Division (Final Round) at Aspiring Vietnam Contest 2025; National Champion at DAS-DO Debate Open 2025; Best Position Paper at VSGMUN 2026 (UNHCR).",
+        },
+      ],
+      slotId: "mind-honors",
+      guideline: {
+        vi: "Ảnh nhận huy chương/giấy chứng nhận IEO, VEO, Harvard HCBC, World Economics Cup hoặc bằng khen tranh biện.",
+        en: "Photo of medals or award certificates from IEO, VEO, Harvard HCBC, WEC, or debate competitions."
+      },
+      tags: ["IEO Rank 3 Nationally", "VEO Bronze Medalist", "Harvard HCBC Top 30", "WEC Silver Award", "VBIC Top 10", "ACCA Futurist Top 50", "National Debate Champion"],
     },
   ];
 
@@ -267,12 +275,15 @@ export function TheMindSection() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 sm:mb-8 pb-4 sm:pb-5 border-b border-[#1B3B2B]/15">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-2xl bg-[#1B3B2B] flex items-center justify-center shrink-0 shadow-sm text-white">
-              <BrainCircuit className="w-6 h-6" />
+              <BrainCircuit className="w-6 h-6 text-[#E2ECE5]" />
             </div>
             <div>
               <h2 className="font-anton text-3xl sm:text-5xl lg:text-6xl uppercase tracking-tight text-[#242220]">
-                {t("mind.title")}
+                THINK <span className="text-[#7B0323]">. PHAN HOÀNG QUỲNH CHI</span>
               </h2>
+              <p className="text-xs sm:text-sm font-mono text-[#7B0323] font-semibold mt-1">
+                {lang === "vi" ? "Nghiên cứu Định lượng, Thực nghiệm Khoa học, SiFarm & Olympic Học thuật" : "Quantitative Research, Materials Lab, SiFarm & Academic Olympiads"}
+              </p>
             </div>
           </div>
         </div>
@@ -286,7 +297,7 @@ export function TheMindSection() {
                 : "bg-[#FFFFFF] text-[#242220] border border-[#1B3B2B]/20 hover:bg-[#E2ECE5]"
               }`}
           >
-            {t("mind.tab.all")}
+            {lang === "vi" ? "Tất cả (4)" : "All Initiatives (4)"}
           </button>
           <button
             onClick={() => setActiveTab("research")}
@@ -295,16 +306,7 @@ export function TheMindSection() {
                 : "bg-[#FFFFFF] text-[#242220] border border-[#1B3B2B]/20 hover:bg-[#E2ECE5]"
               }`}
           >
-            {t("mind.tab.research")}
-          </button>
-          <button
-            onClick={() => setActiveTab("startup")}
-            className={`px-3.5 sm:px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all duration-200 cursor-pointer ${activeTab === "startup"
-                ? "bg-[#1B3B2B] text-white shadow-sm"
-                : "bg-[#FFFFFF] text-[#242220] border border-[#1B3B2B]/20 hover:bg-[#E2ECE5]"
-              }`}
-          >
-            {t("mind.tab.startup")}
+            {lang === "vi" ? "Nghiên cứu Dữ liệu (C4F & QR)" : "Data Research (C4F & QR)"}
           </button>
           <button
             onClick={() => setActiveTab("lab")}
@@ -313,16 +315,25 @@ export function TheMindSection() {
                 : "bg-[#FFFFFF] text-[#242220] border border-[#1B3B2B]/20 hover:bg-[#E2ECE5]"
               }`}
           >
-            {t("mind.tab.lab")}
+            {lang === "vi" ? "Trại Khoa học NSYSU" : "NSYSU Science Camp"}
           </button>
           <button
-            onClick={() => setActiveTab("pedagogy")}
-            className={`px-3.5 sm:px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all duration-200 cursor-pointer ${activeTab === "pedagogy"
+            onClick={() => setActiveTab("sifarm")}
+            className={`px-3.5 sm:px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all duration-200 cursor-pointer ${activeTab === "sifarm"
                 ? "bg-[#1B3B2B] text-white shadow-sm"
                 : "bg-[#FFFFFF] text-[#242220] border border-[#1B3B2B]/20 hover:bg-[#E2ECE5]"
               }`}
           >
-            {t("mind.tab.pedagogy")}
+            {lang === "vi" ? "SiFarm & Chuỗi Cung Ứng" : "SiFarm Operations"}
+          </button>
+          <button
+            onClick={() => setActiveTab("honors")}
+            className={`px-3.5 sm:px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all duration-200 cursor-pointer ${activeTab === "honors"
+                ? "bg-[#1B3B2B] text-white shadow-sm"
+                : "bg-[#FFFFFF] text-[#242220] border border-[#1B3B2B]/20 hover:bg-[#E2ECE5]"
+              }`}
+          >
+            {lang === "vi" ? "Giải Học Thuật & Olympic" : "Academic Honors & Olympiads"}
           </button>
         </div>
 
@@ -395,6 +406,18 @@ export function TheMindSection() {
                             {h.detail}
                           </p>
                         </div>
+                      ))}
+                    </div>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 pt-1">
+                      {item.tags.map((tag, tIdx) => (
+                        <span
+                          key={tIdx}
+                          className="px-2.5 py-1 rounded-full text-[11px] font-mono font-medium bg-[#E2ECE5] text-[#1B3B2B] border border-[#1B3B2B]/15"
+                        >
+                          #{tag}
+                        </span>
                       ))}
                     </div>
                   </div>

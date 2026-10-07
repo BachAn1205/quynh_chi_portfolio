@@ -42,118 +42,133 @@ export default function AboutPage() {
     },
   ];
 
-  const experiences = [
+  const initiatives = [
     {
-      role:
-        lang === "vi"
-          ? "Người sáng lập & Chiến lược Sản phẩm"
-          : "Founder & Product Strategist",
-      company:
-        lang === "vi"
-          ? "CAFLOOP (Dự án Vỏ Cà phê Xanh)"
-          : "CAFLOOP (Green Coffee Husk Project)",
+      title: "CAFLOOP (Green Coffee Husk Project)",
+      role: lang === "vi" ? "Người sáng lập & Chiến lược Sản phẩm" : "Founder & Product Strategist",
       period: lang === "vi" ? "Tháng 9/2024 . Hiện tại" : "Sep 2024 . Present",
-      bullets: [
-        lang === "vi"
-          ? "Khởi xướng doanh nghiệp kinh tế tuần hoàn chuyển hóa vỏ cà phê phát thải CO2 tại Đắk Lắk thành trà Cascara thương mại."
-          : "Initiated a circular-economy venture transforming CO2-emitting coffee husks in Dak Lak into commercial Cascara tea.",
-        lang === "vi"
-          ? "Quản lý giai đoạn tự lực vốn bằng cách kiểm soát chặt chẽ giá vốn hàng bán (COGS), lập ngân sách và tối ưu hóa giá bán."
-          : "Managed the bootstrapping phase by tracking production costs (COGS), structuring budgets, and optimizing pricing.",
-        lang === "vi"
-          ? "Tích hợp hệ thống truy xuất mã QR trên bao bì để minh bạch tuyệt đối chuỗi cung ứng."
-          : "Integrated a QR-code traceability system on packaging for radical transparency.",
-        lang === "vi"
-          ? "Dành toàn bộ lợi nhuận ban đầu trao tặng 77 xe đạp và 2 Smart TV cho học sinh tiểu học buôn Đrăng Phốk."
-          : "Directed venture profits to donate 77 bicycles and 2 smart TVs to primary students at Buon Drang Phok.",
+      category: lang === "vi" ? "Kinh tế tuần hoàn & Khởi nghiệp" : "Circular Economy & Venture",
+      badge: lang === "vi" ? "1,6M Tấn Phế phẩm • Tín chỉ Carbon" : "1.6M Tons Ag Waste • Carbon Credits",
+      slotId: "build-cafloop",
+      guideline: {
+        vi: "Ảnh Quỳnh Chi đang trực tiếp nghiên cứu vỏ cà phê / sản phẩm trà Cascara / quy trình sấy chế biến / bao bì sản phẩm có mã QR.",
+        en: "Photo of Quynh Chi working with coffee husks, Cascara tea products, processing workflow, or QR packaging."
+      },
+      summary: lang === "vi"
+        ? "Doanh nghiệp kinh tế tuần hoàn chuyển hóa phế phụ phẩm vỏ cà phê phát thải CO2 tại Đắk Lắk thành trà Cascara thương mại và các sản phẩm bền vững gia tăng giá trị."
+        : "A circular-economy venture upcycling coffee agricultural waste in Dak Lak to reduce CO2 emissions and create value-added commercial Cascara tea.",
+      highlights: [
+        {
+          title: lang === "vi" ? "Chuyển hóa Phế phẩm & Giảm Phát thải" : "Waste Upcycling & Emissions Reduction",
+          desc: lang === "vi"
+            ? "Khởi xướng dự án tận dụng 1,6 triệu tấn phế phụ phẩm cà phê bị đốt hàng năm tại Việt Nam, chuyển hóa thành trà Cascara thương mại đạt chuẩn an toàn vệ sinh thực phẩm."
+            : "Initiated a project transforming CO2-emitting coffee husks in Dak Lak into commercial Cascara tea, addressing 1.6M tons of agricultural waste."
+        },
+        {
+          title: lang === "vi" ? "Quản trị Chi phí (COGS) & Tự lực Vốn" : "Bootstrapping & COGS Optimization",
+          desc: lang === "vi"
+            ? "Tự lực vốn trong giai đoạn đầu; trực tiếp lập bảng kiểm soát giá vốn hàng bán (COGS), quản trị dòng tiền, phân bổ ngân sách và tối ưu hóa giá bán trên từng mẻ sản phẩm."
+            : "Tracked production costs (COGS), structured basic budgets, and optimized pricing during the initial bootstrapping phase."
+        },
+        {
+          title: lang === "vi" ? "Minh bạch Chuỗi cung ứng bằng Mã QR" : "QR-Code Traceability Integration",
+          desc: lang === "vi"
+            ? "Tích hợp hệ thống truy xuất nguồn gốc mã QR trên từng bao bì để minh bạch chuỗi cung ứng từ nông trường tới người tiêu dùng, kết hợp thu thập dữ liệu hành vi khách hàng."
+            : "Integrated QR-code traceability on packaging to ensure radical supply chain transparency and study customer interaction data."
+        },
+        {
+          title: lang === "vi" ? "Tái đầu tư Xã hội cho Buôn Đrăng Phốk" : "Social Reinvestment & Community Impact",
+          desc: lang === "vi"
+            ? "Trích lợi nhuận ban đầu để tài trợ đồ dùng học tập, sách vở và phương tiện cho học sinh tiểu học có hoàn cảnh khó khăn tại Buôn Đrăng Phốk, tỉnh Đắk Lắk."
+            : "Reinvested early profits to fund school supplies and educational equipment for students in Buon Drang Phok, Dak Lak."
+        }
       ],
+      tags: ["Circular Economy", "COGS Budgeting", "Traceability QR", "Cascara Tea", "Carbon Credits", "Buon Drang Phok"]
     },
     {
-      role:
-        lang === "vi"
-          ? "Thực tập sinh Phân tích Kinh doanh & Tài chính"
-          : "Student Intern, Business & Financial Analysis",
-      company:
-        lang === "vi" ? "SI CAFE (Chi nhánh Đắk Lắk)" : "SI CAFE (Dak Lak Branch)",
-      period: lang === "vi" ? "Tháng 7 - Tháng 8/2025" : "Jul . Aug 2025",
-      bullets: [
-        lang === "vi"
-          ? "Quan sát quy trình vận hành chuỗi cung ứng và kiểm toán số liệu nhập kho tại cơ sở chế biến cà phê địa phương."
-          : "Shadowed operational supply-chain workflows and audited inventory data entry at a local coffee processing facility.",
-        lang === "vi"
-          ? "Áp dụng lý thuyết kinh tế học vào thực tế vận hành cơ sở nông nghiệp và logistics chuỗi cung ứng hàng ngày."
-          : "Grounded theoretical economics into daily agricultural facility operations and supply-chain logistics.",
-      ],
-    },
-    {
-      role:
-        lang === "vi"
-          ? "Trưởng ban Chuyên môn & Cố vấn Lý thuyết Trò chơi"
-          : "Head of Expert & Mentor of Game Theory",
-      company:
-        lang === "vi"
-          ? "Shark Club (Trưởng ban Chuyên môn) & CLB Kinh doanh Geniusstar (Cố vấn)"
-          : "Shark Club (Head of Expert) & Geniusstar Business Club (Mentor of Game Theory)",
-      period: lang === "vi" ? "2024 . Hiện tại" : "2024 . Present",
-      bullets: [
-        lang === "vi"
-          ? "Trưởng ban Chuyên môn tại Shark Club, biên soạn giáo trình kinh tế và hướng dẫn học sinh phân tích thực nghiệm."
-          : "Head of Expert at Shark Club, curating economic curricula and guiding peers through empirical analysis.",
-        lang === "vi"
-          ? "Cố vấn Lý thuyết Trò chơi tại CLB Kinh doanh Geniusstar, giảng dạy Cân bằng Nash và mô phỏng ra quyết định chiến lược."
-          : "Mentor of Game Theory at Geniusstar Business Club, teaching Nash Equilibrium and strategic decision-making simulations.",
-        lang === "vi"
-          ? "Giảng dạy khung kinh tế tương tác ('2 Quán kem trên bãi biển') giúp học sinh tự suy luận điểm cân bằng thị trường."
-          : "Taught interactive economic frameworks ('2 Ice Cream Shops on a Beach') to help peers deduce market equilibria.",
-        lang === "vi"
-          ? "Điều phối các workshop và cố vấn các đội thi học sinh trong các cuộc thi tình huống kinh doanh."
-          : "Facilitated workshops and mentored youth teams in business case competitions.",
-      ],
-    },
-    {
-      role:
-        lang === "vi"
-          ? "Nhà nghiên cứu Học bổng Toàn phần"
-          : "Fully-Funded Student Researcher",
-      company:
-        lang === "vi"
-          ? "Phòng Lab Vật liệu Tính toán NSYSU (Đài Loan)"
-          : "NSYSU Computational Materials Lab (Taiwan)",
-      period: lang === "vi" ? "Tháng 7/2026" : "Jul 2026",
-      bullets: [
-        lang === "vi"
-          ? "Đạt học bổng 100% tham gia mô phỏng vật liệu tính toán hiệu năng cao tại Đài Loan."
-          : "Awarded a 100% scholarship for high-performance computational materials simulations in Taiwan.",
-        lang === "vi"
-          ? "Làm chủ C++ cơ bản, môi trường Linux/HPC, VESTA và Lý thuyết Phiếm hàm Mật độ (DFT) chỉ trong vài ngày."
-          : "Mastered basic C++, Linux/HPC environments, VESTA, and Density Functional Theory (DFT) within days.",
-        lang === "vi"
-          ? "Nhận thức sâu sắc mô hình tính toán phải phản ánh đúng thực tế vật lý; thuyết trình dự án khởi nghiệp nước thải trước hội đồng giáo sư."
-          : "Realized that computational models must answer to physical ground truths; pitched a wastewater startup to faculty.",
-      ],
-    },
-    {
-      role:
-        lang === "vi"
-          ? "Người sáng lập, Điều phối viên & Nghệ sĩ Độc tấu Đàn T'rưng"
-          : "Founder, Organizer & Traditional Soloist",
-      company:
-        lang === "vi"
-          ? "Dự án Di sản & Giáo dục Văn hóa Đàn T'rưng"
-          : "T'rưng Cultural Education & Heritage Project",
+      title: "T’rưng Cultural Education Project",
+      role: lang === "vi" ? "Người sáng lập & Điều phối viên" : "Founder & Organizer",
       period: lang === "vi" ? "Tháng 11/2024 . Hiện tại" : "Nov 2024 . Present",
-      bullets: [
-        lang === "vi"
-          ? "Hệ thống hóa di sản âm nhạc truyền khẩu Tây Nguyên thành chương trình workshop bài bản tại 12+ trường học cho ~2.300 học sinh."
-          : "Synthesized oral Central Highlands music heritage into structured workshop curricula across 12+ schools for ~2,300 students.",
-        lang === "vi"
-          ? "Quản lý trang truyền thông văn hóa (5.000+ người theo dõi) và số hóa kho lưu trữ biểu diễn YouTube (10.000+ lượt xem)."
-          : "Managed cultural media page (5,000+ followers) and digitized YouTube performance archives (10,000+ views).",
-        lang === "vi"
-          ? "Nghệ sĩ độc tấu chính tại 'Thanh Âm Đất Việt' tại TP.HCM; triển lãm nghệ thuật thị giác tại Bảo tàng Museo ning Angeles, Philippines."
-          : "Lead soloist at 'Thanh Âm Đất Việt' in HCMC; exhibited visual art at Museo ning Angeles, Philippines.",
+      category: lang === "vi" ? "Bảo tồn Văn hóa & Giáo dục Di sản" : "Cultural Heritage & Education",
+      badge: lang === "vi" ? "12+ Trường học • 2.300+ Học sinh" : "12+ Schools • 2,300+ Students",
+      slotId: "build-trung",
+      guideline: {
+        vi: "Ảnh Quỳnh Chi trình diễn đàn T'rưng, tổ chức workshop tương tác hoặc lớp học truyền dạy âm nhạc dân tộc tại các trường học.",
+        en: "Photo of Quynh Chi playing T'rưng, hosting interactive workshops, or teaching indigenous music at schools."
+      },
+      summary: lang === "vi"
+        ? "Sáng kiến giáo dục chuyển hóa di sản âm nhạc truyền khẩu T’rưng Tây Nguyên thành chương trình workshop bài bản nhằm trao quyền và truyền cảm hứng cho thanh thiếu niên."
+        : "An educational initiative transforming indigenous T’rưng oral heritage from the Central Highlands into a structured curriculum to empower local youth.",
+      highlights: [
+        {
+          title: lang === "vi" ? "Hệ thống hóa Di sản Truyền khẩu" : "Synthesizing Oral Traditions",
+          desc: lang === "vi"
+            ? "Từ chối để âm nhạc bản địa mai một thành hiện vật bảo tàng, đã tổng hợp các giai điệu và kỹ thuật diễn tấu T'rưng truyền khẩu thành giáo trình trực quan, sinh động."
+            : "Synthesized indigenous T’rưng oral heritage from the Central Highlands into a structured, engaging educational curriculum."
+        },
+        {
+          title: lang === "vi" ? "Tổ chức Workshop trên 12+ Trường học" : "12+ School Workshops & 2,300+ Students",
+          desc: lang === "vi"
+            ? "Điều phối các buổi biểu diễn và workshop tương tác trực tiếp tại 12+ trường học, thu hút và truyền cảm hứng gìn giữ văn hóa cho hơn 2.300 học sinh."
+            : "Coordinated live performances and interactive workshops across 12+ schools and engaged ~2,300 students."
+        },
+        {
+          title: lang === "vi" ? "Số hóa Kho Lưu trữ & Truyền thông" : "Digital Archive & Social Impact",
+          desc: lang === "vi"
+            ? "Xây dựng và điều hành trang truyền thông văn hóa với 5.000+ người theo dõi; số hóa các tiết mục biểu diễn qua kho lưu trữ YouTube đạt hơn 10.000 lượt xem."
+            : "Managed a cultural media page (5,000+ followers) and digitized performances via a YouTube archive (10,000+ views) to promote cultural preservation."
+        },
+        {
+          title: lang === "vi" ? "Nghệ sĩ Độc tấu & Triển lãm Quốc tế" : "Lead Soloist & International Art Exhibitor",
+          desc: lang === "vi"
+            ? "Nghệ sĩ độc tấu chính tại showcase 'Thanh Âm Đất Việt' (TP.HCM, 2025) cho ~150 khán giả; tác phẩm nghệ thuật thị giác trưng bày tại Bảo tàng Museo ning Angeles, Philippines (2026)."
+            : "Featured lead artist (Soloist) at 'Thanh Am Dat Viet' showcase in HCMC (2025) for ~150 urban attendees; international art exhibitor at Museo ning Angeles, Philippines (2026)."
+        }
       ],
+      tags: ["T'rưng Oral Heritage", "12+ Schools Reached", "2,300+ Students", "YouTube Archive (10k+ Views)", "Lead Soloist"]
     },
+    {
+      title: "Dakonomics Club",
+      role: lang === "vi" ? "Người sáng lập & Chủ tịch" : "Founder & President",
+      period: lang === "vi" ? "Tháng 5/2025 . Hiện tại" : "May 2025 . Present",
+      category: lang === "vi" ? "Lãnh đạo Học thuật & Kinh tế THPT" : "High-School Economics Leadership",
+      badge: lang === "vi" ? "CLB Đầu tiên tại Đắk Lắk • 18 Tỉnh thành" : "First HS Club in Dak Lak • 18 Provinces",
+      slotId: "build-dakonomics",
+      guideline: {
+        vi: "Ảnh đội ngũ nòng cốt CLB Dakonomics, buổi thi giải case Dakonomics Green Ideas Competition, hoặc workshop cố vấn cùng chuyên gia.",
+        en: "Photo of Dakonomics core team, Dakonomics Green Ideas Competition finals, or expert mentoring workshop."
+      },
+      summary: lang === "vi"
+        ? "Câu lạc bộ kinh tế và kinh doanh bậc trung học phổ thông đầu tiên tại tỉnh Đắk Lắk, kiến tạo sân chơi học thuật và tư duy giải case thực chiến cho học sinh vùng cao."
+        : "The first high-school economics and business club in Dak Lak Province, creating a real-world business case solving platform for highland students.",
+      highlights: [
+        {
+          title: lang === "vi" ? "Đội ngũ Nòng cốt & Mạng lưới 5 Trường THPT" : "Core Team & Multi-School Network",
+          desc: lang === "vi"
+            ? "Thành lập và điều hành ban điều hành 9 thành viên, kết nối học sinh trên 5 trường THPT trên địa bàn tỉnh Đắk Lắk để chia sẻ đam mê kinh tế học."
+            : "Established and managed a 9-person core team to connect students across 5 local high schools in Dak Lak Province."
+        },
+        {
+          title: lang === "vi" ? "Xây dựng Ngân hàng Case Study (CaseBank)" : "Digital 'CaseBank' Platform",
+          desc: lang === "vi"
+            ? "Biên soạn kho 'CaseBank' số hóa phân tích các tình huống kinh doanh thực tế, ứng dụng các khung tư duy chiến lược thị trường và mô hình định giá định lượng."
+            : "Built a digital 'CaseBank' analyzing real-world business cases using strategic and pricing frameworks."
+        },
+        {
+          title: lang === "vi" ? "Cuộc thi Dakonomics Green Ideas Competition" : "Dakonomics Green Ideas Competition (SDG 12)",
+          desc: lang === "vi"
+            ? "Khởi xướng cuộc thi giải case kinh doanh tập trung vào Mục tiêu SDG 12 (Tiêu dùng & Sản xuất Bền vững); thu hút thí sinh từ 18 tỉnh thành trên toàn quốc (bao gồm Hà Nội và TP.HCM)."
+            : "Organized a nationwide business case contest focused on SDG 12, engaging participants from 18 provinces including Hanoi and HCMC."
+        },
+        {
+          title: lang === "vi" ? "Hệ thống Đánh giá & Cố vấn Chuyên gia" : "Evaluation Systems & Mentoring Program",
+          desc: lang === "vi"
+            ? "Trực tiếp thiết kế đề bài tình huống và tiêu chí chấm điểm tư duy chiến lược; chọn lọc Top 14 đội bán kết và 7 đội chung kết; tổ chức workshop chuyên môn (50+ học sinh) và chương trình cố vấn cùng chuyên gia Trung tâm Khởi nghiệp Quốc gia và các trường đại học."
+            : "Designed case problems and evaluation rubrics (Top 14 semifinals, 7 finalists); organized workshop (50+ students) with mentors from Vietnam National Startup Support Center and universities."
+        }
+      ],
+      tags: ["First HS Club in Dak Lak", "9-Person Team", "Green Ideas Competition", "18 Provinces", "SDG 12", "Mentoring"]
+    }
   ];
 
   return (
@@ -168,7 +183,7 @@ export default function AboutPage() {
             </div>
             <div>
               <h1 className="font-anton text-3xl sm:text-5xl lg:text-7xl uppercase tracking-tight text-[#242220] break-words">
-                {lang === "vi" ? "VỀ" : "ABOUT"} <span className="text-[#7B0323]">QUỲNH CHI</span>
+                BUILD <span className="text-[#7B0323]">. PHAN HOÀNG QUỲNH CHI</span>
               </h1>
             </div>
           </div>
@@ -244,104 +259,110 @@ export default function AboutPage() {
             </blockquote>
           </div>
 
-          {/* Experience Section */}
-          <div className="mb-24">
-            <div className="flex items-center gap-4 mb-12 pb-6 border-b border-[#1B3B2B]/15">
+          {/* EXPERIENCE & INITIATIVES: 3 Featured Projects */}
+          <div className="mb-20 sm:mb-28">
+            <div className="flex items-center gap-4 mb-8 sm:mb-12 pb-5 sm:pb-6 border-b border-[#1B3B2B]/15">
               <div className="w-12 h-12 rounded-2xl bg-[#1B3B2B] flex items-center justify-center shrink-0 shadow-sm text-white">
                 <Briefcase className="w-6 h-6 text-[#E2ECE5]" />
               </div>
               <div>
-                <h2 className="font-anton text-3xl sm:text-5xl lg:text-6xl uppercase tracking-tight text-[#242220] break-words">
+                <h2 className="font-anton text-2xl sm:text-4xl lg:text-5xl uppercase tracking-tight text-[#242220] break-words">
                   {lang === "vi" ? "KINH NGHIỆM & SÁNG KIẾN" : "EXPERIENCE & INITIATIVES"}
                 </h2>
+                <p className="text-xs sm:text-sm font-mono text-[#7B0323] font-semibold mt-1">
+                  {lang === "vi" ? "3 Dự Án & Sáng Kiến Nổi Bật Dẫn Dắt Bởi Quỳnh Chi" : "3 Flagship Initiatives Led by Quynh Chi"}
+                </p>
               </div>
             </div>
 
-            <div className="space-y-6">
-              {experiences.map((exp, idx) => (
+            <div className="space-y-12 sm:space-y-16">
+              {initiatives.map((item, idx) => (
                 <div
                   key={idx}
-                  className="rounded-3xl border border-[#1B3B2B]/15 bg-[#FFFFFF] blueprint-grid p-4 sm:p-6 lg:p-8 shadow-sm hover:border-[#1B3B2B]/35 transition-colors"
+                  className="rounded-3xl border border-[#1B3B2B]/15 bg-[#FFFFFF] blueprint-grid p-6 sm:p-8 lg:p-10 shadow-sm hover:border-[#1B3B2B]/35 transition-all duration-300"
                 >
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-3 border-b border-[#1B3B2B]/15">
+                  {/* Card Header */}
+                  <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-6 pb-4 border-b border-[#1B3B2B]/15">
                     <div>
-                      <h3 className="font-anton text-xl sm:text-2xl uppercase text-[#242220]">
-                        {exp.role}
+                      <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+                        <span className="font-mono text-xs font-bold text-[#7B0323] uppercase tracking-wider">
+                          {item.category}
+                        </span>
+                        <span className="text-[#1B3B2B]/30">•</span>
+                        <span className="text-xs font-mono font-semibold px-2.5 py-0.5 rounded-full bg-[#7B0323]/10 text-[#7B0323] border border-[#7B0323]/20">
+                          {item.badge}
+                        </span>
+                      </div>
+                      <h3 className="font-anton text-2xl sm:text-3xl lg:text-4xl uppercase text-[#242220] tracking-tight">
+                        {item.title}
                       </h3>
-                      <p className="text-xs sm:text-sm font-semibold text-[#7B0323]">
-                        {exp.company}
+                      <p className="text-sm sm:text-base font-semibold text-[#1B3B2B] mt-0.5">
+                        {item.role}
                       </p>
                     </div>
-                    <span className="font-mono text-xs text-[#1B3B2B] bg-[#FAF7F2] px-3.5 py-1 rounded-full border border-[#1B3B2B]/15 self-start sm:self-auto">
-                      {exp.period}
+                    <span className="font-mono text-xs text-[#1B3B2B] bg-[#FAF7F2] px-4 py-1.5 rounded-full border border-[#1B3B2B]/15 self-start lg:self-auto shrink-0">
+                      {item.period}
                     </span>
                   </div>
 
-                  <ul className="space-y-2 text-xs sm:text-sm text-[#242220]/75">
-                    {exp.bullets.map((bullet, bIdx) => (
-                      <li key={bIdx} className="flex items-start gap-2.5">
-                        <span className="text-[#7B0323] font-bold mt-0.5">•</span>
-                        <span>{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  {/* Card Body: Image Upload + Deep Narrative & Bullets */}
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    {/* Left: Dedicated Photo Upload for this project */}
+                    <div className="lg:col-span-5 flex flex-col gap-3">
+                      <ProjectImageUpload
+                        slotId={item.slotId}
+                        guideline={item.guideline}
+                        aspectRatio="aspect-[4/3]"
+                      />
+                      <p className="text-xs text-[#242220]/60 italic font-mono px-1">
+                        {lang === "vi" ? "Tải ảnh tư liệu / sản phẩm thực tế cho dự án này" : "Upload verified field/product photo for this initiative"}
+                      </p>
+                    </div>
+
+                    {/* Right: Summary & Bullet Breakdown */}
+                    <div className="lg:col-span-7 space-y-4">
+                      <p className="text-sm sm:text-base text-[#242220]/85 font-medium leading-relaxed bg-[#FAF7F2] p-4 rounded-2xl border border-[#1B3B2B]/15">
+                        {item.summary}
+                      </p>
+
+                      <div className="space-y-3 pt-2">
+                        {item.highlights.map((hl, hlIdx) => (
+                          <div key={hlIdx} className="flex items-start gap-3">
+                            <span className="text-[#7B0323] font-bold text-base leading-tight mt-0.5">▪</span>
+                            <div className="text-xs sm:text-sm text-[#242220]/80 leading-relaxed">
+                              <strong className="text-[#242220] font-semibold">{hl.title}: </strong>
+                              {hl.desc}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Tag pill cluster */}
+                      <div className="flex flex-wrap gap-2 pt-4 border-t border-[#1B3B2B]/10">
+                        {item.tags.map((tag, tIdx) => (
+                          <span
+                            key={tIdx}
+                            className="px-2.5 py-1 rounded-full text-[11px] font-mono font-medium bg-[#E2ECE5] text-[#1B3B2B] border border-[#1B3B2B]/15"
+                          >
+                            #{tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               ))}
-            </div>
-          </div>
-
-          {/* Work Snapshots Gallery */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-24">
-            <div className="flex flex-col">
-              <span className="font-anton text-xs uppercase text-[#7B0323] mb-2 tracking-wide">
-                {lang === "vi" ? "Trà Cascara CAFLOOP & Mã QR" : "CAFLOOP Cascara Tea & QR"}
-              </span>
-              <ProjectImageUpload
-                slotId="mind-startup"
-                guideline={{
-                  vi: "Ảnh chế biến vỏ cà phê hoặc bao bì CAFLOOP.",
-                  en: "CAFLOOP coffee husk or packaging photo."
-                }}
-                aspectRatio="aspect-[4/3]"
-              />
-            </div>
-
-            <div className="flex flex-col">
-              <span className="font-anton text-xs uppercase text-[#7B0323] mb-2 tracking-wide">
-                {lang === "vi" ? "Kinh tế lượng định lượng SPSS" : "SPSS Quantitative Econometrics"}
-              </span>
-              <ProjectImageUpload
-                slotId="mind-research"
-                guideline={{
-                  vi: "Ảnh mô hình hồi quy SPSS hoặc số liệu nghiên cứu.",
-                  en: "SPSS regression model or research survey data."
-                }}
-                aspectRatio="aspect-[4/3]"
-              />
-            </div>
-
-            <div className="flex flex-col">
-              <span className="font-anton text-xs uppercase text-[#7B0323] mb-2 tracking-wide">
-                {lang === "vi" ? "Giáo dục văn hóa Đàn T'rưng" : "T'rưng Cultural Education"}
-              </span>
-              <ProjectImageUpload
-                slotId="heart-trung-preservation"
-                guideline={{
-                  vi: "Ảnh trình diễn hoặc lớp học đàn T'rưng.",
-                  en: "T'rưng performance or classroom workshop photo."
-                }}
-                aspectRatio="aspect-[4/3]"
-              />
             </div>
           </div>
         </div>
       </main>
       <PageNav
         prevHref="/"
-        prevLabel={lang === "vi" ? "Trang chủ" : "Home"}
+        prevLabel={lang === "vi" ? "About me: Về Quỳnh Chi" : "About me: Quynh Chi"}
+        prevSub={lang === "vi" ? "Khởi nguồn & Triết lý" : "Origins & Philosophy"}
         nextHref="/the-mind"
-        nextLabel={lang === "vi" ? "Tư Duy" : "The Mind"}
-        nextSub={lang === "vi" ? "Nghiên cứu Định lượng & Khởi nghiệp" : "Quantitative Research & Enterprise"}
+        nextLabel={lang === "vi" ? "Think: Nghiên cứu Dữ liệu" : "Think: Quantitative Research"}
+        nextSub={lang === "vi" ? "Khoa học, SiFarm & Olympic" : "Data, SiFarm & Academic Honors"}
       />
       <Footer />
     </>

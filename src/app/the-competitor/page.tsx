@@ -16,11 +16,11 @@ export default function TheCompetitorPage() {
         <TheCompetitorSection />
         <PageNav
           prevHref="/the-heart"
-          prevLabel={lang === "vi" ? "Trái Tim" : "The Heart"}
-          prevSub={lang === "vi" ? "Văn Hóa & Cộng Đồng" : "Heritage & Community"}
+          prevLabel={lang === "vi" ? "Preserve: Cộng Đồng & Thiện Nguyện" : "Preserve: Community & Philanthropy"}
+          prevSub={lang === "vi" ? "Thiện nguyện, Xã hội & Di sản" : "Charity, Social Action & Heritage"}
           nextHref="/contact"
-          nextLabel={lang === "vi" ? "Liên Hệ" : "Connect"}
-          nextSub={lang === "vi" ? "Kết nối trực tiếp" : "Get in Touch"}
+          nextLabel={lang === "vi" ? "Connect: Liên Hệ" : "Connect: Get in Touch"}
+          nextSub={lang === "vi" ? "Kết nối trực tiếp cùng Quỳnh Chi" : "Direct Connection & Outreach"}
         />
       </main>
       <Footer />

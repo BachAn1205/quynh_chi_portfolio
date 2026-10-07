@@ -16,11 +16,11 @@ export default function TheMindPage() {
         <TheMindSection />
         <PageNav
           prevHref="/about"
-          prevLabel={lang === "vi" ? "Về Tôi" : "About"}
-          prevSub={lang === "vi" ? "Nguồn cội & Triết lý" : "Origins & Philosophy"}
+          prevLabel={lang === "vi" ? "Build: Dự Án & Sáng Kiến" : "Build: Experience & Initiatives"}
+          prevSub={lang === "vi" ? "Khởi nghiệp tuần hoàn, Di sản & CLB" : "Circular Ventures, Heritage & Leadership"}
           nextHref="/the-heart"
-          nextLabel={lang === "vi" ? "Trái Tim" : "The Heart"}
-          nextSub={lang === "vi" ? "Văn Hóa, Đồng Cảm & Cộng Đồng" : "Culture, Empathy & Advocacy"}
+          nextLabel={lang === "vi" ? "Preserve: Cộng Đồng & Thiện Nguyện" : "Preserve: Community & Philanthropy"}
+          nextSub={lang === "vi" ? "Thiện nguyện, Lao động Xã hội & Di sản" : "Charity, Social Action & Heritage"}
         />
       </main>
       <Footer />

@@ -109,6 +109,11 @@ export function Footer() {
               </h4>
               <ul className="space-y-2.5 text-sm text-[#242220]/80 font-medium">
                 <li>
+                  <Link href="/" className="hover:text-[#7B0323] transition-colors">
+                    {t("footer.nav.home")}
+                  </Link>
+                </li>
+                <li>
                   <Link href="/about" className="hover:text-[#7B0323] transition-colors">
                     {t("footer.nav.about")}
                   </Link>

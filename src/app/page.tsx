@@ -16,8 +16,8 @@ export default function Home() {
         <Hero />
         <PageNav
           nextHref="/about"
-          nextLabel={lang === "vi" ? "Về Quỳnh Chi" : "About Quynh Chi"}
-          nextSub={lang === "vi" ? "Khởi nguồn & Triết lý" : "Origins & Philosophy"}
+          nextLabel={lang === "vi" ? "Build: Dự án & Sáng kiến" : "Build: Experience & Initiatives"}
+          nextSub={lang === "vi" ? "Khởi nghiệp tuần hoàn, Di sản & CLB" : "Circular Ventures, Heritage & Leadership"}
         />
       </main>
       <Footer />
