@@ -380,29 +380,18 @@ export function TheCompetitorSection() {
               {current.items.map((item, iIdx) => (
                 <div
                   key={iIdx}
-                  className="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-start justify-between gap-4 group hover:bg-[#1B3B2B]/[0.02] px-3 -mx-3 rounded-2xl transition-colors"
+                  className="py-5 sm:py-6 group hover:bg-[#1B3B2B]/[0.02] px-3 -mx-3 rounded-2xl transition-colors"
                 >
-                  <div className="space-y-1 min-w-0 flex-1">
-                    <div className="flex items-center gap-2 min-w-0">
-                      <h4 className="font-anton text-base sm:text-lg uppercase tracking-tight text-[#242220] group-hover:text-[#7B0323] transition-colors leading-snug flex-1">
-                        {item.title}
-                      </h4>
-                      {item.highlight && (
-                        <span className="w-2 h-2 rounded-full bg-[#7B0323] shrink-0" />
-                      )}
-                    </div>
+                  <div className="space-y-1 min-w-0">
+                    <h4 className="font-anton text-base sm:text-lg uppercase tracking-tight text-[#242220] group-hover:text-[#7B0323] transition-colors leading-snug">
+                      {item.title}
+                    </h4>
                     <p className="text-xs sm:text-sm font-semibold text-[#7B0323]">
                       {item.subtitle}
                     </p>
                     <p className="text-xs text-[#242220]/70 leading-relaxed pt-1">
                       {item.detail}
                     </p>
-                  </div>
-
-                  <div className="shrink-0 self-start">
-                    <span className="px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-[#FAF7F2] border border-[#1B3B2B]/15 text-[#1B3B2B] shadow-xs">
-                      {item.badge}
-                    </span>
                   </div>
                 </div>
               ))}

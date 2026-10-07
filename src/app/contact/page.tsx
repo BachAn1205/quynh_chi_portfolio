@@ -213,9 +213,9 @@ export default function ContactPage() {
 
       <PageNav
         prevHref="/the-competitor"
-        prevLabel={lang === "vi" ? "Thành Tích" : "The Competitor"}
+        prevLabel="The Competitor"
         nextHref="/"
-        nextLabel={lang === "vi" ? "Trang Chủ" : "Back to Home"}
+        nextLabel="About me"
       />
       <Footer />
 

@@ -7,7 +7,7 @@ import { PageNav } from "@/components/ui/page-nav";
 import { useLanguage } from "@/lib/i18n";
 
 export default function TheCompetitorPage() {
-  const { lang } = useLanguage();
+  const { lang, t } = useLanguage();
 
   return (
     <>
@@ -16,11 +16,9 @@ export default function TheCompetitorPage() {
         <TheCompetitorSection />
         <PageNav
           prevHref="/the-heart"
-          prevLabel={lang === "vi" ? "Preserve: Cộng Đồng & Thiện Nguyện" : "Preserve: Community & Philanthropy"}
-          prevSub={lang === "vi" ? "Thiện nguyện, Xã hội & Di sản" : "Charity, Social Action & Heritage"}
+          prevLabel="Preserve"
           nextHref="/contact"
-          nextLabel={lang === "vi" ? "Connect: Liên Hệ" : "Connect: Get in Touch"}
-          nextSub={lang === "vi" ? "Kết nối trực tiếp cùng Quỳnh Chi" : "Direct Connection & Outreach"}
+          nextLabel={t("nav.contact")}
         />
       </main>
       <Footer />

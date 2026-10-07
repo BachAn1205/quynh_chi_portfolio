@@ -4,6 +4,7 @@ import { ProjectImageUpload } from "@/components/ui/project-image-upload";
 import {
   HeartHandshake,
   Music,
+  Palette,
   Bike,
   ShieldAlert,
   GraduationCap,
@@ -12,10 +13,119 @@ import {
 } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 
+interface ProjectSubItem {
+  label: string;
+  text: string;
+}
+
+interface HeartProject {
+  id: string;
+  icon: any;
+  category: string;
+  badge: string;
+  title: string;
+  role: string;
+  description: string;
+  impact?: string;
+  subItems?: ProjectSubItem[];
+  slotId: string;
+  guideline: {
+    vi: string;
+    en: string;
+  };
+  accent: string;
+}
+
 export function TheHeartSection() {
   const { lang, t } = useLanguage();
 
-  const projects = [
+  const projects: HeartProject[] = [
+    {
+      id: "trung-preservation",
+      icon: Music,
+      category:
+        lang === "vi"
+          ? "Bảo tồn Văn hóa & Giáo dục Di sản"
+          : "Cultural Heritage & Educational Preservation",
+      badge:
+        lang === "vi"
+          ? "2.300+ Học sinh • 12+ Trường • 10k+ Views"
+          : "2,300+ Students • 12+ Schools • 10k+ Views",
+      title:
+        lang === "vi"
+          ? "Giáo dục Di sản Văn hóa Đàn T'rưng cho Thế hệ Trẻ"
+          : "T'rưng Cultural Heritage & Youth Education Project",
+      role:
+        lang === "vi"
+          ? "Người sáng lập, Điều phối viên & Nghệ sĩ Độc tấu (Tháng 11/2024 . Hiện tại)"
+          : "Founder, Organizer & Traditional Soloist (Nov 2024 . Present)",
+      description:
+        lang === "vi"
+          ? "Từ chối để âm nhạc bản địa trở thành hiện vật bảo tàng, tôi khởi xướng sáng kiến đưa văn hóa cồng chiêng và đàn T’rưng trở lại đời sống giới trẻ. Hệ thống hóa di sản truyền khẩu Tây Nguyên thành giáo trình trực quan; điều phối chuỗi biểu diễn và workshop tương tác tại 12+ trường học, tiếp cận ~2.300 học sinh; quản lý trang truyền thông (5.000+ followers) và số hóa kho lưu trữ YouTube (10.000+ views); nghệ sĩ độc tấu tại showcase ‘Thanh Âm Đất Việt’ (TP.HCM, 2025) và triển lãm nghệ thuật tại Bảo tàng Museo ning Angeles, Philippines (2026)."
+          : "Refusing to let indigenous music become a museum relic, I launched an educational initiative to bring Gong culture and T'rưng back into youth life. Synthesized Central Highlands oral traditions into visual curricula; coordinated performances and interactive workshops across 12+ schools engaging ~2,300 students; managed media page (5,000+ followers) and digitized YouTube archive (10,000+ views); lead soloist at 'Thanh Am Dat Viet' showcase (HCMC, 2025) and art exhibitor at Museo ning Angeles, Philippines (2026).",
+      impact:
+        lang === "vi"
+          ? "Tác động văn hóa rộng khắp: 2.300+ học sinh được tiếp cận đàn T’rưng trực tiếp; 10.000+ lượt xem số hóa toàn cầu; gắn kết văn hóa Tây Nguyên với đô thị hiện đại."
+          : "Broad Cultural Impact: 2,300+ students directly experienced the T'rưng instrument; 10,000+ global digital archive views; bridged highland heritage with modern metropolitan audiences.",
+      slotId: "heart-trung-preservation",
+      guideline: {
+        vi: "Ảnh lớp học truyền dạy đàn T'rưng, buổi hòa nhạc tương tác cùng học sinh tại 12+ trường học hoặc ảnh độc tấu trên sân khấu.",
+        en: "Photo teaching T'rưng at schools, interactive workshops with 2,300+ students, or live stage performance."
+      },
+      accent: "text-[#1B3B2B]",
+    },
+    {
+      id: "artistic-voice",
+      icon: Palette,
+      category:
+        lang === "vi"
+          ? "Đại sứ Văn hóa & Biểu đạt Nghệ thuật"
+          : "Cultural Ambassadorship & Artistic Expression",
+      badge:
+        lang === "vi"
+          ? "Nghệ sĩ Độc tấu chính & Triển lãm Quốc tế"
+          : "Lead Soloist & International Exhibitor",
+      title:
+        lang === "vi"
+          ? "Tiếng nói Nghệ sĩ: Gắn kết Khoảng cách qua Nghệ thuật"
+          : "The Artist's Voice: Bridging Gaps Through Arts",
+      role:
+        lang === "vi"
+          ? "Nghệ sĩ Độc tấu Đàn T'rưng & Tác giả Triển lãm Quốc tế"
+          : "Traditional T'rưng Soloist & International Exhibitor",
+      description:
+        lang === "vi"
+          ? "Nghệ thuật là cầu nối trực giác và sâu sắc nhất để bảo tồn văn hóa. Tôi tích cực mang tâm hồn Tây Nguyên đến với công chúng rộng rãi thông qua cả âm nhạc và nghệ thuật thị giác."
+          : "Art is the most visceral medium for cultural preservation. I actively bring the soul of the Central Highlands to broader audiences through both music and visual arts.",
+      subItems: [
+        {
+          label:
+            lang === "vi"
+              ? "Biểu diễn Âm nhạc (Thanh Âm Đất Việt 2025, TP.HCM)"
+              : "Musical Performance (Thanh Âm Đất Việt 2025, HCMC)",
+          text:
+            lang === "vi"
+              ? "Nghệ sĩ độc tấu chính (Đàn T'rưng truyền thống) cho ~150 khán giả đô thị, dùng nghệ thuật để thu hẹp khoảng cách văn hóa giữa vùng cao và đô thị hiện đại."
+              : "Served as the featured lead artist (Traditional T'rưng Soloist) for ~150 urban attendees, intentionally using art to bridge the cultural gap between rural highlands and the modern metropolis.",
+        },
+        {
+          label:
+            lang === "vi"
+              ? "Nghệ thuật Thị giác & Triển lãm Quốc tế (Philippines 2026)"
+              : "Visual Arts & International Exhibition (Philippines 2026)",
+          text:
+            lang === "vi"
+              ? "Tác phẩm tranh 'Bên dòng nước Thủy điện Sêrêpôk 3, Đắk Lắk' được trưng bày tại triển lãm quốc tế ở Bảo tàng Museo ning Angeles (Tháng 7/2026), lan tỏa thông điệp sinh thái quê hương ra thế giới."
+              : "My artwork, 'Along the Waters of Srepok 3 Hydropower Plant, Dak Lak,' was featured in an international exhibition at the Museo ning Angeles, Philippines (Jul 2026), projecting hometown ecological narratives on a global stage.",
+        },
+      ],
+      slotId: "heart-artistic-voice",
+      guideline: {
+        vi: "Ảnh biểu diễn tại Thanh Âm Đất Việt hoặc ảnh tranh nghệ thuật trưng bày tại triển lãm Philippines.",
+        en: "Performance at Thanh Âm Đất Việt or artwork in Philippines exhibition."
+      },
+      accent: "text-[#8C5A35]",
+    },
     {
       id: "ea-wer",
       icon: Bike,
@@ -143,34 +253,6 @@ export function TheHeartSection() {
       },
       accent: "text-[#7B0323]",
     },
-    {
-      id: "trung-preservation",
-      icon: Music,
-      category: lang === "vi" ? "Bảo tồn Văn hóa & Giáo dục Di sản" : "Cultural Heritage & Educational Preservation",
-      badge: lang === "vi" ? "2.300+ Học sinh • 12+ Trường • 10k+ Views" : "2,300+ Students • 12+ Schools • 10k+ Views",
-      title:
-        lang === "vi"
-          ? "Giáo dục Di sản Văn hóa Đàn T'rưng cho Thế hệ Trẻ"
-          : "T'rưng Cultural Heritage & Youth Education Project",
-      role:
-        lang === "vi"
-          ? "Người sáng lập, Điều phối viên & Nghệ sĩ Độc tấu (Tháng 11/2024 . Hiện tại)"
-          : "Founder, Organizer & Traditional Soloist (Nov 2024 . Present)",
-      description:
-        lang === "vi"
-          ? "Từ chối để âm nhạc bản địa trở thành hiện vật bảo tàng, tôi khởi xướng sáng kiến đưa văn hóa cồng chiêng và đàn T'rưng trở lại đời sống giới trẻ. Hệ thống hóa di sản truyền khẩu Tây Nguyên thành giáo trình trực quan; điều phối chuỗi biểu diễn và workshop tương tác tại 12+ trường học, tiếp cận ~2.300 học sinh; quản lý trang truyền thông (5.000+ followers) và số hóa kho lưu trữ YouTube (10.000+ views); nghệ sĩ độc tấu tại showcase 'Thanh Âm Đất Việt' (TP.HCM, 2025) và triển lãm nghệ thuật tại Bảo tàng Museo ning Angeles, Philippines (2026)."
-          : "Refusing to let indigenous music become a museum relic, launched an educational initiative synthesizing oral T'rưng traditions into structured curricula across 12+ schools for ~2,300 students. Managed media channel (5,000+ followers) and digitized YouTube archive (10,000+ views); lead soloist at 'Thanh Am Dat Viet' in HCMC and visual art exhibitor at Museo ning Angeles, Philippines.",
-      impact:
-        lang === "vi"
-          ? "Tác động văn hóa rộng khắp: 2.300+ học sinh được tiếp cận đàn T'rưng trực tiếp; 10.000+ lượt xem số hóa toàn cầu; gắn kết văn hóa Tây Nguyên với đô thị hiện đại."
-          : "Cultural Impact: 2,300+ students directly engaged with T'rưng workshops; 10,000+ digital archive views; bridged highland heritage with urban metropolitan audiences.",
-      slotId: "heart-trung-preservation",
-      guideline: {
-        vi: "Ảnh lớp học truyền dạy đàn T'rưng, buổi hòa nhạc tương tác cùng học sinh tại 12+ trường học hoặc ảnh độc tấu trên sân khấu.",
-        en: "Photo teaching T'rưng at schools, interactive workshops with 2,300+ students, or live stage performance."
-      },
-      accent: "text-[#1B3B2B]",
-    },
   ];
 
   return (
@@ -186,9 +268,6 @@ export function TheHeartSection() {
               <h2 className="font-anton text-3xl sm:text-5xl lg:text-6xl uppercase tracking-tight text-[#242220]">
                 PRESERVE <span className="text-[#7B0323]">. PHAN HOÀNG QUỲNH CHI</span>
               </h2>
-              <p className="text-xs sm:text-sm font-mono text-[#7B0323] font-semibold mt-1">
-                {lang === "vi" ? "Dự Án Cộng Đồng, Thiện Nguyện, Lao Động Xã Hội & Bảo Tồn Di Sản" : "Community Initiatives, Philanthropy, Public Service & Cultural Preservation"}
-              </p>
             </div>
           </div>
         </div>
@@ -210,10 +289,6 @@ export function TheHeartSection() {
 
             {/* Showcase story */}
             <div className="lg:col-span-5 space-y-4 self-center">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#7B0323]/10 text-[#7B0323] border border-[#7B0323]/20 text-xs font-mono font-semibold">
-                <Music className="w-3.5 h-3.5" />
-                <span>{t("heart.showcase.badge")}</span>
-              </div>
               <h3 className="font-anton text-xl sm:text-3xl uppercase tracking-tight text-[#242220] leading-tight">
                 {t("heart.showcase.title")}
               </h3>
@@ -231,7 +306,7 @@ export function TheHeartSection() {
           </div>
         </div>
 
-        {/* 5 Project Cards Grid */}
+        {/* Project Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {projects.map((project, idx) => {
             const Icon = project.icon;
@@ -254,9 +329,6 @@ export function TheHeartSection() {
                         {project.category}
                       </span>
                     </div>
-                    <span className="self-start sm:self-auto text-xs font-mono font-semibold px-3 py-1 rounded-full bg-[#7B0323]/10 text-[#7B0323] border border-[#7B0323]/20 shrink-0">
-                      {project.badge}
-                    </span>
                   </div>
 
                   {/* Title & Role */}
@@ -272,9 +344,25 @@ export function TheHeartSection() {
                     {project.description}
                   </p>
 
+                  {/* Sub-items if present */}
+                  {project.subItems && (
+                    <div className="space-y-2.5 pt-2 mb-4">
+                      {project.subItems.map((sub, sIdx) => (
+                        <div key={sIdx} className="p-3.5 rounded-2xl bg-[#FAF7F2] border border-[#1B3B2B]/15 text-xs">
+                          <span className="font-bold text-[#242220] block mb-1">
+                            {sub.label}
+                          </span>
+                          <span className="text-[#242220]/70 leading-relaxed block">
+                            {sub.text}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
                   {/* Impact detail if present */}
                   {project.impact && (
-                    <div className="mt-3 p-3 rounded-xl bg-[#E2ECE5]/50 border border-[#1B3B2B]/20 text-xs text-[#1B3B2B] font-medium">
+                    <div className="mt-3 p-3.5 rounded-2xl bg-[#E2ECE5]/50 border border-[#1B3B2B]/20 text-xs text-[#1B3B2B] font-medium mb-4">
                       {project.impact}
                     </div>
                   )}

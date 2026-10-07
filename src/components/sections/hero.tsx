@@ -164,12 +164,6 @@ export function Hero() {
                 {/* Header: 01, Slogan, Intro & View Project CTA */}
                 <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-6 relative z-20">
                   <div className="flex-1 min-w-0">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#7B0323]/10 border border-[#7B0323]/20 mb-2">
-                      <span className="font-mono text-xs font-bold text-[#7B0323]">01</span>
-                      <span className="text-[10px] font-mono uppercase text-[#7B0323] font-semibold tracking-wider">
-                        {t("hero.slide0.category")}
-                      </span>
-                    </div>
                     <h2 className="font-anton text-2xl sm:text-3xl lg:text-4xl uppercase text-[#242220] tracking-tight leading-tight">
                       {t("hero.cafloop.slogan")}
                     </h2>
@@ -267,14 +261,6 @@ export function Hero() {
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-6 relative z-20">
                   <div className="flex-1 min-w-0">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#7B0323]/10 border border-[#7B0323]/20 mb-2">
-                      <span className="font-mono text-xs font-bold text-[#7B0323]">
-                        0{activeSlide + 1}
-                      </span>
-                      <span className="text-[10px] font-mono uppercase text-[#7B0323] font-semibold tracking-wider">
-                        {current.category}
-                      </span>
-                    </div>
                     <h2 className="font-anton text-xl sm:text-3xl lg:text-4xl uppercase text-[#242220] tracking-tight">
                       {current.title}
                     </h2>

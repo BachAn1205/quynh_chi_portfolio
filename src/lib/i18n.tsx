@@ -31,7 +31,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "nav.resume": "Resume",
 
     // Hero
-    "hero.subtitle": "Think. Build. Preserve. — Exploring economics, data, entrepreneurship, and cultural heritage from the Central Highlands.",
+    "hero.subtitle": "Think. Build. Preserve.",
     "hero.cta.explore": "What I’m Building",
     "hero.cta.resume": "View Full Resume",
     "hero.badge.field": "Central Highlands Field Research",
@@ -72,10 +72,10 @@ export const translations: Record<Language, Record<string, string>> = {
     // About
     "about.title": "ABOUT ME",
     "about.headline": "The Mind of an Analyst. The Heart of the Highlands.",
-    "about.p1": "Growing up in Dak Lak, the coffee capital of Vietnam, my childhood was defined by two distinct sensory memories: the resonant echoes of the indigenous T'rưng instrument fading through neighborhood loudspeakers, and the acrid smell of coffee husks burning along the highways. For a long time, I accepted these simply as the background of my hometown.",
-    "about.p2": "But as I grew older, the data began to tell a different, more urgent story. I learned that the 1.6 million tons of agricultural waste burned annually in Vietnam generated 1.8 million tons of CO2, stripping farmers of over $80 million in potential carbon market value simply because they lacked the Data Science tools for Measurement, Reporting, and Verification (MRV). Similarly, behind the stage lights, T'rưng artisans were abandoning their craft because cultural nostalgia alone could not sustain a livelihood without a viable economic ecosystem.",
-    "about.p3": "These harsh realities taught me a vital lesson: empathy is merely a starting point. To protect what I love, I need empirical tools. Economics provides me with the systems-thinking required to design sustainable value chains, while Data Science equips me with the evidence needed to transform invisible assets, from a musical note to a carbon credit, into measurable, equitable impact. I don't just crunch numbers; I code solutions that protect the soil and elevate the soul of the Central Highlands.",
-    "about.quote": "“I don't just crunch numbers; I code solutions that protect the soil and elevate the soul of the Central Highlands.”",
+    "about.p1": "Growing up in Dak Lak – the coffee capital of Vietnam, my childhood was defined by two familiar scenes: the resonant echoes of the indigenous T'rưng instrument fading through neighborhood loudspeakers, and the acrid smell of coffee husks burning along the roads at harvest end. For a long time, I accepted these simply as the background of my hometown.",
+    "about.p2": "But when accessing analytical tools, reality emerged in urgent numbers. I learned that the 1.6 million tons of agricultural waste burned annually in Vietnam generated 1.8 million tons of CO2, stripping farmers of over $80 million in potential carbon market value simply because they lacked the tools for Measurement, Reporting, and Verification. Similarly, T'rưng artisans were abandoning their craft because cultural nostalgia alone could not sustain a livelihood without a viable economic ecosystem.",
+    "about.p3": "Observing that reality gave me a clear perspective: empathy is merely a starting point. To protect what I love, I need empirical tools. Economics provides me with systems thinking to design sustainable value chains; Data Science equips me with evidence to transform invisible assets – from a musical note to a carbon credit – into measurable and equitable impact.",
+    "about.quote": "“Dùng dữ liệu và kinh tế học để tối ưu hóa chuỗi giá trị nông nghiệp và bảo vệ bản sắc Tây Nguyên”",
     "about.methods": "Core Methodologies & Research Focus",
     "about.photo.caption": "Translating Highland Realities Into Empirical Models",
     "about.photo.label": "Grounded Quantitative Research",
@@ -159,7 +159,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "nav.resume": "Hồ sơ",
 
     // Hero
-    "hero.subtitle": "Think. Build. Preserve. — Khám phá kinh tế, dữ liệu, khởi nghiệp và di sản văn hóa Tây Nguyên.",
+    "hero.subtitle": "Think. Build. Preserve.",
     "hero.cta.explore": "What I’m Building",
     "hero.cta.resume": "Xem CV",
     "hero.badge.field": "Nghiên cứu thực địa Tây Nguyên",
@@ -200,10 +200,10 @@ export const translations: Record<Language, Record<string, string>> = {
     // About
     "about.title": "VỀ TÔI",
     "about.headline": "Tư Duy của Nhà Phân Tích. Trái Tim của Vùng Cao.",
-    "about.p1": "Lớn lên ở Đắk Lắk, thủ phủ cà phê của Việt Nam, tuổi thơ tôi gắn liền với hai ký ức cảm quan: tiếng vang vọng của đàn T'rưng bản địa qua loa phát thanh xóm nhỏ, và mùi vỏ cà phê cháy dọc các con đường. Trong một thời gian dài, tôi chỉ coi đó là phông nền quen thuộc của quê hương.",
-    "about.p2": "Nhưng khi lớn lên, dữ liệu bắt đầu kể một câu chuyện khác, cấp bách hơn. Tôi nhận ra rằng 1,6 triệu tấn phế phụ phẩm nông nghiệp bị đốt hàng năm tại Việt Nam tạo ra 1,8 triệu tấn CO2, tước đoạt của nông dân hơn 80 triệu đô la giá trị thị trường carbon tiềm năng chỉ vì thiếu công cụ Đo lường, Báo cáo và Xác minh (MRV). Tương tự, các nghệ nhân T'rưng đang bỏ nghề vì hoài niệm văn hóa không thể nuôi sống họ mà không có hệ sinh thái kinh tế bền vững.",
-    "about.p3": "Những thực tế nghiệt ngã đó dạy tôi một bài học quan trọng: đồng cảm chỉ là điểm khởi đầu. Để bảo vệ những gì tôi yêu thương, tôi cần công cụ thực nghiệm. Kinh tế học cho tôi tư duy hệ thống để thiết kế chuỗi giá trị bền vững, còn Khoa học Dữ liệu trang bị cho tôi bằng chứng cần thiết để biến các tài sản vô hình, từ một nốt nhạc đến một tín chỉ carbon, thành tác động đo lường được và công bằng.",
-    "about.quote": "“Tôi không chỉ tính toán những con số; tôi lập trình những giải pháp bảo vệ đất mẹ và nâng tầm tâm hồn Tây Nguyên.”",
+    "about.p1": "Lớn lên ở Đắk Lắk – thủ phủ cà phê của Việt Nam, tuổi thơ tôi gắn liền với hai hình ảnh quen thuộc: tiếng vang vọng của đàn T’rưng bản địa qua loa phát thanh xóm nhỏ, và mùi vỏ cà phê cháy dọc các con đường cuối vụ mùa. Trong một thời gian dài, tôi chỉ coi đó là phông nền quen thuộc của quê hương.",
+    "about.p2": "Nhưng khi tiếp cận với các công cụ phân tích, thực tế hiện lên bằng những con số cấp bách hơn. Tôi nhận ra rằng 1,6 triệu tấn phế phụ phẩm nông nghiệp bị đốt hàng năm tại Việt Nam tạo ra 1,8 triệu tấn CO2, tước đoạt của nông dân hơn 80 triệu đô la giá trị thị trường carbon tiềm năng chỉ vì thiếu công cụ Đo lường, Báo cáo và Xác minh. Tương tự, các nghệ nhân T'rưng đang bỏ nghề vì hoài niệm văn hóa không thể nuôi sống họ mà không có hệ sinh thái kinh tế bền vững.",
+    "about.p3": "Quan sát thực tiễn ấy cho tôi một góc nhìn rõ ràng: đồng cảm chỉ là điểm khởi đầu. Để bảo vệ những gì mình yêu thương, tôi cần công cụ thực nghiệm. Kinh tế học cho tôi tư duy hệ thống để thiết kế chuỗi giá trị bền vững, còn Khoa học Dữ liệu trang bị cho tôi bằng chứng cần thiết để biến các tài sản vô hình, từ một nốt nhạc đến một tín chỉ carbon, thành tác động đo lường được và công bằng.",
+    "about.quote": "“Dùng dữ liệu và kinh tế học để tối ưu hóa chuỗi giá trị nông nghiệp và bảo vệ bản sắc Tây Nguyên”",
     "about.methods": "Phương pháp & Trọng tâm nghiên cứu",
     "about.photo.caption": "Chuyển hóa Thực tế Tây Nguyên thành Mô hình Thực nghiệm",
     "about.photo.label": "Nghiên cứu định lượng thực địa",

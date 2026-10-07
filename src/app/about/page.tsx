@@ -45,10 +45,9 @@ export default function AboutPage() {
   const initiatives = [
     {
       title: "CAFLOOP (Green Coffee Husk Project)",
-      role: lang === "vi" ? "Người sáng lập & Chiến lược Sản phẩm" : "Founder & Product Strategist",
+      role: lang === "vi" ? "Người sáng lập" : "Founder",
       period: lang === "vi" ? "Tháng 9/2024 . Hiện tại" : "Sep 2024 . Present",
       category: lang === "vi" ? "Kinh tế tuần hoàn & Khởi nghiệp" : "Circular Economy & Venture",
-      badge: lang === "vi" ? "1,6M Tấn Phế phẩm • Tín chỉ Carbon" : "1.6M Tons Ag Waste • Carbon Credits",
       slotId: "build-cafloop",
       guideline: {
         vi: "Ảnh Quỳnh Chi đang trực tiếp nghiên cứu vỏ cà phê / sản phẩm trà Cascara / quy trình sấy chế biến / bao bì sản phẩm có mã QR.",
@@ -86,11 +85,51 @@ export default function AboutPage() {
       tags: ["Circular Economy", "COGS Budgeting", "Traceability QR", "Cascara Tea", "Carbon Credits", "Buon Drang Phok"]
     },
     {
+      title: "Dakonomics Club",
+      role: lang === "vi" ? "Người sáng lập & Chủ tịch" : "Founder & President",
+      period: lang === "vi" ? "Tháng 5/2025 . Hiện tại" : "May 2025 . Present",
+      category: lang === "vi" ? "Lãnh đạo Học thuật & Kinh tế THPT" : "High-School Economics Leadership",
+      slotId: "build-dakonomics",
+      guideline: {
+        vi: "Ảnh đội ngũ nòng cốt CLB Dakonomics, buổi thi giải case Dakonomics Green Ideas Competition, hoặc workshop cố vấn cùng chuyên gia.",
+        en: "Photo of Dakonomics core team, Dakonomics Green Ideas Competition finals, or expert mentoring workshop."
+      },
+      summary: lang === "vi"
+        ? "Câu lạc bộ kinh tế và kinh doanh bậc trung học phổ thông đầu tiên tại tỉnh Đắk Lắk, kiến tạo sân chơi học thuật và tư duy giải case thực chiến cho học sinh vùng cao."
+        : "The first high-school economics and business club in Dak Lak Province, creating a real-world business case solving platform for highland students.",
+      highlights: [
+        {
+          title: lang === "vi" ? "Đội ngũ Nòng cốt & Mạng lưới 5 Trường THPT" : "Core Team & Multi-School Network",
+          desc: lang === "vi"
+            ? "Thành lập và điều hành ban điều hành 9 thành viên, kết nối học sinh trên 5 trường THPT trên địa bàn tỉnh Đắk Lắk để chia sẻ đam mê kinh tế học."
+            : "Established and managed a 9-person core team to connect students across 5 local high schools in Dak Lak Province."
+        },
+        {
+          title: lang === "vi" ? "Xây dựng Ngân hàng Case Study (CaseBank)" : "Digital 'CaseBank' Platform",
+          desc: lang === "vi"
+            ? "Biên soạn kho 'CaseBank' số hóa phân tích các tình huống kinh doanh thực tế, ứng dụng các khung tư duy chiến lược thị trường và mô hình định giá định lượng."
+            : "Built a digital 'CaseBank' analyzing real-world business cases using strategic and pricing frameworks."
+        },
+        {
+          title: lang === "vi" ? "Cuộc thi Dakonomics Green Ideas Competition" : "Dakonomics Green Ideas Competition (SDG 12)",
+          desc: lang === "vi"
+            ? "Khởi xướng cuộc thi giải case kinh doanh tập trung vào Mục tiêu SDG 12 (Tiêu dùng & Sản xuất Bền vững); thu hút thí sinh từ 18 tỉnh thành trên toàn quốc (bao gồm Hà Nội và TP.HCM)."
+            : "Organized a nationwide business case contest focused on SDG 12, engaging participants from 18 provinces including Hanoi and HCMC."
+        },
+        {
+          title: lang === "vi" ? "Hệ thống Đánh giá & Cố vấn Chuyên gia" : "Evaluation Systems & Mentoring Program",
+          desc: lang === "vi"
+            ? "Trực tiếp thiết đề bài tình huống và tiêu chí chấm điểm tư duy chiến lược; chọn lọc Top 14 đội bán kết và 7 đội chung kết; tổ chức workshop chuyên môn (50+ học sinh) và chương trình cố vấn cùng chuyên gia Trung tâm Khởi nghiệp Quốc gia và các trường đại học."
+            : "Designed case problems and evaluation rubrics (Top 14 semifinals, 7 finalists); organized workshop (50+ students) with mentors from Vietnam National Startup Support Center and universities."
+        }
+      ],
+      tags: ["First HS Club in Dak Lak", "9-Person Team", "Green Ideas Competition", "18 Provinces", "SDG 12", "Mentoring"]
+    },
+    {
       title: "T’rưng Cultural Education Project",
       role: lang === "vi" ? "Người sáng lập & Điều phối viên" : "Founder & Organizer",
       period: lang === "vi" ? "Tháng 11/2024 . Hiện tại" : "Nov 2024 . Present",
       category: lang === "vi" ? "Bảo tồn Văn hóa & Giáo dục Di sản" : "Cultural Heritage & Education",
-      badge: lang === "vi" ? "12+ Trường học • 2.300+ Học sinh" : "12+ Schools • 2,300+ Students",
       slotId: "build-trung",
       guideline: {
         vi: "Ảnh Quỳnh Chi trình diễn đàn T'rưng, tổ chức workshop tương tác hoặc lớp học truyền dạy âm nhạc dân tộc tại các trường học.",
@@ -126,48 +165,6 @@ export default function AboutPage() {
         }
       ],
       tags: ["T'rưng Oral Heritage", "12+ Schools Reached", "2,300+ Students", "YouTube Archive (10k+ Views)", "Lead Soloist"]
-    },
-    {
-      title: "Dakonomics Club",
-      role: lang === "vi" ? "Người sáng lập & Chủ tịch" : "Founder & President",
-      period: lang === "vi" ? "Tháng 5/2025 . Hiện tại" : "May 2025 . Present",
-      category: lang === "vi" ? "Lãnh đạo Học thuật & Kinh tế THPT" : "High-School Economics Leadership",
-      badge: lang === "vi" ? "CLB Đầu tiên tại Đắk Lắk • 18 Tỉnh thành" : "First HS Club in Dak Lak • 18 Provinces",
-      slotId: "build-dakonomics",
-      guideline: {
-        vi: "Ảnh đội ngũ nòng cốt CLB Dakonomics, buổi thi giải case Dakonomics Green Ideas Competition, hoặc workshop cố vấn cùng chuyên gia.",
-        en: "Photo of Dakonomics core team, Dakonomics Green Ideas Competition finals, or expert mentoring workshop."
-      },
-      summary: lang === "vi"
-        ? "Câu lạc bộ kinh tế và kinh doanh bậc trung học phổ thông đầu tiên tại tỉnh Đắk Lắk, kiến tạo sân chơi học thuật và tư duy giải case thực chiến cho học sinh vùng cao."
-        : "The first high-school economics and business club in Dak Lak Province, creating a real-world business case solving platform for highland students.",
-      highlights: [
-        {
-          title: lang === "vi" ? "Đội ngũ Nòng cốt & Mạng lưới 5 Trường THPT" : "Core Team & Multi-School Network",
-          desc: lang === "vi"
-            ? "Thành lập và điều hành ban điều hành 9 thành viên, kết nối học sinh trên 5 trường THPT trên địa bàn tỉnh Đắk Lắk để chia sẻ đam mê kinh tế học."
-            : "Established and managed a 9-person core team to connect students across 5 local high schools in Dak Lak Province."
-        },
-        {
-          title: lang === "vi" ? "Xây dựng Ngân hàng Case Study (CaseBank)" : "Digital 'CaseBank' Platform",
-          desc: lang === "vi"
-            ? "Biên soạn kho 'CaseBank' số hóa phân tích các tình huống kinh doanh thực tế, ứng dụng các khung tư duy chiến lược thị trường và mô hình định giá định lượng."
-            : "Built a digital 'CaseBank' analyzing real-world business cases using strategic and pricing frameworks."
-        },
-        {
-          title: lang === "vi" ? "Cuộc thi Dakonomics Green Ideas Competition" : "Dakonomics Green Ideas Competition (SDG 12)",
-          desc: lang === "vi"
-            ? "Khởi xướng cuộc thi giải case kinh doanh tập trung vào Mục tiêu SDG 12 (Tiêu dùng & Sản xuất Bền vững); thu hút thí sinh từ 18 tỉnh thành trên toàn quốc (bao gồm Hà Nội và TP.HCM)."
-            : "Organized a nationwide business case contest focused on SDG 12, engaging participants from 18 provinces including Hanoi and HCMC."
-        },
-        {
-          title: lang === "vi" ? "Hệ thống Đánh giá & Cố vấn Chuyên gia" : "Evaluation Systems & Mentoring Program",
-          desc: lang === "vi"
-            ? "Trực tiếp thiết kế đề bài tình huống và tiêu chí chấm điểm tư duy chiến lược; chọn lọc Top 14 đội bán kết và 7 đội chung kết; tổ chức workshop chuyên môn (50+ học sinh) và chương trình cố vấn cùng chuyên gia Trung tâm Khởi nghiệp Quốc gia và các trường đại học."
-            : "Designed case problems and evaluation rubrics (Top 14 semifinals, 7 finalists); organized workshop (50+ students) with mentors from Vietnam National Startup Support Center and universities."
-        }
-      ],
-      tags: ["First HS Club in Dak Lak", "9-Person Team", "Green Ideas Competition", "18 Provinces", "SDG 12", "Mentoring"]
     }
   ];
 
@@ -288,10 +285,6 @@ export default function AboutPage() {
                         <span className="font-mono text-xs font-bold text-[#7B0323] uppercase tracking-wider">
                           {item.category}
                         </span>
-                        <span className="text-[#1B3B2B]/30">•</span>
-                        <span className="text-xs font-mono font-semibold px-2.5 py-0.5 rounded-full bg-[#7B0323]/10 text-[#7B0323] border border-[#7B0323]/20">
-                          {item.badge}
-                        </span>
                       </div>
                       <h3 className="font-anton text-2xl sm:text-3xl lg:text-4xl uppercase text-[#242220] tracking-tight">
                         {item.title}
@@ -337,17 +330,7 @@ export default function AboutPage() {
                         ))}
                       </div>
 
-                      {/* Tag pill cluster */}
-                      <div className="flex flex-wrap gap-2 pt-4 border-t border-[#1B3B2B]/10">
-                        {item.tags.map((tag, tIdx) => (
-                          <span
-                            key={tIdx}
-                            className="px-2.5 py-1 rounded-full text-[11px] font-mono font-medium bg-[#E2ECE5] text-[#1B3B2B] border border-[#1B3B2B]/15"
-                          >
-                            #{tag}
-                          </span>
-                        ))}
-                      </div>
+
                     </div>
                   </div>
                 </div>
@@ -358,11 +341,9 @@ export default function AboutPage() {
       </main>
       <PageNav
         prevHref="/"
-        prevLabel={lang === "vi" ? "About me: Về Quỳnh Chi" : "About me: Quynh Chi"}
-        prevSub={lang === "vi" ? "Khởi nguồn & Triết lý" : "Origins & Philosophy"}
+        prevLabel="About me"
         nextHref="/the-mind"
-        nextLabel={lang === "vi" ? "Think: Nghiên cứu Dữ liệu" : "Think: Quantitative Research"}
-        nextSub={lang === "vi" ? "Khoa học, SiFarm & Olympic" : "Data, SiFarm & Academic Honors"}
+        nextLabel="Think"
       />
       <Footer />
     </>

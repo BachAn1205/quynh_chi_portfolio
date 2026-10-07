@@ -32,7 +32,6 @@ export function PageNav({ nextHref, nextLabel, nextSub, prevHref, prevLabel, pre
               <ArrowRight className="w-4 h-4 rotate-180 transition-transform group-hover:-translate-x-1" />
               <span className="uppercase tracking-wide">
                 {prevLabel}
-                {prevSub && <span className="opacity-70 font-normal hidden sm:inline"> • {prevSub}</span>}
               </span>
             </Link>
           </div>
@@ -50,11 +49,8 @@ export function PageNav({ nextHref, nextLabel, nextSub, prevHref, prevLabel, pre
               <div className="text-[10px] font-mono text-white/70 uppercase tracking-widest mb-0.5">
                 {t("pagenav.upnext")}
               </div>
-              <div className="text-sm font-semibold leading-none flex items-center gap-2">
+              <div className="text-sm font-semibold leading-none">
                 <span>{nextLabel}</span>
-                {nextSub && (
-                  <span className="text-white/70 text-xs font-normal hidden sm:inline">• {nextSub}</span>
-                )}
               </div>
             </div>
             <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 transition-transform group-hover:translate-x-1" />

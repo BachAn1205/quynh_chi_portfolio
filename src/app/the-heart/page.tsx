@@ -17,11 +17,9 @@ export default function TheHeartPage() {
         <div className="bg-[#FAF7F2] blueprint-grid">
           <PageNav
             prevHref="/the-mind"
-            prevLabel={lang === "vi" ? "Think: Nghiên cứu Dữ liệu" : "Think: Quantitative Research"}
-            prevSub={lang === "vi" ? "Khoa học, SiFarm & Olympic" : "Data, SiFarm & Academic Honors"}
+            prevLabel="Think"
             nextHref="/the-competitor"
-            nextLabel={lang === "vi" ? "The Competitor: Thành Tích" : "The Competitor: Honors & Profile"}
-            nextSub={lang === "vi" ? "Hồ sơ Học thuật & Danh hiệu" : "Academic Profile & Awards"}
+            nextLabel="The Competitor"
           />
         </div>
       </main>

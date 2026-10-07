@@ -281,9 +281,6 @@ export function TheMindSection() {
               <h2 className="font-anton text-3xl sm:text-5xl lg:text-6xl uppercase tracking-tight text-[#242220]">
                 THINK <span className="text-[#7B0323]">. PHAN HOÀNG QUỲNH CHI</span>
               </h2>
-              <p className="text-xs sm:text-sm font-mono text-[#7B0323] font-semibold mt-1">
-                {lang === "vi" ? "Nghiên cứu Định lượng, Thực nghiệm Khoa học, SiFarm & Olympic Học thuật" : "Quantitative Research, Materials Lab, SiFarm & Academic Olympiads"}
-              </p>
             </div>
           </div>
         </div>
@@ -359,11 +356,6 @@ export function TheMindSection() {
                     </div>
                   </div>
 
-                  {item.badge && (
-                    <span className="self-start sm:self-auto px-3 py-1 rounded-full text-xs font-mono font-semibold bg-[#7B0323]/10 text-[#7B0323] border border-[#7B0323]/20">
-                      {item.badge}
-                    </span>
-                  )}
                 </div>
 
                 {/* Main Content Layout */}
@@ -374,52 +366,22 @@ export function TheMindSection() {
                       <h3 className="font-anton text-lg sm:text-2xl lg:text-3xl uppercase tracking-tight text-[#242220] leading-tight">
                         {item.title}
                       </h3>
-                      {item.subtitle && (
-                        <p className="text-xs sm:text-sm text-[#7B0323] font-semibold mt-1">
-                          {item.subtitle}
-                        </p>
-                      )}
                     </div>
 
                     {/* Sub-item highlights */}
-                    <div className="space-y-4">
+                    <div className="space-y-3.5 sm:space-y-4">
                       {item.highlights.map((h, hIdx) => (
                         <div
                           key={hIdx}
-                          className="p-3.5 sm:p-5 rounded-2xl bg-[#FAF7F2] border border-[#1B3B2B]/15 shadow-xs space-y-2 hover:border-[#1B3B2B]/35 transition-colors"
+                          className="p-4 sm:p-5 rounded-2xl bg-[#FAF7F2] border border-[#1B3B2B]/15 shadow-xs hover:border-[#1B3B2B]/35 transition-colors"
                         >
-                          {h.metric ? (
-                            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
-                              <h4 className="font-bold text-xs sm:text-sm text-[#242220] leading-snug flex-1">
-                                {h.heading}
-                              </h4>
-                              <span className="text-[11px] font-mono font-bold text-[#7B0323] bg-[#7B0323]/10 px-2.5 py-0.5 rounded-full shrink-0 self-start">
-                                {h.metric}
-                              </span>
-                            </div>
-                          ) : (
-                            <h4 className="font-bold text-xs sm:text-sm text-[#242220] leading-snug">
-                              {h.heading}
-                            </h4>
-                          )}
-                          <p className="text-xs text-[#242220]/70 leading-relaxed">
+                          <p className="text-xs sm:text-sm text-[#242220]/80 leading-relaxed">
                             {h.detail}
                           </p>
                         </div>
                       ))}
                     </div>
 
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2 pt-1">
-                      {item.tags.map((tag, tIdx) => (
-                        <span
-                          key={tIdx}
-                          className="px-2.5 py-1 rounded-full text-[11px] font-mono font-medium bg-[#E2ECE5] text-[#1B3B2B] border border-[#1B3B2B]/15"
-                        >
-                          #{tag}
-                        </span>
-                      ))}
-                    </div>
                   </div>
 
                   {/* Right 5 Cols: Project Image Upload */}

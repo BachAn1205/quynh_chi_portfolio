@@ -294,7 +294,7 @@ export default function PrintPortfolioPage() {
                 />
               </div>
               <div className="flex-1 space-y-1">
-                <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#7B0323]/10 text-[#7B0323] text-[10px] font-mono font-bold">
+                <div className="text-[10px] font-mono font-bold text-[#1B3B2B]">
                   01 • {lang === "vi" ? "Đổi Mới Tuần Hoàn" : "Circular Innovation"}
                 </div>
                 <h3 className="font-anton text-base uppercase text-[#242220] leading-tight">
@@ -374,7 +374,7 @@ export default function PrintPortfolioPage() {
                 <Image src={trungPreservationUrl} alt="T'rưng Cultural Heritage" fill className="object-cover" unoptimized />
               </div>
               <div>
-                <span className="px-2 py-0.5 rounded-full bg-[#7B0323]/10 text-[#7B0323] text-[9.5px] font-mono font-bold">
+                <span className="text-[9.5px] font-mono font-bold text-[#1B3B2B]">
                   03 • {lang === "vi" ? "Bảo Tồn Đàn T'rưng" : "T'rưng Cultural Preservation"}
                 </span>
                 <h3 className="font-anton text-sm uppercase text-[#242220] leading-tight mt-0.5">
@@ -558,7 +558,7 @@ export default function PrintPortfolioPage() {
                 <Image src={mindResearchUrl} alt="Mind Research" fill className="object-cover" unoptimized />
               </div>
               <div>
-                <span className="text-[9px] font-mono uppercase font-bold text-[#7B0323] px-1.5 py-0.5 rounded bg-[#7B0323]/10">
+                <span className="text-[9px] font-mono uppercase font-bold text-[#1B3B2B]">
                   {lang === "vi" ? "Nghiên Cứu Độc Lập" : "Independent Research"}
                 </span>
                 <h3 className="font-anton text-sm uppercase text-[#242220] leading-tight mt-0.5">
