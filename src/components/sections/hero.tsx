@@ -209,9 +209,8 @@ export function Hero() {
                       vi: "Ảnh Chi đang trực tiếp làm CAFLOOP / sản phẩm trà Cascara / quy trình xử lý phơi sấy / bao bì sản phẩm + mã QR truy xuất.",
                       en: "Photo of Quynh Chi working on CAFLOOP, Cascara tea products, processing workflows, or QR-traceable packaging."
                     }}
-                    aspectRatio="aspect-[16/10] sm:aspect-[16/9]"
-                    heightClass="min-h-[320px] sm:min-h-[440px] lg:min-h-[500px]"
-                    objectFit="contain"
+                    aspectRatio="aspect-[16/9]"
+                    heightClass="min-h-[320px] sm:min-h-[440px] lg:min-h-[520px]"
                   />
                 </div>
 

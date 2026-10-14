@@ -6,6 +6,8 @@ import { UploadCloud, Image as ImageIcon, Trash2, RefreshCw, AlertCircle, CheckC
 import { useProjectImages } from "@/lib/project-images-context";
 import { useLanguage } from "@/lib/i18n";
 
+import { ImageCropModal } from "@/components/ui/image-crop-modal";
+
 interface ProjectImageUploadProps {
   slotId: string;
   guideline: {
@@ -48,6 +50,20 @@ export function ProjectImageUpload({
   const [imageLoadError, setImageLoadError] = useState(false);
   const [previewBlob, setPreviewBlob] = useState<string | null>(null);
 
+  // Image Cropper State
+  const [selectedFileForCrop, setSelectedFileForCrop] = useState<File | null>(null);
+  const [isCropModalOpen, setIsCropModalOpen] = useState(false);
+
+  const parsedAspectRatio = (() => {
+    const match = aspectRatio.match(/aspect-\[(\d+)\/(\d+)\]/);
+    if (match) {
+      const w = parseFloat(match[1]);
+      const h = parseFloat(match[2]);
+      if (w && h) return w / h;
+    }
+    return 16 / 9;
+  })();
+
   const currentImage = previewBlob || getImage(slotId);
 
   useEffect(() => {
@@ -71,13 +87,13 @@ export function ProjectImageUpload({
     ? "Tải ảnh dự án lên"
     : "Upload project photo";
 
-  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    await processUpload(file);
+    validateAndOpenCrop(file);
   };
 
-  const processUpload = async (file: File) => {
+  const validateAndOpenCrop = (file: File) => {
     const fileName = file.name.toLowerCase();
     const isImageExt = /\.(png|jpe?g|webp|gif|svg|jfif|bmp|avif)$/i.test(fileName);
     const isImageMime = file.type ? file.type.startsWith("image/") : false;
@@ -107,6 +123,12 @@ export function ProjectImageUpload({
       return;
     }
 
+    // Open Crop Modal
+    setSelectedFileForCrop(file);
+    setIsCropModalOpen(true);
+  };
+
+  const processUpload = async (file: File) => {
     // Instant local preview
     const localUrl = URL.createObjectURL(file);
     setPreviewBlob(localUrl);
@@ -137,12 +159,12 @@ export function ProjectImageUpload({
     }
   };
 
-  const handleDrop = async (e: React.DragEvent) => {
+  const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     setIsDragOver(false);
     const file = e.dataTransfer.files?.[0];
     if (file) {
-      await processUpload(file);
+      validateAndOpenCrop(file);
     }
   };
 
@@ -190,13 +212,6 @@ export function ProjectImageUpload({
         {hasValidImage ? (
           /* Render Uploaded Image with Action Overlay */
           <div className="absolute inset-0 w-full h-full overflow-hidden">
-            {/* Ambient Blur Backdrop khi objectFit === 'contain' để ảnh hòa hợp tuyệt đối với khung mà không bị khoảng trống thô */}
-            {objectFit === "contain" && (
-              <div
-                className="absolute inset-0 w-full h-full bg-cover bg-center filter blur-xl scale-125 opacity-35 pointer-events-none transition-all duration-700"
-                style={{ backgroundImage: `url(${currentImage!})` }}
-              />
-            )}
             <img
               src={currentImage!}
               alt="Project media"
@@ -331,6 +346,21 @@ export function ProjectImageUpload({
           </div>
         </div>
       )}
+
+      {/* Image Crop Modal */}
+      <ImageCropModal
+        isOpen={isCropModalOpen}
+        imageFile={selectedFileForCrop}
+        aspectRatio={parsedAspectRatio}
+        onCropComplete={(croppedFile) => processUpload(croppedFile)}
+        onClose={() => {
+          setIsCropModalOpen(false);
+          setSelectedFileForCrop(null);
+          if (fileInputRef.current) {
+            fileInputRef.current.value = "";
+          }
+        }}
+      />
     </div>
   );
 }

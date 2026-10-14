@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { useProjectImages } from "@/lib/project-images-context";
 import { useLanguage } from "@/lib/i18n";
+import { ImageCropModal } from "@/components/ui/image-crop-modal";
 
 export interface HonorCardData {
   id: number;
@@ -283,13 +284,17 @@ function SingleHonorCard({ card, index, onChange }: SingleHonorCardProps) {
     setImageLoadError(false);
   }, [currentImage]);
 
-  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  // Crop Modal state
+  const [selectedFileForCrop, setSelectedFileForCrop] = useState<File | null>(null);
+  const [isCropModalOpen, setIsCropModalOpen] = useState(false);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    await processUpload(file);
+    validateAndOpenCrop(file);
   };
 
-  const processUpload = async (file: File) => {
+  const validateAndOpenCrop = (file: File) => {
     const fileName = file.name.toLowerCase();
     const isImageExt = /\.(png|jpe?g|webp|gif|svg|jfif|bmp|avif)$/i.test(fileName);
     const isImageMime = file.type ? file.type.startsWith("image/") : false;
@@ -299,6 +304,11 @@ function SingleHonorCard({ card, index, onChange }: SingleHonorCardProps) {
       return;
     }
 
+    setSelectedFileForCrop(file);
+    setIsCropModalOpen(true);
+  };
+
+  const processUpload = async (file: File) => {
     const localUrl = URL.createObjectURL(file);
     setPreviewBlob(localUrl);
     setImageLoadError(false);
@@ -329,12 +339,12 @@ function SingleHonorCard({ card, index, onChange }: SingleHonorCardProps) {
     }
   };
 
-  const handleDrop = async (e: React.DragEvent) => {
+  const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     setIsDragOver(false);
     const file = e.dataTransfer.files?.[0];
     if (file) {
-      await processUpload(file);
+      validateAndOpenCrop(file);
     }
   };
 
@@ -459,6 +469,21 @@ function SingleHonorCard({ card, index, onChange }: SingleHonorCardProps) {
           className="w-full font-mono text-[11px] text-[#7B0323] font-semibold bg-transparent border-b border-transparent hover:border-[#1B3B2B]/20 focus:border-[#7B0323] focus:bg-white px-1 py-0 rounded transition-all outline-none leading-snug"
         />
       </div>
+
+      {/* Image Crop Modal for Honor Card */}
+      <ImageCropModal
+        isOpen={isCropModalOpen}
+        imageFile={selectedFileForCrop}
+        aspectRatio={4 / 3}
+        onCropComplete={(croppedFile) => processUpload(croppedFile)}
+        onClose={() => {
+          setIsCropModalOpen(false);
+          setSelectedFileForCrop(null);
+          if (fileInputRef.current) {
+            fileInputRef.current.value = "";
+          }
+        }}
+      />
     </div>
   );
 }
