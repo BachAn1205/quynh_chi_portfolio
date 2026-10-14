@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ProjectImageUpload } from "@/components/ui/project-image-upload";
+import { AcademicHonorsSection } from "@/components/ui/academic-honors-section";
 import {
   BrainCircuit,
   BarChart2,
@@ -359,42 +360,45 @@ export function TheMindSection() {
                 </div>
 
                 {/* Main Content Layout */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start lg:items-center">
-                  {/* Left 7 Cols: Detailed Highlights */}
-                  <div className="lg:col-span-7 space-y-6">
-                    <div>
-                      <h3 className="font-anton text-lg sm:text-2xl lg:text-3xl uppercase tracking-tight text-[#242220] leading-tight">
-                        {item.title}
-                      </h3>
+                {item.id === "honors" ? (
+                  <AcademicHonorsSection title={item.title} />
+                ) : (
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start lg:items-center">
+                    {/* Left 7 Cols: Detailed Highlights */}
+                    <div className="lg:col-span-7 space-y-6">
+                      <div>
+                        <h3 className="font-anton text-lg sm:text-2xl lg:text-3xl uppercase tracking-tight text-[#242220] leading-tight">
+                          {item.title}
+                        </h3>
+                      </div>
+
+                      {/* Sub-item highlights */}
+                      <div className="space-y-3.5 sm:space-y-4">
+                        {item.highlights.map((h, hIdx) => (
+                          <div
+                            key={hIdx}
+                            className="p-4 sm:p-5 rounded-2xl bg-[#FAF7F2] border border-[#1B3B2B]/15 shadow-xs hover:border-[#1B3B2B]/35 transition-colors"
+                          >
+                            <p className="text-xs sm:text-sm text-[#242220]/80 leading-relaxed">
+                              {h.detail}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
                     </div>
 
-                    {/* Sub-item highlights */}
-                    <div className="space-y-3.5 sm:space-y-4">
-                      {item.highlights.map((h, hIdx) => (
-                        <div
-                          key={hIdx}
-                          className="p-4 sm:p-5 rounded-2xl bg-[#FAF7F2] border border-[#1B3B2B]/15 shadow-xs hover:border-[#1B3B2B]/35 transition-colors"
-                        >
-                          <p className="text-xs sm:text-sm text-[#242220]/80 leading-relaxed">
-                            {h.detail}
-                          </p>
-                        </div>
-                      ))}
+                    {/* Right 5 Cols: Project Image Upload */}
+                    <div className="lg:col-span-5 flex flex-col justify-center self-center w-full">
+                      <ProjectImageUpload
+                        slotId={item.slotId}
+                        guideline={item.guideline}
+                        aspectRatio="aspect-[4/3] sm:aspect-[4/5] lg:aspect-[3/4]"
+                        heightClass="min-h-[360px] sm:min-h-[460px] lg:min-h-[500px]"
+                        objectFit="contain"
+                      />
                     </div>
-
                   </div>
-
-                  {/* Right 5 Cols: Project Image Upload */}
-                  <div className="lg:col-span-5 flex flex-col justify-center self-center w-full">
-                    <ProjectImageUpload
-                      slotId={item.slotId}
-                      guideline={item.guideline}
-                      aspectRatio="aspect-[4/3] sm:aspect-[4/5] lg:aspect-[3/4]"
-                      heightClass="min-h-[360px] sm:min-h-[460px] lg:min-h-[500px]"
-                      objectFit="contain"
-                    />
-                  </div>
-                </div>
+                )}
               </div>
             );
           })}
