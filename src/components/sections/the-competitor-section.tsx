@@ -198,6 +198,22 @@ export function TheCompetitorSection() {
         {
           title:
             lang === "vi"
+              ? "Mô phỏng Liên Hợp Quốc: DONMUN 2026"
+              : "Model United Nations: DONMUN 2026",
+          subtitle:
+            lang === "vi"
+              ? "Chủ tọa Ủy ban SPECPOL (Ủy ban Chính trị Đặc biệt & Phi thực dân hóa)"
+              : "Chaired SPECPOL (Special Political and Decolonization Committee) Committee",
+          detail:
+            lang === "vi"
+              ? "Chủ tọa và điều phối 27 đại biểu tranh biện, đàm phán ngoại giao về khung bảo vệ pháp lý cho các quốc gia đảo chịu tổn thương do biến đổi khí hậu."
+              : "Chaired 27 delegates in directing debates and diplomatic negotiations on the legal protection of climate-vulnerable island nations.",
+          badge: lang === "vi" ? "Chủ Tọa SPECPOL" : "SPECPOL Chair",
+          highlight: false,
+        },
+        {
+          title:
+            lang === "vi"
               ? "Mô phỏng Liên Hợp Quốc: VSGMUN 2026"
               : "Model United Nations: VSGMUN 2026",
           subtitle:

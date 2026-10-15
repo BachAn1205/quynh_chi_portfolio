@@ -89,10 +89,12 @@ export function AcademicHonorsUploadGrid({
     fetch("/api/honors-cards")
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
-        if (Array.isArray(data) && data.length > 0) {
-          setCards(data);
+        if (!data) return;
+        const cardsList = Array.isArray(data) ? data : data.cards;
+        if (Array.isArray(cardsList) && cardsList.length > 0) {
+          setCards(cardsList);
           try {
-            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
+            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(cardsList));
           } catch {
             // ignore
           }

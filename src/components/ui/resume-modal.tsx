@@ -37,7 +37,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
           <div className="flex items-center gap-2">
             <a
               href="/uploads/Resume.pdf"
-              download="Resume.pdf"
+              download="Resume PHAN HOANG QUYNH CHI.pdf"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-[#FFFFFF] border border-[#1B3B2B]/20 text-[#242220] hover:bg-[#E2ECE5] transition-colors cursor-pointer"
             >
               <Download className="w-3.5 h-3.5 text-[#7B0323]" />
@@ -251,7 +251,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
           </p>
           <a
             href="/uploads/Resume.pdf"
-            download="Resume.pdf"
+            download="Resume PHAN HOANG QUYNH CHI.pdf"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold bg-[#7B0323] text-[#FFFFFF] hover:bg-[#5E021A] transition-all shadow-sm cursor-pointer"
           >
             <Download className="w-4 h-4" />

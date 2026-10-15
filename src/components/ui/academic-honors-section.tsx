@@ -9,11 +9,9 @@ import {
   CheckCircle2,
   Save,
   ArrowUpRight,
-  Edit3,
 } from "lucide-react";
 import { useProjectImages } from "@/lib/project-images-context";
 import { useLanguage } from "@/lib/i18n";
-import { ImageCropModal } from "@/components/ui/image-crop-modal";
 
 export interface HonorCardData {
   id: number;
@@ -104,12 +102,27 @@ export function AcademicHonorsSection({ title }: AcademicHonorsSectionProps) {
 
         if (Array.isArray(data) && data.length > 0) {
           setCards(data);
+          try {
+            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
+          } catch {
+            // ignore
+          }
         } else if (typeof data === "object") {
           if (Array.isArray(data.cards) && data.cards.length > 0) {
             setCards(data.cards);
+            try {
+              localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data.cards));
+            } catch {
+              // ignore
+            }
           }
           if (typeof data.textContent === "string" && data.textContent.trim()) {
             setTextContent(data.textContent);
+            try {
+              localStorage.setItem(LOCAL_STORAGE_TEXT_KEY, data.textContent);
+            } catch {
+              // ignore
+            }
           }
         }
       })
@@ -176,15 +189,6 @@ export function AcademicHonorsSection({ title }: AcademicHonorsSectionProps) {
 
         {/* 1 Single Card with the same background as current cards, containing editable text field */}
         <div className="flex-1 flex flex-col rounded-3xl bg-[#FAF7F2] border border-[#1B3B2B]/15 shadow-xs p-4 sm:p-5 hover:border-[#1B3B2B]/35 transition-colors">
-          <div className="flex items-center justify-between gap-2 pb-2.5 mb-2 border-b border-[#1B3B2B]/10">
-            <span className="text-[11px] font-mono font-bold text-[#7B0323] uppercase tracking-wider flex items-center gap-1.5">
-              <Edit3 className="w-3.5 h-3.5" />
-              {lang === "vi" ? "Nội dung thành tích & giải thưởng" : "Honors & Achievements Content"}
-            </span>
-            <span className="text-[10px] text-[#242220]/50 italic">
-              {lang === "vi" ? "Có thể nhập nội dung" : "Editable"}
-            </span>
-          </div>
 
           <textarea
             value={textContent}
@@ -284,17 +288,14 @@ function SingleHonorCard({ card, index, onChange }: SingleHonorCardProps) {
     setImageLoadError(false);
   }, [currentImage]);
 
-  // Crop Modal state
-  const [selectedFileForCrop, setSelectedFileForCrop] = useState<File | null>(null);
-  const [isCropModalOpen, setIsCropModalOpen] = useState(false);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    validateAndOpenCrop(file);
+    validateAndUpload(file);
   };
 
-  const validateAndOpenCrop = (file: File) => {
+  const validateAndUpload = (file: File) => {
     const fileName = file.name.toLowerCase();
     const isImageExt = /\.(png|jpe?g|webp|gif|svg|jfif|bmp|avif)$/i.test(fileName);
     const isImageMime = file.type ? file.type.startsWith("image/") : false;
@@ -304,8 +305,7 @@ function SingleHonorCard({ card, index, onChange }: SingleHonorCardProps) {
       return;
     }
 
-    setSelectedFileForCrop(file);
-    setIsCropModalOpen(true);
+    processUpload(file);
   };
 
   const processUpload = async (file: File) => {
@@ -344,7 +344,7 @@ function SingleHonorCard({ card, index, onChange }: SingleHonorCardProps) {
     setIsDragOver(false);
     const file = e.dataTransfer.files?.[0];
     if (file) {
-      validateAndOpenCrop(file);
+      validateAndUpload(file);
     }
   };
 
@@ -470,20 +470,6 @@ function SingleHonorCard({ card, index, onChange }: SingleHonorCardProps) {
         />
       </div>
 
-      {/* Image Crop Modal for Honor Card */}
-      <ImageCropModal
-        isOpen={isCropModalOpen}
-        imageFile={selectedFileForCrop}
-        aspectRatio={4 / 3}
-        onCropComplete={(croppedFile) => processUpload(croppedFile)}
-        onClose={() => {
-          setIsCropModalOpen(false);
-          setSelectedFileForCrop(null);
-          if (fileInputRef.current) {
-            fileInputRef.current.value = "";
-          }
-        }}
-      />
     </div>
   );
 }

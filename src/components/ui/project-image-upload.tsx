@@ -6,7 +6,6 @@ import { UploadCloud, Image as ImageIcon, Trash2, RefreshCw, AlertCircle, CheckC
 import { useProjectImages } from "@/lib/project-images-context";
 import { useLanguage } from "@/lib/i18n";
 
-import { ImageCropModal } from "@/components/ui/image-crop-modal";
 
 interface ProjectImageUploadProps {
   slotId: string;
@@ -50,18 +49,21 @@ export function ProjectImageUpload({
   const [imageLoadError, setImageLoadError] = useState(false);
   const [previewBlob, setPreviewBlob] = useState<string | null>(null);
 
-  // Image Cropper State
-  const [selectedFileForCrop, setSelectedFileForCrop] = useState<File | null>(null);
-  const [isCropModalOpen, setIsCropModalOpen] = useState(false);
 
   const parsedAspectRatio = (() => {
-    const match = aspectRatio.match(/aspect-\[(\d+)\/(\d+)\]/);
-    if (match) {
-      const w = parseFloat(match[1]);
-      const h = parseFloat(match[2]);
+    const matches = Array.from(
+      aspectRatio.matchAll(/(?:(lg|md|sm):)?aspect-\[(\d+)\/(\d+)\]/g)
+    );
+    if (matches.length > 0) {
+      const preferred =
+        matches.find((m) => m[1] === "lg") ||
+        matches.find((m) => m[1] === "md") ||
+        matches[matches.length - 1];
+      const w = parseFloat(preferred[2]);
+      const h = parseFloat(preferred[3]);
       if (w && h) return w / h;
     }
-    return 16 / 9;
+    return 3 / 4;
   })();
 
   const currentImage = previewBlob || getImage(slotId);
@@ -90,10 +92,10 @@ export function ProjectImageUpload({
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    validateAndOpenCrop(file);
+    validateAndUpload(file);
   };
 
-  const validateAndOpenCrop = (file: File) => {
+  const validateAndUpload = (file: File) => {
     const fileName = file.name.toLowerCase();
     const isImageExt = /\.(png|jpe?g|webp|gif|svg|jfif|bmp|avif)$/i.test(fileName);
     const isImageMime = file.type ? file.type.startsWith("image/") : false;
@@ -123,9 +125,8 @@ export function ProjectImageUpload({
       return;
     }
 
-    // Open Crop Modal
-    setSelectedFileForCrop(file);
-    setIsCropModalOpen(true);
+    // Direct upload - fits cleanly into frame
+    processUpload(file);
   };
 
   const processUpload = async (file: File) => {
@@ -164,7 +165,7 @@ export function ProjectImageUpload({
     setIsDragOver(false);
     const file = e.dataTransfer.files?.[0];
     if (file) {
-      validateAndOpenCrop(file);
+      validateAndUpload(file);
     }
   };
 
@@ -347,20 +348,6 @@ export function ProjectImageUpload({
         </div>
       )}
 
-      {/* Image Crop Modal */}
-      <ImageCropModal
-        isOpen={isCropModalOpen}
-        imageFile={selectedFileForCrop}
-        aspectRatio={parsedAspectRatio}
-        onCropComplete={(croppedFile) => processUpload(croppedFile)}
-        onClose={() => {
-          setIsCropModalOpen(false);
-          setSelectedFileForCrop(null);
-          if (fileInputRef.current) {
-            fileInputRef.current.value = "";
-          }
-        }}
-      />
     </div>
   );
 }

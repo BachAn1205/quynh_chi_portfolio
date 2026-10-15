@@ -815,6 +815,7 @@ export default function PrintPortfolioPage() {
                 <span className="font-anton text-xs uppercase text-[#7B0323] block">5.3. Tranh Biện &amp; Nghệ Thuật</span>
                 <ul className="text-[10px] text-[#242220]/80 space-y-0.5 list-disc pl-3.5">
                   <li><strong>DAS-DO Debate 2024:</strong> Quán quân Tranh biện toàn quốc.</li>
+                  <li><strong>DONMUN 2026:</strong> Chủ tọa Ủy ban SPECPOL (27 đại biểu tranh biện & đàm phán).</li>
                   <li><strong>VSGMUN 2024:</strong> Best Position Paper (Hợp tác kinh tế đa phương).</li>
                   <li><strong>Lễ hội Thanh Âm Đất Việt:</strong> Nghệ sĩ độc tấu Đàn T&apos;rưng.</li>
                   <li><strong>Museo ning Angeles (Philippines):</strong> Triển lãm nghệ thuật thị giác.</li>

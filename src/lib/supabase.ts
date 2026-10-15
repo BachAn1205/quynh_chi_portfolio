@@ -30,3 +30,5 @@ export const getServiceSupabase = () => {
 
 export const BUCKET_NAME = "project-images";
 export const TABLE_NAME = "project_images";
+export const HONORS_CARDS_TABLE = "honors_cards";
+export const HONORS_SETTINGS_TABLE = "honors_settings";

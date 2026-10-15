@@ -1,21 +1,23 @@
 "use client";
 
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   ZoomIn,
-  ZoomOut,
-  RotateCw,
-  Check,
-  X,
   Crop as CropIcon,
   Maximize2,
+  Check,
+  X,
+  Smartphone,
+  Monitor,
+  Square,
+  Sparkles,
 } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 
 interface ImageCropModalProps {
   isOpen: boolean;
   imageFile: File | null;
-  aspectRatio?: number; // e.g. 16/9, 16/10, 4/3, 1
+  aspectRatio?: number; // e.g. 3/4, 4/5, 16/9, 4/3, 1
   onCropComplete: (croppedFile: File) => void;
   onClose: () => void;
 }
@@ -23,12 +25,13 @@ interface ImageCropModalProps {
 export function ImageCropModal({
   isOpen,
   imageFile,
-  aspectRatio = 16 / 9,
+  aspectRatio = 3 / 4,
   onCropComplete,
   onClose,
 }: ImageCropModalProps) {
   const { lang } = useLanguage();
   const [imageSrc, setImageSrc] = useState<string | null>(null);
+  const [selectedRatio, setSelectedRatio] = useState<number>(aspectRatio);
   const [zoom, setZoom] = useState(1);
   const [rotation, setRotation] = useState(0);
   const [pan, setPan] = useState({ x: 0, y: 0 });
@@ -38,6 +41,11 @@ export function ImageCropModal({
 
   const containerRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
+
+  // Sync ratio when prop changes
+  useEffect(() => {
+    setSelectedRatio(aspectRatio);
+  }, [aspectRatio]);
 
   // Load image file to object URL
   useEffect(() => {
@@ -107,6 +115,12 @@ export function ImageCropModal({
     });
   };
 
+  const handleRatioChange = (newRatio: number) => {
+    setSelectedRatio(newRatio);
+    setZoom(1);
+    setPan({ x: 0, y: 0 });
+  };
+
   const handleCrop = async () => {
     if (!imgRef.current || !containerRef.current || !imageFile) return;
 
@@ -115,11 +129,16 @@ export function ImageCropModal({
     const imgRect = img.getBoundingClientRect();
 
     // Canvas output setup
-    const canvas = document.createElement("canvas");
-    // Max target width for web optimization
-    const outputWidth = Math.min(1920, naturalSize.width || 1600);
-    const outputHeight = Math.round(outputWidth / aspectRatio);
+    const isPortrait = selectedRatio < 1;
+    let outputWidth = Math.min(1920, naturalSize.width || 1600);
+    let outputHeight = Math.round(outputWidth / selectedRatio);
 
+    if (isPortrait) {
+      outputHeight = Math.min(1920, naturalSize.height || 1600);
+      outputWidth = Math.round(outputHeight * selectedRatio);
+    }
+
+    const canvas = document.createElement("canvas");
     canvas.width = outputWidth;
     canvas.height = outputHeight;
     const ctx = canvas.getContext("2d");
@@ -127,7 +146,6 @@ export function ImageCropModal({
 
     ctx.imageSmoothingQuality = "high";
 
-    // Calculate source rect
     // Scale factor between rendered image and natural image
     const scale = naturalSize.width / imgRect.width;
 
@@ -137,7 +155,7 @@ export function ImageCropModal({
     const cropH = cropBox.height * scale;
 
     ctx.save();
-    // Fill background with neutral white/clean
+    // Fill background with clean white
     ctx.fillStyle = "#ffffff";
     ctx.fillRect(0, 0, outputWidth, outputHeight);
 
@@ -167,55 +185,106 @@ export function ImageCropModal({
         onClose();
       },
       "image/jpeg",
-      0.92
+      0.93
     );
   };
 
   if (!isOpen || !imageSrc) return null;
 
+  const isCurrentPortrait = selectedRatio < 1;
+
+  const ratioOptions = [
+    { label: "Dọc 3:4", value: 3 / 4, icon: Smartphone, tag: "Chuẩn dọc" },
+    { label: "Dọc 4:5", value: 4 / 5, icon: Smartphone, tag: "Instagram" },
+    { label: "Vuông 1:1", value: 1, icon: Square, tag: "1:1" },
+    { label: "Ngang 4:3", value: 4 / 3, icon: Monitor, tag: "Ngang chuẩn" },
+    { label: "Ngang 16:9", value: 16 / 9, icon: Monitor, tag: "Banner" },
+  ];
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
-      <div className="relative w-full max-w-3xl rounded-3xl bg-[#FAF7F2] border border-[#1B3B2B]/20 shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
+      <div className="relative w-full max-w-3xl rounded-3xl bg-[#FAF7F2] border border-[#1B3B2B]/20 shadow-2xl overflow-hidden flex flex-col max-h-[95vh]">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[#1B3B2B]/15 bg-white">
+        <div className="flex items-center justify-between px-5 sm:px-6 py-3.5 border-b border-[#1B3B2B]/15 bg-white">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-[#7B0323] text-white flex items-center justify-center shadow-xs">
+            <div className="w-8 h-8 rounded-xl bg-[#7B0323] text-white flex items-center justify-center shadow-xs shrink-0">
               <CropIcon className="w-4 h-4" />
             </div>
             <div>
               <h3 className="font-anton text-base sm:text-lg uppercase tracking-tight text-[#242220]">
-                {lang === "vi" ? "Chọn Vùng Hiển Thị Ảnh" : "Crop & Position Photo"}
+                {lang === "vi" ? "Căn Chỉnh & Cắt Ảnh Full Khung" : "Crop & Position Photo"}
               </h3>
               <p className="text-[11px] text-[#242220]/65">
                 {lang === "vi"
-                  ? "Kéo ảnh hoặc dùng thanh trượt để căn chỉnh phần muốn hiển thị trên web"
-                  : "Drag photo or use slider to adjust visible area"}
+                  ? "Kéo ảnh để căn chỉnh vị trí. Bạn có thể chọn tỉ lệ Khung Dọc hoặc Ngang bên dưới."
+                  : "Drag photo to reposition. You can switch between Portrait & Landscape ratios."}
               </p>
             </div>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 rounded-full hover:bg-black/5 text-[#242220]/60 hover:text-[#242220] transition-colors"
+            className="p-1.5 rounded-full hover:bg-black/5 text-[#242220]/60 hover:text-[#242220] transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
+        {/* Aspect Ratio Switcher Bar */}
+        <div className="px-5 sm:px-6 py-2.5 bg-[#FAF7F2] border-b border-[#1B3B2B]/10 flex flex-wrap items-center justify-between gap-2">
+          <div className="flex items-center gap-1.5">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#7B0323] flex items-center gap-1">
+              <Sparkles className="w-3 h-3" />
+              {lang === "vi" ? "Tỉ lệ hiển thị:" : "Ratio:"}
+            </span>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-1.5">
+            {ratioOptions.map((opt) => {
+              const Icon = opt.icon;
+              const isSelected = Math.abs(selectedRatio - opt.value) < 0.02;
+              return (
+                <button
+                  key={opt.label}
+                  type="button"
+                  onClick={() => handleRatioChange(opt.value)}
+                  className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold transition-all cursor-pointer ${
+                    isSelected
+                      ? "bg-[#7B0323] text-white shadow-xs"
+                      : "bg-white text-[#242220]/75 border border-[#1B3B2B]/15 hover:border-[#7B0323]/50 hover:bg-white"
+                  }`}
+                >
+                  <Icon className="w-3 h-3" />
+                  <span>{opt.label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
         {/* Viewport / Crop Area */}
         <div
-          className="relative flex-1 bg-[#1A1A1A] overflow-hidden flex items-center justify-center p-6 select-none min-h-[340px] sm:min-h-[420px]"
+          className="relative flex-1 bg-[#151515] overflow-hidden flex items-center justify-center p-4 sm:p-6 select-none min-h-[350px] sm:min-h-[420px]"
           onWheel={handleWheel}
         >
           {/* Crop Boundary Box */}
           <div
             ref={containerRef}
-            style={{
-              aspectRatio: `${aspectRatio}`,
-              width: "min(100%, 600px)",
-              maxHeight: "380px",
-            }}
-            className="relative overflow-hidden border-2 border-dashed border-[#FAF7F2] shadow-[0_0_0_9999px_rgba(0,0,0,0.65)] rounded-2xl cursor-grab active:cursor-grabbing"
+            style={
+              isCurrentPortrait
+                ? {
+                    aspectRatio: `${selectedRatio}`,
+                    height: "min(390px, 55vh)",
+                    width: `calc(min(390px, 55vh) * ${selectedRatio})`,
+                    maxWidth: "92%",
+                  }
+                : {
+                    aspectRatio: `${selectedRatio}`,
+                    width: "min(92%, 560px)",
+                    maxHeight: "390px",
+                  }
+            }
+            className="relative overflow-hidden border-2 border-dashed border-[#FAF7F2] shadow-[0_0_0_9999px_rgba(0,0,0,0.72)] rounded-2xl cursor-grab active:cursor-grabbing transition-all duration-200"
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
@@ -248,17 +317,17 @@ export function ImageCropModal({
               <div className="border-r border-b border-white/50" />
               <div className="border-r border-b border-white/50" />
               <div className="border-b border-white/50" />
-              <div className="border-r border-white/50" />
-              <div className="border-r border-white/50" />
+              <div className="border-r border-b border-white/50" />
+              <div className="border-r border-b border-white/50" />
               <div />
             </div>
           </div>
         </div>
 
         {/* Controls Toolbar */}
-        <div className="px-6 py-4 bg-white border-t border-[#1B3B2B]/15 flex flex-col sm:flex-row items-center justify-between gap-4">
-          {/* Zoom & Rotate Tools */}
-          <div className="flex items-center gap-3 w-full sm:w-auto">
+        <div className="px-5 sm:px-6 py-3.5 bg-white border-t border-[#1B3B2B]/15 flex flex-col sm:flex-row items-center justify-between gap-3">
+          {/* Zoom & Reset Tools */}
+          <div className="flex items-center gap-2.5 w-full sm:w-auto">
             <span className="text-xs font-mono font-semibold text-[#242220]/70 flex items-center gap-1.5 shrink-0">
               <ZoomIn className="w-3.5 h-3.5 text-[#7B0323]" />
               {lang === "vi" ? "Thu / Phóng:" : "Zoom:"}
@@ -270,7 +339,7 @@ export function ImageCropModal({
               step="0.05"
               value={zoom}
               onChange={(e) => setZoom(parseFloat(e.target.value))}
-              className="w-32 sm:w-40 h-1.5 bg-[#1B3B2B]/15 rounded-lg appearance-none cursor-pointer accent-[#7B0323]"
+              className="w-28 sm:w-36 h-1.5 bg-[#1B3B2B]/15 rounded-lg appearance-none cursor-pointer accent-[#7B0323]"
             />
             <span className="text-xs font-mono text-[#242220]/60 w-10 text-right">
               {Math.round(zoom * 100)}%
@@ -283,7 +352,7 @@ export function ImageCropModal({
                 setPan({ x: 0, y: 0 });
               }}
               title={lang === "vi" ? "Đặt lại vị trí" : "Reset position"}
-              className="p-1.5 rounded-lg border border-[#1B3B2B]/15 text-[#242220]/70 hover:bg-[#FAF7F2] hover:text-[#242220] transition-colors ml-1"
+              className="p-1.5 rounded-lg border border-[#1B3B2B]/15 text-[#242220]/70 hover:bg-[#FAF7F2] hover:text-[#242220] transition-colors ml-1 cursor-pointer"
             >
               <Maximize2 className="w-3.5 h-3.5" />
             </button>
@@ -294,7 +363,7 @@ export function ImageCropModal({
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 rounded-xl border border-[#1B3B2B]/20 text-xs font-semibold text-[#242220] hover:bg-[#FAF7F2] transition-colors"
+              className="px-4 py-2 rounded-xl border border-[#1B3B2B]/20 text-xs font-semibold text-[#242220] hover:bg-[#FAF7F2] transition-colors cursor-pointer"
             >
               {lang === "vi" ? "Hủy" : "Cancel"}
             </button>
