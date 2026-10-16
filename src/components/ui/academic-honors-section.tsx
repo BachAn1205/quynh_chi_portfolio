@@ -52,16 +52,35 @@ const DEFAULT_CARDS: HonorCardData[] = [
   },
 ];
 
-const DEFAULT_TEXT_CONTENT = `Đạt Top 5 Tuyển chọn Toàn quốc (Xếp hạng 3 Quốc gia) tham gia Đội tuyển Olympic Kinh tế Quốc tế (IEO) cả 2 năm 2025 & 2026; Huy chương Đồng Quốc gia (National Bronze Medalist) tại Vietnam Economics Olympiad (VEO) 2025 & 2026.
+const DEFAULT_HEADLINE = "Turning complex problems into strategic solutions.";
+const DEFAULT_BODY_CONTENT = `Tôi phát triển chiến lược thương hiệu cho Chè 24, phân tích insight người tiêu dùng và trải nghiệm bảo tàng qua The Tactics, nghiên cứu xu hướng công nghệ và tăng trưởng thị trường với TERRA, đồng thời xây dựng mô hình tài chính và dự báo đầu tư cho RE:SOUL. Qua mỗi business case, tôi vận dụng phân tích thị trường, dữ liệu và tư duy kinh tế để phát triển các giải pháp kinh doanh khả thi.`;
 
-Lọt vào Chung kết Toàn cầu (Top 30/2000 đội thi toàn thế giới) - Đội thi duy nhất đại diện Việt Nam được mời tham dự vòng chung kết trực tiếp tại khuôn viên Đại học Harvard (Mỹ). Đảm nhận vai trò Trưởng nhóm Tài chính & Chiến lược (Team Lead - Finance & Strategy), đồng phát triển mô hình tài chính dự báo doanh thu và bảng điều khiển mô phỏng CAC/LTV.
-
-Đạt Giải Bạc (Silver Award) khu vực Châu Á & Châu Đại Dương và Top 10 Kiến thức Nền tảng (Top 10 Fundamentals) tại World Economics Cup (WEC 2025); Trưởng nhóm đưa đội lọt vào Top 10 Chung kết Toàn quốc (Top 10 Grand Final) tại Vietnam Business Innovation Challenge (VBIC 2025).
-
-Top 50 Toàn quốc Học bổng ACCA Futurist 2025 (học bổng danh giá dành cho tài năng tài chính trẻ); Top 4 Cá nhân Vòng Chung kết phân ban Thương mại cuộc thi Aspiring Vietnam Contest 2025; Quán quân Toàn quốc giải Tranh biện DAS-DO Debate Open 2025 (4th Seed); Best Position Paper tại Hội nghị Mô phỏng LHQ VSGMUN 2026 (UNHCR).`;
+const DEFAULT_TEXT_CONTENT = `${DEFAULT_HEADLINE}\n\n${DEFAULT_BODY_CONTENT}`;
 
 const LOCAL_STORAGE_KEY = "quynhchi_honors_cards_data";
 const LOCAL_STORAGE_TEXT_KEY = "quynhchi_honors_left_text";
+
+function splitHeadlineAndBody(raw: string): { headline: string; body: string } {
+  const trimmed = (raw || "").trim();
+  if (!trimmed) {
+    return { headline: DEFAULT_HEADLINE, body: DEFAULT_BODY_CONTENT };
+  }
+  const paragraphs = trimmed.split(/\n\s*\n/);
+  if (paragraphs.length >= 2) {
+    return {
+      headline: paragraphs[0].trim(),
+      body: paragraphs.slice(1).join("\n\n").trim(),
+    };
+  }
+  // If old cached text didn't have the English headline yet, prepend it
+  if (!trimmed.toLowerCase().includes("turning complex problems")) {
+    return {
+      headline: DEFAULT_HEADLINE,
+      body: trimmed,
+    };
+  }
+  return { headline: DEFAULT_HEADLINE, body: DEFAULT_BODY_CONTENT };
+}
 
 interface AcademicHonorsSectionProps {
   title: string | React.ReactNode;
@@ -70,9 +89,24 @@ interface AcademicHonorsSectionProps {
 export function AcademicHonorsSection({ title }: AcademicHonorsSectionProps) {
   const { lang } = useLanguage();
   const [cards, setCards] = useState<HonorCardData[]>(DEFAULT_CARDS);
-  const [textContent, setTextContent] = useState<string>(DEFAULT_TEXT_CONTENT);
+  const [headlineText, setHeadlineText] = useState<string>(DEFAULT_HEADLINE);
+  const [bodyText, setBodyText] = useState<string>(DEFAULT_BODY_CONTENT);
   const [isSaving, setIsSaving] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
+  const headlineRef = useRef<HTMLTextAreaElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  // Auto-resize both headline and body textareas to fit content dynamically
+  useEffect(() => {
+    if (headlineRef.current) {
+      headlineRef.current.style.height = "auto";
+      headlineRef.current.style.height = `${headlineRef.current.scrollHeight}px`;
+    }
+    if (textareaRef.current) {
+      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    }
+  }, [headlineText, bodyText]);
 
   // Load saved data on mount
   useEffect(() => {
@@ -88,7 +122,9 @@ export function AcademicHonorsSection({ title }: AcademicHonorsSectionProps) {
 
       const cachedText = localStorage.getItem(LOCAL_STORAGE_TEXT_KEY);
       if (cachedText) {
-        setTextContent(cachedText);
+        const { headline, body } = splitHeadlineAndBody(cachedText);
+        setHeadlineText(headline);
+        setBodyText(body);
       }
     } catch {
       // ignore
@@ -117,9 +153,11 @@ export function AcademicHonorsSection({ title }: AcademicHonorsSectionProps) {
             }
           }
           if (typeof data.textContent === "string" && data.textContent.trim()) {
-            setTextContent(data.textContent);
+            const { headline, body } = splitHeadlineAndBody(data.textContent);
+            setHeadlineText(headline);
+            setBodyText(body);
             try {
-              localStorage.setItem(LOCAL_STORAGE_TEXT_KEY, data.textContent);
+              localStorage.setItem(LOCAL_STORAGE_TEXT_KEY, `${headline}\n\n${body}`);
             } catch {
               // ignore
             }
@@ -148,10 +186,11 @@ export function AcademicHonorsSection({ title }: AcademicHonorsSectionProps) {
 
   const handleSave = async () => {
     setIsSaving(true);
+    const combinedTextContent = `${headlineText.trim()}\n\n${bodyText.trim()}`;
     try {
       // Save locally
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(cards));
-      localStorage.setItem(LOCAL_STORAGE_TEXT_KEY, textContent);
+      localStorage.setItem(LOCAL_STORAGE_TEXT_KEY, combinedTextContent);
 
       // Save via API
       await fetch("/api/honors-cards", {
@@ -159,7 +198,7 @@ export function AcademicHonorsSection({ title }: AcademicHonorsSectionProps) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           cards,
-          textContent,
+          textContent: combinedTextContent,
         }),
       });
 
@@ -179,33 +218,181 @@ export function AcademicHonorsSection({ title }: AcademicHonorsSectionProps) {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-      {/* Left 5 Cols: Title and Single Unified Card with Text Field */}
-      <div className="lg:col-span-5 flex flex-col justify-between space-y-4">
-        <div>
+      {/* Left 5 Cols: Title + Card + Below-Card Blueprint Orbital Vector */}
+      <div className="lg:col-span-5 flex flex-col">
+        <div className="mb-4">
           <h3 className="font-anton text-lg sm:text-2xl lg:text-3xl uppercase tracking-tight text-[#242220] leading-tight">
             {title}
           </h3>
         </div>
 
-        {/* 1 Single Card with the same background as current cards, containing editable text field */}
-        <div className="flex-1 flex flex-col rounded-3xl bg-[#FAF7F2] border border-[#1B3B2B]/15 shadow-xs p-4 sm:p-5 hover:border-[#1B3B2B]/35 transition-colors">
+        {/* THE TEXT CARD — khung tổng đỏ rượu vang gốc */}
+        <div className="relative flex flex-col rounded-t-3xl rounded-b-2xl bg-[#FAF7F2] border border-[#7B0323] shadow-xs p-5 sm:p-6 lg:p-7 transition-all duration-300 overflow-hidden hover:border-[#5E021A]">
+          {/* Corner Crosshairs — wine red */}
+          <div className="absolute top-3 left-3 w-2.5 h-2.5 border-t border-l border-[#7B0323]/50 pointer-events-none" />
+          <div className="absolute top-3 right-3 w-2.5 h-2.5 border-t border-r border-[#7B0323]/50 pointer-events-none" />
+          <div className="absolute bottom-3 left-3 w-2.5 h-2.5 border-b border-l border-[#7B0323]/50 pointer-events-none" />
+          <div className="absolute bottom-3 right-3 w-2.5 h-2.5 border-b border-r border-[#7B0323]/50 pointer-events-none" />
 
-          <textarea
-            value={textContent}
-            onChange={(e) => setTextContent(e.target.value)}
-            placeholder={
-              lang === "vi"
-                ? "Nhập nội dung các giải thưởng & thành tích học thuật..."
-                : "Enter academic honors & achievements content..."
-            }
-            rows={14}
-            className="w-full flex-1 bg-transparent text-xs sm:text-sm text-[#242220]/85 leading-relaxed focus:outline-none resize-none font-sans p-1 rounded-xl transition-all border border-transparent focus:border-[#7B0323]/30 focus:bg-white/60"
-          />
+          <div className="relative z-10 flex flex-col space-y-3 sm:space-y-4">
+            {/* Lead Title: đỏ rượu vang gốc #7B0323, +2 size, bold như tiêu đề */}
+            <textarea
+              ref={headlineRef}
+              value={headlineText}
+              onChange={(e) => setHeadlineText(e.target.value)}
+              rows={2}
+              placeholder="Turning complex problems into strategic solutions."
+              style={{
+                fontFamily:
+                  "var(--font-lexend), 'Lexend', system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
+                color: "#7B0323",
+              }}
+              className="w-full bg-transparent text-lg sm:text-xl lg:text-[22px] font-bold leading-snug focus:outline-none resize-none p-1 rounded-xl transition-all border border-transparent focus:border-[#7B0323]/40 focus:bg-white/60 overflow-hidden tracking-tight caret-[#7B0323]"
+            />
+
+            {/* Subtle Wine Red Editorial Divider */}
+            <div className="w-12 h-0.5 rounded-full bg-gradient-to-r from-[#7B0323] to-transparent ml-1" />
+
+            {/* Body Paragraph */}
+            <textarea
+              ref={textareaRef}
+              value={bodyText}
+              onChange={(e) => setBodyText(e.target.value)}
+              placeholder={
+                lang === "vi"
+                  ? "Nhập nội dung chiến lược & dự án..."
+                  : "Enter strategic content..."
+              }
+              style={{
+                fontFamily:
+                  "var(--font-lexend), 'Lexend', system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
+              }}
+              className="w-full bg-transparent text-sm sm:text-base lg:text-[17px] leading-relaxed sm:leading-loose text-[#630E24]/85 font-normal focus:outline-none resize-none p-1 rounded-xl transition-all border border-transparent focus:border-[#7B0323]/30 focus:bg-white/60 overflow-hidden tracking-normal"
+            />
+          </div>
+        </div>
+
+        {/* BELOW-CARD SPACE: ARCHITECTURAL BLUEPRINT & STRATEGIC CONVERGENCE VECTOR */}
+        <div className="relative flex-1 flex flex-col justify-between min-h-[190px] -mt-1 pt-2 px-4 pb-4 rounded-b-3xl border-x border-b border-dashed border-[#1B3B2B]/25 bg-[#FAF7F2]/50 overflow-hidden select-none pointer-events-none">
+          <svg
+            viewBox="0 0 400 165"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-full my-auto"
+          >
+            {/* 4 Convergence Streams flowing down from the 4 Business Cases mentioned in the text */}
+            <path
+              d="M65 0 C 65 45, 155 45, 200 85"
+              stroke="#1B3B2B"
+              strokeWidth="1"
+              strokeOpacity="0.3"
+              strokeDasharray="3 3"
+            />
+            <path
+              d="M145 0 C 145 35, 180 50, 200 85"
+              stroke="#7B0323"
+              strokeWidth="1.1"
+              strokeOpacity="0.35"
+            />
+            <path
+              d="M255 0 C 255 35, 220 50, 200 85"
+              stroke="#7B0323"
+              strokeWidth="1.1"
+              strokeOpacity="0.35"
+            />
+            <path
+              d="M335 0 C 335 45, 245 45, 200 85"
+              stroke="#1B3B2B"
+              strokeWidth="1"
+              strokeOpacity="0.3"
+              strokeDasharray="3 3"
+            />
+
+            {/* Top Connection Nodes */}
+            <circle cx="65" cy="4" r="2.5" fill="#1B3B2B" fillOpacity="0.4" />
+            <circle cx="145" cy="4" r="2.5" fill="#7B0323" fillOpacity="0.5" />
+            <circle cx="255" cy="4" r="2.5" fill="#7B0323" fillOpacity="0.5" />
+            <circle cx="335" cy="4" r="2.5" fill="#1B3B2B" fillOpacity="0.4" />
+
+            {/* Overlapping Venn / Orbital Strategic Rings */}
+            <circle
+              cx="175"
+              cy="92"
+              r="38"
+              stroke="#1B3B2B"
+              strokeWidth="0.9"
+              strokeOpacity="0.28"
+            />
+            <circle
+              cx="225"
+              cy="92"
+              r="38"
+              stroke="#7B0323"
+              strokeWidth="0.9"
+              strokeOpacity="0.28"
+            />
+            <circle
+              cx="200"
+              cy="92"
+              r="54"
+              stroke="#1B3B2B"
+              strokeWidth="0.75"
+              strokeDasharray="4 4"
+              strokeOpacity="0.22"
+            />
+
+            {/* Econometric Growth Trajectory Curve Cutting Through the Synthesis Core */}
+            <path
+              d="M25 135 Q 115 130, 165 102 T 305 55 T 375 30"
+              stroke="#7B0323"
+              strokeWidth="1.5"
+              strokeOpacity="0.55"
+              strokeLinecap="round"
+            />
+            <circle cx="200" cy="85" r="4.5" fill="#7B0323" fillOpacity="0.8" />
+            <circle
+              cx="200"
+              cy="85"
+              r="9"
+              stroke="#7B0323"
+              strokeWidth="1"
+              strokeOpacity="0.4"
+            />
+            <circle cx="305" cy="55" r="3" fill="#1B3B2B" fillOpacity="0.6" />
+            <circle cx="120" cy="120" r="2.5" fill="#1B3B2B" fillOpacity="0.45" />
+
+            {/* Architectural Ruler Ticks along the bottom */}
+            <line
+              x1="20"
+              y1="152"
+              x2="380"
+              y2="152"
+              stroke="#1B3B2B"
+              strokeWidth="0.6"
+              strokeOpacity="0.25"
+            />
+            {Array.from({ length: 19 }).map((_, i) => {
+              const x = 20 + i * 20;
+              const isMajor = i % 3 === 0;
+              return (
+                <line
+                  key={i}
+                  x1={x}
+                  y1={isMajor ? 146 : 149}
+                  x2={x}
+                  y2="152"
+                  stroke={isMajor ? "#7B0323" : "#1B3B2B"}
+                  strokeWidth={isMajor ? "1" : "0.6"}
+                  strokeOpacity={isMajor ? "0.45" : "0.25"}
+                />
+              );
+            })}
+          </svg>
         </div>
       </div>
 
-      {/* Right 7 Cols: 4 Photos Grid (Enlarged, Reduced Gap, No Guideline Box) + Save Button */}
-      <div className="lg:col-span-7 flex flex-col justify-center space-y-3.5">
+      {/* Right 7 Cols: 4 Photos Grid + Save Button */}
+      <div className="lg:col-span-7 flex flex-col justify-between space-y-3.5">
         {/* 4 Cards Grid (2x2) with larger photo aspect ratio */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
           {cards.map((card, idx) => (

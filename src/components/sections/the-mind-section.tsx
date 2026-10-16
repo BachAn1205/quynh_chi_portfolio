@@ -204,14 +204,11 @@ export function TheMindSection() {
       id: "honors",
       category:
         lang === "vi"
-          ? "Giải Thưởng Học Thuật & Olympic Kinh Tế Quốc Tế"
-          : "Academic Honors, Olympiads & Case Competitions",
+          ? "Phân Tích Chiến Lược & Đổi Mới Sáng Tạo"
+          : "Strategic Analysis & Innovation",
       badge: lang === "vi" ? "Top 3 Quốc gia IEO • Chung kết Harvard" : "National Top 3 IEO • Harvard HCBC Finalist",
       icon: Trophy,
-      title:
-        lang === "vi"
-          ? "Các Giải Thưởng & Olympic Học Thuật Quốc Tế"
-          : "International Academic Honors & Business Olympiads",
+      title: "Beyond the Case",
       subtitle:
         lang === "vi"
           ? "Thành tích Nổi bật tại các Đấu trường Học thuật Quốc gia & Toàn cầu"
@@ -331,7 +328,7 @@ export function TheMindSection() {
                 : "bg-[#FFFFFF] text-[#242220] border border-[#1B3B2B]/20 hover:bg-[#E2ECE5]"
               }`}
           >
-            {lang === "vi" ? "Giải Học Thuật & Olympic" : "Academic Honors & Olympiads"}
+            {lang === "vi" ? "Chiến Lược & Đổi Mới" : "Strategy & Innovation"}
           </button>
         </div>
 
