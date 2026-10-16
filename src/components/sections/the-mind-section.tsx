@@ -208,7 +208,8 @@ export function TheMindSection() {
           : "Strategic Analysis & Innovation",
       badge: lang === "vi" ? "Top 3 Quốc gia IEO • Chung kết Harvard" : "National Top 3 IEO • Harvard HCBC Finalist",
       icon: Trophy,
-      title: "Beyond the Case",
+      title:
+        lang === "vi" ? "Từ Bài Toán Đến Chiến Lược" : "Beyond the Case",
       subtitle:
         lang === "vi"
           ? "Thành tích Nổi bật tại các Đấu trường Học thuật Quốc gia & Toàn cầu"
