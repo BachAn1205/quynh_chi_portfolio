@@ -56,7 +56,7 @@ export function Footer() {
             </button>
 
             <a
-              href="mailto:liliesmyllerz2k9@gmail.com"
+              href="mailto:student242706@ptnk.edu.vn"
               className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold bg-[#1B3B2B] text-[#FFFFFF] hover:bg-[#142C20] transition-all duration-200 shadow-sm hover:shadow hover:-translate-y-0.5 cursor-pointer"
             >
               <Send className="w-3.5 h-3.5 shrink-0" />
@@ -149,11 +149,11 @@ export function Footer() {
               <ul className="space-y-2.5 text-sm text-[#242220]/80 font-medium">
                 <li>
                   <a
-                    href="mailto:liliesmyllerz2k9@gmail.com"
+                    href="mailto:student242706@ptnk.edu.vn"
                     className="hover:text-[#7B0323] transition-colors flex items-center gap-2"
                   >
                     <Mail className="w-4 h-4 text-[#7B0323] shrink-0" />
-                    <span>liliesmyllerz2k9@gmail.com</span>
+                    <span>student242706@ptnk.edu.vn</span>
                   </a>
                 </li>
                 <li>

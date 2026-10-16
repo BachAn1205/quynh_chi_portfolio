@@ -77,10 +77,10 @@ export default function ContactPage() {
                 <div className="flex items-center gap-2.5 text-white/90">
                   <Mail className="w-4 h-4 text-[#7B0323]" />
                   <a
-                    href="mailto:liliesmyllerz2k9@gmail.com"
+                    href="mailto:student242706@ptnk.edu.vn"
                     className="hover:text-[#FAF7F2] transition-colors break-all"
                   >
-                    liliesmyllerz2k9@gmail.com
+                    student242706@ptnk.edu.vn
                   </a>
                 </div>
                 <div className="flex items-center gap-2.5 text-white/90">

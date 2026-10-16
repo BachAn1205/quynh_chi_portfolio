@@ -78,7 +78,7 @@ export default function PrivacyPolicyPage() {
                 5. Your Rights &amp; Contact
               </h2>
               <p>
-                You have the right to request access to, correction, or deletion of any personal data you have shared with us. If you have any questions, please contact: <span className="text-[#183e2b] font-semibold">liliesmyllerz2k9@gmail.com</span>.
+                You have the right to request access to, correction, or deletion of any personal data you have shared with us. If you have any questions, please contact: <span className="text-[#183e2b] font-semibold">student242706@ptnk.edu.vn</span>.
               </p>
             </section>
           </div>

@@ -240,7 +240,7 @@ export default function PrintPortfolioPage() {
                 <div className="flex flex-wrap items-center gap-3 pt-0.5 text-[10.5px]">
                   <span className="inline-flex items-center gap-1">
                     <Mail className="w-3 h-3 text-[#7B0323]" />
-                    liliesmyllerz2k9@gmail.com
+                    student242706@ptnk.edu.vn
                   </span>
                   <span className="inline-flex items-center gap-1">
                     <MapPin className="w-3 h-3 text-[#1B3B2B]" />
@@ -859,7 +859,7 @@ export default function PrintPortfolioPage() {
                   : "My vision is to build data architectures that make agricultural data transparent, accessible, and actionable, ensuring that local resources and the people who cultivate them are accurately valued."}
               </p>
               <div className="pt-1.5 flex flex-wrap items-center justify-between gap-2 border-t border-[#1B3B2B]/10 text-[10px] font-mono">
-                <span className="text-[#242220]/60">Email: liliesmyllerz2k9@gmail.com • Đắk Lắk &amp; TP.HCM, VN</span>
+                <span className="text-[#242220]/60">Email: student242706@ptnk.edu.vn • Đắk Lắk &amp; TP.HCM, VN</span>
                 <span className="font-heading italic text-[#7B0323] text-sm font-semibold">Phan Hoàng Quỳnh Chi</span>
               </div>
             </div>

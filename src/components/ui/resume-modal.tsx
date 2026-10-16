@@ -67,7 +67,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             </div>
             <div className="font-mono text-xs text-[#242220]/60 space-y-0.5 sm:text-right">
               <div>Dak Lak &amp; Ho Chi Minh City, Vietnam</div>
-              <div className="text-[#7B0323] font-semibold">liliesmyllerz2k9@gmail.com</div>
+              <div className="text-[#7B0323] font-semibold">student242706@ptnk.edu.vn</div>
               <div>linkedin.com/in/phanhoangquynhchi/</div>
             </div>
           </div>
