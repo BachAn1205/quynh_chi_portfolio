@@ -756,7 +756,7 @@ export default function PrintPortfolioPage() {
                 </div>
 
                 <div className="item-card p-2.5 rounded-lg bg-white border border-[#1B3B2B]/15 space-y-0.5">
-                  <h4 className="font-bold text-[#242220]">SAT 1510 • IELTS 7.5 • 4x AP 5</h4>
+                  <h4 className="font-bold text-[#242220]">SAT 1550 • IELTS 7.5 • 4x AP 5</h4>
                   <p className="text-[10px] text-[#1B3B2B] font-bold">4 điểm 5 Tuyệt đối AP</p>
                   <p className="text-[10px] text-[#242220]/75">AP Calculus AB (5), AP Stats (5), AP Micro (5), AP Macro (5).</p>
                 </div>

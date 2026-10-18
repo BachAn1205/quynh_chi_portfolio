@@ -62,13 +62,13 @@ export function TheCompetitorSection() {
               : "Standardized Testing (SAT & IELTS)",
           subtitle:
             lang === "vi"
-              ? "SAT: 1510 / 1600 • IELTS Academic: 7.5 Overall"
-              : "SAT: 1510 Composite • IELTS Academic: 7.5 Overall",
+              ? "SAT: 1550 / 1600 • IELTS Academic: 7.5 Overall"
+              : "SAT: 1550 Composite • IELTS Academic: 7.5 Overall",
           detail:
             lang === "vi"
               ? "Khẳng định tư duy định lượng vượt trội và năng lực tiếng Anh học thuật xuất sắc qua các kỳ thi chuẩn hóa quốc tế."
               : "Demonstrated advanced quantitative reasoning and English proficiency across standardized metrics.",
-          badge: "SAT 1510 • IELTS 7.5",
+          badge: "SAT 1550 • IELTS 7.5",
           highlight: true,
         },
         {

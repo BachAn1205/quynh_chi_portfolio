@@ -137,9 +137,9 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                 <div className="grid grid-cols-2 gap-2 mt-2">
                   <div className="p-2 rounded-xl bg-[#FAF7F2] border border-[#1B3B2B]/10">
                     <span className="font-mono text-[11px] text-[#242220]/60 block">
-                      SAT (Superscore)
+                      SAT Composite
                     </span>
-                    <span className="font-anton text-lg text-[#242220]">1530</span>
+                    <span className="font-anton text-lg text-[#242220]">1550</span>
                   </div>
                   <div className="p-2 rounded-xl bg-[#FAF7F2] border border-[#1B3B2B]/10">
                     <span className="font-mono text-[11px] text-[#242220]/60 block">
