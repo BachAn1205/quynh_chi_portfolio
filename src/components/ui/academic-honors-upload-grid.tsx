@@ -6,7 +6,6 @@ import {
   ImageIcon,
   Trash2,
   RefreshCw,
-  AlertCircle,
   CheckCircle2,
   Save,
   ArrowUpRight,
@@ -62,9 +61,7 @@ interface AcademicHonorsUploadGridProps {
   } | string;
 }
 
-export function AcademicHonorsUploadGrid({
-  guideline,
-}: AcademicHonorsUploadGridProps) {
+export function AcademicHonorsUploadGrid(_props: AcademicHonorsUploadGridProps) {
   const { lang } = useLanguage();
   const [cards, setCards] = useState<HonorCardData[]>(DEFAULT_CARDS);
   const [isSaving, setIsSaving] = useState(false);
@@ -147,13 +144,6 @@ export function AcademicHonorsUploadGrid({
     }
   };
 
-  const instructionText =
-    typeof guideline === "string"
-      ? guideline
-      : lang === "vi"
-      ? guideline?.vi
-      : guideline?.en;
-
   return (
     <div className="w-full flex flex-col gap-4">
       {/* 4 Cards Grid (2x2) */}
@@ -204,19 +194,6 @@ export function AcademicHonorsUploadGrid({
             : "Edit text below photos and click Save"}
         </span>
       </div>
-
-      {/* Guideline Box Directly Underneath */}
-      {instructionText && (
-        <div className="flex items-start gap-2 px-3 py-2.5 rounded-xl text-xs leading-relaxed bg-[#FAF7F2] border border-[#1B3B2B]/15 text-[#242220]/85">
-          <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-[#7B0323]" />
-          <div>
-            <strong className="font-semibold text-[#7B0323]">
-              {lang === "vi" ? "Ảnh phù hợp mô tả: " : "Recommended Photo: "}
-            </strong>
-            <span>{instructionText}</span>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

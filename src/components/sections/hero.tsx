@@ -66,10 +66,6 @@ export function Hero() {
       category: t("hero.slide0.category"),
       tag: t("hero.slide0.tag"),
       stat: t("hero.slide0.stat"),
-      guideline: {
-        vi: "Ảnh Quỳnh Chi đang trực tiếp làm CAFLOOP / sản phẩm trà Cascara / quy trình phơi ủ xử lý / bao bì sản phẩm có mã QR.",
-        en: "Quynh Chi working on CAFLOOP, Cascara tea products, processing workflows, or QR-traceable packaging."
-      },
       alt: "Phan Hoàng Quỳnh Chi in Dak Lak Coffee Farm",
       description: t("hero.slide0.desc"),
       link: "#the-mind",
@@ -205,10 +201,7 @@ export function Hero() {
                   <ProjectImageUpload
                     key="hero-cafloop"
                     slotId="hero-cafloop"
-                    guideline={{
-                      vi: "Ảnh Chi đang trực tiếp làm CAFLOOP / sản phẩm trà Cascara / quy trình xử lý phơi sấy / bao bì sản phẩm + mã QR truy xuất.",
-                      en: "Photo of Quynh Chi working on CAFLOOP, Cascara tea products, processing workflows, or QR-traceable packaging."
-                    }}
+                    showPreviewText={false}
                     aspectRatio="aspect-[16/9]"
                     heightClass="min-h-[320px] sm:min-h-[440px] lg:min-h-[520px]"
                   />

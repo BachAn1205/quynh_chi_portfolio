@@ -2,7 +2,7 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
-import { Camera, RefreshCw, Trash2, CheckCircle2, AlertCircle } from "lucide-react";
+import { Camera, RefreshCw, Trash2, CheckCircle2 } from "lucide-react";
 import { useProjectImages } from "@/lib/project-images-context";
 import { useLanguage } from "@/lib/i18n";
 
@@ -17,7 +17,6 @@ export function AvatarUpload({
   slotId = "profile-avatar",
   sizeClass = "w-48 h-56 sm:w-60 sm:h-72 md:w-68 md:h-80 lg:w-76 lg:h-92",
   className = "",
-  showGuide = true,
 }: AvatarUploadProps) {
   const { getImage, uploadImage, deleteImage } = useProjectImages();
   const { lang } = useLanguage();
@@ -228,14 +227,6 @@ export function AvatarUpload({
           </button>
         )}
       </div>
-
-      {showGuide && (
-        <span className="text-[11px] text-[#242220]/65 max-w-[400px] leading-tight text-center sm:text-left">
-          {lang === "vi"
-            ? "Gợi ý: Ảnh chân dung hoặc ảnh hoạt động nghệ thuật sắc nét."
-            : "Recommended: Sharp portrait or artistic activity photo."}
-        </span>
-      )}
     </div>
   );
 }

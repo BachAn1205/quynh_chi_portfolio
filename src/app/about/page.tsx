@@ -307,9 +307,6 @@ export default function AboutPage() {
                         guideline={item.guideline}
                         aspectRatio="aspect-[4/3]"
                       />
-                      <p className="text-xs text-[#242220]/60 italic font-mono px-1">
-                        {lang === "vi" ? "Tải ảnh tư liệu / sản phẩm thực tế cho dự án này" : "Upload verified field/product photo for this initiative"}
-                      </p>
                     </div>
 
                     {/* Right: Summary & Bullet Breakdown */}

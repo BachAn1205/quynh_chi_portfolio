@@ -9,7 +9,7 @@ import { useLanguage } from "@/lib/i18n";
 
 interface ProjectImageUploadProps {
   slotId: string;
-  guideline: {
+  guideline?: {
     vi: string;
     en: string;
   } | string;
@@ -29,14 +29,12 @@ interface ProjectImageUploadProps {
 
 export function ProjectImageUpload({
   slotId,
-  guideline,
   buttonText,
   dark = false,
   aspectRatio = "aspect-[16/10]",
   className = "",
   heightClass,
   roundedClass = "rounded-2xl",
-  showPreviewText = true,
   objectFit = "cover",
   objectPosition,
 }: ProjectImageUploadProps) {
@@ -71,13 +69,6 @@ export function ProjectImageUpload({
   useEffect(() => {
     setImageLoadError(false);
   }, [currentImage]);
-
-  const instructionText =
-    typeof guideline === "string"
-      ? guideline
-      : lang === "vi"
-      ? guideline.vi
-      : guideline.en;
 
   const resolvedButtonText = buttonText
     ? typeof buttonText === "string"
@@ -330,24 +321,6 @@ export function ProjectImageUpload({
           </div>
         )}
       </div>
-
-      {/* Guideline Box Directly Underneath */}
-      {showPreviewText && (
-        <div className={`flex items-start gap-2 px-3 py-2 rounded-xl text-xs leading-relaxed ${
-          dark
-            ? "bg-[#121f16] border border-[#233529] text-white/80"
-            : "bg-[#FAF7F2] border border-[#1B3B2B]/15 text-[#242220]/85"
-        }`}>
-          <AlertCircle className={`w-4 h-4 shrink-0 mt-0.5 ${dark ? "text-[#d97706]" : "text-[#7B0323]"}`} />
-          <div>
-            <strong className={`font-semibold ${dark ? "text-[#22c55e]" : "text-[#7B0323]"}`}>
-              {lang === "vi" ? "Ảnh phù hợp mô tả: " : "Recommended Photo: "}
-            </strong>
-            <span>{instructionText}</span>
-          </div>
-        </div>
-      )}
-
     </div>
   );
 }
