@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n";
 import { ProjectImageProvider } from "@/lib/project-images-context";
-import { ReviewFeedbackSystem } from "@/components/ui/review-feedback-system";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://quynhchi-portfolio.vercel.app"),
@@ -91,7 +90,6 @@ export default async function RootLayout({
         <LanguageProvider>
           <ProjectImageProvider initialImages={initialImages}>
             {children}
-            <ReviewFeedbackSystem />
           </ProjectImageProvider>
         </LanguageProvider>
       </body>
