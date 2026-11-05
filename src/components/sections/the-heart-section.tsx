@@ -10,6 +10,7 @@ import {
   GraduationCap,
   Users,
   Video,
+  BookOpen,
 } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 
@@ -34,6 +35,8 @@ interface HeartProject {
     en: string;
   };
   accent: string;
+  aspectRatio?: string;
+  objectPosition?: string;
 }
 
 export function TheHeartSection() {
@@ -253,6 +256,41 @@ export function TheHeartSection() {
       },
       accent: "text-[#7B0323]",
     },
+    {
+      id: "highland-girls-fund",
+      icon: BookOpen,
+      category:
+        lang === "vi"
+          ? "Giáo dục Nữ sinh & Phát triển Cộng đồng"
+          : "Girl Child Education & Community Empowerment",
+      badge:
+        lang === "vi"
+          ? "Tủ sách cộng đồng • Kỹ năng sống • Buôn Đrăng Phốk"
+          : "Community Library • Life Skills • Buon Drang Phok",
+      title:
+        lang === "vi"
+          ? "Highland Girl’s Fund - Góc Nhỏ, Ước Mơ Lớn"
+          : "Highland Girl’s Fund - Small Corner, Big Dreams",
+      role:
+        lang === "vi"
+          ? "Người sáng lập & Điều phối Sáng kiến CAFLOOP"
+          : "Founder & Lead Coordinator, CAFLOOP Initiative",
+      description:
+        lang === "vi"
+          ? "Sáng kiến cộng đồng do CAFLOOP sáng lập nhằm đồng hành cùng trẻ em gái tại Buôn Đrăng Phốk (Đắk Lắk) thông qua giáo dục và tri thức. Dự án xây dựng góc đọc sách cộng đồng với tủ tài liệu giáo dục khơi gợi sáng tạo; tổ chức các buổi chia sẻ phù hợp lứa tuổi về tuổi dậy thì, sức khỏe kinh nguyệt và kỹ năng tự bảo vệ trong môi trường an toàn; đồng thời trao tặng sách vở, dụng cụ học tập thiết thực giúp các em tự tin nuôi dưỡng ước mơ."
+          : "A community empowerment initiative founded by CAFLOOP to accompany young girls in Buon Drang Phok (Dak Lak) through education and mentorship. The fund builds a community reading corner with curated books, organizes safe age-appropriate workshops on puberty, menstrual health, and personal boundaries, and provides essential school supplies to empower girls to dream big.",
+      impact:
+        lang === "vi"
+          ? "Tác động giáo dục & bình đẳng: Xây dựng không gian học tập an toàn, trang bị kiến thức tự bảo vệ và tiếp sức đến trường cho nữ sinh vùng cao; ngân sách khởi điểm 12.000.000 VNĐ cùng cam kết đồng hành dài hạn từ lợi nhuận CAFLOOP."
+          : "Educational & Gender Impact: Creating a safe communal learning space, fostering self-protection awareness and school retention for rural girls; 12,000,000 VND initial fund with sustained backing from CAFLOOP profits.",
+      slotId: "heart-highland-girls-fund",
+      guideline: {
+        vi: "Ảnh góc đọc sách cộng đồng, hoạt động trao tặng sách vở hoặc buổi chia sẻ kiến thức cùng các em gái tại Buôn Đrăng Phốk.",
+        en: "Photo of the community reading corner, school supplies donation, or educational workshop with young girls in Buon Drang Phok."
+      },
+      accent: "text-[#1B3B2B]",
+      objectPosition: "center bottom",
+    },
   ];
 
   return (
@@ -372,7 +410,8 @@ export function TheHeartSection() {
                     <ProjectImageUpload
                       slotId={project.slotId}
                       guideline={project.guideline}
-                      aspectRatio="aspect-[16/9]"
+                      aspectRatio={project.aspectRatio || "aspect-[16/9]"}
+                      objectPosition={project.objectPosition}
                     />
                   </div>
                 </div>

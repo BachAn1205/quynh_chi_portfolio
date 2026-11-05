@@ -77,6 +77,10 @@ export default function PrintPortfolioPage() {
     getImage("heart-wildlife") ||
     "/images/quynhchi/hero-coffee-farm.jpg";
 
+  const highlandGirlsFundUrl =
+    getImage("heart-highland-girls-fund") ||
+    "/images/quynhchi/hero-coffee-farm.jpg";
+
   const adjudicatorUrl =
     getImage("heart-adjudicator") ||
     "/images/quynhchi/2.jpg";
@@ -710,7 +714,21 @@ export default function PrintPortfolioPage() {
               </div>
             </div>
 
-            <div className="item-card sm:col-span-2 p-2.5 rounded-lg bg-white border border-[#1B3B2B]/15 flex gap-2.5 items-start">
+            <div className="item-card p-2.5 rounded-lg bg-white border border-[#1B3B2B]/15 flex gap-2.5 items-start">
+              <div className="w-24 aspect-[16/9] relative rounded-md overflow-hidden border border-[#1B3B2B]/15 shrink-0">
+                <Image src={highlandGirlsFundUrl} alt="Highland Girl's Fund" fill className="object-cover" style={{ objectPosition: "center bottom" }} unoptimized />
+              </div>
+              <div className="space-y-0.5 text-[10px]">
+                <span className="font-mono font-bold text-[#1B3B2B] block">{lang === "vi" ? "Highland Girl’s Fund" : "Highland Girl’s Fund"}</span>
+                <p className="text-[#242220]/75">
+                  {lang === "vi"
+                    ? "Sáng kiến CAFLOOP: Tủ sách cộng đồng, giáo dục giới tính an toàn và trao quà học tập cho nữ sinh Buôn Đrăng Phốk."
+                    : "CAFLOOP initiative: Community library, health workshops, and educational aid for girls in Buon Drang Phok."}
+                </p>
+              </div>
+            </div>
+
+            <div className="item-card p-2.5 rounded-lg bg-white border border-[#1B3B2B]/15 flex gap-2.5 items-start">
               <div className="w-24 aspect-[16/9] relative rounded-md overflow-hidden border border-[#1B3B2B]/15 shrink-0">
                 <Image src={adjudicatorUrl} alt="Adjudicator" fill className="object-cover" unoptimized />
               </div>

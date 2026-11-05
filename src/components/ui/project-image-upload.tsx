@@ -2,7 +2,7 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
-import { UploadCloud, Image as ImageIcon, Trash2, RefreshCw, AlertCircle, CheckCircle2 } from "lucide-react";
+import { UploadCloud, Image as ImageIcon, Trash2, RefreshCw, AlertCircle, CheckCircle2, MoveVertical } from "lucide-react";
 import { useProjectImages } from "@/lib/project-images-context";
 import { useLanguage } from "@/lib/i18n";
 
@@ -46,6 +46,36 @@ export function ProjectImageUpload({
   const [uploadSuccess, setUploadSuccess] = useState(false);
   const [imageLoadError, setImageLoadError] = useState(false);
   const [previewBlob, setPreviewBlob] = useState<string | null>(null);
+  const [customPosition, setCustomPosition] = useState<string | null>(null);
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(`img_pos_${slotId}`);
+      if (saved) setCustomPosition(saved);
+    } catch {
+      // ignore
+    }
+  }, [slotId]);
+
+  const effectivePosition = customPosition || objectPosition || "center";
+
+  const cyclePosition = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    let next = "center bottom";
+    if (effectivePosition.includes("bottom")) {
+      next = "center";
+    } else if (effectivePosition === "center" || effectivePosition.includes("50%")) {
+      next = "center top";
+    } else {
+      next = "center bottom";
+    }
+    setCustomPosition(next);
+    try {
+      localStorage.setItem(`img_pos_${slotId}`, next);
+    } catch {
+      // ignore
+    }
+  };
 
 
   const parsedAspectRatio = (() => {
@@ -212,7 +242,14 @@ export function ProjectImageUpload({
                   ? "object-contain"
                   : "object-cover transition-transform duration-500 group-hover:scale-105"
               }`}
-              style={objectPosition ? { objectPosition } : undefined}
+              style={{
+                objectPosition: effectivePosition,
+                transformOrigin: effectivePosition.includes("bottom")
+                  ? "center bottom"
+                  : effectivePosition.includes("top")
+                  ? "center top"
+                  : "center",
+              }}
               onError={() => setImageLoadError(true)}
               loading="eager"
               fetchPriority="high"
@@ -221,6 +258,25 @@ export function ProjectImageUpload({
 
             {/* Quick Actions Bar */}
             <div className="absolute top-3 right-3 flex items-center gap-2 z-10 opacity-90 group-hover:opacity-100 transition-opacity">
+              <button
+                type="button"
+                onClick={cyclePosition}
+                title={
+                  lang === "vi"
+                    ? "Căn chỉnh vị trí khung hình (Đáy ảnh / Giữa ảnh / Đỉnh ảnh)"
+                    : "Adjust framing position (Bottom / Center / Top)"
+                }
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-white/95 text-[#1B3B2B] shadow-md hover:bg-white hover:shadow-lg transition-all"
+              >
+                <MoveVertical className="w-3.5 h-3.5" />
+                <span>
+                  {effectivePosition.includes("bottom")
+                    ? lang === "vi" ? "Đáy ảnh (Lấy người)" : "Bottom"
+                    : effectivePosition.includes("top")
+                    ? lang === "vi" ? "Đỉnh ảnh" : "Top"
+                    : lang === "vi" ? "Giữa ảnh" : "Center"}
+                </span>
+              </button>
               <button
                 type="button"
                 onClick={(e) => {

@@ -520,6 +520,11 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             <div className="space-y-2 text-xs">
               {[
                 {
+                  title: "Highland Girl's Fund (Founder & Coordinator)",
+                  detail:
+                    "Grassroots initiative by CAFLOOP providing rural girls in Buon Drang Phok with a community reading corner, age-appropriate puberty & health workshops, and school supplies.",
+                },
+                {
                   title: "Hoa Sen Bridge Alliance (Vietnam's Representative)",
                   detail:
                     "Led local safety workshops & distributed 500 reflective wristbands in Dak Lak, contributing to a 35,000-item tri-nation campaign (Vietnam, Korea, Philippines).",
