@@ -6,8 +6,10 @@ import { Footer } from "@/components/layout/footer";
 import { caseStudies } from "@/data/case-studies";
 import { BookOpen, ArrowUpRight } from "lucide-react";
 import { ProjectImageUpload } from "@/components/ui/project-image-upload";
+import { useLanguage } from "@/lib/i18n";
 
 export default function CaseStudyListPage() {
+  const { lang } = useLanguage();
   return (
     <>
       <Navbar />
@@ -25,7 +27,9 @@ export default function CaseStudyListPage() {
             </div>
 
             <p className="text-sm sm:text-lg text-white/60 max-w-sm">
-              In-depth looks at how design decisions solved real business challenges.
+              {lang === "vi"
+                ? "Nghiên cứu chuyên sâu về các mô hình kinh tế, dữ liệu và giải pháp thực nghiệm giải quyết bài toán thực tế."
+                : "In-depth looks at how design decisions solved real business challenges."}
             </p>
           </div>
 
@@ -89,7 +93,7 @@ export default function CaseStudyListPage() {
                     href={`/case-study/${project.slug}`}
                     className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#e74723] hover:underline"
                   >
-                    <span>Xem chi tiết Case Study</span>
+                    <span>{lang === "vi" ? "Xem chi tiết Case Study" : "View Case Study Details"}</span>
                     <ArrowUpRight className="w-4 h-4" />
                   </Link>
                 </div>

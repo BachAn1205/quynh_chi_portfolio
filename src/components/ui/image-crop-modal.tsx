@@ -194,11 +194,36 @@ export function ImageCropModal({
   const isCurrentPortrait = selectedRatio < 1;
 
   const ratioOptions = [
-    { label: "Dọc 3:4", value: 3 / 4, icon: Smartphone, tag: "Chuẩn dọc" },
-    { label: "Dọc 4:5", value: 4 / 5, icon: Smartphone, tag: "Instagram" },
-    { label: "Vuông 1:1", value: 1, icon: Square, tag: "1:1" },
-    { label: "Ngang 4:3", value: 4 / 3, icon: Monitor, tag: "Ngang chuẩn" },
-    { label: "Ngang 16:9", value: 16 / 9, icon: Monitor, tag: "Banner" },
+    {
+      label: lang === "vi" ? "Dọc 3:4" : "Portrait 3:4",
+      value: 3 / 4,
+      icon: Smartphone,
+      tag: lang === "vi" ? "Chuẩn dọc" : "Standard",
+    },
+    {
+      label: lang === "vi" ? "Dọc 4:5" : "Portrait 4:5",
+      value: 4 / 5,
+      icon: Smartphone,
+      tag: "Instagram",
+    },
+    {
+      label: lang === "vi" ? "Vuông 1:1" : "Square 1:1",
+      value: 1,
+      icon: Square,
+      tag: "1:1",
+    },
+    {
+      label: lang === "vi" ? "Ngang 4:3" : "Landscape 4:3",
+      value: 4 / 3,
+      icon: Monitor,
+      tag: lang === "vi" ? "Ngang chuẩn" : "Standard",
+    },
+    {
+      label: lang === "vi" ? "Ngang 16:9" : "Landscape 16:9",
+      value: 16 / 9,
+      icon: Monitor,
+      tag: "Banner",
+    },
   ];
 
   return (

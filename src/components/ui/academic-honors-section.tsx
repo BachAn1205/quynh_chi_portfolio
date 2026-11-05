@@ -21,7 +21,7 @@ export interface HonorCardData {
   description: string;
 }
 
-const DEFAULT_CARDS: HonorCardData[] = [
+const DEFAULT_CARDS_VI: HonorCardData[] = [
   {
     id: 1,
     slotId: "mind-honors-1",
@@ -52,18 +52,53 @@ const DEFAULT_CARDS: HonorCardData[] = [
   },
 ];
 
-const DEFAULT_HEADLINE = "Turning complex problems into strategic solutions.";
-const DEFAULT_BODY_CONTENT = `Tôi phát triển chiến lược thương hiệu cho Chè 24, phân tích insight người tiêu dùng và trải nghiệm bảo tàng qua The Tactics, nghiên cứu xu hướng công nghệ và tăng trưởng thị trường với TERRA, đồng thời xây dựng mô hình tài chính và dự báo đầu tư cho RE:SOUL. Qua mỗi business case, tôi vận dụng phân tích thị trường, dữ liệu và tư duy kinh tế để phát triển các giải pháp kinh doanh khả thi.`;
+const DEFAULT_CARDS_EN: HonorCardData[] = [
+  {
+    id: 1,
+    slotId: "mind-honors-1",
+    title: "Chè 24",
+    subtitle: "Brand Strategy & Customer Experience",
+    description: "ASPIRING VIETNAM CONTEST 2025 • Top 4",
+  },
+  {
+    id: 2,
+    slotId: "mind-honors-2",
+    title: "Loom Lore",
+    subtitle: "Cultural Heritage & Consumer Insights",
+    description: "ASPIRING VIETNAM CONTEST 2025 • Top 4",
+  },
+  {
+    id: 3,
+    slotId: "mind-honors-3",
+    title: "TERRA",
+    subtitle: "Innovation & Sustainable Development",
+    description: "ASEEDER Business Simulation • Top 1",
+  },
+  {
+    id: 4,
+    slotId: "mind-honors-4",
+    title: "KEY COMMERCE",
+    subtitle: "Operations, Logistics & Finance",
+    description: "Business Model Analysis & Circular Solutions",
+  },
+];
 
-const DEFAULT_TEXT_CONTENT = `${DEFAULT_HEADLINE}\n\n${DEFAULT_BODY_CONTENT}`;
+const DEFAULT_HEADLINE_EN = "Turning complex problems into strategic solutions.";
+const DEFAULT_HEADLINE_VI = "Biến bài toán phức tạp thành giải pháp chiến lược.";
+
+const DEFAULT_BODY_CONTENT_VI = `Tôi phát triển chiến lược thương hiệu cho Chè 24, phân tích insight người tiêu dùng và trải nghiệm bảo tàng qua The Tactics, nghiên cứu xu hướng công nghệ và tăng trưởng thị trường với TERRA, đồng thời xây dựng mô hình tài chính và dự báo đầu tư cho RE:SOUL. Qua mỗi business case, tôi vận dụng phân tích thị trường, dữ liệu và tư duy kinh tế để phát triển các giải pháp kinh doanh khả thi.`;
+
+const DEFAULT_BODY_CONTENT_EN = `I developed brand strategy for Chè 24, analyzed consumer insights and museum experiences through The Tactics, researched technology trends and market growth with TERRA, and built financial models and investment forecasts for RE:SOUL. Across each business case, I apply market analysis, data analytics, and economic thinking to develop actionable business solutions.`;
 
 const LOCAL_STORAGE_KEY = "quynhchi_honors_cards_data";
 const LOCAL_STORAGE_TEXT_KEY = "quynhchi_honors_left_text";
 
-function splitHeadlineAndBody(raw: string): { headline: string; body: string } {
+function splitHeadlineAndBody(raw: string, isVi: boolean): { headline: string; body: string } {
+  const defaultHeadline = isVi ? DEFAULT_HEADLINE_VI : DEFAULT_HEADLINE_EN;
+  const defaultBody = isVi ? DEFAULT_BODY_CONTENT_VI : DEFAULT_BODY_CONTENT_EN;
   const trimmed = (raw || "").trim();
   if (!trimmed) {
-    return { headline: DEFAULT_HEADLINE, body: DEFAULT_BODY_CONTENT };
+    return { headline: defaultHeadline, body: defaultBody };
   }
   const paragraphs = trimmed.split(/\n\s*\n/);
   if (paragraphs.length >= 2) {
@@ -72,14 +107,7 @@ function splitHeadlineAndBody(raw: string): { headline: string; body: string } {
       body: paragraphs.slice(1).join("\n\n").trim(),
     };
   }
-  // If old cached text didn't have the English headline yet, prepend it
-  if (!trimmed.toLowerCase().includes("turning complex problems")) {
-    return {
-      headline: DEFAULT_HEADLINE,
-      body: trimmed,
-    };
-  }
-  return { headline: DEFAULT_HEADLINE, body: DEFAULT_BODY_CONTENT };
+  return { headline: defaultHeadline, body: trimmed };
 }
 
 interface AcademicHonorsSectionProps {
@@ -88,13 +116,50 @@ interface AcademicHonorsSectionProps {
 
 export function AcademicHonorsSection({ title }: AcademicHonorsSectionProps) {
   const { lang } = useLanguage();
-  const [cards, setCards] = useState<HonorCardData[]>(DEFAULT_CARDS);
-  const [headlineText, setHeadlineText] = useState<string>(DEFAULT_HEADLINE);
-  const [bodyText, setBodyText] = useState<string>(DEFAULT_BODY_CONTENT);
+  const [cards, setCards] = useState<HonorCardData[]>(
+    lang === "vi" ? DEFAULT_CARDS_VI : DEFAULT_CARDS_EN
+  );
+  const [headlineText, setHeadlineText] = useState<string>(
+    lang === "vi" ? DEFAULT_HEADLINE_VI : DEFAULT_HEADLINE_EN
+  );
+  const [bodyText, setBodyText] = useState<string>(
+    lang === "vi" ? DEFAULT_BODY_CONTENT_VI : DEFAULT_BODY_CONTENT_EN
+  );
   const [isSaving, setIsSaving] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
   const headlineRef = useRef<HTMLTextAreaElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  // Sync default texts when language changes if content hasn't been custom edited
+  useEffect(() => {
+    if (lang === "en") {
+      setHeadlineText((prev) =>
+        prev === DEFAULT_HEADLINE_VI ? DEFAULT_HEADLINE_EN : prev
+      );
+      setBodyText((prev) =>
+        prev === DEFAULT_BODY_CONTENT_VI ? DEFAULT_BODY_CONTENT_EN : prev
+      );
+      setCards((prev) => {
+        const isDefaultVi = prev.every(
+          (c, idx) => c.subtitle === DEFAULT_CARDS_VI[idx]?.subtitle
+        );
+        return isDefaultVi ? DEFAULT_CARDS_EN : prev;
+      });
+    } else {
+      setHeadlineText((prev) =>
+        prev === DEFAULT_HEADLINE_EN ? DEFAULT_HEADLINE_VI : prev
+      );
+      setBodyText((prev) =>
+        prev === DEFAULT_BODY_CONTENT_EN ? DEFAULT_BODY_CONTENT_VI : prev
+      );
+      setCards((prev) => {
+        const isDefaultEn = prev.every(
+          (c, idx) => c.subtitle === DEFAULT_CARDS_EN[idx]?.subtitle
+        );
+        return isDefaultEn ? DEFAULT_CARDS_VI : prev;
+      });
+    }
+  }, [lang]);
 
   // Auto-resize both headline and body textareas to fit content dynamically
   useEffect(() => {
@@ -122,7 +187,7 @@ export function AcademicHonorsSection({ title }: AcademicHonorsSectionProps) {
 
       const cachedText = localStorage.getItem(LOCAL_STORAGE_TEXT_KEY);
       if (cachedText) {
-        const { headline, body } = splitHeadlineAndBody(cachedText);
+        const { headline, body } = splitHeadlineAndBody(cachedText, lang === "vi");
         setHeadlineText(headline);
         setBodyText(body);
       }
@@ -153,7 +218,7 @@ export function AcademicHonorsSection({ title }: AcademicHonorsSectionProps) {
             }
           }
           if (typeof data.textContent === "string" && data.textContent.trim()) {
-            const { headline, body } = splitHeadlineAndBody(data.textContent);
+            const { headline, body } = splitHeadlineAndBody(data.textContent, lang === "vi");
             setHeadlineText(headline);
             setBodyText(body);
             try {
@@ -643,7 +708,7 @@ function SingleHonorCard({ card, index, onChange }: SingleHonorCardProps) {
           type="text"
           value={card.subtitle}
           onChange={(e) => onChange(index, "subtitle", e.target.value)}
-          placeholder={lang === "vi" ? "Chiến lược thương hiệu & trải nghiệm" : "Subtitle / Field"}
+          placeholder={lang === "vi" ? "Chiến lược thương hiệu & trải nghiệm" : "Brand Strategy & Customer Experience"}
           className="w-full text-xs font-medium text-[#242220]/80 bg-transparent border-b border-transparent hover:border-[#1B3B2B]/20 focus:border-[#7B0323] focus:bg-white px-1 py-0 rounded transition-all outline-none leading-snug"
         />
 

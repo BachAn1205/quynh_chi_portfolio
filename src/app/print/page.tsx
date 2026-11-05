@@ -201,9 +201,19 @@ export default function PrintPortfolioPage() {
         </div>
 
         <div className="max-w-5xl mx-auto mt-1 pt-1 border-t border-white/10 text-[11px] text-white/80">
-          💡 <strong>Mẹo in PDF chuẩn A4:</strong> Tùy chọn in: Bật{" "}
-          <strong>&quot;Background graphics&quot; (Đồ họa nền)</strong> và bỏ chọn{" "}
-          <strong>&quot;Headers and footers&quot;</strong>.
+          {lang === "vi" ? (
+            <>
+              💡 <strong>Mẹo in PDF chuẩn A4:</strong> Tùy chọn in: Bật{" "}
+              <strong>&quot;Background graphics&quot; (Đồ họa nền)</strong> và bỏ chọn{" "}
+              <strong>&quot;Headers and footers&quot;</strong>.
+            </>
+          ) : (
+            <>
+              💡 <strong>A4 Print Tip:</strong> Print options: Enable{" "}
+              <strong>&quot;Background graphics&quot;</strong> and uncheck{" "}
+              <strong>&quot;Headers and footers&quot;</strong>.
+            </>
+          )}
         </div>
       </div>
 
@@ -310,8 +320,8 @@ export default function PrintPortfolioPage() {
                     : "Founded a circular-economy venture transforming coffee husks in Dak Lak into commercial Cascara tea, auditing unit economics (COGS), integrating QR traceability, and donating 77 bikes & 2 TVs to rural students."}
                 </p>
                 <div className="flex gap-3 text-[10.5px] font-mono text-[#7B0323] pt-0.5 font-bold">
-                  <span>• 1,6 triệu tấn phế phụ phẩm</span>
-                  <span>• Tiềm năng thị trường $80M</span>
+                  <span>• {lang === "vi" ? "1,6 triệu tấn phế phụ phẩm" : "1.6M Tons Ag Waste"}</span>
+                  <span>• {lang === "vi" ? "Tiềm năng thị trường $80M" : "$80M Market Potential"}</span>
                 </div>
               </div>
             </div>
@@ -465,7 +475,7 @@ export default function PrintPortfolioPage() {
               <div className="item-card p-2.5 rounded-lg bg-white border border-[#1B3B2B]/15 space-y-1">
                 <div className="flex justify-between items-start">
                   <h4 className="font-bold text-[#242220]">{lang === "vi" ? "Sáng Lập & Chiến Lược Gia" : "Founder & Strategist"} – CAFLOOP</h4>
-                  <span className="font-mono text-[9.5px] text-[#7B0323] font-bold">09/2024 – Nay</span>
+                  <span className="font-mono text-[9.5px] text-[#7B0323] font-bold">{lang === "vi" ? "09/2024 – Nay" : "09/2024 – Present"}</span>
                 </div>
                 <p className="text-[#242220]/75 leading-relaxed">
                   {lang === "vi"
@@ -489,7 +499,7 @@ export default function PrintPortfolioPage() {
               <div className="item-card p-2.5 rounded-lg bg-white border border-[#1B3B2B]/15 space-y-1">
                 <div className="flex justify-between items-start">
                   <h4 className="font-bold text-[#242220]">{lang === "vi" ? "Chủ Nhiệm Học Thuật & Giảng Viên" : "Academic Head"} – Shark Club & Geniusstar</h4>
-                  <span className="font-mono text-[9.5px] text-[#7B0323] font-bold">2024 – Nay</span>
+                  <span className="font-mono text-[9.5px] text-[#7B0323] font-bold">{lang === "vi" ? "2024 – Nay" : "2024 – Present"}</span>
                 </div>
                 <p className="text-[#242220]/75 leading-relaxed">
                   {lang === "vi"
@@ -500,7 +510,7 @@ export default function PrintPortfolioPage() {
 
               <div className="item-card p-2.5 rounded-lg bg-white border border-[#1B3B2B]/15 space-y-1">
                 <div className="flex justify-between items-start">
-                  <h4 className="font-bold text-[#242220]">{lang === "vi" ? "Nghiên Cứu Sinh Mùa Hè" : "Summer Researcher"} – NSYSU (Đài Loan)</h4>
+                  <h4 className="font-bold text-[#242220]">{lang === "vi" ? "Nghiên Cứu Sinh Mùa Hè" : "Summer Researcher"} – NSYSU ({lang === "vi" ? "Đài Loan" : "Taiwan"})</h4>
                   <span className="font-mono text-[9.5px] text-[#7B0323] font-bold">07/2025 – 08/2025</span>
                 </div>
                 <p className="text-[#242220]/75 leading-relaxed">
@@ -570,9 +580,24 @@ export default function PrintPortfolioPage() {
                 </h3>
               </div>
               <ul className="text-[10px] text-[#242220]/80 space-y-1 list-disc pl-3.5">
-                <li><strong>Khảo sát nghề bền vững 2024:</strong> 200 học sinh Đắk Lắk, mô hình hồi quy SPSS 83,5%, xác suất tăng 3,482 lần.</li>
-                <li><strong>Truy xuất thực phẩm mã QR (12/2025):</strong> Công bố trên tạp chí quốc tế Tennessee (khảo sát 400+ người tiêu dùng).</li>
-                <li><strong>Tín chỉ tuần hoàn C4F (01/2026):</strong> Giải xuất sắc toàn cầu từ <em>Harvard International Review</em> (tái chế 1,6M tấn vỏ cà phê).</li>
+                <li>
+                  <strong>{lang === "vi" ? "Khảo sát nghề bền vững 2024:" : "2024 Sustainable Career Survey:"}</strong>{" "}
+                  {lang === "vi"
+                    ? "200 học sinh Đắk Lắk, mô hình hồi quy SPSS 83,5%, xác suất tăng 3,482 lần."
+                    : "200 high school students in Dak Lak, 83.5% SPSS model accuracy, 3.482x odds multiplier."}
+                </li>
+                <li>
+                  <strong>{lang === "vi" ? "Truy xuất thực phẩm mã QR (12/2025):" : "QR Food Traceability (Dec 2025):"}</strong>{" "}
+                  {lang === "vi"
+                    ? "Công bố trên tạp chí quốc tế Tennessee (khảo sát 400+ người tiêu dùng)."
+                    : "Published in Tennessee International Journal (cross-sectional survey of 400+ consumers)."}
+                </li>
+                <li>
+                  <strong>{lang === "vi" ? "Tín chỉ tuần hoàn C4F (01/2026):" : "C4F Circular Credits (Jan 2026):"}</strong>{" "}
+                  {lang === "vi"
+                    ? "Giải xuất sắc toàn cầu từ Harvard International Review (tái chế 1,6M tấn vỏ cà phê)."
+                    : "Global Outstanding Writing Prize from Harvard International Review (1.6M tons coffee waste)."}
+                </li>
               </ul>
             </div>
 
@@ -590,9 +615,24 @@ export default function PrintPortfolioPage() {
                 </h3>
               </div>
               <ul className="text-[10px] text-[#242220]/80 space-y-1 list-disc pl-3.5">
-                <li><strong>Trà Cascara & Định mức giá vốn (COGS):</strong> Thu gom vỏ cà phê, dán mã QR truy xuất minh bạch.</li>
-                <li><strong>Thực tập sinh chuỗi cung ứng SI CAFE:</strong> Kiểm toán dữ liệu tồn kho, tìm hiểu kinh tế nông hộ nhỏ.</li>
-                <li><strong>Harvard Crimson Case (HCBC 2025):</strong> Top 30 Chung kết toàn cầu (Top 30/2000), đại diện Việt Nam duy nhất tại Harvard.</li>
+                <li>
+                  <strong>{lang === "vi" ? "Trà Cascara & Định mức giá vốn (COGS):" : "Cascara Tea & COGS Budgeting:"}</strong>{" "}
+                  {lang === "vi"
+                    ? "Thu gom vỏ cà phê, dán mã QR truy xuất minh bạch."
+                    : "Upcycling coffee husks, integrated QR codes for radical transparency."}
+                </li>
+                <li>
+                  <strong>{lang === "vi" ? "Thực tập sinh chuỗi cung ứng SI CAFE:" : "SI CAFE Supply Chain Intern:"}</strong>{" "}
+                  {lang === "vi"
+                    ? "Kiểm toán dữ liệu tồn kho, tìm hiểu kinh tế nông hộ nhỏ."
+                    : "Audited facility inventory, shadowed ground-level smallholder economics."}
+                </li>
+                <li>
+                  <strong>{lang === "vi" ? "Harvard Crimson Case (HCBC 2025):" : "Harvard Crimson Case (HCBC 2025):"}</strong>{" "}
+                  {lang === "vi"
+                    ? "Top 30 Chung kết toàn cầu (Top 30/2000), đại diện Việt Nam duy nhất tại Harvard."
+                    : "Global Top 30 Finalist (Top 30/2,000 teams), sole Vietnamese team at Harvard campus."}
+                </li>
               </ul>
             </div>
 
@@ -680,7 +720,11 @@ export default function PrintPortfolioPage() {
               </div>
               <div className="space-y-0.5 text-[10px]">
                 <span className="font-mono font-bold text-[#7B0323] block">{lang === "vi" ? "Giáo Dục Đàn T'rưng" : "T'rưng Education"}</span>
-                <p className="text-[#242220]/75">Biên soạn giáo trình di sản truyền khẩu, điều hành fanpage 5.000+ followers và số hóa YouTube 10.000+ views.</p>
+                <p className="text-[#242220]/75">
+                  {lang === "vi"
+                    ? "Biên soạn giáo trình di sản truyền khẩu, điều hành fanpage 5.000+ followers và số hóa YouTube 10.000+ views."
+                    : "Developed oral tradition curriculum, managed 5,000+ follower community, and archived 10,000+ views on YouTube."}
+                </p>
               </div>
             </div>
 
@@ -690,7 +734,11 @@ export default function PrintPortfolioPage() {
               </div>
               <div className="space-y-0.5 text-[10px]">
                 <span className="font-mono font-bold text-[#1B3B2B] block">{lang === "vi" ? "Tiếng Nói Nghệ Sĩ" : "The Artist's Voice"}</span>
-                <p className="text-[#242220]/75">Độc tấu tại Lễ hội &apos;Thanh Âm Đất Việt&apos; (TP.HCM) và triển lãm nghệ thuật thị giác tại Bảo tàng Philippines.</p>
+                <p className="text-[#242220]/75">
+                  {lang === "vi"
+                    ? "Độc tấu tại Lễ hội 'Thanh Âm Đất Việt' (TP.HCM) và triển lãm nghệ thuật thị giác tại Bảo tàng Philippines."
+                    : "Soloist at 'Sound of Vietnam' Festival (HCMC) and visual art exhibition at Angeles City Museum, Philippines."}
+                </p>
               </div>
             </div>
 
@@ -700,7 +748,11 @@ export default function PrintPortfolioPage() {
               </div>
               <div className="space-y-0.5 text-[10px]">
                 <span className="font-mono font-bold text-[#7B0323] block">{lang === "vi" ? "Cứu Trợ Ea Wer (77 Xe Đạp & 2 TV)" : "Ea Wer Relief"}</span>
-                <p className="text-[#242220]/75">Dùng lợi nhuận CAFLOOP trao tặng 77 xe đạp & 2 TV thông minh cho học sinh nghèo Buôn Đrăng Phốk.</p>
+                <p className="text-[#242220]/75">
+                  {lang === "vi"
+                    ? "Dùng lợi nhuận CAFLOOP trao tặng 77 xe đạp & 2 TV thông minh cho học sinh nghèo Buôn Đrăng Phốk."
+                    : "Directed CAFLOOP proceeds to donate 77 bicycles & 2 smart TVs to underprivileged students in Buon Drang Phok."}
+                </p>
               </div>
             </div>
 
@@ -710,7 +762,11 @@ export default function PrintPortfolioPage() {
               </div>
               <div className="space-y-0.5 text-[10px]">
                 <span className="font-mono font-bold text-[#1B3B2B] block">{lang === "vi" ? "Tiếng Nói Hoang Dã & Cầu Hoa Sen" : "Wildlife & Bridge"}</span>
-                <p className="text-[#242220]/75">Nâng cao nhận thức bảo tồn sinh thái động vật hoang dã Tây Nguyên và dự án cầu Hoa Sen qua suối mùa lũ.</p>
+                <p className="text-[#242220]/75">
+                  {lang === "vi"
+                    ? "Nâng cao nhận thức bảo tồn sinh thái động vật hoang dã Tây Nguyên và dự án cầu Hoa Sen qua suối mùa lũ."
+                    : "Advocated Central Highlands wildlife preservation and flood-safe stream crossing initiatives."}
+                </p>
               </div>
             </div>
 
@@ -734,7 +790,11 @@ export default function PrintPortfolioPage() {
               </div>
               <div className="space-y-0.5 text-[10px]">
                 <span className="font-mono font-bold text-[#7B0323] block">{lang === "vi" ? "Trọng Tài Tranh Biện Chuyên Môn" : "The Logical Adjudicator"}</span>
-                <p className="text-[#242220]/75">Giám khảo chuyên môn tại các giải tranh biện THPT, bồi dưỡng tư duy logic, lắng nghe đa chiều và đạo đức học thuật cho học sinh.</p>
+                <p className="text-[#242220]/75">
+                  {lang === "vi"
+                    ? "Giám khảo chuyên môn tại các giải tranh biện THPT, bồi dưỡng tư duy logic, lắng nghe đa chiều và đạo đức học thuật cho học sinh."
+                    : "Adjudicated high school debate tournaments, fostering critical reasoning, empathetic listening, and academic ethics."}
+                </p>
               </div>
             </div>
           </div>
@@ -762,20 +822,20 @@ export default function PrintPortfolioPage() {
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[10.5px]">
                 <div className="item-card p-2.5 rounded-lg bg-white border border-[#1B3B2B]/15 space-y-0.5">
-                  <h4 className="font-bold text-[#242220]">THPT Năng khiếu – ĐHQG-HCM</h4>
-                  <p className="text-[10px] text-[#7B0323] font-bold">Chuyên Anh • GPA: 9.6/10.0 • Top 6%</p>
-                  <p className="text-[10px] text-[#242220]/75">1 trong 2 học sinh Đắk Lắk trúng tuyển trường chuyên hàng đầu VN.</p>
+                  <h4 className="font-bold text-[#242220]">{lang === "vi" ? "THPT Năng khiếu – ĐHQG-HCM" : "VNUHCM High School for the Gifted"}</h4>
+                  <p className="text-[10px] text-[#7B0323] font-bold">{lang === "vi" ? "Chuyên Anh • GPA: 9.6/10.0 • Top 6%" : "English Major • GPA: 9.6/10.0 • Top 6%"}</p>
+                  <p className="text-[10px] text-[#242220]/75">{lang === "vi" ? "1 trong 2 học sinh Đắk Lắk trúng tuyển trường chuyên hàng đầu VN." : "1 of only 2 admits from Dak Lak Province to Vietnam's top magnet school."}</p>
                 </div>
 
                 <div className="item-card p-2.5 rounded-lg bg-white border border-[#1B3B2B]/15 space-y-0.5">
                   <h4 className="font-bold text-[#242220]">THCS Phan Chu Trinh</h4>
-                  <p className="text-[10px] text-[#7B0323] font-bold">GPA: 8.8/10.0 • Giải Ba Tỉnh môn Anh</p>
-                  <p className="text-[10px] text-[#242220]/75">Thành tích xuất sắc trong học thuật và các giải thưởng khoa học xã hội.</p>
+                  <p className="text-[10px] text-[#7B0323] font-bold">{lang === "vi" ? "GPA: 8.8/10.0 • Giải Ba Tỉnh môn Anh" : "GPA: 8.8/10.0 • Provincial 3rd Prize in English"}</p>
+                  <p className="text-[10px] text-[#242220]/75">{lang === "vi" ? "Thành tích xuất sắc trong học thuật và các giải thưởng khoa học xã hội." : "Academic excellence and provincial awards in social sciences."}</p>
                 </div>
 
                 <div className="item-card p-2.5 rounded-lg bg-white border border-[#1B3B2B]/15 space-y-0.5">
                   <h4 className="font-bold text-[#242220]">SAT 1550 • IELTS 7.5 • 4x AP 5</h4>
-                  <p className="text-[10px] text-[#1B3B2B] font-bold">4 điểm 5 Tuyệt đối AP</p>
+                  <p className="text-[10px] text-[#1B3B2B] font-bold">{lang === "vi" ? "4 điểm 5 Tuyệt đối AP" : "Four Perfect Scores of 5 on AP Exams"}</p>
                   <p className="text-[10px] text-[#242220]/75">AP Calculus AB (5), AP Stats (5), AP Micro (5), AP Macro (5).</p>
                 </div>
               </div>
@@ -790,37 +850,43 @@ export default function PrintPortfolioPage() {
               <div className="item-card divide-y divide-[#1B3B2B]/10 border border-[#1B3B2B]/15 rounded-lg bg-white overflow-hidden text-[10px]">
                 <div className="p-2 flex justify-between items-center gap-2">
                   <div>
-                    <strong className="text-[#242220]">Harvard Crimson Business Case (HCBC 2025):</strong> Top 30 Chung kết toàn cầu (Top 30/2000), đại diện Việt Nam duy nhất tại Harvard.
+                    <strong className="text-[#242220]">Harvard Crimson Business Case (HCBC 2025):</strong>{" "}
+                    {lang === "vi" ? "Top 30 Chung kết toàn cầu (Top 30/2000), đại diện Việt Nam duy nhất tại Harvard." : "Global Top 30 Finalist (Top 30/2,000 teams), sole Vietnamese team at Harvard campus."}
                   </div>
                   <span className="font-mono font-bold text-[#7B0323] shrink-0">Global Top 30</span>
                 </div>
                 <div className="p-2 flex justify-between items-center gap-2">
                   <div>
-                    <strong className="text-[#242220]">World Economics Cup (WEC 2025):</strong> Huy chương Bạc Châu Á - Châu Đại Dương &amp; Top 10 Kiến thức Nền tảng toàn cầu.
+                    <strong className="text-[#242220]">World Economics Cup (WEC 2025):</strong>{" "}
+                    {lang === "vi" ? "Huy chương Bạc Châu Á - Châu Đại Dương & Top 10 Kiến thức Nền tảng toàn cầu." : "Asia-Oceania Silver Medal & Global Top 10 Fundamentals."}
                   </div>
                   <span className="font-mono font-bold text-[#1B3B2B] shrink-0">Silver Medal</span>
                 </div>
                 <div className="p-2 flex justify-between items-center gap-2">
                   <div>
-                    <strong className="text-[#242220]">International Economics Olympiad (IEO):</strong> Vòng tuyển chọn Đội tuyển Quốc gia Top 5 (Hạng 3 Toàn quốc).
+                    <strong className="text-[#242220]">International Economics Olympiad (IEO):</strong>{" "}
+                    {lang === "vi" ? "Vòng tuyển chọn Đội tuyển Quốc gia Top 5 (Hạng 3 Toàn quốc)." : "Vietnam National Team Selection Top 5 (National Rank 3)."}
                   </div>
                   <span className="font-mono font-bold text-[#7B0323] shrink-0">National Rank 3</span>
                 </div>
                 <div className="p-2 flex justify-between items-center gap-2">
                   <div>
-                    <strong className="text-[#242220]">Vietnam Economics Olympiad (VEO):</strong> Huy chương Đồng Quốc gia Lý thuyết Kinh tế học &amp; Phân tích tình huống.
+                    <strong className="text-[#242220]">Vietnam Economics Olympiad (VEO):</strong>{" "}
+                    {lang === "vi" ? "Huy chương Đồng Quốc gia Lý thuyết Kinh tế học & Phân tích tình huống." : "National Bronze Medal in Economics Theory & Business Case Analysis."}
                   </div>
                   <span className="font-mono font-bold text-[#242220]/60 shrink-0">Bronze Medal</span>
                 </div>
                 <div className="p-2 flex justify-between items-center gap-2">
                   <div>
-                    <strong className="text-[#242220]">Vietnam Business Innovation Challenge (VBIC):</strong> Top 10 Chung kết Toàn quốc (Trưởng nhóm Chiến lược).
+                    <strong className="text-[#242220]">Vietnam Business Innovation Challenge (VBIC):</strong>{" "}
+                    {lang === "vi" ? "Top 10 Chung kết Toàn quốc (Trưởng nhóm Chiến lược)." : "National Top 10 Finalist (Lead Strategist)."}
                   </div>
                   <span className="font-mono font-bold text-[#1B3B2B] shrink-0">Top 10 Final</span>
                 </div>
                 <div className="p-2 flex justify-between items-center gap-2">
                   <div>
-                    <strong className="text-[#242220]">Cuộc thi Khát Vọng VN &amp; Học bổng ACCA Futurist:</strong> Top 4 Cá nhân (Bảng Thương mại) &amp; Top 50 Toàn quốc.
+                    <strong className="text-[#242220]">{lang === "vi" ? "Cuộc thi Khát Vọng VN & Học bổng ACCA Futurist:" : "Aspiring Vietnam & ACCA Futurist Scholarship:"}</strong>{" "}
+                    {lang === "vi" ? "Top 4 Cá nhân (Bảng Thương mại) & Top 50 Toàn quốc." : "Individual Top 4 (Commercial Track) & National Top 50."}
                   </div>
                   <span className="font-mono font-bold text-[#7B0323] shrink-0">Top 4 / Top 50</span>
                 </div>
@@ -830,22 +896,22 @@ export default function PrintPortfolioPage() {
             {/* ── TAB 3 & 4: TRANH BIỆN & KỸ NĂNG ── */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               <div className="item-card p-2.5 rounded-lg bg-white border border-[#1B3B2B]/15 space-y-1">
-                <span className="font-anton text-xs uppercase text-[#7B0323] block">5.3. Tranh Biện &amp; Nghệ Thuật</span>
+                <span className="font-anton text-xs uppercase text-[#7B0323] block">{lang === "vi" ? "5.3. Tranh Biện & Nghệ Thuật" : "5.3. Debate, MUN & Arts"}</span>
                 <ul className="text-[10px] text-[#242220]/80 space-y-0.5 list-disc pl-3.5">
-                  <li><strong>DAS-DO Debate 2024:</strong> Quán quân Tranh biện toàn quốc.</li>
-                  <li><strong>DONMUN 2026:</strong> Chủ tọa Ủy ban SPECPOL (27 đại biểu tranh biện & đàm phán).</li>
-                  <li><strong>VSGMUN 2024:</strong> Best Position Paper (Hợp tác kinh tế đa phương).</li>
-                  <li><strong>Lễ hội Thanh Âm Đất Việt:</strong> Nghệ sĩ độc tấu Đàn T&apos;rưng.</li>
-                  <li><strong>Museo ning Angeles (Philippines):</strong> Triển lãm nghệ thuật thị giác.</li>
+                  <li><strong>DAS-DO Debate 2024:</strong> {lang === "vi" ? "Quán quân Tranh biện toàn quốc." : "National Debate Champion."}</li>
+                  <li><strong>DONMUN 2026:</strong> {lang === "vi" ? "Chủ tọa Ủy ban SPECPOL (27 đại biểu tranh biện & đàm phán)." : "Chair of SPECPOL Committee (27 delegates in multilateral debate)."}</li>
+                  <li><strong>VSGMUN 2024:</strong> {lang === "vi" ? "Best Position Paper (Hợp tác kinh tế đa phương)." : "Best Position Paper (Multilateral Economic Cooperation)."}</li>
+                  <li><strong>{lang === "vi" ? "Lễ hội Thanh Âm Đất Việt:" : "'Sound of Vietnam' Festival:"}</strong> {lang === "vi" ? "Nghệ sĩ độc tấu Đàn T'rưng." : "Traditional T'rưng Soloist."}</li>
+                  <li><strong>Museo ning Angeles (Philippines):</strong> {lang === "vi" ? "Triển lãm nghệ thuật thị giác." : "Featured Visual Art Exhibition."}</li>
                 </ul>
               </div>
 
               <div className="item-card p-2.5 rounded-lg bg-[#E2ECE5]/40 border border-[#1B3B2B]/15 space-y-1">
-                <span className="font-anton text-xs uppercase text-[#1B3B2B] block">5.4. Kỹ Năng &amp; Hồ Sơ Năng Lực</span>
+                <span className="font-anton text-xs uppercase text-[#1B3B2B] block">{lang === "vi" ? "5.4. Kỹ Năng & Hồ Sơ Năng Lực" : "5.4. Technical Skills & Profile"}</span>
                 <ul className="text-[10px] text-[#242220]/80 space-y-0.5 list-disc pl-3.5">
-                  <li><strong>Dữ liệu:</strong> SPSS, ANOVA, Logistic Regression, Excel/Sheets, C++, Linux HPC, VESTA, DFT.</li>
-                  <li><strong>Ngoại ngữ:</strong> Tiếng Việt (Bản ngữ), Tiếng Anh (IELTS 7.5), Tiếng Nhật (Cơ bản).</li>
-                  <li><strong>Nghệ thuật &amp; Thể thao:</strong> Độc tấu đàn T&apos;rưng, Lý thuyết trò chơi, Trọng tài, Bơi lội, Cầu lông.</li>
+                  <li><strong>{lang === "vi" ? "Dữ liệu:" : "Data & Methods:"}</strong> SPSS, ANOVA, Logistic Regression, Excel/Sheets, C++, Linux HPC, VESTA, DFT.</li>
+                  <li><strong>{lang === "vi" ? "Ngoại ngữ:" : "Languages:"}</strong> {lang === "vi" ? "Tiếng Việt (Bản ngữ), Tiếng Anh (IELTS 7.5), Tiếng Nhật (Cơ bản)." : "Vietnamese (Native), English (IELTS 7.5), Japanese (Elementary)."}</li>
+                  <li><strong>{lang === "vi" ? "Nghệ thuật & Thể thao:" : "Arts & Athletics:"}</strong> {lang === "vi" ? "Độc tấu đàn T'rưng, Lý thuyết trò chơi, Trọng tài, Bơi lội, Cầu lông." : "T'rưng Solo Performance, Game Theory, Debate Adjudication, Swimming, Badminton."}</li>
                 </ul>
               </div>
             </div>
@@ -877,7 +943,7 @@ export default function PrintPortfolioPage() {
                   : "My vision is to build data architectures that make agricultural data transparent, accessible, and actionable, ensuring that local resources and the people who cultivate them are accurately valued."}
               </p>
               <div className="pt-1.5 flex flex-wrap items-center justify-between gap-2 border-t border-[#1B3B2B]/10 text-[10px] font-mono">
-                <span className="text-[#242220]/60">Email: student242706@ptnk.edu.vn • Đắk Lắk &amp; TP.HCM, VN</span>
+                <span className="text-[#242220]/60">Email: student242706@ptnk.edu.vn • {lang === "vi" ? "Đắk Lắk & TP.HCM, VN" : "Dak Lak & HCMC, Vietnam"}</span>
                 <span className="font-heading italic text-[#7B0323] text-sm font-semibold">Phan Hoàng Quỳnh Chi</span>
               </div>
             </div>

@@ -21,7 +21,7 @@ export interface HonorCardData {
   description: string;
 }
 
-const DEFAULT_CARDS: HonorCardData[] = [
+const DEFAULT_CARDS_VI: HonorCardData[] = [
   {
     id: 1,
     slotId: "mind-honors-1",
@@ -52,6 +52,37 @@ const DEFAULT_CARDS: HonorCardData[] = [
   },
 ];
 
+const DEFAULT_CARDS_EN: HonorCardData[] = [
+  {
+    id: 1,
+    slotId: "mind-honors-1",
+    title: "Chè 24",
+    subtitle: "Brand Strategy & Customer Experience",
+    description: "ASPIRING VIETNAM CONTEST 2025 • Top 4",
+  },
+  {
+    id: 2,
+    slotId: "mind-honors-2",
+    title: "Loom Lore",
+    subtitle: "Cultural Heritage & Consumer Insights",
+    description: "ASPIRING VIETNAM CONTEST 2025 • Top 4",
+  },
+  {
+    id: 3,
+    slotId: "mind-honors-3",
+    title: "TERRA",
+    subtitle: "Innovation & Sustainable Development",
+    description: "ASEEDER Business Simulation • Top 1",
+  },
+  {
+    id: 4,
+    slotId: "mind-honors-4",
+    title: "KEY COMMERCE",
+    subtitle: "Operations, Logistics & Finance",
+    description: "Business Model Analysis & Circular Solutions",
+  },
+];
+
 const LOCAL_STORAGE_KEY = "quynhchi_honors_cards_data";
 
 interface AcademicHonorsUploadGridProps {
@@ -63,9 +94,29 @@ interface AcademicHonorsUploadGridProps {
 
 export function AcademicHonorsUploadGrid(_props: AcademicHonorsUploadGridProps) {
   const { lang } = useLanguage();
-  const [cards, setCards] = useState<HonorCardData[]>(DEFAULT_CARDS);
+  const [cards, setCards] = useState<HonorCardData[]>(
+    lang === "vi" ? DEFAULT_CARDS_VI : DEFAULT_CARDS_EN
+  );
   const [isSaving, setIsSaving] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
+
+  useEffect(() => {
+    if (lang === "en") {
+      setCards((prev) => {
+        const isDefaultVi = prev.every(
+          (c, idx) => c.subtitle === DEFAULT_CARDS_VI[idx]?.subtitle
+        );
+        return isDefaultVi ? DEFAULT_CARDS_EN : prev;
+      });
+    } else {
+      setCards((prev) => {
+        const isDefaultEn = prev.every(
+          (c, idx) => c.subtitle === DEFAULT_CARDS_EN[idx]?.subtitle
+        );
+        return isDefaultEn ? DEFAULT_CARDS_VI : prev;
+      });
+    }
+  }, [lang]);
 
   // Load saved text data on mount
   useEffect(() => {
@@ -391,7 +442,7 @@ function SingleHonorCard({ card, index, onChange }: SingleHonorCardProps) {
           type="text"
           value={card.subtitle}
           onChange={(e) => onChange(index, "subtitle", e.target.value)}
-          placeholder={lang === "vi" ? "Chiến lược thương hiệu & trải nghiệm" : "Subtitle / Field"}
+          placeholder={lang === "vi" ? "Chiến lược thương hiệu & trải nghiệm" : "Brand Strategy & Customer Experience"}
           className="w-full text-[11px] font-medium text-[#242220]/80 bg-transparent border-b border-transparent hover:border-[#1B3B2B]/20 focus:border-[#7B0323] focus:bg-white px-1 py-0.5 rounded transition-all outline-none"
         />
 

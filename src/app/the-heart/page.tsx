@@ -19,7 +19,7 @@ export default function TheHeartPage() {
             prevHref="/the-mind"
             prevLabel="Think"
             nextHref="/the-competitor"
-            nextLabel="The Competitor"
+            nextLabel={lang === "vi" ? "Thành Tích" : "The Competitor"}
           />
         </div>
       </main>
