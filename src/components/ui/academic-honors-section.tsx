@@ -134,29 +134,37 @@ export function AcademicHonorsSection({ title }: AcademicHonorsSectionProps) {
   useEffect(() => {
     if (lang === "en") {
       setHeadlineText((prev) =>
-        prev === DEFAULT_HEADLINE_VI ? DEFAULT_HEADLINE_EN : prev
+        prev === DEFAULT_HEADLINE_VI || prev.includes("Biến bài toán") ? DEFAULT_HEADLINE_EN : prev
       );
       setBodyText((prev) =>
-        prev === DEFAULT_BODY_CONTENT_VI ? DEFAULT_BODY_CONTENT_EN : prev
+        prev === DEFAULT_BODY_CONTENT_VI || prev.includes("Tôi phát triển chiến lược") ? DEFAULT_BODY_CONTENT_EN : prev
       );
       setCards((prev) => {
-        const isDefaultVi = prev.every(
-          (c, idx) => c.subtitle === DEFAULT_CARDS_VI[idx]?.subtitle
-        );
-        return isDefaultVi ? DEFAULT_CARDS_EN : prev;
+        return prev.map((c, idx) => {
+          const defaultVi = DEFAULT_CARDS_VI[idx];
+          const defaultEn = DEFAULT_CARDS_EN[idx];
+          if (defaultVi && defaultEn && (c.subtitle === defaultVi.subtitle || !c.subtitle)) {
+            return { ...c, subtitle: defaultEn.subtitle, description: defaultEn.description };
+          }
+          return c;
+        });
       });
     } else {
       setHeadlineText((prev) =>
-        prev === DEFAULT_HEADLINE_EN ? DEFAULT_HEADLINE_VI : prev
+        prev === DEFAULT_HEADLINE_EN || prev.includes("Turning complex problems") ? DEFAULT_HEADLINE_VI : prev
       );
       setBodyText((prev) =>
-        prev === DEFAULT_BODY_CONTENT_EN ? DEFAULT_BODY_CONTENT_VI : prev
+        prev === DEFAULT_BODY_CONTENT_EN || prev.includes("I developed brand strategy") ? DEFAULT_BODY_CONTENT_VI : prev
       );
       setCards((prev) => {
-        const isDefaultEn = prev.every(
-          (c, idx) => c.subtitle === DEFAULT_CARDS_EN[idx]?.subtitle
-        );
-        return isDefaultEn ? DEFAULT_CARDS_VI : prev;
+        return prev.map((c, idx) => {
+          const defaultVi = DEFAULT_CARDS_VI[idx];
+          const defaultEn = DEFAULT_CARDS_EN[idx];
+          if (defaultVi && defaultEn && (c.subtitle === defaultEn.subtitle || !c.subtitle)) {
+            return { ...c, subtitle: defaultVi.subtitle, description: defaultVi.description };
+          }
+          return c;
+        });
       });
     }
   }, [lang]);
@@ -201,8 +209,22 @@ export function AcademicHonorsSection({ title }: AcademicHonorsSectionProps) {
       .then((data) => {
         if (!data) return;
 
+        const mapCardsForLang = (rawCards: HonorCardData[]) => {
+          if (lang === "en") {
+            return rawCards.map((c, idx) => {
+              const defaultVi = DEFAULT_CARDS_VI[idx];
+              const defaultEn = DEFAULT_CARDS_EN[idx];
+              if (defaultVi && defaultEn && (c.subtitle === defaultVi.subtitle || !c.subtitle)) {
+                return { ...c, subtitle: defaultEn.subtitle, description: defaultEn.description };
+              }
+              return c;
+            });
+          }
+          return rawCards;
+        };
+
         if (Array.isArray(data) && data.length > 0) {
-          setCards(data);
+          setCards(mapCardsForLang(data));
           try {
             localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
           } catch {
@@ -210,7 +232,7 @@ export function AcademicHonorsSection({ title }: AcademicHonorsSectionProps) {
           }
         } else if (typeof data === "object") {
           if (Array.isArray(data.cards) && data.cards.length > 0) {
-            setCards(data.cards);
+            setCards(mapCardsForLang(data.cards));
             try {
               localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data.cards));
             } catch {
@@ -218,7 +240,14 @@ export function AcademicHonorsSection({ title }: AcademicHonorsSectionProps) {
             }
           }
           if (typeof data.textContent === "string" && data.textContent.trim()) {
-            const { headline, body } = splitHeadlineAndBody(data.textContent, lang === "vi");
+            let { headline, body } = splitHeadlineAndBody(data.textContent, lang === "vi");
+            if (lang === "en") {
+              if (headline.includes("Biến bài toán") || headline === DEFAULT_HEADLINE_VI) headline = DEFAULT_HEADLINE_EN;
+              if (body.includes("Tôi phát triển chiến lược") || body === DEFAULT_BODY_CONTENT_VI) body = DEFAULT_BODY_CONTENT_EN;
+            } else {
+              if (headline.includes("Turning complex problems") || headline === DEFAULT_HEADLINE_EN) headline = DEFAULT_HEADLINE_VI;
+              if (body.includes("I developed brand strategy") || body === DEFAULT_BODY_CONTENT_EN) body = DEFAULT_BODY_CONTENT_VI;
+            }
             setHeadlineText(headline);
             setBodyText(body);
             try {

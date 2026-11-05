@@ -666,7 +666,7 @@ export default function PrintPortfolioPage() {
                   {lang === "vi" ? "Sư Phạm & Lan Tỏa" : "Pedagogy"}
                 </span>
                 <h3 className="font-anton text-xs uppercase text-[#242220]">
-                  Shark Club & CLB Geniusstar
+                  {lang === "vi" ? "Shark Club & CLB Geniusstar" : "Shark Club & Geniusstar Club"}
                 </h3>
               </div>
               <p className="text-[10px] text-[#242220]/75 leading-relaxed">
@@ -828,7 +828,7 @@ export default function PrintPortfolioPage() {
                 </div>
 
                 <div className="item-card p-2.5 rounded-lg bg-white border border-[#1B3B2B]/15 space-y-0.5">
-                  <h4 className="font-bold text-[#242220]">THCS Phan Chu Trinh</h4>
+                  <h4 className="font-bold text-[#242220]">{lang === "vi" ? "THCS Phan Chu Trinh" : "Phan Chu Trinh Secondary School"}</h4>
                   <p className="text-[10px] text-[#7B0323] font-bold">{lang === "vi" ? "GPA: 8.8/10.0 • Giải Ba Tỉnh môn Anh" : "GPA: 8.8/10.0 • Provincial 3rd Prize in English"}</p>
                   <p className="text-[10px] text-[#242220]/75">{lang === "vi" ? "Thành tích xuất sắc trong học thuật và các giải thưởng khoa học xã hội." : "Academic excellence and provincial awards in social sciences."}</p>
                 </div>

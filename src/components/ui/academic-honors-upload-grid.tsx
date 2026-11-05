@@ -103,30 +103,52 @@ export function AcademicHonorsUploadGrid(_props: AcademicHonorsUploadGridProps) 
   useEffect(() => {
     if (lang === "en") {
       setCards((prev) => {
-        const isDefaultVi = prev.every(
-          (c, idx) => c.subtitle === DEFAULT_CARDS_VI[idx]?.subtitle
-        );
-        return isDefaultVi ? DEFAULT_CARDS_EN : prev;
+        return prev.map((c, idx) => {
+          const defaultVi = DEFAULT_CARDS_VI[idx];
+          const defaultEn = DEFAULT_CARDS_EN[idx];
+          if (defaultVi && defaultEn && (c.subtitle === defaultVi.subtitle || !c.subtitle)) {
+            return { ...c, subtitle: defaultEn.subtitle, description: defaultEn.description };
+          }
+          return c;
+        });
       });
     } else {
       setCards((prev) => {
-        const isDefaultEn = prev.every(
-          (c, idx) => c.subtitle === DEFAULT_CARDS_EN[idx]?.subtitle
-        );
-        return isDefaultEn ? DEFAULT_CARDS_VI : prev;
+        return prev.map((c, idx) => {
+          const defaultVi = DEFAULT_CARDS_VI[idx];
+          const defaultEn = DEFAULT_CARDS_EN[idx];
+          if (defaultVi && defaultEn && (c.subtitle === defaultEn.subtitle || !c.subtitle)) {
+            return { ...c, subtitle: defaultVi.subtitle, description: defaultVi.description };
+          }
+          return c;
+        });
       });
     }
   }, [lang]);
 
   // Load saved text data on mount
   useEffect(() => {
+    const mapCardsForLang = (rawCards: HonorCardData[]) => {
+      if (lang === "en") {
+        return rawCards.map((c, idx) => {
+          const defaultVi = DEFAULT_CARDS_VI[idx];
+          const defaultEn = DEFAULT_CARDS_EN[idx];
+          if (defaultVi && defaultEn && (c.subtitle === defaultVi.subtitle || !c.subtitle)) {
+            return { ...c, subtitle: defaultEn.subtitle, description: defaultEn.description };
+          }
+          return c;
+        });
+      }
+      return rawCards;
+    };
+
     // 1. Try local storage first for instant load
     try {
       const cached = localStorage.getItem(LOCAL_STORAGE_KEY);
       if (cached) {
         const parsed = JSON.parse(cached);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          setCards(parsed);
+          setCards(mapCardsForLang(parsed));
         }
       }
     } catch {
@@ -140,7 +162,7 @@ export function AcademicHonorsUploadGrid(_props: AcademicHonorsUploadGridProps) 
         if (!data) return;
         const cardsList = Array.isArray(data) ? data : data.cards;
         if (Array.isArray(cardsList) && cardsList.length > 0) {
-          setCards(cardsList);
+          setCards(mapCardsForLang(cardsList));
           try {
             localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(cardsList));
           } catch {
@@ -151,7 +173,7 @@ export function AcademicHonorsUploadGrid(_props: AcademicHonorsUploadGridProps) 
       .catch((err) => {
         console.warn("Could not sync honors cards:", err);
       });
-  }, []);
+  }, [lang]);
 
   const handleTextChange = (
     index: number,
