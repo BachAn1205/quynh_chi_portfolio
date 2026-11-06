@@ -6,84 +6,66 @@ import {
   ImageIcon,
   Trash2,
   RefreshCw,
-  CheckCircle2,
-  Save,
   ArrowUpRight,
 } from "lucide-react";
 import { useProjectImages } from "@/lib/project-images-context";
 import { useLanguage } from "@/lib/i18n";
+import { HonorCardStaticData } from "./academic-honors-section";
 
-export interface HonorCardData {
-  id: number;
-  slotId: string;
-  title: string;
-  subtitle: string;
-  description: string;
-}
-
-const DEFAULT_CARDS_VI: HonorCardData[] = [
+const HONOR_CARDS: HonorCardStaticData[] = [
   {
     id: 1,
     slotId: "mind-honors-1",
-    title: "Chè 24",
-    subtitle: "Chiến lược thương hiệu & trải nghiệm",
-    description: "ASPIRING VIETNAM CONTEST 2025 • Top 4",
+    title: "CHÈ 24",
+    subtitle: {
+      vi: "Chiến lược thương hiệu & trải nghiệm",
+      en: "Brand Strategy & Customer Experience",
+    },
+    description: {
+      vi: "ASPIRING VIETNAM CONTEST 2025 • Top 4",
+      en: "ASPIRING VIETNAM CONTEST 2025 • Top 4",
+    },
   },
   {
     id: 2,
     slotId: "mind-honors-2",
-    title: "Loom Lore",
-    subtitle: "Sản phẩm văn hóa & thấu hiểu người tiêu dùng",
-    description: "ASPIRING VIETNAM CONTEST 2025 • Top 4",
+    title: "THE TACTICS",
+    subtitle: {
+      vi: "Phân tích insight người tiêu dùng & đổi mới trải nghiệm bảo tàng",
+      en: "Consumer Insights & Museum Experience Innovation",
+    },
+    description: {
+      vi: "VIETNAM BUSINESS INNOVATION CHALLENGE • Top 10",
+      en: "VIETNAM BUSINESS INNOVATION CHALLENGE • Top 10",
+    },
   },
   {
     id: 3,
     slotId: "mind-honors-3",
     title: "TERRA",
-    subtitle: "Đổi mới sáng tạo & phát triển bền vững",
-    description: "ASEEDER Business Simulation • Top 1",
+    subtitle: {
+      vi: "Đổi mới sáng tạo & phát triển bền vững",
+      en: "Innovation & Sustainable Development",
+    },
+    description: {
+      vi: "ASEEDER Business Simulation • Top 1",
+      en: "ASEEDER Business Simulation • Top 1",
+    },
   },
   {
     id: 4,
     slotId: "mind-honors-4",
-    title: "KEY COMMERCE",
-    subtitle: "Vận hành, logistics & tài chính",
-    description: "Phân tích mô hình kinh doanh & giải pháp tuần hoàn",
+    title: "RE:SOUL",
+    subtitle: {
+      vi: "Vận hành, logistics & tài chính",
+      en: "Operations, Logistics & Finance",
+    },
+    description: {
+      vi: "Phân tích mô hình kinh doanh & giải pháp tuần hoàn",
+      en: "Business Model Analysis & Circular Solutions",
+    },
   },
 ];
-
-const DEFAULT_CARDS_EN: HonorCardData[] = [
-  {
-    id: 1,
-    slotId: "mind-honors-1",
-    title: "Chè 24",
-    subtitle: "Brand Strategy & Customer Experience",
-    description: "ASPIRING VIETNAM CONTEST 2025 • Top 4",
-  },
-  {
-    id: 2,
-    slotId: "mind-honors-2",
-    title: "Loom Lore",
-    subtitle: "Cultural Heritage & Consumer Insights",
-    description: "ASPIRING VIETNAM CONTEST 2025 • Top 4",
-  },
-  {
-    id: 3,
-    slotId: "mind-honors-3",
-    title: "TERRA",
-    subtitle: "Innovation & Sustainable Development",
-    description: "ASEEDER Business Simulation • Top 1",
-  },
-  {
-    id: 4,
-    slotId: "mind-honors-4",
-    title: "KEY COMMERCE",
-    subtitle: "Operations, Logistics & Finance",
-    description: "Business Model Analysis & Circular Solutions",
-  },
-];
-
-const LOCAL_STORAGE_KEY = "quynhchi_honors_cards_data";
 
 interface AcademicHonorsUploadGridProps {
   guideline?: {
@@ -93,195 +75,16 @@ interface AcademicHonorsUploadGridProps {
 }
 
 export function AcademicHonorsUploadGrid(_props: AcademicHonorsUploadGridProps) {
-  const { lang } = useLanguage();
-  const [cards, setCards] = useState<HonorCardData[]>(
-    lang === "vi" ? DEFAULT_CARDS_VI : DEFAULT_CARDS_EN
-  );
-  const [isSaving, setIsSaving] = useState(false);
-  const [saveSuccess, setSaveSuccess] = useState(false);
-
-  useEffect(() => {
-    if (lang === "en") {
-      setCards((prev) => {
-        return prev.map((c, idx) => {
-          const defaultVi = DEFAULT_CARDS_VI[idx];
-          const defaultEn = DEFAULT_CARDS_EN[idx];
-          if (defaultVi && defaultEn && (c.subtitle === defaultVi.subtitle || !c.subtitle)) {
-            return { ...c, subtitle: defaultEn.subtitle, description: defaultEn.description };
-          }
-          return c;
-        });
-      });
-    } else {
-      setCards((prev) => {
-        return prev.map((c, idx) => {
-          const defaultVi = DEFAULT_CARDS_VI[idx];
-          const defaultEn = DEFAULT_CARDS_EN[idx];
-          if (defaultVi && defaultEn && (c.subtitle === defaultEn.subtitle || !c.subtitle)) {
-            return { ...c, subtitle: defaultVi.subtitle, description: defaultVi.description };
-          }
-          return c;
-        });
-      });
-    }
-  }, [lang]);
-
-  // Load saved text data on mount
-  useEffect(() => {
-    const mapCardsForLang = (rawCards: HonorCardData[]) => {
-      if (lang === "en") {
-        return rawCards.map((c, idx) => {
-          const defaultVi = DEFAULT_CARDS_VI[idx];
-          const defaultEn = DEFAULT_CARDS_EN[idx];
-          if (defaultVi && defaultEn && (c.subtitle === defaultVi.subtitle || !c.subtitle)) {
-            return { ...c, subtitle: defaultEn.subtitle, description: defaultEn.description };
-          }
-          return c;
-        });
-      }
-      return rawCards;
-    };
-
-    // 1. Try local storage first for instant load
-    try {
-      const cached = localStorage.getItem(LOCAL_STORAGE_KEY);
-      if (cached) {
-        const parsed = JSON.parse(cached);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          setCards(mapCardsForLang(parsed));
-        }
-      }
-    } catch {
-      // ignore
-    }
-
-    // 2. Sync with API
-    fetch("/api/honors-cards")
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data) => {
-        if (!data) return;
-        const cardsList = Array.isArray(data) ? data : data.cards;
-        if (Array.isArray(cardsList) && cardsList.length > 0) {
-          setCards(mapCardsForLang(cardsList));
-          try {
-            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(cardsList));
-          } catch {
-            // ignore
-          }
-        }
-      })
-      .catch((err) => {
-        console.warn("Could not sync honors cards:", err);
-      });
-  }, [lang]);
-
-  const handleTextChange = (
-    index: number,
-    field: keyof Omit<HonorCardData, "id" | "slotId">,
-    value: string
-  ) => {
-    setCards((prev) => {
-      const updated = [...prev];
-      updated[index] = {
-        ...updated[index],
-        [field]: value,
-      };
-      return updated;
-    });
-  };
-
-  const handleSave = async () => {
-    setIsSaving(true);
-    try {
-      // Save locally
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(cards));
-
-      // Save via API
-      await fetch("/api/honors-cards", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(cards),
-      });
-
-      setSaveSuccess(true);
-      setTimeout(() => setSaveSuccess(false), 3000);
-    } catch (err) {
-      console.error("Save error:", err);
-      alert(
-        lang === "vi"
-          ? "Đã lưu vào bộ nhớ trình duyệt!"
-          : "Saved to browser memory!"
-      );
-    } finally {
-      setIsSaving(false);
-    }
-  };
-
   return (
-    <div className="w-full flex flex-col gap-4">
-      {/* 4 Cards Grid (2x2) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-        {cards.map((card, idx) => (
-          <SingleHonorCard
-            key={card.id || idx}
-            card={card}
-            index={idx}
-            onChange={handleTextChange}
-          />
-        ))}
-      </div>
-
-      {/* Save Button Row */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
-        <button
-          type="button"
-          onClick={handleSave}
-          disabled={isSaving}
-          className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-xs text-white transition-all shadow-sm active:scale-95 cursor-pointer ${
-            saveSuccess
-              ? "bg-[#1B3B2B] hover:bg-[#1B3B2B]"
-              : "bg-[#7B0323] hover:bg-[#5E021A]"
-          }`}
-        >
-          {saveSuccess ? (
-            <>
-              <CheckCircle2 className="w-4 h-4 text-emerald-300" />
-              <span>{lang === "vi" ? "Đã lưu thành công!" : "Saved successfully!"}</span>
-            </>
-          ) : isSaving ? (
-            <>
-              <RefreshCw className="w-4 h-4 animate-spin" />
-              <span>{lang === "vi" ? "Đang lưu..." : "Saving..."}</span>
-            </>
-          ) : (
-            <>
-              <Save className="w-4 h-4" />
-              <span>{lang === "vi" ? "Lưu thông tin" : "Save information"}</span>
-            </>
-          )}
-        </button>
-
-        <span className="text-[11px] text-[#242220]/60 italic text-center sm:text-right">
-          {lang === "vi"
-            ? "Nhập văn bản bên dưới mỗi ảnh và bấm Lưu để lưu trữ"
-            : "Edit text below photos and click Save"}
-        </span>
-      </div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+      {HONOR_CARDS.map((card) => (
+        <SingleCard key={card.id} card={card} />
+      ))}
     </div>
   );
 }
 
-interface SingleHonorCardProps {
-  card: HonorCardData;
-  index: number;
-  onChange: (
-    index: number,
-    field: keyof Omit<HonorCardData, "id" | "slotId">,
-    value: string
-  ) => void;
-}
-
-function SingleHonorCard({ card, index, onChange }: SingleHonorCardProps) {
+function SingleCard({ card }: { card: HonorCardStaticData }) {
   const { getImage, uploadImage, deleteImage } = useProjectImages();
   const { lang } = useLanguage();
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -290,7 +93,6 @@ function SingleHonorCard({ card, index, onChange }: SingleHonorCardProps) {
   const [previewBlob, setPreviewBlob] = useState<string | null>(null);
   const [imageLoadError, setImageLoadError] = useState(false);
 
-  // Fallback to mind-honors if mind-honors-1 is empty
   const storedImage =
     getImage(card.slotId) ||
     (card.slotId === "mind-honors-1" ? getImage("mind-honors") : undefined);
@@ -301,22 +103,30 @@ function SingleHonorCard({ card, index, onChange }: SingleHonorCardProps) {
     setImageLoadError(false);
   }, [currentImage]);
 
-  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    await processUpload(file);
+    validateAndUpload(file);
   };
 
-  const processUpload = async (file: File) => {
+  const validateAndUpload = (file: File) => {
     const fileName = file.name.toLowerCase();
     const isImageExt = /\.(png|jpe?g|webp|gif|svg|jfif|bmp|avif)$/i.test(fileName);
     const isImageMime = file.type ? file.type.startsWith("image/") : false;
 
     if (!isImageMime && !isImageExt) {
-      alert(lang === "vi" ? "Vui lòng chọn một tệp hình ảnh (.png, .jpg, .webp)!" : "Please select an image file (.png, .jpg, .webp)!");
+      alert(
+        lang === "vi"
+          ? "Vui lòng chọn một tệp hình ảnh (.png, .jpg, .webp)!"
+          : "Please select an image file (.png, .jpg, .webp)!"
+      );
       return;
     }
 
+    processUpload(file);
+  };
+
+  const processUpload = async (file: File) => {
     const localUrl = URL.createObjectURL(file);
     setPreviewBlob(localUrl);
     setImageLoadError(false);
@@ -326,7 +136,11 @@ function SingleHonorCard({ card, index, onChange }: SingleHonorCardProps) {
       await uploadImage(card.slotId, file);
     } catch (err) {
       console.error(err);
-      alert(lang === "vi" ? "Tải ảnh thất bại, vui lòng thử lại." : "Failed to upload image.");
+      alert(
+        lang === "vi"
+          ? "Tải ảnh thất bại, vui lòng thử lại."
+          : "Failed to upload image."
+      );
     } finally {
       setIsUploading(false);
       if (fileInputRef.current) {
@@ -337,7 +151,11 @@ function SingleHonorCard({ card, index, onChange }: SingleHonorCardProps) {
 
   const handleDelete = async (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (confirm(lang === "vi" ? "Bạn có chắc muốn xóa ảnh này?" : "Remove this image?")) {
+    if (
+      confirm(
+        lang === "vi" ? "Bạn có chắc muốn xóa ảnh này?" : "Remove this image?"
+      )
+    ) {
       setPreviewBlob(null);
       setImageLoadError(false);
       await deleteImage(card.slotId);
@@ -347,20 +165,21 @@ function SingleHonorCard({ card, index, onChange }: SingleHonorCardProps) {
     }
   };
 
-  const handleDrop = async (e: React.DragEvent) => {
+  const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     setIsDragOver(false);
     const file = e.dataTransfer.files?.[0];
     if (file) {
-      await processUpload(file);
+      validateAndUpload(file);
     }
   };
 
   const hasValidImage = Boolean(currentImage && !imageLoadError);
+  const subtitleText = lang === "vi" ? card.subtitle.vi : card.subtitle.en;
+  const descriptionText = lang === "vi" ? card.description.vi : card.description.en;
 
   return (
     <div className="flex flex-col rounded-2xl border border-[#1B3B2B]/15 bg-[#FAF7F2] p-2.5 sm:p-3 shadow-xs hover:border-[#1B3B2B]/35 transition-all duration-200">
-      {/* Photo Upload Area */}
       <div
         onDragOver={(e) => {
           e.preventDefault();
@@ -369,7 +188,7 @@ function SingleHonorCard({ card, index, onChange }: SingleHonorCardProps) {
         onDragLeave={() => setIsDragOver(false)}
         onDrop={handleDrop}
         onClick={() => !hasValidImage && fileInputRef.current?.click()}
-        className={`relative w-full aspect-[16/10] rounded-xl overflow-hidden transition-all duration-200 ${
+        className={`relative w-full aspect-[4/3] rounded-xl overflow-hidden transition-all duration-200 ${
           hasValidImage
             ? "border border-[#1B3B2B]/15 bg-white group"
             : `border-2 border-dashed cursor-pointer ${
@@ -396,7 +215,6 @@ function SingleHonorCard({ card, index, onChange }: SingleHonorCardProps) {
               onError={() => setImageLoadError(true)}
               loading="lazy"
             />
-            {/* Quick Actions */}
             <div className="absolute top-2 right-2 flex items-center gap-1.5 opacity-90 group-hover:opacity-100 transition-opacity">
               <button
                 type="button"
@@ -422,11 +240,11 @@ function SingleHonorCard({ card, index, onChange }: SingleHonorCardProps) {
           </div>
         ) : (
           <div className="absolute inset-0 flex flex-col items-center justify-center p-3 text-center">
-            <div className="w-9 h-9 rounded-xl bg-[#E2ECE5]/70 text-[#1B3B2B] flex items-center justify-center mb-1.5">
+            <div className="w-10 h-10 rounded-xl bg-[#E2ECE5]/70 text-[#1B3B2B] flex items-center justify-center mb-2">
               {isUploading ? (
                 <RefreshCw className="w-4 h-4 animate-spin" />
               ) : (
-                <UploadCloud className="w-4 h-4" />
+                <UploadCloud className="w-5 h-5" />
               )}
             </div>
             <button
@@ -436,46 +254,28 @@ function SingleHonorCard({ card, index, onChange }: SingleHonorCardProps) {
                 e.stopPropagation();
                 fileInputRef.current?.click();
               }}
-              className="px-2.5 py-1 rounded-lg bg-[#7B0323] hover:bg-[#5E021A] text-white text-[11px] font-medium shadow-xs flex items-center gap-1 transition-all cursor-pointer"
+              className="px-3 py-1.5 rounded-lg bg-[#7B0323] hover:bg-[#5E021A] text-white text-xs font-medium shadow-xs flex items-center gap-1.5 transition-all cursor-pointer"
             >
-              <ImageIcon className="w-3 h-3" />
+              <ImageIcon className="w-3.5 h-3.5" />
               <span>{isUploading ? "..." : lang === "vi" ? "Tải ảnh" : "Upload"}</span>
             </button>
           </div>
         )}
       </div>
 
-      {/* Text Editing Inputs Directly Below */}
-      <div className="mt-2.5 space-y-1.5">
-        {/* Line 1: Title */}
+      <div className="mt-2.5 space-y-1">
         <div className="flex items-center justify-between gap-1">
-          <input
-            type="text"
-            value={card.title}
-            onChange={(e) => onChange(index, "title", e.target.value)}
-            placeholder={lang === "vi" ? "Tên dự án (VD: Chè 24)" : "Project title"}
-            className="w-full font-anton text-sm uppercase tracking-tight text-[#242220] bg-transparent border-b border-transparent hover:border-[#1B3B2B]/20 focus:border-[#7B0323] focus:bg-white px-1 py-0.5 rounded transition-all outline-none"
-          />
-          <ArrowUpRight className="w-3.5 h-3.5 text-[#242220]/40 shrink-0" />
+          <h4 className="font-anton text-base sm:text-lg uppercase tracking-tight text-[#242220] leading-snug m-0">
+            {card.title}
+          </h4>
+          <ArrowUpRight className="w-4 h-4 text-[#242220]/40 shrink-0" />
         </div>
-
-        {/* Line 2: Subtitle / Field */}
-        <input
-          type="text"
-          value={card.subtitle}
-          onChange={(e) => onChange(index, "subtitle", e.target.value)}
-          placeholder={lang === "vi" ? "Chiến lược thương hiệu & trải nghiệm" : "Brand Strategy & Customer Experience"}
-          className="w-full text-[11px] font-medium text-[#242220]/80 bg-transparent border-b border-transparent hover:border-[#1B3B2B]/20 focus:border-[#7B0323] focus:bg-white px-1 py-0.5 rounded transition-all outline-none"
-        />
-
-        {/* Line 3: Competition / Achievement Details */}
-        <input
-          type="text"
-          value={card.description}
-          onChange={(e) => onChange(index, "description", e.target.value)}
-          placeholder={lang === "vi" ? "ASPIRING VIETNAM CONTEST 2025 • Top 4" : "Contest & Distinction"}
-          className="w-full font-mono text-[10px] text-[#7B0323] font-semibold bg-transparent border-b border-transparent hover:border-[#1B3B2B]/20 focus:border-[#7B0323] focus:bg-white px-1 py-0.5 rounded transition-all outline-none"
-        />
+        <p className="text-xs font-medium text-[#242220]/80 leading-snug line-clamp-2 m-0">
+          {subtitleText}
+        </p>
+        <p className="font-mono text-[11px] text-[#7B0323] font-semibold leading-snug m-0">
+          {descriptionText}
+        </p>
       </div>
     </div>
   );

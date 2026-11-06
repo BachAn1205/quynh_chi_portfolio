@@ -6,109 +6,89 @@ import {
   ImageIcon,
   Trash2,
   RefreshCw,
-  CheckCircle2,
-  Save,
   ArrowUpRight,
 } from "lucide-react";
 import { useProjectImages } from "@/lib/project-images-context";
 import { useLanguage } from "@/lib/i18n";
 
-export interface HonorCardData {
+export interface HonorCardStaticData {
   id: number;
   slotId: string;
   title: string;
-  subtitle: string;
-  description: string;
+  subtitle: {
+    vi: string;
+    en: string;
+  };
+  description: {
+    vi: string;
+    en: string;
+  };
 }
 
-const DEFAULT_CARDS_VI: HonorCardData[] = [
+const HONOR_CARDS: HonorCardStaticData[] = [
   {
     id: 1,
     slotId: "mind-honors-1",
-    title: "Chè 24",
-    subtitle: "Chiến lược thương hiệu & trải nghiệm",
-    description: "ASPIRING VIETNAM CONTEST 2025 • Top 4",
+    title: "CHÈ 24",
+    subtitle: {
+      vi: "Chiến lược thương hiệu & trải nghiệm",
+      en: "Brand Strategy & Customer Experience",
+    },
+    description: {
+      vi: "ASPIRING VIETNAM CONTEST 2025 • Top 4",
+      en: "ASPIRING VIETNAM CONTEST 2025 • Top 4",
+    },
   },
   {
     id: 2,
     slotId: "mind-honors-2",
-    title: "Loom Lore",
-    subtitle: "Sản phẩm văn hóa & thấu hiểu người tiêu dùng",
-    description: "ASPIRING VIETNAM CONTEST 2025 • Top 4",
+    title: "THE TACTICS",
+    subtitle: {
+      vi: "Phân tích insight người tiêu dùng & đổi mới trải nghiệm bảo tàng",
+      en: "Consumer Insights & Museum Experience Innovation",
+    },
+    description: {
+      vi: "VIETNAM BUSINESS INNOVATION CHALLENGE • Top 10",
+      en: "VIETNAM BUSINESS INNOVATION CHALLENGE • Top 10",
+    },
   },
   {
     id: 3,
     slotId: "mind-honors-3",
     title: "TERRA",
-    subtitle: "Đổi mới sáng tạo & phát triển bền vững",
-    description: "ASEEDER Business Simulation • Top 1",
+    subtitle: {
+      vi: "Đổi mới sáng tạo & phát triển bền vững",
+      en: "Innovation & Sustainable Development",
+    },
+    description: {
+      vi: "ASEEDER Business Simulation • Top 1",
+      en: "ASEEDER Business Simulation • Top 1",
+    },
   },
   {
     id: 4,
     slotId: "mind-honors-4",
-    title: "KEY COMMERCE",
-    subtitle: "Vận hành, logistics & tài chính",
-    description: "Phân tích mô hình kinh doanh & giải pháp tuần hoàn",
+    title: "RE:SOUL",
+    subtitle: {
+      vi: "Vận hành, logistics & tài chính",
+      en: "Operations, Logistics & Finance",
+    },
+    description: {
+      vi: "Phân tích mô hình kinh doanh & giải pháp tuần hoàn",
+      en: "Business Model Analysis & Circular Solutions",
+    },
   },
 ];
 
-const DEFAULT_CARDS_EN: HonorCardData[] = [
-  {
-    id: 1,
-    slotId: "mind-honors-1",
-    title: "Chè 24",
-    subtitle: "Brand Strategy & Customer Experience",
-    description: "ASPIRING VIETNAM CONTEST 2025 • Top 4",
-  },
-  {
-    id: 2,
-    slotId: "mind-honors-2",
-    title: "Loom Lore",
-    subtitle: "Cultural Heritage & Consumer Insights",
-    description: "ASPIRING VIETNAM CONTEST 2025 • Top 4",
-  },
-  {
-    id: 3,
-    slotId: "mind-honors-3",
-    title: "TERRA",
-    subtitle: "Innovation & Sustainable Development",
-    description: "ASEEDER Business Simulation • Top 1",
-  },
-  {
-    id: 4,
-    slotId: "mind-honors-4",
-    title: "KEY COMMERCE",
-    subtitle: "Operations, Logistics & Finance",
-    description: "Business Model Analysis & Circular Solutions",
-  },
-];
+const STRATEGIC_HEADLINE = {
+  vi: "Biến bài toán phức tạp thành giải pháp chiến lược.",
+  en: "Turning complex problems into strategic solutions.",
+};
 
-const DEFAULT_HEADLINE_EN = "Turning complex problems into strategic solutions.";
-const DEFAULT_HEADLINE_VI = "Biến bài toán phức tạp thành giải pháp chiến lược.";
-
-const DEFAULT_BODY_CONTENT_VI = `Tôi phát triển chiến lược thương hiệu cho Chè 24, phân tích insight người tiêu dùng và trải nghiệm bảo tàng qua The Tactics, nghiên cứu xu hướng công nghệ và tăng trưởng thị trường với TERRA, đồng thời xây dựng mô hình tài chính và dự báo đầu tư cho RE:SOUL. Qua mỗi business case, tôi vận dụng phân tích thị trường, dữ liệu và tư duy kinh tế để phát triển các giải pháp kinh doanh khả thi.`;
-
-const DEFAULT_BODY_CONTENT_EN = `I developed brand strategy for Chè 24, analyzed consumer insights and museum experiences through The Tactics, researched technology trends and market growth with TERRA, and built financial models and investment forecasts for RE:SOUL. Across each business case, I apply market analysis, data analytics, and economic thinking to develop actionable business solutions.`;
-
-const LOCAL_STORAGE_KEY = "quynhchi_honors_cards_data";
-const LOCAL_STORAGE_TEXT_KEY = "quynhchi_honors_left_text";
-
-function splitHeadlineAndBody(raw: string, isVi: boolean): { headline: string; body: string } {
-  const defaultHeadline = isVi ? DEFAULT_HEADLINE_VI : DEFAULT_HEADLINE_EN;
-  const defaultBody = isVi ? DEFAULT_BODY_CONTENT_VI : DEFAULT_BODY_CONTENT_EN;
-  const trimmed = (raw || "").trim();
-  if (!trimmed) {
-    return { headline: defaultHeadline, body: defaultBody };
-  }
-  const paragraphs = trimmed.split(/\n\s*\n/);
-  if (paragraphs.length >= 2) {
-    return {
-      headline: paragraphs[0].trim(),
-      body: paragraphs.slice(1).join("\n\n").trim(),
-    };
-  }
-  return { headline: defaultHeadline, body: trimmed };
-}
+const STRATEGIC_BODY = {
+  vi: "Tôi phát triển chiến lược thương hiệu cho Chè 24, phân tích insight người tiêu dùng và trải nghiệm bảo tàng qua The Tactics, nghiên cứu xu hướng công nghệ và tăng trưởng thị trường với TERRA, đồng thời xây dựng mô hình tài chính và dự báo đầu tư cho RE:SOUL. Qua mỗi business case, tôi vận dụng phân tích thị trường, dữ liệu và tư duy kinh tế để phát triển các giải pháp kinh doanh khả thi.",
+  en: "I developed brand strategy for Chè 24, analyzed consumer insights and museum experiences through The Tactics, researched technology trends and market growth with TERRA, and built financial models and investment forecasts for RE:SOUL. Across each business case, I apply market analysis, data analytics, and economic thinking to develop actionable business solutions.",
+};
 
 interface AcademicHonorsSectionProps {
   title: string | React.ReactNode;
@@ -116,199 +96,6 @@ interface AcademicHonorsSectionProps {
 
 export function AcademicHonorsSection({ title }: AcademicHonorsSectionProps) {
   const { lang } = useLanguage();
-  const [cards, setCards] = useState<HonorCardData[]>(
-    lang === "vi" ? DEFAULT_CARDS_VI : DEFAULT_CARDS_EN
-  );
-  const [headlineText, setHeadlineText] = useState<string>(
-    lang === "vi" ? DEFAULT_HEADLINE_VI : DEFAULT_HEADLINE_EN
-  );
-  const [bodyText, setBodyText] = useState<string>(
-    lang === "vi" ? DEFAULT_BODY_CONTENT_VI : DEFAULT_BODY_CONTENT_EN
-  );
-  const [isSaving, setIsSaving] = useState(false);
-  const [saveSuccess, setSaveSuccess] = useState(false);
-  const headlineRef = useRef<HTMLTextAreaElement>(null);
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
-
-  // Sync default texts when language changes if content hasn't been custom edited
-  useEffect(() => {
-    if (lang === "en") {
-      setHeadlineText((prev) =>
-        prev === DEFAULT_HEADLINE_VI || prev.includes("Biến bài toán") ? DEFAULT_HEADLINE_EN : prev
-      );
-      setBodyText((prev) =>
-        prev === DEFAULT_BODY_CONTENT_VI || prev.includes("Tôi phát triển chiến lược") ? DEFAULT_BODY_CONTENT_EN : prev
-      );
-      setCards((prev) => {
-        return prev.map((c, idx) => {
-          const defaultVi = DEFAULT_CARDS_VI[idx];
-          const defaultEn = DEFAULT_CARDS_EN[idx];
-          if (defaultVi && defaultEn && (c.subtitle === defaultVi.subtitle || !c.subtitle)) {
-            return { ...c, subtitle: defaultEn.subtitle, description: defaultEn.description };
-          }
-          return c;
-        });
-      });
-    } else {
-      setHeadlineText((prev) =>
-        prev === DEFAULT_HEADLINE_EN || prev.includes("Turning complex problems") ? DEFAULT_HEADLINE_VI : prev
-      );
-      setBodyText((prev) =>
-        prev === DEFAULT_BODY_CONTENT_EN || prev.includes("I developed brand strategy") ? DEFAULT_BODY_CONTENT_VI : prev
-      );
-      setCards((prev) => {
-        return prev.map((c, idx) => {
-          const defaultVi = DEFAULT_CARDS_VI[idx];
-          const defaultEn = DEFAULT_CARDS_EN[idx];
-          if (defaultVi && defaultEn && (c.subtitle === defaultEn.subtitle || !c.subtitle)) {
-            return { ...c, subtitle: defaultVi.subtitle, description: defaultVi.description };
-          }
-          return c;
-        });
-      });
-    }
-  }, [lang]);
-
-  // Auto-resize both headline and body textareas to fit content dynamically
-  useEffect(() => {
-    if (headlineRef.current) {
-      headlineRef.current.style.height = "auto";
-      headlineRef.current.style.height = `${headlineRef.current.scrollHeight}px`;
-    }
-    if (textareaRef.current) {
-      textareaRef.current.style.height = "auto";
-      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
-    }
-  }, [headlineText, bodyText]);
-
-  // Load saved data on mount
-  useEffect(() => {
-    // 1. LocalStorage for instant render
-    try {
-      const cachedCards = localStorage.getItem(LOCAL_STORAGE_KEY);
-      if (cachedCards) {
-        const parsed = JSON.parse(cachedCards);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          setCards(parsed);
-        }
-      }
-
-      const cachedText = localStorage.getItem(LOCAL_STORAGE_TEXT_KEY);
-      if (cachedText) {
-        const { headline, body } = splitHeadlineAndBody(cachedText, lang === "vi");
-        setHeadlineText(headline);
-        setBodyText(body);
-      }
-    } catch {
-      // ignore
-    }
-
-    // 2. Fetch from API
-    fetch("/api/honors-cards")
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data) => {
-        if (!data) return;
-
-        const mapCardsForLang = (rawCards: HonorCardData[]) => {
-          if (lang === "en") {
-            return rawCards.map((c, idx) => {
-              const defaultVi = DEFAULT_CARDS_VI[idx];
-              const defaultEn = DEFAULT_CARDS_EN[idx];
-              if (defaultVi && defaultEn && (c.subtitle === defaultVi.subtitle || !c.subtitle)) {
-                return { ...c, subtitle: defaultEn.subtitle, description: defaultEn.description };
-              }
-              return c;
-            });
-          }
-          return rawCards;
-        };
-
-        if (Array.isArray(data) && data.length > 0) {
-          setCards(mapCardsForLang(data));
-          try {
-            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
-          } catch {
-            // ignore
-          }
-        } else if (typeof data === "object") {
-          if (Array.isArray(data.cards) && data.cards.length > 0) {
-            setCards(mapCardsForLang(data.cards));
-            try {
-              localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data.cards));
-            } catch {
-              // ignore
-            }
-          }
-          if (typeof data.textContent === "string" && data.textContent.trim()) {
-            let { headline, body } = splitHeadlineAndBody(data.textContent, lang === "vi");
-            if (lang === "en") {
-              if (headline.includes("Biến bài toán") || headline === DEFAULT_HEADLINE_VI) headline = DEFAULT_HEADLINE_EN;
-              if (body.includes("Tôi phát triển chiến lược") || body === DEFAULT_BODY_CONTENT_VI) body = DEFAULT_BODY_CONTENT_EN;
-            } else {
-              if (headline.includes("Turning complex problems") || headline === DEFAULT_HEADLINE_EN) headline = DEFAULT_HEADLINE_VI;
-              if (body.includes("I developed brand strategy") || body === DEFAULT_BODY_CONTENT_EN) body = DEFAULT_BODY_CONTENT_VI;
-            }
-            setHeadlineText(headline);
-            setBodyText(body);
-            try {
-              localStorage.setItem(LOCAL_STORAGE_TEXT_KEY, `${headline}\n\n${body}`);
-            } catch {
-              // ignore
-            }
-          }
-        }
-      })
-      .catch((err) => {
-        console.warn("Could not sync honors data:", err);
-      });
-  }, []);
-
-  const handleCardTextChange = (
-    index: number,
-    field: keyof Omit<HonorCardData, "id" | "slotId">,
-    value: string
-  ) => {
-    setCards((prev) => {
-      const updated = [...prev];
-      updated[index] = {
-        ...updated[index],
-        [field]: value,
-      };
-      return updated;
-    });
-  };
-
-  const handleSave = async () => {
-    setIsSaving(true);
-    const combinedTextContent = `${headlineText.trim()}\n\n${bodyText.trim()}`;
-    try {
-      // Save locally
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(cards));
-      localStorage.setItem(LOCAL_STORAGE_TEXT_KEY, combinedTextContent);
-
-      // Save via API
-      await fetch("/api/honors-cards", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          cards,
-          textContent: combinedTextContent,
-        }),
-      });
-
-      setSaveSuccess(true);
-      setTimeout(() => setSaveSuccess(false), 3000);
-    } catch (err) {
-      console.error("Save error:", err);
-      alert(
-        lang === "vi"
-          ? "Đã lưu vào bộ nhớ trình duyệt!"
-          : "Saved to browser memory!"
-      );
-    } finally {
-      setIsSaving(false);
-    }
-  };
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
@@ -329,40 +116,31 @@ export function AcademicHonorsSection({ title }: AcademicHonorsSectionProps) {
           <div className="absolute bottom-3 right-3 w-2.5 h-2.5 border-b border-r border-[#7B0323]/50 pointer-events-none" />
 
           <div className="relative z-10 flex flex-col space-y-3 sm:space-y-4">
-            {/* Lead Title: đỏ rượu vang gốc #7B0323, +2 size, bold như tiêu đề */}
-            <textarea
-              ref={headlineRef}
-              value={headlineText}
-              onChange={(e) => setHeadlineText(e.target.value)}
-              rows={2}
-              placeholder="Turning complex problems into strategic solutions."
+            {/* Lead Title: đỏ rượu vang gốc #7B0323, +2 size, bold */}
+            <h4
               style={{
                 fontFamily:
                   "var(--font-lexend), 'Lexend', system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
                 color: "#7B0323",
               }}
-              className="w-full bg-transparent text-lg sm:text-xl lg:text-[22px] font-bold leading-snug focus:outline-none resize-none p-1 rounded-xl transition-all border border-transparent focus:border-[#7B0323]/40 focus:bg-white/60 overflow-hidden tracking-tight caret-[#7B0323]"
-            />
+              className="text-lg sm:text-xl lg:text-[22px] font-bold leading-snug tracking-tight m-0"
+            >
+              {lang === "vi" ? STRATEGIC_HEADLINE.vi : STRATEGIC_HEADLINE.en}
+            </h4>
 
             {/* Subtle Wine Red Editorial Divider */}
-            <div className="w-12 h-0.5 rounded-full bg-gradient-to-r from-[#7B0323] to-transparent ml-1" />
+            <div className="w-12 h-0.5 rounded-full bg-gradient-to-r from-[#7B0323] to-transparent ml-0.5" />
 
             {/* Body Paragraph */}
-            <textarea
-              ref={textareaRef}
-              value={bodyText}
-              onChange={(e) => setBodyText(e.target.value)}
-              placeholder={
-                lang === "vi"
-                  ? "Nhập nội dung chiến lược & dự án..."
-                  : "Enter strategic content..."
-              }
+            <p
               style={{
                 fontFamily:
                   "var(--font-lexend), 'Lexend', system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
               }}
-              className="w-full bg-transparent text-sm sm:text-base lg:text-[17px] leading-relaxed sm:leading-loose text-[#630E24]/85 font-normal focus:outline-none resize-none p-1 rounded-xl transition-all border border-transparent focus:border-[#7B0323]/30 focus:bg-white/60 overflow-hidden tracking-normal"
-            />
+              className="text-sm sm:text-base lg:text-[17px] leading-relaxed sm:leading-loose text-[#630E24]/85 font-normal tracking-normal text-justify sm:text-left m-0"
+            >
+              {lang === "vi" ? STRATEGIC_BODY.vi : STRATEGIC_BODY.en}
+            </p>
           </div>
         </div>
 
@@ -374,7 +152,7 @@ export function AcademicHonorsSection({ title }: AcademicHonorsSectionProps) {
             xmlns="http://www.w3.org/2000/svg"
             className="w-full h-full my-auto"
           >
-            {/* 4 Convergence Streams flowing down from the 4 Business Cases mentioned in the text */}
+            {/* 4 Convergence Streams flowing down from the 4 Business Cases */}
             <path
               d="M65 0 C 65 45, 155 45, 200 85"
               stroke="#1B3B2B"
@@ -485,55 +263,13 @@ export function AcademicHonorsSection({ title }: AcademicHonorsSectionProps) {
         </div>
       </div>
 
-      {/* Right 7 Cols: 4 Photos Grid + Save Button */}
-      <div className="lg:col-span-7 flex flex-col justify-between space-y-3.5">
-        {/* 4 Cards Grid (2x2) with larger photo aspect ratio */}
+      {/* Right 7 Cols: 4 Photos Grid */}
+      <div className="lg:col-span-7 flex flex-col justify-between">
+        {/* 4 Cards Grid (2x2) with 4/3 Aspect Ratio */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-          {cards.map((card, idx) => (
-            <SingleHonorCard
-              key={card.id || idx}
-              card={card}
-              index={idx}
-              onChange={handleCardTextChange}
-            />
+          {HONOR_CARDS.map((card) => (
+            <SingleHonorCard key={card.id} card={card} />
           ))}
-        </div>
-
-        {/* Action Row: Save Button */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-1">
-          <button
-            type="button"
-            onClick={handleSave}
-            disabled={isSaving}
-            className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl font-semibold text-xs text-white transition-all shadow-sm active:scale-95 cursor-pointer ${
-              saveSuccess
-                ? "bg-[#1B3B2B] hover:bg-[#1B3B2B]"
-                : "bg-[#7B0323] hover:bg-[#5E021A]"
-            }`}
-          >
-            {saveSuccess ? (
-              <>
-                <CheckCircle2 className="w-4 h-4 text-emerald-300" />
-                <span>{lang === "vi" ? "Đã lưu thành công!" : "Saved successfully!"}</span>
-              </>
-            ) : isSaving ? (
-              <>
-                <RefreshCw className="w-4 h-4 animate-spin" />
-                <span>{lang === "vi" ? "Đang lưu..." : "Saving..."}</span>
-              </>
-            ) : (
-              <>
-                <Save className="w-4 h-4" />
-                <span>{lang === "vi" ? "Lưu thông tin" : "Save information"}</span>
-              </>
-            )}
-          </button>
-
-          <span className="text-[11px] text-[#242220]/60 italic text-center sm:text-right">
-            {lang === "vi"
-              ? "Chỉnh sửa nội dung thẻ & mô tả ảnh rồi bấm Lưu"
-              : "Edit card content & photos text, then click Save"}
-          </span>
         </div>
       </div>
     </div>
@@ -541,16 +277,10 @@ export function AcademicHonorsSection({ title }: AcademicHonorsSectionProps) {
 }
 
 interface SingleHonorCardProps {
-  card: HonorCardData;
-  index: number;
-  onChange: (
-    index: number,
-    field: keyof Omit<HonorCardData, "id" | "slotId">,
-    value: string
-  ) => void;
+  card: HonorCardStaticData;
 }
 
-function SingleHonorCard({ card, index, onChange }: SingleHonorCardProps) {
+function SingleHonorCard({ card }: SingleHonorCardProps) {
   const { getImage, uploadImage, deleteImage } = useProjectImages();
   const { lang } = useLanguage();
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -569,7 +299,6 @@ function SingleHonorCard({ card, index, onChange }: SingleHonorCardProps) {
     setImageLoadError(false);
   }, [currentImage]);
 
-
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -582,7 +311,11 @@ function SingleHonorCard({ card, index, onChange }: SingleHonorCardProps) {
     const isImageMime = file.type ? file.type.startsWith("image/") : false;
 
     if (!isImageMime && !isImageExt) {
-      alert(lang === "vi" ? "Vui lòng chọn một tệp hình ảnh (.png, .jpg, .webp)!" : "Please select an image file (.png, .jpg, .webp)!");
+      alert(
+        lang === "vi"
+          ? "Vui lòng chọn một tệp hình ảnh (.png, .jpg, .webp)!"
+          : "Please select an image file (.png, .jpg, .webp)!"
+      );
       return;
     }
 
@@ -599,7 +332,11 @@ function SingleHonorCard({ card, index, onChange }: SingleHonorCardProps) {
       await uploadImage(card.slotId, file);
     } catch (err) {
       console.error(err);
-      alert(lang === "vi" ? "Tải ảnh thất bại, vui lòng thử lại." : "Failed to upload image.");
+      alert(
+        lang === "vi"
+          ? "Tải ảnh thất bại, vui lòng thử lại."
+          : "Failed to upload image."
+      );
     } finally {
       setIsUploading(false);
       if (fileInputRef.current) {
@@ -610,7 +347,11 @@ function SingleHonorCard({ card, index, onChange }: SingleHonorCardProps) {
 
   const handleDelete = async (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (confirm(lang === "vi" ? "Bạn có chắc muốn xóa ảnh này?" : "Remove this image?")) {
+    if (
+      confirm(
+        lang === "vi" ? "Bạn có chắc muốn xóa ảnh này?" : "Remove this image?"
+      )
+    ) {
       setPreviewBlob(null);
       setImageLoadError(false);
       await deleteImage(card.slotId);
@@ -631,8 +372,11 @@ function SingleHonorCard({ card, index, onChange }: SingleHonorCardProps) {
 
   const hasValidImage = Boolean(currentImage && !imageLoadError);
 
+  const subtitleText = lang === "vi" ? card.subtitle.vi : card.subtitle.en;
+  const descriptionText = lang === "vi" ? card.description.vi : card.description.en;
+
   return (
-    <div className="flex flex-col rounded-2xl border border-[#1B3B2B]/15 bg-[#FAF7F2] p-2 sm:p-2.5 shadow-xs hover:border-[#1B3B2B]/35 transition-all duration-200">
+    <div className="flex flex-col rounded-2xl border border-[#1B3B2B]/15 bg-[#FAF7F2] p-2.5 sm:p-3 shadow-xs hover:border-[#1B3B2B]/35 transition-all duration-200">
       {/* Photo Upload Area - Enlarged with 4/3 Aspect Ratio */}
       <div
         onDragOver={(e) => {
@@ -718,39 +462,26 @@ function SingleHonorCard({ card, index, onChange }: SingleHonorCardProps) {
         )}
       </div>
 
-      {/* Text Editing Inputs Directly Below - Reduced Line Spacing, Increased Title Size */}
-      <div className="mt-2 space-y-0.5">
-        {/* Line 1: Title (Increased size: font-anton text-base sm:text-lg) */}
+      {/* Card Info Fixed Typography Directly Below */}
+      <div className="mt-2.5 space-y-1">
+        {/* Line 1: Title & Arrow */}
         <div className="flex items-center justify-between gap-1">
-          <input
-            type="text"
-            value={card.title}
-            onChange={(e) => onChange(index, "title", e.target.value)}
-            placeholder={lang === "vi" ? "Tên dự án (VD: Chè 24)" : "Project title"}
-            className="w-full font-anton text-base sm:text-lg uppercase tracking-tight text-[#242220] bg-transparent border-b border-transparent hover:border-[#1B3B2B]/20 focus:border-[#7B0323] focus:bg-white px-1 py-0 rounded transition-all outline-none leading-snug"
-          />
+          <h4 className="font-anton text-base sm:text-lg uppercase tracking-tight text-[#242220] leading-snug m-0">
+            {card.title}
+          </h4>
           <ArrowUpRight className="w-4 h-4 text-[#242220]/40 shrink-0" />
         </div>
 
-        {/* Line 2: Subtitle / Field (Tight spacing) */}
-        <input
-          type="text"
-          value={card.subtitle}
-          onChange={(e) => onChange(index, "subtitle", e.target.value)}
-          placeholder={lang === "vi" ? "Chiến lược thương hiệu & trải nghiệm" : "Brand Strategy & Customer Experience"}
-          className="w-full text-xs font-medium text-[#242220]/80 bg-transparent border-b border-transparent hover:border-[#1B3B2B]/20 focus:border-[#7B0323] focus:bg-white px-1 py-0 rounded transition-all outline-none leading-snug"
-        />
+        {/* Line 2: Subtitle */}
+        <p className="text-xs font-medium text-[#242220]/80 leading-snug line-clamp-2 m-0">
+          {subtitleText}
+        </p>
 
-        {/* Line 3: Competition / Achievement Details (Tight spacing) */}
-        <input
-          type="text"
-          value={card.description}
-          onChange={(e) => onChange(index, "description", e.target.value)}
-          placeholder={lang === "vi" ? "ASPIRING VIETNAM CONTEST 2025 • Top 4" : "Contest & Distinction"}
-          className="w-full font-mono text-[11px] text-[#7B0323] font-semibold bg-transparent border-b border-transparent hover:border-[#1B3B2B]/20 focus:border-[#7B0323] focus:bg-white px-1 py-0 rounded transition-all outline-none leading-snug"
-        />
+        {/* Line 3: Competition / Award Distinction */}
+        <p className="font-mono text-[11px] text-[#7B0323] font-semibold leading-snug m-0">
+          {descriptionText}
+        </p>
       </div>
-
     </div>
   );
 }
