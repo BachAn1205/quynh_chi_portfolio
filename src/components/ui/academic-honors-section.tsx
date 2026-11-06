@@ -1,14 +1,9 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
-import {
-  UploadCloud,
-  ImageIcon,
-  Trash2,
-  RefreshCw,
-  ArrowUpRight,
-} from "lucide-react";
-import { useProjectImages } from "@/lib/project-images-context";
+import React from "react";
+import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
+import { STATIC_PROJECT_IMAGES } from "@/lib/project-images-context";
 import { useLanguage } from "@/lib/i18n";
 
 export interface HonorCardStaticData {
@@ -281,185 +276,24 @@ interface SingleHonorCardProps {
 }
 
 function SingleHonorCard({ card }: SingleHonorCardProps) {
-  const { getImage, uploadImage, deleteImage } = useProjectImages();
   const { lang } = useLanguage();
-  const fileInputRef = useRef<HTMLInputElement>(null);
-  const [isUploading, setIsUploading] = useState(false);
-  const [isDragOver, setIsDragOver] = useState(false);
-  const [previewBlob, setPreviewBlob] = useState<string | null>(null);
-  const [imageLoadError, setImageLoadError] = useState(false);
-
-  const storedImage =
-    getImage(card.slotId) ||
-    (card.slotId === "mind-honors-1" ? getImage("mind-honors") : undefined);
-
-  const currentImage = previewBlob || storedImage;
-
-  useEffect(() => {
-    setImageLoadError(false);
-  }, [currentImage]);
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    validateAndUpload(file);
-  };
-
-  const validateAndUpload = (file: File) => {
-    const fileName = file.name.toLowerCase();
-    const isImageExt = /\.(png|jpe?g|webp|gif|svg|jfif|bmp|avif)$/i.test(fileName);
-    const isImageMime = file.type ? file.type.startsWith("image/") : false;
-
-    if (!isImageMime && !isImageExt) {
-      alert(
-        lang === "vi"
-          ? "Vui lòng chọn một tệp hình ảnh (.png, .jpg, .webp)!"
-          : "Please select an image file (.png, .jpg, .webp)!"
-      );
-      return;
-    }
-
-    processUpload(file);
-  };
-
-  const processUpload = async (file: File) => {
-    const localUrl = URL.createObjectURL(file);
-    setPreviewBlob(localUrl);
-    setImageLoadError(false);
-
-    try {
-      setIsUploading(true);
-      await uploadImage(card.slotId, file);
-    } catch (err) {
-      console.error(err);
-      alert(
-        lang === "vi"
-          ? "Tải ảnh thất bại, vui lòng thử lại."
-          : "Failed to upload image."
-      );
-    } finally {
-      setIsUploading(false);
-      if (fileInputRef.current) {
-        fileInputRef.current.value = "";
-      }
-    }
-  };
-
-  const handleDelete = async (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (
-      confirm(
-        lang === "vi" ? "Bạn có chắc muốn xóa ảnh này?" : "Remove this image?"
-      )
-    ) {
-      setPreviewBlob(null);
-      setImageLoadError(false);
-      await deleteImage(card.slotId);
-      if (card.slotId === "mind-honors-1" && getImage("mind-honors")) {
-        await deleteImage("mind-honors");
-      }
-    }
-  };
-
-  const handleDrop = (e: React.DragEvent) => {
-    e.preventDefault();
-    setIsDragOver(false);
-    const file = e.dataTransfer.files?.[0];
-    if (file) {
-      validateAndUpload(file);
-    }
-  };
-
-  const hasValidImage = Boolean(currentImage && !imageLoadError);
+  const imgSrc = STATIC_PROJECT_IMAGES[card.slotId] || "/images/static/mind-honors-1.jpg";
 
   const subtitleText = lang === "vi" ? card.subtitle.vi : card.subtitle.en;
   const descriptionText = lang === "vi" ? card.description.vi : card.description.en;
 
   return (
     <div className="flex flex-col rounded-2xl border border-[#1B3B2B]/15 bg-[#FAF7F2] p-2.5 sm:p-3 shadow-xs hover:border-[#1B3B2B]/35 transition-all duration-200">
-      {/* Photo Upload Area - Enlarged with 4/3 Aspect Ratio */}
-      <div
-        onDragOver={(e) => {
-          e.preventDefault();
-          setIsDragOver(true);
-        }}
-        onDragLeave={() => setIsDragOver(false)}
-        onDrop={handleDrop}
-        onClick={() => !hasValidImage && fileInputRef.current?.click()}
-        className={`relative w-full aspect-[4/3] rounded-xl overflow-hidden transition-all duration-200 ${
-          hasValidImage
-            ? "border border-[#1B3B2B]/15 bg-white group"
-            : `border-2 border-dashed cursor-pointer ${
-                isDragOver
-                  ? "border-[#1B3B2B] bg-[#E2ECE5]/50 scale-[1.01]"
-                  : "border-[#1B3B2B]/30 hover:border-[#7B0323] bg-white/60 hover:bg-white"
-              }`
-        }`}
-      >
-        <input
-          ref={fileInputRef}
-          type="file"
-          accept="image/png,image/jpeg,image/jpg,image/webp,image/gif,image/*"
-          className="hidden"
-          onChange={handleFileChange}
+      {/* Static Photo Display - 4/3 Aspect Ratio */}
+      <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-[#1B3B2B]/15 bg-white">
+        <Image
+          src={imgSrc}
+          alt={card.title}
+          fill
+          className="object-cover"
+          sizes="(max-width: 640px) 100vw, 300px"
+          unoptimized
         />
-
-        {hasValidImage ? (
-          <div className="absolute inset-0 w-full h-full">
-            <img
-              src={currentImage!}
-              alt={card.title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              onError={() => setImageLoadError(true)}
-              loading="lazy"
-            />
-            {/* Quick Actions */}
-            <div className="absolute top-2 right-2 flex items-center gap-1.5 opacity-90 group-hover:opacity-100 transition-opacity">
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  fileInputRef.current?.click();
-                }}
-                disabled={isUploading}
-                title={lang === "vi" ? "Thay đổi ảnh" : "Change photo"}
-                className="p-1.5 rounded-lg bg-white/95 text-[#1B3B2B] shadow hover:bg-white transition-all cursor-pointer"
-              >
-                <RefreshCw className={`w-3 h-3 ${isUploading ? "animate-spin" : ""}`} />
-              </button>
-              <button
-                type="button"
-                onClick={handleDelete}
-                title={lang === "vi" ? "Xóa ảnh" : "Remove photo"}
-                className="p-1.5 rounded-lg text-white bg-red-600/90 hover:bg-red-600 shadow transition-all cursor-pointer"
-              >
-                <Trash2 className="w-3 h-3" />
-              </button>
-            </div>
-          </div>
-        ) : (
-          <div className="absolute inset-0 flex flex-col items-center justify-center p-3 text-center">
-            <div className="w-10 h-10 rounded-xl bg-[#E2ECE5]/70 text-[#1B3B2B] flex items-center justify-center mb-2">
-              {isUploading ? (
-                <RefreshCw className="w-4 h-4 animate-spin" />
-              ) : (
-                <UploadCloud className="w-5 h-5" />
-              )}
-            </div>
-            <button
-              type="button"
-              disabled={isUploading}
-              onClick={(e) => {
-                e.stopPropagation();
-                fileInputRef.current?.click();
-              }}
-              className="px-3 py-1.5 rounded-lg bg-[#7B0323] hover:bg-[#5E021A] text-white text-xs font-medium shadow-xs flex items-center gap-1.5 transition-all cursor-pointer"
-            >
-              <ImageIcon className="w-3.5 h-3.5" />
-              <span>{isUploading ? "..." : lang === "vi" ? "Tải ảnh" : "Upload"}</span>
-            </button>
-          </div>
-        )}
       </div>
 
       {/* Card Info Fixed Typography Directly Below */}
