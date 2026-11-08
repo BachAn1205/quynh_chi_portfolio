@@ -289,7 +289,7 @@ export function TheHeartSection() {
         en: "Photo of the community reading corner, school supplies donation, or educational workshop with young girls in Buon Drang Phok."
       },
       accent: "text-[#1B3B2B]",
-      objectPosition: "center bottom",
+      objectPosition: "center",
     },
   ];
 

@@ -37,9 +37,7 @@ export function ProjectImageUpload({
     STATIC_PROJECT_IMAGES[slotId] ||
     "/images/static/about-banner.jpg";
 
-  const effectivePosition =
-    objectPosition ||
-    (slotId === "heart-highland-girls-fund" ? "center bottom" : "center");
+  const effectivePosition = objectPosition || "center";
 
   return (
     <div className={`relative w-full ${className}`}>

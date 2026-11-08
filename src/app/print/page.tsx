@@ -772,7 +772,7 @@ export default function PrintPortfolioPage() {
 
             <div className="item-card p-2.5 rounded-lg bg-white border border-[#1B3B2B]/15 flex gap-2.5 items-start">
               <div className="w-24 aspect-[16/9] relative rounded-md overflow-hidden border border-[#1B3B2B]/15 shrink-0">
-                <Image src={highlandGirlsFundUrl} alt="Highland Girl's Fund" fill className="object-cover" style={{ objectPosition: "center bottom" }} unoptimized />
+                <Image src={highlandGirlsFundUrl} alt="Highland Girl's Fund" fill className="object-cover" style={{ objectPosition: "center" }} unoptimized />
               </div>
               <div className="space-y-0.5 text-[10px]">
                 <span className="font-mono font-bold text-[#1B3B2B] block">{lang === "vi" ? "Highland Girl’s Fund" : "Highland Girl’s Fund"}</span>
