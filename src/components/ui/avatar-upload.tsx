@@ -23,7 +23,6 @@ export function AvatarUpload({
 
   return (
     <div className={`flex flex-col items-center sm:items-start gap-3 ${className}`}>
-      {/* Avatar Box (Fixed Aspect Ratio 3:2, Static) */}
       <div
         style={{ aspectRatio: "3 / 2" }}
         className={`relative ${sizeClass} rounded-3xl overflow-hidden shrink-0 shadow-lg border-2 border-[#1B3B2B]/30 bg-[#FAF7F2]`}

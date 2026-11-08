@@ -58,20 +58,13 @@ export function ProjectImageProvider({
   children: React.ReactNode;
   initialImages?: Record<string, string>;
 }) {
-  const getImage = (slotId: string) => {
-    return STATIC_PROJECT_IMAGES[slotId] || undefined;
-  };
-
-  const uploadImage = async () => null;
-  const deleteImage = async () => false;
-
   const contextValue = useMemo(
     () => ({
       images: STATIC_PROJECT_IMAGES,
       isLoading: false,
-      getImage,
-      uploadImage,
-      deleteImage,
+      getImage: (slotId: string) => STATIC_PROJECT_IMAGES[slotId],
+      uploadImage: async () => null,
+      deleteImage: async () => false,
     }),
     []
   );
@@ -83,4 +76,10 @@ export function ProjectImageProvider({
   );
 }
 
-export const useProjectImages = () => useContext(ProjectImagesContext);
+export function useProjectImages() {
+  const context = useContext(ProjectImagesContext);
+  if (!context) {
+    throw new Error("useProjectImages must be used within a ProjectImageProvider");
+  }
+  return context;
+}

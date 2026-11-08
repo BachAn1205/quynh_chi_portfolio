@@ -42,7 +42,7 @@ export function ProjectImageUpload({
     (slotId === "heart-highland-girls-fund" ? "center bottom" : "center");
 
   return (
-    <div className={`w-full ${className}`}>
+    <div className={`relative w-full ${className}`}>
       <div
         className={`relative w-full ${aspectRatio} ${heightClass} ${roundedClass} overflow-hidden border border-[#1B3B2B]/15 bg-white shadow-xs`}
       >
@@ -53,6 +53,7 @@ export function ProjectImageUpload({
           className={objectFit === "contain" ? "object-contain" : "object-cover"}
           style={{ objectPosition: effectivePosition }}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority={slotId.includes("hero") || slotId.includes("profile")}
           unoptimized
         />
       </div>

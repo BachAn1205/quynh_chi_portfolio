@@ -102,7 +102,7 @@ export function AcademicHonorsSection({ title }: AcademicHonorsSectionProps) {
           </h3>
         </div>
 
-        {/* THE TEXT CARD — khung tổng đỏ rượu vang gốc */}
+        {/* THE TEXT CARD */}
         <div className="relative flex flex-col rounded-t-3xl rounded-b-2xl bg-[#FAF7F2] border border-[#7B0323] shadow-xs p-5 sm:p-6 lg:p-7 transition-all duration-300 overflow-hidden hover:border-[#5E021A]">
           {/* Corner Crosshairs — wine red */}
           <div className="absolute top-3 left-3 w-2.5 h-2.5 border-t border-l border-[#7B0323]/50 pointer-events-none" />
@@ -111,7 +111,7 @@ export function AcademicHonorsSection({ title }: AcademicHonorsSectionProps) {
           <div className="absolute bottom-3 right-3 w-2.5 h-2.5 border-b border-r border-[#7B0323]/50 pointer-events-none" />
 
           <div className="relative z-10 flex flex-col space-y-3 sm:space-y-4">
-            {/* Lead Title: đỏ rượu vang gốc #7B0323, +2 size, bold */}
+            {/* Lead Title: đỏ rượu vang gốc #7B0323 */}
             <h4
               style={{
                 fontFamily:

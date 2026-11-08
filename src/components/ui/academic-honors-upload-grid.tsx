@@ -63,55 +63,54 @@ const HONOR_CARDS: HonorCardStaticData[] = [
 ];
 
 interface AcademicHonorsUploadGridProps {
-  guideline?: {
-    vi: string;
-    en: string;
-  } | string;
+  className?: string;
 }
 
-export function AcademicHonorsUploadGrid(_props: AcademicHonorsUploadGridProps) {
-  return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-      {HONOR_CARDS.map((card) => (
-        <SingleCard key={card.id} card={card} />
-      ))}
-    </div>
-  );
-}
-
-function SingleCard({ card }: { card: HonorCardStaticData }) {
+export function AcademicHonorsUploadGrid({ className = "" }: AcademicHonorsUploadGridProps) {
   const { lang } = useLanguage();
-  const imgSrc = STATIC_PROJECT_IMAGES[card.slotId] || "/images/static/mind-honors-1.jpg";
-  const subtitleText = lang === "vi" ? card.subtitle.vi : card.subtitle.en;
-  const descriptionText = lang === "vi" ? card.description.vi : card.description.en;
 
   return (
-    <div className="flex flex-col rounded-2xl border border-[#1B3B2B]/15 bg-[#FAF7F2] p-2.5 sm:p-3 shadow-xs hover:border-[#1B3B2B]/35 transition-all duration-200">
-      <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-[#1B3B2B]/15 bg-white">
-        <Image
-          src={imgSrc}
-          alt={card.title}
-          fill
-          className="object-cover"
-          sizes="(max-width: 640px) 100vw, 300px"
-          unoptimized
-        />
-      </div>
+    <div className={`grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 ${className}`}>
+      {HONOR_CARDS.map((card) => {
+        const imgSrc = STATIC_PROJECT_IMAGES[card.slotId] || "/images/static/mind-honors-1.jpg";
+        const subtitleText = lang === "vi" ? card.subtitle.vi : card.subtitle.en;
+        const descriptionText = lang === "vi" ? card.description.vi : card.description.en;
 
-      <div className="mt-2.5 space-y-1">
-        <div className="flex items-center justify-between gap-1">
-          <h4 className="font-anton text-base sm:text-lg uppercase tracking-tight text-[#242220] leading-snug m-0">
-            {card.title}
-          </h4>
-          <ArrowUpRight className="w-4 h-4 text-[#242220]/40 shrink-0" />
-        </div>
-        <p className="text-xs font-medium text-[#242220]/80 leading-snug line-clamp-2 m-0">
-          {subtitleText}
-        </p>
-        <p className="font-mono text-[11px] text-[#7B0323] font-semibold leading-snug m-0">
-          {descriptionText}
-        </p>
-      </div>
+        return (
+          <div
+            key={card.id}
+            className="flex flex-col rounded-2xl border border-[#1B3B2B]/15 bg-[#FAF7F2] p-2.5 sm:p-3 shadow-xs hover:border-[#1B3B2B]/35 transition-all duration-200"
+          >
+            <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-[#1B3B2B]/15 bg-white">
+              <Image
+                src={imgSrc}
+                alt={card.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 100vw, 300px"
+                unoptimized
+              />
+            </div>
+
+            <div className="mt-2.5 space-y-1">
+              <div className="flex items-center justify-between gap-1">
+                <h4 className="font-anton text-base sm:text-lg uppercase tracking-tight text-[#242220] leading-snug m-0">
+                  {card.title}
+                </h4>
+                <ArrowUpRight className="w-4 h-4 text-[#242220]/40 shrink-0" />
+              </div>
+
+              <p className="text-xs font-medium text-[#242220]/80 leading-snug line-clamp-2 m-0">
+                {subtitleText}
+              </p>
+
+              <p className="font-mono text-[11px] text-[#7B0323] font-semibold leading-snug m-0">
+                {descriptionText}
+              </p>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
